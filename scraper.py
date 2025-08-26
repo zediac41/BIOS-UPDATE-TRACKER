@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from zoneinfo import ZoneInfo  # Python 3.9+
 
-# Add your ASUS motherboards and their BIOS pages here
+# ASUS motherboards and BIOS pages
 motherboards = {
     "TUF GAMING Z890-PLUS WIFI": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios",
     "ROG STRIX Z790-E GAMING WIFI": "https://www.asus.com/us/motherboards-components/motherboards/rog-strix/rog-strix-z790-e-gaming-wifi/helpdesk_bios",
@@ -24,11 +24,19 @@ for model, url in motherboards.items():
         response = requests.get(url, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # Grab BIOS version & release date (adjust selectors if needed)
-        version_tag = soup.select_one(".Version")
-        release_tag = soup.select_one(".ReleaseDate")
-        latest_version = version_tag.get_text(strip=True) if version_tag else "N/A"
-        release_date = release_tag.get_text(strip=True) if release_tag else "N/A"
+        # ---- Extract version and release date ----
+        latest_version = "N/A"
+        release_date = "N/A"
+
+        # Find div containing "Version"
+        for div in soup.select("div"):
+            text = div.get_text(strip=True)
+            if text.startswith("Version"):
+                latest_version = text.replace("Version", "").strip()
+                next_div = div.find_next_sibling("div")
+                if next_div:
+                    release_date = next_div.get_text(strip=True)
+                break
 
         # Track previous version
         previous_version = old_data.get(model, {}).get("latest_version", "")
@@ -38,7 +46,7 @@ for model, url in motherboards.items():
             previous_version = old_data.get(model, {}).get("previous_version", "")
             previous_release_date = old_data.get(model, {}).get("previous_release_date", "")
 
-        # Central Time for last_checked
+        # Central Time
         central_time = datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
 
         bios_data.append({
@@ -60,17 +68,16 @@ for model, url in motherboards.items():
             "last_checked": datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
         })
 
-# Function to parse release dates for sorting
+# ---- Sort by newest release date first ----
 def parse_date(date_str):
     try:
-        return datetime.strptime(date_str, "%Y-%m-%d")
+        return datetime.strptime(date_str, "%m/%d/%Y")  # adjust format if needed
     except Exception:
-        return datetime.min  # invalid/missing dates go to bottom
+        return datetime.min
 
-# Sort by newest release first
 bios_data.sort(key=lambda x: parse_date(x["release_date"]), reverse=True)
 
-# Save updated JSON
+# ---- Save to bios.json ----
 with open("bios.json", "w") as f:
     json.dump(bios_data, f, indent=2)
 

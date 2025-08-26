@@ -2,16 +2,17 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>BIOS Tracker</title>
+  <title>ASUS BIOS Tracker</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
     table { border-collapse: collapse; width: 100%; background: white; }
     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
     th { background: #333; color: white; }
+    td { min-width: 80px; }
   </style>
 </head>
 <body>
-  <h1>BIOS Tracker</h1>
+  <h1>ASUS BIOS Tracker</h1>
   <table id="biosTable">
     <thead>
       <tr>
@@ -33,16 +34,22 @@
         let tbody = document.querySelector("#biosTable tbody");
         data.forEach(item => {
           let row = `<tr>
-            <td>${item.model}</td>
-            <td>${item.latest_version}</td>
-            <td>${item.release_date}</td>
-            <td>${item.previous_version}</td>
-            <td>${item.previous_release_date}</td>
-            <td>${item.last_checked}</td>
+            <td>${item.model || "N/A"}</td>
+            <td>${item.latest_version || "N/A"}</td>
+            <td>${item.release_date || "N/A"}</td>
+            <td>${item.previous_version || "N/A"}</td>
+            <td>${item.previous_release_date || "N/A"}</td>
+            <td>${item.last_checked || "N/A"}</td>
           </tr>`;
           tbody.innerHTML += row;
         });
+      })
+      .catch(err => {
+        let tbody = document.querySelector("#biosTable tbody");
+        tbody.innerHTML = `<tr><td colspan="6">Error loading BIOS data</td></tr>`;
+        console.error(err);
       });
   </script>
 </body>
 </html>
+

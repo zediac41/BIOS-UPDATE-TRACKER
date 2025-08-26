@@ -1,16 +1,167 @@
 boards:
-  - name: "ASUS ROG Strix B550-F"
+  # ---------------------- AMD AM5 (X870 / X870E / B850 / A620) ----------------------
+  - name: "ASUS ROG STRIX X870-E GAMING WIFI"
     vendor: "asus"
-    url: "https://www.asus.com/Motherboards-Components/Motherboards/All-series/ROG-STRIX-B550-F-GAMING/HelpDesk_BIOS/"
+    url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-e-gaming-wifi-model/helpdesk_bios/"
 
-  - name: "MSI B650 Tomahawk"
+  - name: "ASUS TUF GAMING X870-PLUS WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios/"
+
+  - name: "ASUS PRIME X870-P WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/prime/prime-x870-p-wifi/helpdesk_bios/"
+
+  - name: "MSI MPG X870E CARBON WIFI"
     vendor: "msi"
-    url: "https://www.msi.com/Motherboard/B650-TOMAHAWK-WIFI/support#bios"
+    url: "https://www.msi.com/Motherboard/MPG-X870E-CARBON-WIFI/support#bios"
 
-  - name: "Gigabyte X670 AORUS Elite"
+  - name: "MSI MAG X870 TOMAHAWK WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios"
+
+  - name: "MSI X870 GAMING PLUS WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/X870-GAMING-PLUS-WIFI/support#bios"
+
+  - name: "Gigabyte X870 AORUS ELITE WIFI7"
     vendor: "gigabyte"
-    url: "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-10/support#support-dl-bios"
+    url: "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7/support"
 
-  - name: "ASRock B550 Steel Legend"
+  - name: "Gigabyte X870 GAMING X WIFI7"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/X870-GAMING-X-WIFI7-rev-1x/support"
+
+  - name: "Gigabyte X870 AORUS STEALTH ICE"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support"
+
+  - name: "ASRock X870 Steel Legend WiFi"
     vendor: "asrock"
-    url: "https://www.asrock.com/mb/AMD/B550%20Steel%20Legend/index.asp#BIOS"
+    url: "https://www.asrock.com/mb/AMD/X870%20Steel%20Legend%20WiFi/index.asp#BIOS"
+
+  - name: "ASRock X870 Pro RS"
+    vendor: "asrock"
+    url: "https://www.asrock.com/mb/AMD/X870%20Pro%20RS/index.asp#BIOS"
+
+  - name: "ASRock X870E Taichi"
+    vendor: "asrock"
+    url: "https://www.asrock.com/mb/AMD/X870E%20Taichi/index.asp#BIOS"
+
+  - name: "ASRock B850 Steel Legend WiFi"
+    vendor: "asrock"
+    url: "https://www.asrock.com/mb/AMD/B850%20Steel%20Legend%20WiFi/index.asp#BIOS"
+
+  - name: "ASUS TUF GAMING B850-PLUS WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios/"
+
+  - name: "MSI MAG B850 TOMAHAWK WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/MAG-B850-TOMAHAWK-WIFI/support#bios"
+
+  - name: "Gigabyte B850 AORUS ELITE WIFI7"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/B850-AORUS-ELITE-WIFI7/support"
+
+  - name: "ASUS TUF GAMING A620-PLUS WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620-plus-wifi/helpdesk_bios/"
+
+  - name: "MSI PRO A620M-E"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/PRO-A620M-E/support#bios"
+
+  - name: "Gigabyte A620M S2H"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/A620M-S2H-rev-10/support"
+
+  # ---------------------- Intel LGA1851 (Z890 / B860) ----------------------
+  - name: "ASUS ROG MAXIMUS Z890 HERO"
+    vendor: "asus"
+    url: "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-model/helpdesk_bios/"
+
+  - name: "ASUS ProArt Z890-CREATOR WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios/"
+
+  - name: "ASUS TUF GAMING Z890-PLUS WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios/"
+
+  - name: "MSI MAG Z890 TOMAHAWK WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios"
+
+  - name: "MSI MPG Z890 EDGE WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/MPG-Z890-EDGE-WIFI/support#bios"
+
+  - name: "Gigabyte Z890 AORUS MASTER"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/Z890-AORUS-MASTER/support"
+
+  - name: "Gigabyte Z890 AORUS ELITE WIFI7"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7/support"
+
+  - name: "ASRock Z890 Taichi"
+    vendor: "asrock"
+    url: "https://www.asrock.com/mb/Intel/Z890%20Taichi/index.asp#BIOS"
+
+  - name: "ASRock B860 Steel Legend WiFi"
+    vendor: "asrock"
+    url: "https://www.asrock.com/mb/Intel/B860%20Steel%20Legend%20WiFi/index.asp#BIOS"
+
+  - name: "ASUS PRIME B860M-A WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/prime/prime-b860m-a-wifi/helpdesk_bios/"
+
+  - name: "MSI PRO B860M-A WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/PRO-B860M-A-WIFI/support#bios"
+
+  - name: "Gigabyte B860M DS3H"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/B860M-DS3H/support"
+
+  # ---------------------- Intel LGA1700 (Z790 / B760 / H770) ----------------------
+  - name: "ASUS ROG STRIX Z790-E GAMING WIFI"
+    vendor: "asus"
+    url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z790-e-gaming-wifi-model/helpdesk_bios/"
+
+  - name: "ASUS PRIME Z790-P WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/prime/prime-z790-p-wifi/helpdesk_bios/"
+
+  - name: "MSI MAG Z790 TOMAHAWK WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-WIFI/support#bios"
+
+  - name: "Gigabyte Z790 AORUS ELITE AX"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-AX-rev-1x/support"
+
+  - name: "ASRock Z790 Steel Legend WiFi"
+    vendor: "asrock"
+    url: "https://www.asrock.com/mb/Intel/Z790%20Steel%20Legend%20WiFi/index.asp#BIOS"
+
+  - name: "ASUS TUF GAMING B760-PLUS WIFI"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b760-plus-wifi/helpdesk_bios/"
+
+  - name: "MSI PRO B760M-A WIFI"
+    vendor: "msi"
+    url: "https://www.msi.com/Motherboard/PRO-B760M-A-WIFI/support#bios"
+
+  - name: "Gigabyte B760M DS3H AX"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/B760M-DS3H-AX-rev-10/support"
+
+  - name: "ASUS PRIME H770-PLUS"
+    vendor: "asus"
+    url: "https://www.asus.com/motherboards-components/motherboards/prime/prime-h770-plus/helpdesk_bios/"
+
+  - name: "Gigabyte H770 AORUS ELITE AX"
+    vendor: "gigabyte"
+    url: "https://www.gigabyte.com/Motherboard/H770-AORUS-ELITE-AX-rev-10/support"

@@ -1,31 +1,15 @@
 [
   {
     "vendor": "ASUS",
-    "model": "TUF GAMING X670E-PLUS WIFI",
-    "url": "https://www.asus.com/supportonly/TUF-GAMING-X670E-PLUS-WIFI/HelpDesk_BIOS/",
-    "versions": [
-      {
-        "version": "3278",
-        "date": null
-      },
-      {
-        "version": "3265",
-        "date": null
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "ROG STRIX X870E-E GAMING WIFI",
-    "url": "https://www.asus.com/supportonly/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
     "versions": [],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/supportonly/tuf-gaming-x870-plus-wifi/helpdesk_bios/",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
     "versions": [
       {
         "version": "1078",
@@ -41,7 +25,7 @@
   {
     "vendor": "ASUS",
     "model": "TUF GAMING B860M-PLUS WIFI",
-    "url": "https://www.asus.com/supportonly/tuf-gaming-b860m-plus-wifi/helpdesk_bios/",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
     "versions": [
       {
         "version": "1606",
@@ -56,24 +40,24 @@
   },
   {
     "vendor": "MSI",
-    "model": "MAG B650 TOMAHAWK WIFI",
-    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#down-bios",
+    "model": "MAG Z890 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support",
     "versions": [],
     "ok": false,
     "error": "HTTP 403"
   },
   {
     "vendor": "MSI",
-    "model": "PRO X870-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#down-bios",
+    "model": "MEG X870E GODLIKE",
+    "url": "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support",
     "versions": [],
     "ok": false,
     "error": "HTTP 403"
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X670 AORUS ELITE AX",
-    "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-1x/support#support-dl-bios",
+    "model": "B860M AORUS ELITE",
+    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE/support#dl",
     "versions": [],
     "ok": false,
     "error": "HTTP 403"
@@ -88,18 +72,10 @@
   },
   {
     "vendor": "ASRock",
-    "model": "X670E Steel Legend",
-    "url": "https://www.asrock.com/MB/AMD/X670E%20Steel%20Legend/index.asp#BIOS",
+    "model": "B660M-HDV",
+    "url": "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS",
     "versions": [],
     "ok": false,
-    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AMD/X670E%20Steel%20Legend/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_"
-  },
-  {
-    "vendor": "ASRock",
-    "model": "B650E Steel Legend WiFi",
-    "url": "https://www.asrock.com/MB/AMD/B650E%20Steel%20Legend%20WiFi/index.asp#BIOS",
-    "versions": [],
-    "ok": false,
-    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AMD/B650E%20Steel%20Legend%20WiFi/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_"
+    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /mb/Intel/B660M-HDV/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] cer"
   }
 ]

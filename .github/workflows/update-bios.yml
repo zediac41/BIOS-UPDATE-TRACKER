@@ -1,9 +1,9 @@
-name: Update ASUS BIOS Info
+name: Update BIOS Info
 
 on:
   schedule:
-    - cron: "0 12 * * *"   # Runs daily at 12:00 UTC
-  workflow_dispatch:        # Allows manual run from GitHub
+    - cron: "0 12 * * *"  # Runs daily at 12:00 UTC
+  workflow_dispatch:       # Allows manual run
 
 jobs:
   update-bios:

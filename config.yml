@@ -1,20 +1,16 @@
 boards:
-  - name: "ROG STRIX B550-F (Wi-Fi)"
+  - name: "ASUS ROG Strix B550-F"
     vendor: "asus"
-    url: "https://www.asus.com/supportonly/rog-strix-b550-f-gaming-wi-fi/helpdesk_bios/"
-    selectors: {}
+    url: "https://www.asus.com/Motherboards-Components/Motherboards/All-series/ROG-STRIX-B550-F-GAMING/HelpDesk_BIOS/"
 
-  - name: "MSI MAG B550 TOMAHAWK"
+  - name: "MSI B650 Tomahawk"
     vendor: "msi"
-    url: "https://www.msi.com/Motherboard/MAG-B550-TOMAHAWK/support"
-    selectors: {}
+    url: "https://www.msi.com/Motherboard/B650-TOMAHAWK-WIFI/support#bios"
 
-  - name: "Gigabyte X570 AORUS ELITE"
+  - name: "Gigabyte X670 AORUS Elite"
     vendor: "gigabyte"
-    url: "https://www.gigabyte.com/Motherboard/X570-AORUS-ELITE-rev-10/support#support-dl-bios"
-    selectors: {}
+    url: "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-10/support#support-dl-bios"
 
-  - name: "ASRock B650M Pro RS"
+  - name: "ASRock B550 Steel Legend"
     vendor: "asrock"
-    url: "https://www.asrock.com/mb/AMD/B650M%20Pro%20RS/index.asp#BIOS"
-    selectors: {}
+    url: "https://www.asrock.com/mb/AMD/B550%20Steel%20Legend/index.asp#BIOS"

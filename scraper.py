@@ -1,57 +1,43 @@
-import requests
-from bs4 import BeautifulSoup
 import json
 from datetime import datetime
-from zoneinfo import ZoneInfo  # Python 3.9+
+from zoneinfo import ZoneInfo
+from playwright.sync_api import sync_playwright
 
-# ASUS motherboards and BIOS pages
+# ASUS motherboard BIOS URLs
 motherboards = {
     "TUF GAMING Z890-PLUS WIFI": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios",
     "ROG STRIX Z790-E GAMING WIFI": "https://www.asus.com/us/motherboards-components/motherboards/rog-strix/rog-strix-z790-e-gaming-wifi/helpdesk_bios",
 }
 
-# Load existing data
-try:
-    with open("bios.json", "r") as f:
-        old_data = {item["model"]: item for item in json.load(f)}
-except FileNotFoundError:
-    old_data = {}
+# Initialize Playwright
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
 
-bios_data = []
+    bios_data = []
 
-for model, url in motherboards.items():
-    try:
-        response = requests.get(url, timeout=10)
-        soup = BeautifulSoup(response.text, "html.parser")
+    for model, url in motherboards.items():
+        page.goto(url)
+        page.wait_for_selector("div.ProductSupportDriverBIOS__contentLeft__3F4tG")
 
-        # ---- Extract version and release date ----
-        latest_version = "N/A"
-        release_date = "N/A"
+        # Extract the latest BIOS version and release date
+        latest_version = page.query_selector("div.ProductSupportDriverBIOS__contentLeft__3F4tG div.ProductSupportDriverBIOS__fileInfo__2c5GN > div")
+        release_date = page.query_selector("div.ProductSupportDriverBIOS__contentLeft__3F4tG div.ProductSupportDriverBIOS__releaseDate__3o309")
 
-        # Find all BIOS entries
-        entries = soup.select("div.ProductSupportDriverBIOS__contentLeft__3F4tG")
-        if entries:
-            first_entry = entries[0]  # newest BIOS
+        latest_version = latest_version.inner_text().replace("Version", "").strip() if latest_version else "N/A"
+        release_date = release_date.inner_text().replace("/", "-") if release_date else "N/A"
 
-            # Version
-            version_div = first_entry.select_one("div.ProductSupportDriverBIOS__fileInfo__2c5GN > div")
-            if version_div:
-                latest_version = version_div.get_text(strip=True).replace("Version", "").strip()
+        # Get the previous version and release date from bios.json if available
+        try:
+            with open("bios.json", "r") as f:
+                old_data = {item["model"]: item for item in json.load(f)}
+        except FileNotFoundError:
+            old_data = {}
 
-            # Release date
-            release_div = first_entry.select_one("div.ProductSupportDriverBIOS__releaseDate__3o309")
-            if release_div:
-                release_date = release_div.get_text(strip=True).replace("/", "-")  # YYYY-MM-DD format
+        previous_version = old_data.get(model, {}).get("latest_version", "N/A")
+        previous_release_date = old_data.get(model, {}).get("release_date", "N/A")
 
-        # ---- Previous version tracking ----
-        previous_version = old_data.get(model, {}).get("latest_version", "")
-        previous_release_date = old_data.get(model, {}).get("release_date", "")
-
-        if previous_version == latest_version:
-            previous_version = old_data.get(model, {}).get("previous_version", "")
-            previous_release_date = old_data.get(model, {}).get("previous_release_date", "")
-
-        # ---- Central Time ----
+        # Get the current time in Central Time
         central_time = datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
 
         bios_data.append({
@@ -63,27 +49,14 @@ for model, url in motherboards.items():
             "last_checked": central_time
         })
 
-    except Exception as e:
-        bios_data.append({
-            "model": model,
-            "latest_version": "ERROR",
-            "release_date": str(e),
-            "previous_version": "",
-            "previous_release_date": "",
-            "last_checked": datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
-        })
+    browser.close()
 
-# ---- Sort by newest release date first ----
-def parse_date(date_str):
-    try:
-        return datetime.strptime(date_str, "%Y-%m-%d")
-    except Exception:
-        return datetime.min
+# Sort the data by release date, newest first
+bios_data.sort(key=lambda x: datetime.strptime(x["release_date"], "%Y-%m-%d") if x["release_date"] != "N/A" else datetime.min, reverse=True)
 
-bios_data.sort(key=lambda x: parse_date(x["release_date"]), reverse=True)
-
-# ---- Save to bios.json ----
+# Save the data to bios.json
 with open("bios.json", "w") as f:
     json.dump(bios_data, f, indent=2)
+
 
 

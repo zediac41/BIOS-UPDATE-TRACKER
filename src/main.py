@@ -115,8 +115,8 @@ def main():
     html_out.append(f"<p>Last updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC</p>")
     html_out.append("</body></html>")
 
-    os.makedirs("public", exist_ok=True)
-    with open(os.path.join("public","index.html"), "w", encoding="utf-8") as f:
+    os.makedirs("docs", exist_ok=True)
+    with open(os.path.join("docs", "index.html"), "w", encoding="utf-8") as f:
         f.write("\n".join(html_out))
 
 if __name__ == "__main__":

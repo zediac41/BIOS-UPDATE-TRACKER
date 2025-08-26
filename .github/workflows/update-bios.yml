@@ -1,32 +1,36 @@
-name: Update BIOS Info
+name: Update BIOS Data
 
 on:
   schedule:
-    - cron: "0 12 * * *"  # Runs daily at 12:00 UTC
-  workflow_dispatch:       # Allows manual run
+    - cron: '0 0 * * *'  # daily at midnight UTC
+  workflow_dispatch:
 
 jobs:
-  update-bios:
+  update_bios:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
-      - name: Install Dependencies
-        run: pip install requests beautifulsoup4
-
-      - name: Run Scraper
-        run: python scraper.py
-
-      - name: Commit & Push Changes
+      - name: Install dependencies
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          python -m pip install --upgrade pip
+          pip install playwright
+          python -m playwright install
+
+      - name: Run scraper
+        run: python scraper_playwright.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
           git add bios.json
-          git commit -m "Auto update BIOS info"
+          git commit -m 'Update BIOS data' || echo "No changes to commit"
           git push

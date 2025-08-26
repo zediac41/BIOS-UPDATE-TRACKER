@@ -1,0 +1,13 @@
+vendors:
+  asus:
+    - ROG STRIX B650E-F GAMING WIFI
+    - TUF GAMING X670E-PLUS WIFI
+  msi:
+    - MAG B650 TOMAHAWK WIFI
+    - MPG X670E CARBON WIFI
+  gigabyte:
+    - X670 AORUS ELITE AX
+    - B650 AORUS ELITE AX
+  asrock:
+    - X670E Steel Legend
+    - B650E Steel Legend WiFi

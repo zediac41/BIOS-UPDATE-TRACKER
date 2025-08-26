@@ -1,13 +1,10 @@
 vendors:
   asus:
-    - { name: ROG STRIX X870E-E GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/" }
-    - { name: TUF GAMING X870-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI" }
-    - { name: TUF GAMING B860M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI" }
+    - TUF GAMING X670E-PLUS WIFI
+    - { name: ROG STRIX X870E-E GAMING WIFI, url: "https://www.asus.com/supportonly/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/" }
   msi:
-    - { name: MAG Z890 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support" }
-    - { name: MEG X870E GODLIKE, url: "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support" }
+    - { name: MAG B650 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#down-bios" }
   gigabyte:
-    - { name: B860M AORUS ELITE, url: "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE/support#dl" }
-    - { name: X870 AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#support-dl-bios" }
+    - { name: X670 AORUS ELITE AX, url: "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-1x/support#support-dl-bios" }
   asrock:
-    - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }
+    - { name: X670E Steel Legend, url: "https://www.asrock.com/MB/AMD/X670E%20Steel%20Legend/index.asp#BIOS" }

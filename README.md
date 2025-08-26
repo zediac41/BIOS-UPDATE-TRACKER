@@ -1,26 +1,15 @@
 # Motherboard BIOS Tracker (ASUS / MSI / GIGABYTE / ASRock)
 
-This repo fetches the latest **two** BIOS versions for your selected motherboards
-(ASUS, MSI, GIGABYTE, ASRock) and publishes an auto-updating page via GitHub Pages.
+Fetch the latest **two** BIOS versions for selected motherboards and publish a static page via GitHub Pages.
 
-- Static output in `/docs/index.html`
-- Driven by `config.yml` (list your boards per vendor)
+- Output in `/docs/index.html`
+- Driven by `config.yml` (models per vendor). Supports **explicit support URLs** per model.
 - Runs on push and nightly via GitHub Actions
-- Shows **current** and **previous** BIOS versions only
+- Shows **current** and **previous** BIOS versions
 
 ## Quick Start
-1. Upload these files to a new GitHub repository.
-2. In **Settings → Pages**, set **Source** to `Deploy from a branch`, Branch to `main`, Folder to `/docs`.
-3. Edit `config.yml` with your boards and commit.
-4. The site will regenerate on push and nightly.
+1. Upload files to a new GitHub repository.
+2. In **Settings → Pages**, set **Source**: `Deploy from a branch` → Branch: `main` → Folder: `/docs`.
+3. Edit `config.yml` and commit. The Action will rebuild the site.
 
-> If Pages shows a 404 at first, wait for the first workflow run and ensure `main` + `/docs` is selected.
-
-## Local Run
-```bash
-python -m pip install -r requirements.txt
-python bios_tracker.py
-# Output written to /docs
-```
-
-If a vendor page layout changes, you can tweak the parser in `vendors/*.py`.
+If Pages 404s initially, wait for the first workflow run and confirm the Pages settings above.

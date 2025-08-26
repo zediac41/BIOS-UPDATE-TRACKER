@@ -3,12 +3,8 @@
     "model": "TUF GAMING Z890-PLUS WIFI",
     "latest_version": "2207",
     "release_date": "2025-07-29",
-    "last_checked": "2025-08-25 22:00 UTC"
-  },
-  {
-    "model": "ROG STRIX Z790-E GAMING WIFI",
-    "latest_version": "1904",
-    "release_date": "2025-05-15",
+    "previous_version": "2206",
+    "previous_release_date": "2025-06-15",
     "last_checked": "2025-08-25 22:00 UTC"
   }
 ]

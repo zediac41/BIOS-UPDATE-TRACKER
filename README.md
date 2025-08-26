@@ -1,12 +1,15 @@
-# BIOS Tracker
+# BIOS Tracker (Pages Fix)
 
-This repo tracks the latest two BIOS versions for selected motherboards (ASUS, MSI, Gigabyte, ASRock).  
-The site is automatically updated daily and published via GitHub Pages.
+This version writes the site to `./public/index.html` and the workflow deploys **only** that folder to the `gh-pages` branch.
 
-## Setup
-1. Edit `config.yml` with your boards and vendor URLs.
-2. Push to GitHub and enable GitHub Pages on the `gh-pages` branch.
-3. The workflow will scrape BIOS pages daily and update `index.html`.
+## Steps
+1. Push this repo to GitHub on `main` (or `master`).
+2. Go to **Settings → Pages** and set **Source = Deploy from a branch** and **Branch = `gh-pages`**.
+3. Edit `config.yml` with your boards and URLs.
+4. Check **Actions** logs — look for the `Listing public dir:` step to confirm `index.html` was produced.
+5. Your site should be at `https://<username>.github.io/<repo-name>/`.
 
-Visit your site at:  
-`https://<username>.github.io/bios-tracker-pages-v2/`
+If nothing appears:
+- Confirm the workflow ran successfully and `public/index.html` exists in logs.
+- Ensure Pages is pointed at the `gh-pages` branch.
+- Verify there’s no organization policy blocking Pages.

@@ -43,7 +43,7 @@ for model, url in motherboards.items():
             "release_date": release_date,
             "previous_version": previous_version,
             "previous_release_date": previous_release_date,
-            "last_checked": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+            "last_checked": datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
         })
 
     except Exception as e:
@@ -53,7 +53,7 @@ for model, url in motherboards.items():
             "release_date": str(e),
             "previous_version": "",
             "previous_release_date": "",
-            "last_checked": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+            "last_checked": datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
         })
 
 with open("bios.json", "w") as f:

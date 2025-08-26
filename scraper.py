@@ -28,17 +28,22 @@ for model, url in motherboards.items():
         latest_version = "N/A"
         release_date = "N/A"
 
-        # Find div containing "Version"
-        for div in soup.select("div"):
-            text = div.get_text(strip=True)
-            if text.startswith("Version"):
-                latest_version = text.replace("Version", "").strip()
-                next_div = div.find_next_sibling("div")
-                if next_div:
-                    release_date = next_div.get_text(strip=True)
-                break
+        # Find all BIOS entries
+        entries = soup.select("div.ProductSupportDriverBIOS__contentLeft__3F4tG")
+        if entries:
+            first_entry = entries[0]  # newest BIOS
 
-        # Track previous version
+            # Version
+            version_div = first_entry.select_one("div.ProductSupportDriverBIOS__fileInfo__2c5GN > div")
+            if version_div:
+                latest_version = version_div.get_text(strip=True).replace("Version", "").strip()
+
+            # Release date
+            release_div = first_entry.select_one("div.ProductSupportDriverBIOS__releaseDate__3o309")
+            if release_div:
+                release_date = release_div.get_text(strip=True).replace("/", "-")  # YYYY-MM-DD format
+
+        # ---- Previous version tracking ----
         previous_version = old_data.get(model, {}).get("latest_version", "")
         previous_release_date = old_data.get(model, {}).get("release_date", "")
 
@@ -46,7 +51,7 @@ for model, url in motherboards.items():
             previous_version = old_data.get(model, {}).get("previous_version", "")
             previous_release_date = old_data.get(model, {}).get("previous_release_date", "")
 
-        # Central Time
+        # ---- Central Time ----
         central_time = datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
 
         bios_data.append({
@@ -71,7 +76,7 @@ for model, url in motherboards.items():
 # ---- Sort by newest release date first ----
 def parse_date(date_str):
     try:
-        return datetime.strptime(date_str, "%m/%d/%Y")  # adjust format if needed
+        return datetime.strptime(date_str, "%Y-%m-%d")
     except Exception:
         return datetime.min
 

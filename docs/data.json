@@ -1,14 +1,6 @@
 [
   {
     "vendor": "ASUS",
-    "model": "ROG STRIX B650E-F GAMING WIFI",
-    "url": "https://www.asus.com/supportonly/ROG-STRIX-B650E-F-GAMING-WIFI/HelpDesk_BIOS/",
-    "versions": [],
-    "ok": false,
-    "error": "500 Server Error: Internal Server Error for url: https://www.asus.com/supportonly/rog-strix-b650e-f-gaming-wifi/helpdesk_bios/"
-  },
-  {
-    "vendor": "ASUS",
     "model": "TUF GAMING X670E-PLUS WIFI",
     "url": "https://www.asus.com/supportonly/TUF-GAMING-X670E-PLUS-WIFI/HelpDesk_BIOS/",
     "versions": [
@@ -24,51 +16,90 @@
     "ok": true
   },
   {
-    "vendor": "MSI",
-    "model": "MAG B650 TOMAHAWK WIFI",
-    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support",
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870E-E GAMING WIFI",
+    "url": "https://www.asus.com/supportonly/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
     "versions": [],
-    "ok": false,
-    "error": "403 Client Error: Forbidden for url: https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support"
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "url": "https://www.asus.com/supportonly/tuf-gaming-x870-plus-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1078",
+        "date": null
+      },
+      {
+        "version": "1066",
+        "date": null
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B860M-PLUS WIFI",
+    "url": "https://www.asus.com/supportonly/tuf-gaming-b860m-plus-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1606",
+        "date": null
+      },
+      {
+        "version": "1406",
+        "date": null
+      }
+    ],
+    "ok": true
   },
   {
     "vendor": "MSI",
-    "model": "MPG X670E CARBON WIFI",
-    "url": "https://www.msi.com/Motherboard/MPG-X670E-CARBON-WIFI/support",
+    "model": "MAG B650 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#down-bios",
     "versions": [],
     "ok": false,
-    "error": "403 Client Error: Forbidden for url: https://www.msi.com/Motherboard/MPG-X670E-CARBON-WIFI/support"
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO X870-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#down-bios",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
   },
   {
     "vendor": "GIGABYTE",
     "model": "X670 AORUS ELITE AX",
-    "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX/support#support-dl-bios",
+    "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-1x/support#support-dl-bios",
     "versions": [],
     "ok": false,
-    "error": "403 Client Error: Forbidden for url: https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX/support#support-dl-bios"
+    "error": "HTTP 403"
   },
   {
     "vendor": "GIGABYTE",
-    "model": "B650 AORUS ELITE AX",
-    "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-AX/support#support-dl-bios",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#support-dl-bios",
     "versions": [],
     "ok": false,
-    "error": "403 Client Error: Forbidden for url: https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-AX/support#support-dl-bios"
+    "error": "HTTP 403"
   },
   {
     "vendor": "ASRock",
     "model": "X670E Steel Legend",
-    "url": "https://www.asrock.com/MB/AllSeries/X670E%20Steel%20Legend/index.asp#BIOS",
+    "url": "https://www.asrock.com/MB/AMD/X670E%20Steel%20Legend/index.asp#BIOS",
     "versions": [],
     "ok": false,
-    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AllSeries/X670E%20Steel%20Legend/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_V"
+    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AMD/X670E%20Steel%20Legend/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_"
   },
   {
     "vendor": "ASRock",
     "model": "B650E Steel Legend WiFi",
-    "url": "https://www.asrock.com/MB/AllSeries/B650E%20Steel%20Legend%20WiFi/index.asp#BIOS",
+    "url": "https://www.asrock.com/MB/AMD/B650E%20Steel%20Legend%20WiFi/index.asp#BIOS",
     "versions": [],
     "ok": false,
-    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AllSeries/B650E%20Steel%20Legend%20WiFi/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIF"
+    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AMD/B650E%20Steel%20Legend%20WiFi/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_"
   }
 ]

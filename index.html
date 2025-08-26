@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ASUS BIOS Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    table { border-collapse: collapse; width: 100%; background: white; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #333; color: white; }
+  </style>
+</head>
+<body>
+  <h1>ASUS BIOS Tracker</h1>
+  <table id="biosTable">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Latest BIOS</th>
+        <th>Release Date</th>
+        <th>Last Checked</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    fetch("bios.json")
+      .then(r => r.json())
+      .then(data => {
+        let tbody = document.querySelector("#biosTable tbody");
+        data.forEach(item => {
+          let row = `<tr>
+            <td>${item.model}</td>
+            <td>${item.latest_version}</td>
+            <td>${item.release_date}</td>
+            <td>${item.last_checked}</td>
+          </tr>`;
+          tbody.innerHTML += row;
+        });
+      });
+  </script>
+</body>
+</html>

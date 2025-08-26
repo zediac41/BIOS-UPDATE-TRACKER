@@ -1,15 +1,14 @@
-# BIOS Tracker (Pages Fix)
+# BIOS Tracker — Option B (Pages from /docs on main)
 
-This version writes the site to `./public/index.html` and the workflow deploys **only** that folder to the `gh-pages` branch.
+This repo publishes **docs/index.html** from the `main` branch to GitHub Pages.
 
-## Steps
-1. Push this repo to GitHub on `main` (or `master`).
-2. Go to **Settings → Pages** and set **Source = Deploy from a branch** and **Branch = `gh-pages`**.
-3. Edit `config.yml` with your boards and URLs.
-4. Check **Actions** logs — look for the `Listing public dir:` step to confirm `index.html` was produced.
-5. Your site should be at `https://<username>.github.io/<repo-name>/`.
+## Setup
+1. Create a repo and upload this folder.
+2. In GitHub: **Settings → Pages**
+   - Source: **Deploy from a branch**
+   - Branch: **main**
+   - Folder: **/docs**
+3. Edit `config.yml` with your boards + support URLs.
+4. Push. The Action will generate `docs/index.html` and commit it to `main` automatically.
 
-If nothing appears:
-- Confirm the workflow ran successfully and `public/index.html` exists in logs.
-- Ensure Pages is pointed at the `gh-pages` branch.
-- Verify there’s no organization policy blocking Pages.
+If you only see a README on your Pages site, double-check that `docs/index.html` exists on `main` (the workflow prints a directory listing to the logs).

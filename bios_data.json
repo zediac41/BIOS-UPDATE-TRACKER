@@ -1,0 +1,66 @@
+[
+    {
+        "motherboard": "Z790-A WIFI",
+        "vendor": "ASUS",
+        "versions": [
+            {
+                "version": "1002",
+                "release_date": "2025-07-16",
+                "download_link": "https://www.asus.com/motherboards-components/motherboards/prime/prime-z790-a-wifi/helpdesk_bios"
+            },
+            {
+                "version": "0904",
+                "release_date": "2025-03-15",
+                "download_link": ""
+            }
+        ]
+    },
+    {
+        "motherboard": "B650 PG Riptide",
+        "vendor": "ASRock",
+        "versions": [
+            {
+                "version": "3.20",
+                "release_date": "2025-04-28",
+                "download_link": "https://pg.asrock.com/mb/AMD/B650M%20PG%20Riptide/index.asp#BIOS"
+            },
+            {
+                "version": "1.21",
+                "release_date": "2024-12-10",
+                "download_link": ""
+            }
+        ]
+    },
+    {
+        "motherboard": "B660 Aorus Master DDR4",
+        "vendor": "Gigabyte",
+        "versions": [
+            {
+                "version": "F8a",
+                "release_date": "2024-03-21",
+                "download_link": "https://www.gigabyte.com/Support/Consumer/Download"
+            },
+            {
+                "version": "F7",
+                "release_date": "2023-11-15",
+                "download_link": ""
+            }
+        ]
+    },
+    {
+        "motherboard": "MAG Z690 TOMAHAWK WIFI DDR4",
+        "vendor": "MSI",
+        "versions": [
+            {
+                "version": "0x129",
+                "release_date": "2024-08-15",
+                "download_link": "https://us.msi.com/Motherboard/MAG-Z690-TOMAHAWK-WIFI-DDR4/Support"
+            },
+            {
+                "version": "0x125",
+                "release_date": "2024-06-20",
+                "download_link": ""
+            }
+        ]
+    }
+]

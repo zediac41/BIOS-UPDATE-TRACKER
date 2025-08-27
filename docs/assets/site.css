@@ -1,0 +1,1 @@
+body{font-family:system-ui;margin:24px;background:#0b1020;color:#e6e9f2} .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px} .card{background:#121735;border:1px solid #1b2247;border-radius:16px;padding:16px}

@@ -1,0 +1,10 @@
+vendors:
+  asus:
+    - TUF GAMING X670E-PLUS WIFI
+    - { name: ROG STRIX X870E-E GAMING WIFI, url: "https://www.asus.com/supportonly/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/" }
+  msi:
+    - { name: MAG B650 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#down-bios" }
+  gigabyte:
+    - { name: X670 AORUS ELITE AX, url: "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-1x/support#support-dl-bios" }
+  asrock:
+    - { name: X670E Steel Legend, url: "https://www.asrock.com/MB/AMD/X670E%20Steel%20Legend/index.asp#BIOS" }

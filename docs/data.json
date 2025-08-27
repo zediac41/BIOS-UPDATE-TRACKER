@@ -1,58 +1,203 @@
 [
   {
     "vendor": "ASUS",
-    "model": "TUF GAMING X670E-PLUS WIFI",
-    "url": "https://www.asus.com/supportonly/TUF-GAMING-X670E-PLUS-WIFI/HelpDesk_BIOS/",
-    "versions": [
-      {
-        "version": "3278",
-        "date": null
-      },
-      {
-        "version": "3265",
-        "date": null
-      }
-    ],
-    "ok": true
+    "model": "TUF GAMING A520M-PLUS",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS"
   },
   {
     "vendor": "ASUS",
-    "model": "ROG STRIX X870E-E GAMING WIFI",
-    "url": "https://www.asus.com/supportonly/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "model": "TUF GAMING B550-PLUS WI-FI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b550-plus-wi-fi/helpdesk_bios?model2Name=TUF-GAMING-B550-PLUS-WI-FI",
     "versions": [],
-    "ok": true
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b550-plus-wi-fi/helpdesk_bios?model2Name=TUF-GAMING-B550-PLUS-WI-FI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING A620M-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI"
   },
   {
     "vendor": "ASUS",
     "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/supportonly/tuf-gaming-x870-plus-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1078",
-        "date": null
-      },
-      {
-        "version": "1066",
-        "date": null
-      }
-    ],
-    "ok": true
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870E-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z790-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI"
   },
   {
     "vendor": "ASUS",
     "model": "TUF GAMING B860M-PLUS WIFI",
-    "url": "https://www.asus.com/supportonly/tuf-gaming-b860m-plus-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1606",
-        "date": null
-      },
-      {
-        "version": "1406",
-        "date": null
-      }
-    ],
-    "ok": true
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "PRIME Z890M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z890-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z890 HERO",
+    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Z890 AYW GAMING WIFI W",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z890 HERO BTF",
+    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-BTF WIFI W",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B860-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Pro WS W790-ACE",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Pro WS W790E-SAGE SE",
+    "url": "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Pro WS TRX50-SAGE WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI"
   },
   {
     "vendor": "MSI",
@@ -64,16 +209,120 @@
   },
   {
     "vendor": "MSI",
+    "model": "B850 GAMING PLUS WIFI",
+    "url": "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
     "model": "PRO X870-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "MAG X870 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "MEG X870E GODLIKE",
+    "url": "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO Z790-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "MAG Z790 TOMAHAWK MAX WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO Z890-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "MAG Z890 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "MEG Z890 ACE",
+    "url": "https://www.msi.com/Motherboard/MEG-Z890-ACE/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO Z890-S WIFI PZ",
+    "url": "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "B760M PROJECT ZERO",
+    "url": "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "MSI",
+    "model": "B650M PROJECT ZERO",
+    "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support",
     "versions": [],
     "ok": false,
     "error": "HTTP 403"
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X670 AORUS ELITE AX",
-    "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-1x/support#support-dl-bios",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
     "versions": [],
     "ok": false,
     "error": "HTTP 403"
@@ -81,25 +330,65 @@
   {
     "vendor": "GIGABYTE",
     "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#support-dl-bios",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890M AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl",
+    "versions": [],
+    "ok": false,
+    "error": "HTTP 403"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860I AORUS PRO ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
     "versions": [],
     "ok": false,
     "error": "HTTP 403"
   },
   {
     "vendor": "ASRock",
-    "model": "X670E Steel Legend",
-    "url": "https://www.asrock.com/MB/AMD/X670E%20Steel%20Legend/index.asp#BIOS",
+    "model": "B660M-HDV",
+    "url": "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS",
     "versions": [],
     "ok": false,
-    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AMD/X670E%20Steel%20Legend/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_"
-  },
-  {
-    "vendor": "ASRock",
-    "model": "B650E Steel Legend WiFi",
-    "url": "https://www.asrock.com/MB/AMD/B650E%20Steel%20Legend%20WiFi/index.asp#BIOS",
-    "versions": [],
-    "ok": false,
-    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /MB/AMD/B650E%20Steel%20Legend%20WiFi/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_"
+    "error": "HTTPSConnectionPool(host='www.asrock.com', port=443): Max retries exceeded with url: /mb/Intel/B660M-HDV/index.asp (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] cer"
   }
 ]

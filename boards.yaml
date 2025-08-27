@@ -1,0 +1,150 @@
+- name: ASUS TUF A520M
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS
+- name: ASUS TUF GAMING B550-PLUS WIFI II
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b550-plus-wifi-ii/helpdesk_bios?model2Name=TUF-GAMING-B550-PLUS-WIFI-II
+- name: ASUS ROG STRIX B550-F Gaming Wifi
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b550-f-gaming-wi-fi-model/helpdesk_bios/
+- name: Gigabyte A520i AC
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/A520I-AC-rev-10/support
+- name: ASUS ROG STRIX X570-I
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x570-i-gaming-model/helpdesk_bios/
+- name: ASUS TUF GAMING A620M-PLUS WiFi
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios/?model2Name=TUF-GAMING-A620M-PLUS-WIFI
+- name: MSI B850 Gaming Plus Wifi
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support
+- name: ASUS TUF GAMING X870-PLUS WIFI
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI
+- name: ASUS ROG STRIX B850-A Gaming Wifi
+  vendor: ASUS
+  support_url: https://www.asus.com/ca-en/supportonly/rog%20strix%20b850-a%20gaming%20wifi/helpdesk_bios/
+- name: ASUS ROG STRIX X870-A Gaming WIFI (white)
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk/
+- name: ASUS ROG Strix X870E-E Gaming WIFI
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/
+- name: ASUS ROG Crosshair X870E Hero WIFI
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/
+- name: MSI PRO X870-P WIFI
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support
+- name: MSI MAG X870 TOMAHAWK WIFI
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support
+- name: MSI X870E GODLIKE (EATX)
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support
+- name: GIGABYTE B850M AORUS ELITE WIFI6E ICE
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support
+- name: GIGABYTE X870 EAGLE WIFI7
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support
+- name: GIGABYTE X870 AORUS ELITE WIFI7 ICE
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support
+- name: ASUS ROG STRIX B850-I WiFi
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/
+- name: ASUS ROG STRIX X870-I Gaming Wifi
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk/
+- name: ASUS PRIME H610M D4
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/prime/prime-h610m-a-d4/helpdesk_bios?model2Name=PRIME-H610M-A-D4
+- name: ASUS PRIME H670-PLUS D4
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/prime/prime-h670-plus-d4/helpdesk_bios?model2Name=PRIME-H670-PLUS-D4
+- name: MSI Z790-P Wifi
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support
+- name: ASUS TUF Gaming Z790 Plus WIFI
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI
+- name: MSI MAG Z790 Tomahawk MAX WIFI
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support
+- name: GIGABYTE Z890M AORUS ELITE WIFI7 ICE (White)
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support
+- name: GIGABYTE B860M AORUS ELITE WIFI6E ICE (White)
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support
+- name: ASUS TUF GAMING B860M-PLUS WIFI
+  vendor: ASUS
+  support_url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_download?model2Name=TUF-GAMING-B860M-PLUS-WIFI
+- name: ASUS PRIME Z890M-PLUS WIFI
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI
+- name: ASUS TUF GAMING Z890-PLUS WIFI
+  vendor: ASUS
+  support_url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI
+- name: ASUS ROG STRIX Z890-A GAMING WIFI (white)
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_download/
+- name: ASUS ROG STRIX Z890-E GAMING WIFI
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/
+- name: ASUS ROG MAXIMUS Z890 HERO (EATX)
+  vendor: ASUS
+  support_url: https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/
+- name: MSI PRO Z890-P WiFi
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support
+- name: MSI MAG Z890 Tomahawk WiFi
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support
+- name: MSI MEG Z890 ACE
+  vendor: MSI
+  support_url: https://www.msi.com/Motherboard/MEG-Z890-ACE/support
+- name: GIGABYTE Z890 EAGLE WIFI7
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support
+- name: GIGABYTE Z890 AORUS ELITE WIFI7 ICE (white)
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support
+- name: MSI PRO Z890-S WIFI PZ
+  vendor: MSI
+  support_url: ''
+- name: ROG MAXIMUS Z890 HERO BTF
+  vendor: ASUS
+  support_url: ''
+- name: ASUS TUF Gaming B850-BTF
+  vendor: ASUS
+  support_url: ''
+- name: GIGABYTE X870 AORUS STEALTH ICE
+  vendor: GIGABYTE
+  support_url: https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support
+- name: GIGABYTE B860I AORUS PRO ICE
+  vendor: GIGABYTE
+  support_url: ''
+- name: Asus ROG Strix B860-I GAMING WIFI
+  vendor: ASUS
+  support_url: ''
+- name: ROG Strix Z890-I Gaming WiFi
+  vendor: ASUS
+  support_url: ''
+- name: MSI B760m Project Zero
+  vendor: MSI
+  support_url: ''
+- name: MSI B650M PROJECT ZERO AM5
+  vendor: MSI
+  support_url: ''
+- name: ASUS Pro WS W790-ACE
+  vendor: ASUS
+  support_url: https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_download?model2Name=Pro-WS-W790-ACE
+- name: ASUS Pro W790E-SAGE SE
+  vendor: ASUS
+  support_url: https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE
+- name: Asus PRO WS TRX50-SAGE WIFI
+  vendor: ASUS
+  support_url: https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_download?model2Name=Pro-WS-TRX50-SAGE-WIFI

@@ -1,0 +1,18 @@
+{
+  "generated_at": 1756260851.728858,
+  "items": [
+    {
+      "board": "TUF GAMING X670E-PLUS WIFI",
+      "vendor": "ASUS",
+      "latest": {
+        "version": "XXXX",
+        "date": "2025-08-01"
+      },
+      "previous": {
+        "version": "YYYY",
+        "date": "2025-06-12"
+      },
+      "download_page": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x670e-plus-wifi/helpdesk_bios/"
+    }
+  ]
+}

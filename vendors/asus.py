@@ -1,8 +1,19 @@
 import re
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import requests
 from bs4 import BeautifulSoup
-import time
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+# Comprehensive headers to mimic a browser
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Referer": "https://www.asus.com/",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+}
 
 def _guess_support_url(model: str) -> str:
     slug = model.replace(" ", "-")
@@ -35,22 +46,15 @@ def _parse_versions_from_html(html: str):
 def latest_two(model: str, override_url: str = None):
     url = override_url or _guess_support_url(model)
     
-    # Set up headless Chrome
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-    
-    driver = webdriver.Chrome(options=options)  # Ensure chromedriver is installed
+    # Set up session with retries
+    session = requests.Session()
+    retries = Retry(total=3, backoff_factor=1, status_forcelist=[403, 429, 500, 502, 503, 504])
+    session.mount("https://", HTTPAdapter(max_retries=retries))
     
     try:
-        driver.get(url)
-        time.sleep(3)  # Wait for JavaScript to load
-        html = driver.page_source
-        vs = _parse_versions_from_html(html)
+        r = session.get(url, headers=HEADERS, timeout=25)
+        r.raise_for_status()
+        vs = _parse_versions_from_html(r.text)
         return {"vendor": "ASUS", "model": model, "url": url, "versions": vs[:2], "ok": True}
     except Exception as e:
         return {"vendor": "ASUS", "model": model, "url": url, "versions": [], "ok": False, "error": str(e)[:200]}
-    finally:
-        driver.quit()

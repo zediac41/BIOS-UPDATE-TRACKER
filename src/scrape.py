@@ -1,6 +1,9 @@
 import json, yaml, time
 from pathlib import Path
-from vendors import asus, msi, gigabyte, asrock
+from .vendors import asus, msi, gigabyte, asrock
+
+print("Writing to:", out_json)
+
 
 VENDOR_FUNCS = {
     "ASUS": asus.get_last_two_versions,
@@ -50,3 +53,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+try:
+    out_json.write_text(json.dumps({"generated_at": time.time(), "items": results}, indent=2), encoding="utf-8")
+    print(f"Wrote {out_json}")
+except Exception as e:
+    print("FAILED to write data.json:", e)

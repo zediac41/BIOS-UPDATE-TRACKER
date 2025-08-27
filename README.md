@@ -1,19 +1,15 @@
-# BIOS Tracker — Option B (Hardened)
+# Motherboard BIOS Tracker (ASUS / MSI / GIGABYTE / ASRock)
 
-Publishes **docs/index.html** from `main` to GitHub Pages. The generator is fail-safe:
-- If `config.yml` is missing or empty, it still writes `docs/index.html` with a note.
-- Per-board exceptions are caught; the page still renders.
-- The workflow prints directory listings so you can verify the file exists.
+Fetch the latest **two** BIOS versions for selected motherboards and publish a static page via GitHub Pages.
 
-## Setup
-1. Create a new repo and upload this folder.
-2. In GitHub: **Settings → Pages**
-   - Source: **Deploy from a branch**
-   - Branch: **main**
-   - Folder: **/docs**
-3. Edit `config.yml` with your boards + support URLs.
-4. Run the workflow (Actions tab) or push a commit.
+- Output in `/docs/index.html`
+- Driven by `config.yml` (models per vendor). Supports **explicit support URLs** per model.
+- Runs on push and nightly via GitHub Actions
+- Shows **current** and **previous** BIOS versions
 
-If your Pages site only shows a README, ensure:
-- `docs/index.html` exists on `main` (see the workflow log: “Listing docs dir”).
-- Pages is pointing to **main /docs**.
+## Quick Start
+1. Upload files to a new GitHub repository.
+2. In **Settings → Pages**, set **Source**: `Deploy from a branch` → Branch: `main` → Folder: `/docs`.
+3. Edit `config.yml` and commit. The Action will rebuild the site.
+
+If Pages 404s initially, wait for the first workflow run and confirm the Pages settings above.

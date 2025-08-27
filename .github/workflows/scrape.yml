@@ -1,23 +1,41 @@
 name: Scrape BIOS
 on:
   schedule:
-    - cron: "15 5 * * *"  # daily at 05:15 UTC
-  workflow_dispatch:
+    - cron: "15 5 * * *"   # daily at 05:15 UTC (change as you like)
+  workflow_dispatch:       # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write          # allow this workflow to push commits
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -r requirements.txt
-      - run: python -m src.scrape
-      - name: Commit changes
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Scrape latest BIOS data
+        run: python -m src.scrape
+        # If you want to test the write path without network, run:
+        # run: python -m src.scrape --offline
+
+      - name: Show data.json (for debugging)
         run: |
-          git config user.name "bot"
-          git config user.email "bot@example.com"
+          echo "=== docs/data.json (head) ==="
+          head -n 60 docs/data.json || true
+
+      - name: Commit updated data.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/data.json
-          git commit -m "Update BIOS data [skip ci]" || echo "No changes"
+          git diff --cached --quiet && echo "No changes" || git commit -m "Update BIOS data [skip ci]"
           git push

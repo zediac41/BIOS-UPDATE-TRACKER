@@ -16,7 +16,13 @@ HEADERS = {
 }
 
 def _guess_support_url(model: str) -> str:
-    slug = model.replace(" ", "-")
+    # Clean and format model name, ensuring uppercase for ROG models
+    slug = model.strip().replace(" ", "-").replace("--", "-").upper()
+    if model.upper().startswith("ROG"):
+        # Handle common ROG suffixes and variations
+        slug = slug.replace("GAMING-", "GAMING-").replace("WIFI", "WIFI").replace("PLUS", "PLUS")
+        # Remove trailing hyphens or redundant terms if needed
+        slug = slug.rstrip("-")
     return f"https://www.asus.com/supportonly/{slug}/HelpDesk_BIOS/"
 
 def _parse_versions_from_html(html: str):

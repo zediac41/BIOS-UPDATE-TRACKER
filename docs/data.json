@@ -5,11 +5,11 @@
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS",
     "versions": [
       {
-        "version": "3631",
+        "version": "d",
         "date": null
       },
       {
-        "version": "3621",
+        "version": "3631",
         "date": null
       }
     ],
@@ -21,11 +21,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b550-plus-wi-fi/helpdesk_bios?model2Name=TUF-GAMING-B550-PLUS-WI-FI",
     "versions": [
       {
-        "version": "3631",
+        "version": "d",
         "date": null
       },
       {
-        "version": "3621",
+        "version": "3631",
         "date": null
       }
     ],
@@ -37,11 +37,11 @@
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
     "versions": [
       {
-        "version": "3278",
+        "version": "FlashBack",
         "date": null
       },
       {
-        "version": "3263",
+        "version": "d",
         "date": null
       }
     ],
@@ -53,11 +53,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
     "versions": [
       {
-        "version": "1078",
+        "version": "d",
         "date": null
       },
       {
-        "version": "1066",
+        "version": "1078",
         "date": null
       }
     ],
@@ -67,42 +67,96 @@
     "vendor": "ASUS",
     "model": "ROG STRIX B850-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG STRIX X870-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG STRIX X870E-E GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "right",
+        "date": "2024-08-01"
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG CROSSHAIR X870E HERO",
     "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "...",
+        "date": "2024-08-06"
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG STRIX B850-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG STRIX X870-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "-de-beste-am5-borden-met-usb4-en-pcie-50.html",
+        "date": "2024-08-06"
+      }
+    ],
     "ok": true
   },
   {
@@ -111,11 +165,11 @@
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
     "versions": [
       {
-        "version": "1820",
+        "version": "d",
         "date": null
       },
       {
-        "version": "1805",
+        "version": "1820",
         "date": null
       }
     ],
@@ -127,11 +181,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
     "versions": [
       {
-        "version": "1606",
+        "version": "d",
         "date": null
       },
       {
-        "version": "1406",
+        "version": "1606",
         "date": null
       }
     ],
@@ -143,11 +197,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
     "versions": [
       {
-        "version": "2207",
+        "version": "d",
         "date": null
       },
       {
-        "version": "2005",
+        "version": "2207",
         "date": null
       }
     ],
@@ -159,11 +213,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
     "versions": [
       {
-        "version": "2207",
+        "version": "d",
         "date": null
       },
       {
-        "version": "2005",
+        "version": "2207",
         "date": null
       }
     ],
@@ -173,21 +227,48 @@
     "vendor": "ASUS",
     "model": "ROG STRIX Z890-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG STRIX Z890-E GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG MAXIMUS Z890 HERO",
     "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "-mainboard-z790-tang-do-on-dinh-cho-core-i9-k-series.3780260",
+        "date": "2024-09-20"
+      }
+    ],
     "ok": true
   },
   {
@@ -196,11 +277,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
     "versions": [
       {
-        "version": "2207",
+        "version": "d",
         "date": null
       },
       {
-        "version": "2006",
+        "version": "2207",
         "date": null
       }
     ],
@@ -210,7 +291,16 @@
     "vendor": "ASUS",
     "model": "ROG MAXIMUS Z890 HERO BTF",
     "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
@@ -219,11 +309,11 @@
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
     "versions": [
       {
-        "version": "1079",
+        "version": "d",
         "date": null
       },
       {
-        "version": "1065",
+        "version": "1079",
         "date": null
       }
     ],
@@ -233,14 +323,32 @@
     "vendor": "ASUS",
     "model": "ROG STRIX B860-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
     "vendor": "ASUS",
     "model": "ROG STRIX Z890-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
-    "versions": [],
+    "versions": [
+      {
+        "version": "s",
+        "date": null
+      },
+      {
+        "version": "3.0",
+        "date": null
+      }
+    ],
     "ok": true
   },
   {
@@ -249,11 +357,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE",
     "versions": [
       {
-        "version": "1801",
+        "version": "d",
         "date": null
       },
       {
-        "version": "1502",
+        "version": "1801",
         "date": null
       }
     ],
@@ -265,11 +373,11 @@
     "url": "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE",
     "versions": [
       {
-        "version": "1502",
+        "version": "d",
         "date": null
       },
       {
-        "version": "1401",
+        "version": "1502",
         "date": null
       }
     ],
@@ -281,11 +389,11 @@
     "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI",
     "versions": [
       {
-        "version": "1203",
+        "version": "d",
         "date": null
       },
       {
-        "version": "0803",
+        "version": "1203",
         "date": null
       }
     ],

@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import time
+from datetime import datetime
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -15,90 +16,134 @@ HEADERS = {
     "Upgrade-Insecure-Requests": "1",
 }
 
-def _guess_support_url(model: str) -> list:
-    """Generate possible support URLs for ROG models."""
-    slug = model.strip().replace(" ", "-").replace("--", "-").upper().rstrip("-")
+def _generate_support_urls(model: str) -> list:
+    """Generate possible support URLs for ASUS ROG motherboards."""
+    # Normalize model name for URL construction
+    slug = re.sub(r"\s+", "-", model.strip().upper()).rstrip("-")
     slug_variants = [
         slug,
-        slug.replace("GAMING", "").rstrip("-"),
-        slug.replace("WIFI", "").rstrip("-"),
-        slug.replace("GAMING-WIFI", "WIFI").rstrip("-"),
-        slug.replace("PLUS", "").rstrip("-"),
+        slug.replace("-GAMING", "").rstrip("-"),
+        slug.replace("-WIFI", "").rstrip("-"),
+        slug.replace("-PLUS", "").rstrip("-"),
+        slug.replace("-GAMING-WIFI", "-WIFI").rstrip("-"),
+    ]
+    base_urls = [
+        "https://www.asus.com/supportonly/{}/HelpDesk_BIOS/",
+        "https://www.asus.com/us/supportonly/{}/HelpDesk_BIOS/",
+        "https://rog.asus.com/motherboards/rog-strix/{}/helpdesk_bios/",
     ]
     urls = []
-    for s in slug_variants:
-        urls.extend([
-            f"https://www.asus.com/supportonly/{s}/HelpDesk_BIOS/",
-            f"https://www.asus.com/us/supportonly/{s}/HelpDesk_BIOS/",
-            f"https://rog.asus.com/motherboards/rog-strix/{s.lower()}/helpdesk_bios/",
-        ])
-    return urls
+    for variant in set(slug_variants):  # Remove duplicates
+        for base in base_urls:
+            if "rog.asus.com" in base:
+                urls.append(base.format(variant.lower()))
+            else:
+                urls.append(base.format(variant))
+    return list(set(urls))  # Ensure unique URLs
 
-def _parse_versions_from_html(html: str):
-    """Parse BIOS versions from HTML, handling ROG-specific structures."""
+def _parse_bios_versions(html: str) -> list:
+    """Parse BIOS versions and dates from ASUS support page HTML."""
     soup = BeautifulSoup(html, "html.parser")
     versions = []
-    
-    # Try regex for Version/BIOS/Update text
-    for t in soup.find_all(string=re.compile(r"(?:Version|BIOS|Update)\s*([0-9A-Za-z._-]+)", re.I)):
-        m = re.search(r"(?:Version|BIOS|Update)\s*([0-9A-Za-z._-]+)", t, re.I)
-        if m:
-            v = m.group(1).strip()
-            date = None
-            parent = getattr(t, "parent", None)
-            if parent:
-                s = parent.get_text(" ", strip=True)
-                md = re.search(r"(\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4})", s)
-                if md:
-                    date = md.group(1)
-            versions.append({"version": v, "date": date})
-    
-    # Alternative: Look for numeric versions in common elements
-    for element in soup.select("div, td, span, li", string=re.compile(r"\d+\.\d+")):
-        text = element.get_text(" ", strip=True)
-        m = re.search(r"(\d+\.\d+)", text)
-        if m:
-            v = m.group(1).strip()
-            date = None
-            md = re.search(r"(\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4})", text)
-            if md:
-                date = md.group(1)
-            versions.append({"version": v, "date": date})
-    
-    # Remove duplicates
-    seen = set()
-    out = []
-    for x in versions:
-        if x["version"] in seen:
-            continue
-        seen.add(x["version"])
-        out.append(x)
-    
-    # Debug: Print HTML snippet if no versions found
-    if not versions:
-        print("No versions found. HTML snippet:", html[:1500])
-    return out
 
-def latest_two(model: str, override_url: str = None):
-    """Fetch the latest two BIOS versions for an ROG motherboard."""
-    urls_to_try = [override_url] if override_url else _guess_support_url(model)
+    # Target ASUS support page table structures
+    for row in soup.select("div.download-item, tr.download-file"):
+        version_elem = row.select_one("span.version, td.version, div:contains('Version')")
+        date_elem = row.select_one("span.date, td.date, div:contains('/')")
+
+        version = None
+        date = None
+
+        if version_elem:
+            text = version_elem.get_text(strip=True)
+            version_match = re.search(r"(?:Version|BIOS)\s*([\d\.A-Za-z-]+)", text, re.I)
+            if version_match:
+                version = version_match.group(1).strip()
+
+        if date_elem:
+            text = date_elem.get_text(strip=True)
+            date_match = re.search(r"(\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4})", text)
+            if date_match:
+                date = date_match.group(1)
+                # Normalize date format to YYYY-MM-DD
+                try:
+                    if "/" in date:
+                        date = datetime.strptime(date, "%m/%d/%Y").strftime("%Y-%m-%d")
+                    else:
+                        date = date.replace("/", "-")
+                except ValueError:
+                    date = None
+
+        if version:
+            versions.append({"version": version, "date": date})
+
+    # Fallback: Look for version-like patterns in the page
+    if not versions:
+        for element in soup.find_all(string=re.compile(r"\d+\.\d+")):
+            text = element.get_text(strip=True)
+            version_match = re.search(r"(\d+\.\d+)", text)
+            if version_match:
+                version = version_match.group(1).strip()
+                date_match = re.search(r"(\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4})", text)
+                date = None
+                if date_match:
+                    date = date_match.group(1)
+                    try:
+                        if "/" in date:
+                            date = datetime.strptime(date, "%m/%d/%Y").strftime("%Y-%m-%d")
+                        else:
+                            date = date.replace("/", "-")
+                    except ValueError:
+                        date = None
+                versions.append({"version": version, "date": date})
+
+    # Remove duplicates and sort by version (descending)
+    seen = set()
+    unique_versions = []
+    for v in versions:
+        if v["version"] not in seen:
+            seen.add(v["version"])
+            unique_versions.append(v)
+    
+    # Sort by version number (assuming higher numbers are newer)
+    unique_versions.sort(key=lambda x: x["version"], reverse=True)
+    
+    return unique_versions
+
+def latest_two(model: str, override_url: str = None) -> dict:
+    """Fetch the latest two BIOS versions for an ASUS ROG motherboard."""
+    urls = [override_url] if override_url else _generate_support_urls(model)
     
     session = requests.Session()
     retries = Retry(total=3, backoff_factor=1, status_forcelist=[403, 429, 500, 502, 503, 504])
     session.mount("https://", HTTPAdapter(max_retries=retries))
 
-    for url in urls_to_try:
+    for url in urls:
         try:
-            print(f"Trying URL: {url}")
-            r = session.get(url, headers=HEADERS, timeout=25)
-            r.raise_for_status()
-            vs = _parse_versions_from_html(r.text)
-            if vs:
-                return {"vendor": "ASUS", "model": model, "url": url, "versions": vs[:2], "ok": True}
+            print(f"Attempting to fetch: {url}")
+            response = session.get(url, headers=HEADERS, timeout=20)
+            response.raise_for_status()
+            versions = _parse_bios_versions(response.text)
+            if versions:
+                return {
+                    "vendor": "ASUS",
+                    "model": model,
+                    "url": url,
+                    "versions": versions[:2],
+                    "ok": True
+                }
             else:
-                print(f"No versions found for URL: {url}")
-        except Exception as e:
-            print(f"Failed URL: {url}, Error: {str(e)[:200]}")
+                print(f"No BIOS versions found at: {url}")
+        except requests.RequestException as e:
+            print(f"Error fetching {url}: {str(e)[:200]}")
             continue
-        time.sleep(1)  # Avoid rate limiting
-    return {"vendor": "ASUS", "model": model, "url": urls_to_try[0], "versions": [], "ok": False, "error": "Couldn't fetch versions"}
+        time.sleep(1.5)  # Avoid rate limiting
+
+    return {
+        "vendor": "ASUS",
+        "model": model,
+        "url": urls[0] if urls else None,
+        "versions": [],
+        "ok": False,
+        "error": "Unable to fetch BIOS versions"
+    }

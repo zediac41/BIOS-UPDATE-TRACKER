@@ -34,7 +34,7 @@ ROG_URL_MAP = {
 def _guess_support_url(model: str) -> str:
     if model in ROG_URL_MAP:
         return [ROG_URL_MAP[model]]
-    slug = model.strip().replace(" ", "-").replace("--", "-").upper().rstrip("-")
+    slug = model.replace(" ", "-")
     if model.upper().startswith("ROG"):
         slug = slug.replace("GAMING-", "GAMING-").replace("WIFI", "WIFI").replace("PLUS", "PLUS")
     return [

@@ -15,10 +15,31 @@ HEADERS = {
     "Upgrade-Insecure-Requests": "1",
 }
 
-def _guess_support_url(model: str) -> str:
-    slug = model.replace(" ", "-")
-    return f"https://www.asus.com/supportonly/{slug}/HelpDesk_BIOS/"
+ROG_URL_MAP = {
+    "ROG STRIX B850-A GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/"
+    "ROG STRIX X870-A GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/"
+    "ROG STRIX X870E-E GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/"
+    "ROG CROSSHAIR X870E HERO": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/"
+    "ROG STRIX B850-I GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/"
+    "ROG STRIX X870-I GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/"
+    "ROG STRIX Z890-A GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/"
+    "ROG STRIX Z890-E GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/"
+    "ROG MAXIMUS Z890 HERO": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/"
+    "ROG MAXIMUS Z890 HERO BTF": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/"
+    "ROG STRIX B860-I GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/"
+    "ROG STRIX Z890-I GAMING WIFI": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/"
+    # Add more models as needed
+}
 
+def _guess_support_url(model: str) -> str:
+    if model in ROG_URL_MAP:
+        return [ROG_URL_MAP[model]]
+    slug = model.strip().replace(" ", "-").replace("--", "-").upper().rstrip("-")
+    if model.upper().startswith("ROG"):
+        slug = slug.replace("GAMING-", "GAMING-").replace("WIFI", "WIFI").replace("PLUS", "PLUS")
+    return [
+        f"https://www.asus.com/supportonly/{slug}/HelpDesk_BIOS/"
+    ]
 def _parse_versions_from_html(html: str):
     soup = BeautifulSoup(html, "html.parser")
     versions = []

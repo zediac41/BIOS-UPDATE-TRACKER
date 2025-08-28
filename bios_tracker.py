@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import json, yaml, datetime, html, time, sys
 from pathlib import Path
-from vendors import asus, msi, gigabyte, asrock
+from vendors import asus, asusrog, msi, gigabyte, asrock
 
 VENDOR_FUNCS = {
     "asus": asus.latest_two,
+    "asusrog": asusrog.latest_two,
     "msi": msi.latest_two,
     "gigabyte": gigabyte.latest_two,
     "asrock": asrock.latest_two,

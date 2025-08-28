@@ -1,0 +1,22 @@
+[
+  {
+    "brand": "asus",
+    "model": "PRIME B450M-A",
+    "support_url": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b450m-a/helpdesk_bios/"
+  },
+  {
+    "brand": "msi",
+    "model": "B450M PRO-VDH MAX",
+    "support_url": "https://www.msi.com/Motherboard/B450M-PRO-VDH-MAX/support"
+  },
+  {
+    "brand": "gigabyte",
+    "model": "B450 AORUS ELITE (rev. 1.x)",
+    "support_url": "https://www.gigabyte.com/Motherboard/B450-AORUS-ELITE-rev-1x/support#support-dl-bios"
+  },
+  {
+    "brand": "asrock",
+    "model": "B450M Pro4",
+    "support_url": "https://www.asrock.com/mb/AMD/B450M%20Pro4/index.asp#BIOS"
+  }
+]

@@ -213,10 +213,6 @@
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
     "versions": [
       {
-        "version": "s",
-        "date": null
-      },
-      {
         "version": "3.0",
         "date": null
       }
@@ -228,10 +224,6 @@
     "model": "ROG STRIX Z890-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
     "versions": [
-      {
-        "version": "s",
-        "date": null
-      },
       {
         "version": "3.0",
         "date": null
@@ -245,10 +237,6 @@
     "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
     "versions": [
       {
-        "version": "s",
-        "date": null
-      },
-      {
         "version": "3.0",
         "date": null
       }
@@ -260,10 +248,6 @@
     "model": "ROG STRIX B850-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
     "versions": [
-      {
-        "version": "s",
-        "date": null
-      },
       {
         "version": "3.0",
         "date": null
@@ -277,10 +261,6 @@
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
     "versions": [
       {
-        "version": "s",
-        "date": null
-      },
-      {
         "version": "3.0",
         "date": null
       }
@@ -293,12 +273,8 @@
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
     "versions": [
       {
-        "version": "s",
+        "version": "3.0",
         "date": null
-      },
-      {
-        "version": "right",
-        "date": "2024-08-01"
       }
     ],
     "ok": true
@@ -309,12 +285,8 @@
     "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
     "versions": [
       {
-        "version": "s",
+        "version": "3.0",
         "date": null
-      },
-      {
-        "version": "...",
-        "date": "2024-08-06"
       }
     ],
     "ok": true
@@ -324,10 +296,6 @@
     "model": "ROG STRIX B850-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
     "versions": [
-      {
-        "version": "s",
-        "date": null
-      },
       {
         "version": "3.0",
         "date": null
@@ -341,12 +309,8 @@
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
     "versions": [
       {
-        "version": "s",
+        "version": "3.0",
         "date": null
-      },
-      {
-        "version": "-de-beste-am5-borden-met-usb4-en-pcie-50.html",
-        "date": "2024-08-06"
       }
     ],
     "ok": true

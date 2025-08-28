@@ -1,20 +1,26 @@
-import re, requests
+import re
+import requests
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
-HEADERS = {"User-Agent":"Mozilla/5.0"}
+# Comprehensive headers to mimic a browser
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Referer": "https://www.gigabyte.com/",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+}
 
-def _candidates(model:str):
-    slug = model.replace(" ","-")
-    candidates = [
-        f"https://www.gigabyte.com/Motherboard/{slug}/support#support-dl-bios",
-        f"https://www.gigabyte.com/Motherboard/{slug.upper()}/support#support-dl-bios",
-        f"https://www.gigabyte.com/Motherboard/{slug.title().replace(' ','-')}/support#support-dl-bios",
-        f"https://www.gigabyte.com/Motherboard/{slug}-rev-1x/support#support-dl-bios",
-    ]
-    seen=set()
-    for u in candidates:
-        if u not in seen:
-            seen.add(u); yield u
+def _guess_support_url(model: str) -> str:
+    slug = model.replace(" ", "-")
+    return  f"https://www.gigabyte.com/Motherboard/{slug}/support#support-dl-bios",
+            f"https://www.gigabyte.com/Motherboard/{slug.upper()}/support#support-dl-bios",
+            f"https://www.gigabyte.com/Motherboard/{slug.title().replace(' ','-')}/support#support-dl-bios",
+            f"https://www.gigabyte.com/Motherboard/{slug}-rev-1x/support#support-dl-bios",
 
 def _parse_versions_from_html(html:str):
     soup = BeautifulSoup(html, "html.parser")

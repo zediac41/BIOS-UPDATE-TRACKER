@@ -18,9 +18,6 @@ HEADERS = {
 def _guess_support_url(model: str) -> str:
     slug = model.replace(" ", "-")
     return  f"https://www.gigabyte.com/Motherboard/{slug}/support#support-dl-bios",
-            f"https://www.gigabyte.com/Motherboard/{slug.upper()}/support#support-dl-bios",
-            f"https://www.gigabyte.com/Motherboard/{slug.title().replace(' ','-')}/support#support-dl-bios",
-            f"https://www.gigabyte.com/Motherboard/{slug}-rev-1x/support#support-dl-bios",
 
 def _parse_versions_from_html(html:str):
     soup = BeautifulSoup(html, "html.parser")

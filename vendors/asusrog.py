@@ -5,7 +5,6 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import time
 from datetime import datetime
-import json
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -37,47 +36,48 @@ def _search_product_page(model: str) -> str:
         response.raise_for_status()
         data = response.json()
         
-        # Look for a matching motherboard result
         for result in data.get("hits", []):
             if "motherboards" in result.get("category", "").lower():
                 product_url = result.get("url")
                 if product_url:
-                    # Ensure the URL points to the BIOS section
                     if not product_url.endswith("HelpDesk_BIOS/"):
                         product_url = product_url.rstrip("/") + "/HelpDesk_BIOS/"
                     return product_url
     except Exception as e:
-        print(f"Search failed: {str(e)[:200]}")
+        print(f"Search API failed: {str(e)[:200]}")
     
-    # Fallback to constructed URL if search fails
+    # Fallback to constructed URL
     slug = re.sub(r"\s+", "-", model.strip().upper()).rstrip("-")
-    return f"https://www.asus.com/us/supportonly/{slug}/HelpDesk_BIOS/"
+    return f"https://rog.asus.com/motherboards/rog-crosshair/{slug.lower()}/helpdesk_bios/"
 
 def _parse_bios_versions(html: str) -> list:
-    """Parse BIOS versions and dates from the product page."""
+    """Parse BIOS versions and dates from the ASUS BIOS page."""
     soup = BeautifulSoup(html, "html.parser")
     versions = []
 
-    # Target BIOS download sections
-    bios_sections = soup.select("div.download-item, tr.download-file, div[id*='BIOS']")
+    # Target specific BIOS download table or sections
+    download_sections = soup.select(
+        "div[id*='BIOS'] div.download-item, "
+        "table.download-table tr, "
+        "div.download-file-box, "
+        "div.support-download-item"
+    )
     
-    for section in bios_sections:
+    for section in download_sections:
         version = None
         date = None
         
-        # Extract version
-        version_elem = section.select_one("span.version, td.version, div:contains('Version'), span:contains('BIOS')")
+        # Try to find version
+        version_elem = section.find(string=re.compile(r"(?:Version|BIOS)\s*([\d\.A-Za-z-]+)", re.I))
         if version_elem:
-            text = version_elem.get_text(strip=True)
-            version_match = re.search(r"(?:Version|BIOS)\s*([\d\.A-Za-z-]+)", text, re.I)
+            version_match = re.search(r"(?:Version|BIOS)\s*([\d\.A-Za-z-]+)", version_elem, re.I)
             if version_match:
                 version = version_match.group(1).strip()
         
-        # Extract date
-        date_elem = section.select_one("span.date, td.date, div:contains('/')")
+        # Try to find date in the same section
+        date_elem = section.find(string=re.compile(r"\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4}"))
         if date_elem:
-            text = date_elem.get_text(strip=True)
-            date_match = re.search(r"(\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4})", text)
+            date_match = re.search(r"(\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4})", date_elem)
             if date_match:
                 date = date_match.group(1)
                 try:
@@ -91,26 +91,10 @@ def _parse_bios_versions(html: str) -> list:
         if version:
             versions.append({"version": version, "date": date})
     
-    # Fallback: Broad search for version-like patterns
+    # Debug: Print HTML snippet if no versions found
     if not versions:
-        for element in soup.find_all(string=re.compile(r"\d+\.\d+")):
-            text = element.get_text(strip=True)
-            version_match = re.search(r"(\d+\.\d+)", text)
-            if version_match:
-                version = version_match.group(1).strip()
-                date_match = re.search(r"(\d{4}[/-]\d{2}[/-]\d{2}|\d{2}/\d{2}/\d{4})", text)
-                date = None
-                if date_match:
-                    date = date_match.group(1)
-                    try:
-                        if "/" in date:
-                            date = datetime.strptime(date, "%m/%d/%Y").strftime("%Y-%m-%d")
-                        else:
-                            date = date.replace("/", "-")
-                    except ValueError:
-                        date = None
-                versions.append({"version": version, "date": date})
-
+        print("No versions found. HTML snippet:", html[:1500])
+    
     # Remove duplicates and sort by version (descending)
     seen = set()
     unique_versions = []
@@ -119,7 +103,12 @@ def _parse_bios_versions(html: str) -> list:
             seen.add(v["version"])
             unique_versions.append(v)
     
-    unique_versions.sort(key=lambda x: x["version"], reverse=True)
+    # Try to sort by date if available, otherwise by version
+    unique_versions.sort(
+        key=lambda x: (x["date"] if x["date"] else "0000-00-00", x["version"]),
+        reverse=True
+    )
+    
     return unique_versions
 
 def latest_two(model: str, override_url: str = None) -> dict:

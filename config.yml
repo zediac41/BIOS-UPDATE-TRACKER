@@ -4,27 +4,25 @@ vendors:
     - { name: TUF GAMING B550-PLUS WI-FI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b550-plus-wi-fi/helpdesk_bios?model2Name=TUF-GAMING-B550-PLUS-WI-FI" }
     - { name: TUF GAMING A620M-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI" }
     - { name: TUF GAMING X870-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI" }
+    - { name: TUF GAMING Z790-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI" }
+    - { name: TUF GAMING B860M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI" }
+    - { name: PRIME Z890M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI" }
+    - { name: TUF GAMING Z890-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI" }
+    - { name: Z890 AYW GAMING WIFI W, url: "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W" }
+    - { name: TUF GAMING B850-BTF WIFI W, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W" }
+    - { name: Pro WS W790-ACE, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE" }
+    - { name: Pro WS W790E-SAGE SE, url: "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE" }
+    - { name: Pro WS TRX50-SAGE WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI" } 
+  asusrog:
+    - { name: ROG STRIX B860-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/" }
+    - { name: ROG STRIX Z890-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/" }
+    - { name: ROG MAXIMUS Z890 HERO BTF, url: "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/" }
     - { name: ROG STRIX B850-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/" }
     - { name: ROG STRIX X870-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/" }
     - { name: ROG STRIX X870E-E GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/" }
     - { name: ROG CROSSHAIR X870E HERO, url: "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/" }
     - { name: ROG STRIX B850-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/" }
     - { name: ROG STRIX X870-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/" }
-    - { name: TUF GAMING Z790-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI" }
-    - { name: TUF GAMING B860M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI" }
-    - { name: PRIME Z890M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI" }
-    - { name: TUF GAMING Z890-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI" }
-    - { name: ROG STRIX Z890-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG STRIX Z890-E GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG MAXIMUS Z890 HERO, url: "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/" }
-    - { name: Z890 AYW GAMING WIFI W, url: "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W" }
-    - { name: ROG MAXIMUS Z890 HERO BTF, url: "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/" }
-    - { name: TUF GAMING B850-BTF WIFI W, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W" }
-    - { name: ROG STRIX B860-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG STRIX Z890-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/" }
-    - { name: Pro WS W790-ACE, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE" }
-    - { name: Pro WS W790E-SAGE SE, url: "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE" }
-    - { name: Pro WS TRX50-SAGE WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI" }    
   msi:
     - { name: MAG B650 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#down-bios" }
     - { name: B850 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support" }

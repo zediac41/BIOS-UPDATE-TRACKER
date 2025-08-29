@@ -1,1 +1,31 @@
+name: Update BIOS Data
 
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run scrapers
+        run: |
+          python scripts/asus_scraper.py
+          python scripts/msi_scraper.py
+          python scripts/gigabyte_scraper.py
+          python scripts/asrock_scraper.py
+      - name: Commit changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add data/*
+          git commit -m "Update BIOS data" || echo "No changes"
+          git push

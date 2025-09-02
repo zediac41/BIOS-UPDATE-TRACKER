@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BIOS Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/site.css">
+  
+<style>
+/* wider page */
+.container{max-width:1600px;margin:0 auto;padding:0 16px}
+
+/* page header: title | search | filter */
+.page-header{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:12px;
+  margin:8px 0 6px
+}
+.page-header h1{font-size:28px;margin:0}
+
+/* search */
+.search input{
+  width:100%;
+  padding:8px 10px;
+  border:1px solid #39407a;
+  border-radius:8px;
+  background:#0f1630;
+  color:#e6e9f2;
+  font-size:14px;
+}
+
+/* filter bar */
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.toolbar button{
+  background:#0f1630;border:1px solid #39407a;color:#e6e9f2;
+  padding:6px 10px;border-radius:999px;font-size:13px;cursor:pointer
+}
+.toolbar button.active{background:#1b2247;border-color:#5a64b5}
+
+/* NEW: statusbar line — keep timestamp at left, legend centered.
+   Use position:relative and absolutely center the legend, so it stays centered
+   regardless of the timestamp width. */
+.statusbar{
+  position:relative;
+  min-height:28px;
+  margin:10px 0 16px;
+}
+.statusbar .last-updated{
+  position:relative;               /* normal flow at left */
+  font-size:12px; opacity:.85;
+}
+.statusbar .legend{
+  position:absolute;               /* center independently of left content */
+  left:50%; transform:translateX(-50%);
+  display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+  font-size:12px; opacity:.9;
+}
+.legend .legend-item{
+  display:flex; align-items:center; gap:6px;
+  background:#0f1630; border:1px solid #39407a;
+  border-radius:999px; padding:4px 8px
+}
+.legend .swatch{
+  width:12px; height:12px; border-radius:2px; display:inline-block
+}
+.legend .swatch--fresh{border:2px solid #22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
+.legend .swatch--issue{border:2px solid #f97316; box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
+
+/* small screens: stack nicely */
+@media (max-width: 700px){
+  .statusbar{display:grid; row-gap:6px}
+  .statusbar .legend{position:static; transform:none; justify-content:center}
+  .statusbar .last-updated{text-align:center}
+}
+
+.last-updated{opacity:.75}
+
+/* cards */
+.card{padding:22px 22px; border:0}
+.card--fresh{
+  border:3px solid #22c55e;
+  box-shadow:0 0 0 2px rgba(34,197,94,.15);
+}
+.card--issue{
+  border:3px solid #f97316;
+  box-shadow:0 0 0 2px rgba(249,115,22,.18);
+}
+.card h3{font-size:16px;line-height:1.25;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
+.card h3 .badge{margin-left:auto}
+
+/* kv rows: version normal weight, date at right, two spaces after label */
+.kv{display:flex;align-items:baseline;gap:8px}
+.kv .k{font-weight:600}
+.kv .k::after{content:"\00a0\00a0"} /* two NBSPs */
+.kv .v{font-weight:400}
+.kv .date{margin-left:auto;white-space:nowrap;opacity:.8}
+
+/* grid cap */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1200px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){
+  .grid{grid-template-columns:1fr}
+  .page-header{grid-template-columns:1fr;gap:10px}
+  .toolbar{justify-content:flex-start}
+}
+</style>
+
+</head>
+<body>
+  <div class="container">
+    
+<header class="page-header">
+  <h1>Motherboard BIOS Tracker</h1>
+  <div class="search">
+    <input type="search" id="search-input" placeholder="Search model…" aria-label="Search models" />
+  </div>
+  <div class="toolbar">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="ASUS">ASUS</button>
+    <button data-filter="MSI">MSI</button>
+    <button data-filter="GIGABYTE">GIGABYTE</button>
+    <button data-filter="ASRock">ASRock</button>
+  </div>
+</header>
+
+    
+<div class="statusbar" role="note" aria-label="Legend and last updated">
+  <div class="last-updated">Last updated: 2025-09-02 03:27 CDT</div>
+  <div class="legend">
+    <span class="legend-item"><span class="swatch swatch--fresh"></span>Updated within a week</span>
+    <span class="legend-item"><span class="swatch swatch--issue"></span>Updating incorrectly</span>
+  </div>
+</div>
+
+    <div class="grid">
+      <div class="card card--fresh" data-vendor="ASUS">
+  <h3>ROG STRIX X870E-E GAMING WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1701</span>  <span class="date">2025-08-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1605</span>  <span class="date">2025-07-22</span></div>
+</div>
+<div class="card card--fresh" data-vendor="MSI">
+  <h3>MEG X870E GODLIKE <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/MEG-X870E-GODLIKE/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E48V1A50</span>  <span class="date">2025-08-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E48V1A43</span>  <span class="date">2025-07-18</span></div>
+</div>
+<div class="card card--fresh" data-vendor="GIGABYTE">
+  <h3>B850M AORUS ELITE WIFI6E ICE <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F7A</span>  <span class="date">2025-08-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F6</span>  <span class="date">2025-07-31</span></div>
+</div>
+<div class="card card--fresh" data-vendor="GIGABYTE">
+  <h3>X870 AORUS ELITE WIFI7 ICE <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F8A</span>  <span class="date">2025-08-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F7</span>  <span class="date">2025-07-18</span></div>
+</div>
+<div class="card card--fresh" data-vendor="GIGABYTE">
+  <h3>X870 AORUS STEALTH ICE <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F5A</span>  <span class="date">2025-08-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F4</span>  <span class="date">2025-07-18</span></div>
+</div>
+<div class="card card--fresh" data-vendor="ASUS">
+  <h3>Pro WS W790-ACE <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1801</span>  <span class="date">2025-08-27</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1502</span>  <span class="date">2024-12-25</span></div>
+</div>
+<div class="card card--fresh" data-vendor="ASUS">
+  <h3>Pro WS W790E-SAGE SE <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1801</span>  <span class="date">2025-08-27</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1502</span>  <span class="date">2024-11-15</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>TUF GAMING A520M-PLUS <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">3631</span>  <span class="date">2025-08-14</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">3621</span>  <span class="date">2025-04-07</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG STRIX B550-F GAMING WIFI II <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/us/motherboards/rog-strix/rog-strix-b550-f-gaming-wifi-ii-model/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">3631</span>  <span class="date">2025-08-14</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">3621</span>  <span class="date">2025-04-01</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>MAG B650 TOMAHAWK WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7D75V1P3 (Beta)</span>  <span class="date">2025-08-12</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7D75V1O (Beta)</span>  <span class="date">2025-08-12</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>PRO X870-P WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/PRO-X870-P-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E47V1A76</span>  <span class="date">2025-08-12</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E47V1A74</span>  <span class="date">2025-07-16</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>B760M PROJECT ZERO <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/B760M-PROJECT-ZERO/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E14V18</span>  <span class="date">2025-08-12</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E14V181 (Beta)</span>  <span class="date">2025-05-13</span></div>
+</div>
+<div class="card" data-vendor="GIGABYTE">
+  <h3>A520I AC <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F21H</span>  <span class="date">2025-08-12</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F21G</span>  <span class="date">2025-03-11</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>B650M PROJECT ZERO <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/B650M-PROJECT-ZERO/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E09V1H2 (Beta)</span>  <span class="date">2025-08-08</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E09V1H1 (Beta)</span>  <span class="date">2025-07-22</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>B850 GAMING PLUS WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E56V1A84</span>  <span class="date">2025-08-07</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E56V1A82</span>  <span class="date">2025-07-24</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>MAG X870 TOMAHAWK WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E51V1A67</span>  <span class="date">2025-08-06</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E51V1A65</span>  <span class="date">2025-07-18</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>TUF GAMING A620M-PLUS WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">3278</span>  <span class="date">2025-08-05</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">3263</span>  <span class="date">2025-07-02</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>TUF GAMING B850-BTF WIFI W <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1079</span>  <span class="date">2025-08-05</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1065</span>  <span class="date">2025-06-24</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG STRIX B850-I GAMING WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1078</span>  <span class="date">2025-08-05</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1067</span>  <span class="date">2025-07-09</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>MAG Z890 TOMAHAWK WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E32V1A90</span>  <span class="date">2025-08-04</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E32V1A80</span>  <span class="date">2025-06-12</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>TUF GAMING B860M-PLUS WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1606</span>  <span class="date">2025-07-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1406</span>  <span class="date">2025-05-14</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>PRIME Z890M-PLUS WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">2207</span>  <span class="date">2025-07-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">2005</span>  <span class="date">2025-05-14</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>TUF GAMING Z890-PLUS WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">2207</span>  <span class="date">2025-07-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">2005</span>  <span class="date">2025-05-14</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>Z890 AYW GAMING WIFI W <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">2207</span>  <span class="date">2025-07-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">2006</span>  <span class="date">2025-05-14</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG STRIX B860-I GAMING WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1606</span>  <span class="date">2025-07-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1405</span>  <span class="date">2025-05-14</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG STRIX Z890-I GAMING WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">2006</span>  <span class="date">2025-07-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1901</span>  <span class="date">2025-05-09</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG MAXIMUS Z890 HERO BTF <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">2006</span>  <span class="date">2025-07-29</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1901</span>  <span class="date">2025-05-09</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>Pro WS TRX50-SAGE WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1203</span>  <span class="date">2025-07-23</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">0803</span>  <span class="date">2024-10-14</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>TUF GAMING X870-PLUS WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1078</span>  <span class="date">2025-07-22</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1066</span>  <span class="date">2025-06-24</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG STRIX B850-A GAMING WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1078</span>  <span class="date">2025-07-22</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1066</span>  <span class="date">2025-06-18</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG STRIX X870-A GAMING WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1605</span>  <span class="date">2025-07-22</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1512</span>  <span class="date">2025-06-13</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG CROSSHAIR X870E HERO <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1605</span>  <span class="date">2025-07-22</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1512</span>  <span class="date">2025-06-13</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>ROG STRIX X870-I GAMING WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1078</span>  <span class="date">2025-07-22</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1063</span>  <span class="date">2025-07-02</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>PRO Z890-S WIFI PZ <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E58V1A50</span>  <span class="date">2025-07-18</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E58V1A40</span>  <span class="date">2025-05-07</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>MEG Z890 ACE <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/MEG-Z890-ACE/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E22V1A70</span>  <span class="date">2025-07-16</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E22V1A60</span>  <span class="date">2025-06-05</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>PRO Z890-P WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/PRO-Z890-P-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E34V1AA0</span>  <span class="date">2025-07-11</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E34V1A90</span>  <span class="date">2025-05-19</span></div>
+</div>
+<div class="card" data-vendor="GIGABYTE">
+  <h3>B860I AORUS PRO ICE <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F7G</span>  <span class="date">2025-07-10</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F7C</span>  <span class="date">2025-05-22</span></div>
+</div>
+<div class="card" data-vendor="GIGABYTE">
+  <h3>Z890M AORUS ELITE WIFI7 ICE <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F17G</span>  <span class="date">2025-07-09</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F17C</span>  <span class="date">2025-04-18</span></div>
+</div>
+<div class="card" data-vendor="GIGABYTE">
+  <h3>B860M AORUS ELITE WIFI6E ICE <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F7D</span>  <span class="date">2025-07-09</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F7A</span>  <span class="date">2025-05-22</span></div>
+</div>
+<div class="card" data-vendor="GIGABYTE">
+  <h3>Z890 EAGLE WIFI7 <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F17E</span>  <span class="date">2025-07-09</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F17B</span>  <span class="date">2025-04-18</span></div>
+</div>
+<div class="card" data-vendor="GIGABYTE">
+  <h3>Z890 AORUS ELITE WIFI7 ICE <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F17F</span>  <span class="date">2025-07-09</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F17B</span>  <span class="date">2025-04-18</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>PRO Z790-P WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/PRO-Z790-P-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E06VAH1 (Beta)</span>  <span class="date">2025-06-25</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E06VAF1 (Beta)</span>  <span class="date">2024-11-05</span></div>
+</div>
+<div class="card" data-vendor="ASRock">
+  <h3>B660M-HDV <span class="badge">ASRock</span></h3>
+  <div class="meta"><a href="https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">19.03</span>  <span class="date">2025-05-28</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">19.01</span>  <span class="date">2024-10-04</span></div>
+</div>
+<div class="card" data-vendor="ASUS">
+  <h3>TUF GAMING Z790-PLUS WIFI <span class="badge">ASUS</span></h3>
+  <div class="meta"><a href="https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">1820</span>  <span class="date">2025-05-21</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">1805</span>  <span class="date">2024-11-04</span></div>
+</div>
+<div class="card" data-vendor="GIGABYTE">
+  <h3>X870 EAGLE WIFI7 <span class="badge">GIGABYTE</span></h3>
+  <div class="meta"><a href="https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">F79B</span>  <span class="date">2025-05-20</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">F8A</span>  <span class="date">2025-08-29</span></div>
+</div>
+<div class="card" data-vendor="MSI">
+  <h3>MAG Z790 TOMAHAWK MAX WIFI <span class="badge">MSI</span></h3>
+  <div class="meta"><a href="https://us.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#down-bios" target="_blank" rel="noreferrer">Vendor page</a></div>
+<div class="kv">  <span class="k">Current</span>  <span class="v">7E25VA9</span>  <span class="date">2025-05-16</span></div>
+<div class="kv">  <span class="k">Previous</span>  <span class="v">7E25VAA1 (Beta)</span>  <span class="date">2025-05-16</span></div>
+</div>
+    </div>
+  </div>
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.toolbar [data-filter]');
+  const cards = document.querySelectorAll('.grid .card');
+  const search = document.getElementById('search-input');
+  let activeFilter = 'all';
+
+  function applyAll(){
+    const q = (search.value || '').trim().toLowerCase();
+    cards.forEach(c => {
+      const v = (c.dataset.vendor || '').toLowerCase();
+      const model = (c.querySelector('h3')?.textContent || '').toLowerCase();
+      const matchesVendor = (activeFilter === 'all') || (v === activeFilter.toLowerCase());
+      const matchesQuery  = !q || model.includes(q);
+      c.style.display = (matchesVendor && matchesQuery) ? '' : 'none';
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.dataset.filter || 'all';
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyAll();
+    });
+  });
+
+  search.addEventListener('input', applyAll);
+});
+</script>
+
+</body>
+</html>

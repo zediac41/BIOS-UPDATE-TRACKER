@@ -32,6 +32,12 @@ jobs:
       - name: Build site (run your scraper)
         run: |
           python bios_tracker.py
+  
+      - name: Add .nojekyll
+        run: |
+          touch docs/.nojekyll
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

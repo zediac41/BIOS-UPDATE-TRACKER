@@ -1,56 +1,58 @@
-name: Build & deploy BIOS pages
+name: Build & Push docs (GitHub Pages)
 
 on:
-  push:
-    branches: [ main ]
   schedule:
+    # ~5:00 AM America/Chicago during DST; adjust if you want winter to be closer to 5:00
     - cron: "0 10 * * 1-5"
   workflow_dispatch:
 
+# We commit back to the repo, so we need write
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
+
+concurrency:
+  group: docs-build
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # allow rebasing before push
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
       - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python -m pip install playwright
           python -m playwright install --with-deps chromium
 
-      - name: Build site (run your scraper)
+      # Build your site; xvfb-run lets Playwright fallback to "headful" if needed
+      - name: Build site
         run: |
-          python bios_tracker.py
-  
-      - name: Add .nojekyll
+          xvfb-run -a python bios_tracker.py
+          touch docs/.nojekyll   # ensure Jekyll doesn't interfere
+
+      - name: Configure Git
         run: |
-          touch docs/.nojekyll
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs
+      # Rebase in case of concurrent pushes, then commit only if docs changed
+      - name: Commit & Push docs
+        run: |
+          # Pull latest for this branch
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          # Ensure docs/ exists and add it
+          git add docs
 

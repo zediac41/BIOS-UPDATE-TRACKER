@@ -173,7 +173,7 @@ def _fetch_with_playwright(url: str, headful: bool):
     with sync_playwright() as p:
         if headful:
             ctx = p.chromium.launch_persistent_context(
-                user_data_dir="source/pw-asrock-profile",
+                user_data_dir="source/.pw-asrock-profile",
                 headless=False,
                 viewport={"width": 1280, "height": 900},
                 user_agent=_UA,

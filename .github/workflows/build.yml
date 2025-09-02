@@ -5,11 +5,10 @@ on:
     branches: [ main ]
   schedule:
     - cron: "0 10 * * 1-5"
-  # Manual run button
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -33,12 +32,11 @@ jobs:
       - name: Build site (run your scraper)
         run: |
           python bios_tracker.py
-          # make sure your script writes to ./docs (the Pages folder)
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: docs
 
   deploy:
     needs: build

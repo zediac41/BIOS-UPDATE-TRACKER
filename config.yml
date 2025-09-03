@@ -50,9 +50,17 @@ vendors:
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
   asrock:
     - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }
-    
-report:
-  mode: github         # "github" or "mailto" (auto-chooses github if github_repo present)
-  github_repo: "zediac41/BIOS-UPDATE-TRACKER"
-  labels: ["report"]
-  mailto: "erik.christensen85@yahoo.com"
+
+comments:
+  provider: giscus
+  repo: "zediac41/BIOS-UPDATE-TRACKER"   # owner/repo
+  repo_id: "R_kgDOPkR12A"              # from giscus.app
+  category: "General"                    # discussion category name
+  category_id: "DIC_kwDOPkR12M4Cu6A0"        # from giscus.app
+  mapping: "pathname"                    # or "title", "url", etc.
+  reactions_enabled: "1"
+  emit_metadata: "0"
+  input_position: "top"
+  theme: "preferred_color_scheme"
+  lang: "en"
+

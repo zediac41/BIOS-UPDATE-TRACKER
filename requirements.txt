@@ -1,6 +1,4 @@
+requests
 beautifulsoup4
-cloudscraper
-playwright
 PyYAML
 tzdata
-

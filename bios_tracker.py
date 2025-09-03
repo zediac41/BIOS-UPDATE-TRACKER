@@ -87,19 +87,8 @@ def build_card(entry, issue_names: set[str] | None = None, today: datetime.date 
 
     parts = []
     parts.append(f'<div class="{" ".join(classes)}" data-vendor="{html.escape(vendor)}">')
-    parts.append(
-        '  <h3>'
-        f'{html.escape(model)} '
-        f'<span class="badge">{html.escape(vendor)}</span>'
-        '  </h3>'
-    )
-    # vendor link + report button row
-    parts.append(
-        '  <div class="meta">'
-        f'    <a href="{html.escape(url)}" target="_blank" rel="noreferrer">Vendor page</a>'
-        f'    <button class="report-btn" data-vendor="{html.escape(vendor)}" data-model="{html.escape(model)}" type="button">Report</button>'
-        '  </div>'
-    )
+    parts.append(f'  <h3>{html.escape(model)} <span class="badge">{html.escape(vendor)}</span></h3>')
+    parts.append(f'  <div class="meta"><a href="{html.escape(url)}" target="_blank" rel="noreferrer">Vendor page</a></div>')
 
     if ok and vlist:
         cur_v = vlist[0].get("version") if len(vlist) >= 1 else None
@@ -130,11 +119,90 @@ def _sort_results_newest_first(results: list[dict]) -> list[dict]:
         return (0, -(d.toordinal())) if d else (1, 0)
     return sorted(results, key=key)
 
+def _escape_multiline(s: str) -> str:
+    if not s:
+        return ""
+    return "<br>".join(html.escape(s).splitlines())
+
+def _comments_block(cfg: dict) -> str:
+    """Return HTML for comments widget, based on config.yml -> comments."""
+    c = (cfg.get("comments") or {})
+    provider = (c.get("provider") or "").strip().lower()
+    if provider == "giscus":
+        repo = c.get("repo","")
+        repo_id = c.get("repo_id","")
+        category = c.get("category","")
+        category_id = c.get("category_id","")
+        mapping = c.get("mapping","pathname")
+        reactions = str(c.get("reactions_enabled","1"))
+        emit = str(c.get("emit_metadata","0"))
+        pos = c.get("input_position","top")
+        theme = c.get("theme","preferred_color_scheme")
+        lang = c.get("lang","en")
+        if not (repo and repo_id and category and category_id):
+            return """
+<section class="comments">
+  <h2>Comments & Requests</h2>
+  <p class="hint">Owner setup needed: configure <code>comments</code> in <code>config.yml</code> for giscus (repo_id & category_id). See <a href="https://giscus.app" target="_blank" rel="noreferrer">giscus.app</a>.</p>
+</section>
+"""
+        # giscus widget
+        return f"""
+<section class="comments">
+  <h2>Comments & Requests</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="{html.escape(repo)}"
+          data-repo-id="{html.escape(repo_id)}"
+          data-category="{html.escape(category)}"
+          data-category-id="{html.escape(category_id)}"
+          data-mapping="{html.escape(mapping)}"
+          data-strict="0"
+          data-reactions-enabled="{html.escape(reactions)}"
+          data-emit-metadata="{html.escape(emit)}"
+          data-input-position="{html.escape(pos)}"
+          data-theme="{html.escape(theme)}"
+          data-lang="{html.escape(lang)}"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+</section>
+"""
+    elif provider == "utterances":
+        repo = c.get("repo","")
+        issue_term = c.get("issue_term","pathname")
+        label = c.get("label","comments")
+        theme = c.get("theme","github-dark")
+        if not repo:
+            return """
+<section class="comments">
+  <h2>Comments & Requests</h2>
+  <p class="hint">Owner setup needed: configure <code>comments</code> in <code>config.yml</code> for utterances (repo). See <a href="https://utteranc.es" target="_blank" rel="noreferrer">utteranc.es</a>.</p>
+</section>
+"""
+        return f"""
+<section class="comments">
+  <h2>Comments & Requests</h2>
+  <script src="https://utteranc.es/client.js"
+          repo="{html.escape(repo)}"
+          issue-term="{html.escape(issue_term)}"
+          label="{html.escape(label)}"
+          theme="{html.escape(theme)}"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+</section>
+"""
+    else:
+        # Comments disabled or not configured
+        return ""
+
 def main():
     cfg = load_config()
     vendors = (cfg.get("vendors") or {})
 
-    # Manual issue flags
+    # Manual issue flags (optional)
     issue_names: set[str] = set(map(str, (cfg.get("issues") or [])))
     for vendor_key, boards in vendors.items():
         for b in boards or []:
@@ -143,12 +211,8 @@ def main():
                 if name:
                     issue_names.add(name)
 
-    # Reporting config
-    report_cfg = (cfg.get("report") or {})
-    report_mode = (report_cfg.get("mode") or ("github" if report_cfg.get("github_repo") else "mailto")).lower()
-    github_repo = (report_cfg.get("github_repo") or "").strip()
-    github_labels = report_cfg.get("labels") or ["report"]
-    mailto_addr = (report_cfg.get("mailto") or "").strip()
+    # Optional notes
+    notes_text = (cfg.get("notes") or "").strip()
 
     results = []
 
@@ -199,7 +263,6 @@ def main():
     <button data-filter="MSI">MSI</button>
     <button data-filter="GIGABYTE">GIGABYTE</button>
     <button data-filter="ASRock">ASRock</button>
-    <button id="report-missing" class="report-global" type="button" title="Report a missing board">Report missing board</button>
   </div>
 </header>
 """
@@ -216,7 +279,19 @@ def main():
 </div>
 """
 
-    # Styles (includes report button + modal + statusbar alignment)
+    # Optional notes block
+    notes_html = ""
+    if notes_text:
+        notes_html = f"""
+<div class="notice" role="note" aria-label="Site notes">
+  <strong>Notes:</strong> {_escape_multiline(notes_text)}
+</div>
+"""
+
+    # Comments widget block (giscus / utterances / or empty)
+    comments_html = _comments_block(cfg)
+
+    # Styles (statusbar alignment, cards, comments, etc.)
     inline_css = """
 <style>
 /* wider page */
@@ -251,21 +326,14 @@ def main():
 }
 .toolbar button.active{background:#1b2247;border-color:#5a64b5}
 
-/* report buttons */
-.report-global, .report-btn{
-  background:#1b2247;border:1px solid #5a64b5;color:#e6e9f2;
-  padding:6px 10px;border-radius:8px;font-size:12px;cursor:pointer
-}
-.report-btn{margin-left:auto}
-
-/* Status bar with hidden clone to keep legend truly centered */
+/* Status bar centered legend via hidden clone */
 .statusbar{
   display: grid;
-  grid-template-columns: auto 1fr auto;   /* left content | centered area | right clone */
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   width: 100%;
   min-height: 28px;
-  margin: 10px 0 16px;
+  margin: 10px 0 12px;
   box-sizing: border-box;
 }
 .statusbar .last-updated{
@@ -309,12 +377,15 @@ def main():
 .legend .swatch--fresh{border:2px solid #22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
 .legend .swatch--issue{border:2px solid #f97316; box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 
-/* small screens: stack the statusbar */
-@media (max-width:700px){
-  .statusbar{grid-template-columns: 1fr; row-gap:6px; min-height:unset}
-  .statusbar .last-updated{grid-column:1; justify-self:center; text-align:center}
-  .statusbar .legend{grid-column:1; justify-self:center}
-  .statusbar .last-updated--clone{display:none}
+/* notice block (optional notes) */
+.notice{
+  margin: 8px 0 16px;
+  padding: 10px 12px;
+  background: #0f1630;
+  border: 1px solid #39407a;
+  border-radius: 10px;
+  color: #e6e9f2;
+  font-size: 14px;
 }
 
 /* cards */
@@ -330,16 +401,16 @@ def main():
 .card h3{font-size:16px;line-height:1.25;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
 .card h3 .badge{margin-left:auto}
 
-/* meta row: link left, report button right */
+/* meta row */
 .card .meta{
   display:flex; align-items:center; gap:10px; margin:0 0 10px
 }
 .card .meta a{color:#9fb4ff}
 
-/* kv rows: version normal weight, date at right, two spaces after label */
+/* kv rows */
 .kv{display:flex;align-items:baseline;gap:8px}
 .kv .k{font-weight:600}
-.kv .k::after{content:"\\00a0\\00a0"} /* two NBSPs */
+.kv .k::after{content:"\\00a0\\00a0"}
 .kv .v{font-weight:400}
 .kv .date{margin-left:auto;white-space:nowrap;opacity:.8}
 
@@ -353,199 +424,45 @@ def main():
   .toolbar{justify-content:flex-start}
 }
 
-/* --- Modal --- */
-.modal{position:fixed; inset:0; display:none}
-.modal.is-open{display:block}
-.modal__backdrop{
-  position:absolute; inset:0; background:rgba(0,0,0,.55)
-}
-.modal__dialog{
-  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:min(640px, 92vw);
-  background:#0f1630; border:1px solid #39407a; border-radius:12px;
-  padding:16px 16px 12px; color:#e6e9f2;
-  box-shadow:0 10px 30px rgba(0,0,0,.35)
-}
-.modal__dialog h2{margin:0 0 10px; font-size:18px}
-.form-row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-label{display:block; font-size:12px; opacity:.9; margin:6px 0 4px}
-input[type="text"], select, textarea{
-  width:100%; padding:8px 10px; border:1px solid #39407a; border-radius:8px;
-  background:#0a122c; color:#e6e9f2; font-size:14px
-}
-textarea{resize:vertical; min-height:100px}
-.modal__actions{display:flex; gap:8px; justify-content:flex-end; margin-top:12px}
-.button{background:#1b2247;border:1px solid #5a64b5;color:#e6e9f2;padding:8px 12px;border-radius:8px;font-size:13px;cursor:pointer}
-.button--secondary{background:transparent}
+/* comments block spacing */
+.comments{margin:24px 0 40px}
+.comments h2{margin:0 0 8px; font-size:18px}
+.comments .hint{opacity:.8}
 </style>
 """
 
-    # Scripts: filter/search + report modal
-    # (We embed config values so no extra HTTP round-trips)
-    js_repo = json.dumps(github_repo)
-    js_labels = json.dumps(github_labels)
-    js_mode = json.dumps(report_mode)
-    js_mailto = json.dumps(mailto_addr)
-
-    filter_and_report_js = f"""
+    # Filtering/search script
+    filter_js = """
 <script>
-document.addEventListener('DOMContentLoaded', () => {{
-  // --- Filter + search ---
+document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.toolbar [data-filter]');
   const cards = document.querySelectorAll('.grid .card');
   const search = document.getElementById('search-input');
   let activeFilter = 'all';
-  function applyAll(){{
+  function applyAll(){
     const q = (search.value || '').trim().toLowerCase();
-    cards.forEach(c => {{
+    cards.forEach(c => {
       const v = (c.dataset.vendor || '').toLowerCase();
       const model = (c.querySelector('h3')?.textContent || '').toLowerCase();
       const matchesVendor = (activeFilter === 'all') || (v === activeFilter.toLowerCase());
       const matchesQuery  = !q || model.includes(q);
       c.style.display = (matchesVendor && matchesQuery) ? '' : 'none';
-    }});
-  }}
-  buttons.forEach(btn => {{
-    btn.addEventListener('click', () => {{
+    });
+  }
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
       activeFilter = btn.dataset.filter || 'all';
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       applyAll();
-    }});
-  }});
+    });
+  });
   search.addEventListener('input', applyAll);
-
-  // --- Report modal ---
-  const REPORT_MODE = {js_mode};  // 'github' or 'mailto'
-  const GH_REPO = {js_repo};      // 'owner/repo'
-  const REPORT_LABELS = {js_labels}; // array of labels (['report'])
-  const MAILTO = {js_mailto};     // fallback email
-
-  const modal = document.getElementById('report-modal');
-  const dlg = modal?.querySelector('.modal__dialog');
-  const typeEl = document.getElementById('report-type');
-  const vendorEl = document.getElementById('report-vendor');
-  const modelEl = document.getElementById('report-model');
-  const detailsEl = document.getElementById('report-details');
-  const cancelBtn = document.getElementById('report-cancel');
-  const form = document.getElementById('report-form');
-
-  function openReport(init) {{
-    typeEl.value = init?.type || 'missing';
-    vendorEl.value = init?.vendor || '';
-    modelEl.value = init?.model || '';
-    detailsEl.value = init?.details || '';
-    modal.classList.add('is-open');
-    detailsEl.focus();
-  }}
-  function closeReport(){{
-    modal.classList.remove('is-open');
-  }}
-
-  // Per-card Report buttons
-  document.querySelectorAll('.report-btn').forEach(btn => {{
-    btn.addEventListener('click', () => {{
-      openReport({{ type: 'problem', vendor: btn.dataset.vendor || '', model: btn.dataset.model || '' }});
-    }});
-  }});
-
-  // Global Report missing board
-  const globalBtn = document.getElementById('report-missing');
-  if (globalBtn) {{
-    globalBtn.addEventListener('click', () => openReport({{ type: 'missing' }}));
-  }}
-
-  // Close actions
-  cancelBtn?.addEventListener('click', closeReport);
-  modal?.addEventListener('click', (e) => {{
-    if (e.target === modal) closeReport();
-  }});
-  document.addEventListener('keydown', (e) => {{
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeReport();
-  }});
-
-  // Submit -> open GitHub Issue or mailto
-  form?.addEventListener('submit', (e) => {{
-    e.preventDefault();
-    const type = typeEl.value || 'other';
-    const vendor = vendorEl.value.trim() || '(unknown)';
-    const model = modelEl.value.trim() || '(missing board)';
-    const details = detailsEl.value.trim() || '(no details provided)';
-
-    const typeLabel = ({{missing:'Missing board', problem:'Not working properly', other:'Other'}})[type] || 'Other';
-    const title = `[Report] ${{vendor}} - ${{model}} - ${{typeLabel}}`;
-
-    const body = [
-      `**Type:** ${{typeLabel}}`,
-      `**Vendor:** ${{vendor}}`,
-      `**Model:** ${{model}}`,
-      '',
-      '### Details',
-      details,
-      '',
-      `Submitted from BIOS Tracker on {html.escape(now)}`
-    ].join('\\n');
-
-    let url = '';
-    if (REPORT_MODE === 'github' && GH_REPO) {{
-      const labels = (REPORT_LABELS || []).join(',');
-      const params = new URLSearchParams({{
-        title: title,
-        body: body
-      }});
-      if (labels) params.set('labels', labels);
-      url = `https://github.com/${{GH_REPO}}/issues/new?${{params.toString()}}`;
-    }} else {{
-      const to = MAILTO || '';
-      const params = new URLSearchParams({{
-        subject: title,
-        body: body
-      }});
-      url = `mailto:${{to}}?${{params.toString()}}`;
-    }}
-
-    window.open(url, '_blank', 'noopener');
-    closeReport();
-  }});
-}});
+});
 </script>
 """
 
-    # Modal markup
-    modal_html = """
-<div id="report-modal" class="modal" aria-hidden="true">
-  <div class="modal__backdrop"></div>
-  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="report-title">
-    <h2 id="report-title">Report an issue</h2>
-    <form id="report-form">
-      <label for="report-type">Type</label>
-      <select id="report-type">
-        <option value="missing">Missing board</option>
-        <option value="problem">Not working properly</option>
-        <option value="other">Other</option>
-      </select>
-      <div class="form-row">
-        <div>
-          <label for="report-vendor">Vendor</label>
-          <input id="report-vendor" type="text" placeholder="MSI / ASUS / GIGABYTE / ASRock" />
-        </div>
-        <div>
-          <label for="report-model">Model</label>
-          <input id="report-model" type="text" placeholder="e.g., PRO Z790-P WIFI" />
-        </div>
-      </div>
-      <label for="report-details">Details</label>
-      <textarea id="report-details" rows="6" placeholder="Describe what's missing or what's wrong…"></textarea>
-      <div class="modal__actions">
-        <button type="button" id="report-cancel" class="button button--secondary">Cancel</button>
-        <button type="submit" id="report-submit" class="button">Submit</button>
-      </div>
-    </form>
-  </div>
-</div>
-"""
-
-    # Assemble page
+    # Build page
     page_html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -559,18 +476,21 @@ document.addEventListener('DOMContentLoaded', () => {{
   <div class="container">
     {header_html}
     {statusbar_html}
+    {notes_html}
     <div class="grid">
       {cards_html}
     </div>
+    {comments_html}
   </div>
-  {filter_and_report_js}
-  {modal_html}
+  {filter_js}
 </body>
 </html>
 """
 
-    idx.write_text(page_html, encoding="utf-8")
-    data_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
+    # Write outputs
+    docs = Path("docs"); docs.mkdir(parents=True, exist_ok=True)
+    (docs / "index.html").write_text(page_html, encoding="utf-8")
+    (docs / "data.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
     print("Done. Wrote docs/index.html and docs/data.json")
 
 if __name__ == "__main__":

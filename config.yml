@@ -53,6 +53,6 @@ vendors:
     
 report:
   mode: github         # "github" or "mailto" (auto-chooses github if github_repo present)
-  github_repo: "https://github.com/zediac41/BIOS-UPDATE-TRACKER"
+  github_repo: "zediac41/BIOS-UPDATE-TRACKER"
   labels: ["report"]
   mailto: "erik.christensen85@yahoo.com"

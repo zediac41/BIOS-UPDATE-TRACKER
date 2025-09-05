@@ -130,6 +130,30 @@ a{color:#a3c5ff}
   }
 }
 
+/* --- comments: keep meta on one line & lighten background --- */
+.comment{
+  /* lighter card background to distinguish comments */
+  background: #16214a;        /* lighter than #0f1630 */
+  border-color: #5a64b5;      /* a bit brighter border */
+}
+
+/* one-line meta row with an ellipsizing middle cell */
+.comment .meta{
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* [Type] | Website | Timestamp */
+  align-items: center;
+  gap: 8px;
+
+  /* prevent wrapping */
+  white-space: nowrap;
+}
+
+/* the Website cell can grow but will truncate with ellipsis */
+.comment .meta > :nth-child(2){
+  min-width: 0;               /* allow shrinking in a grid/flex context */
+  overflow: hidden;
+  text-overflow: ellipsis;    /* add … if too long */
+}
 
 
 

@@ -39,20 +39,18 @@
 }
 .toolbar button.active{background:#1b2247;border-color:#5a64b5}
 
-/* NEW: statusbar line — keep timestamp at left, legend centered.
-   Use position:relative and absolutely center the legend, so it stays centered
-   regardless of the timestamp width. */
+/* NEW: statusbar line — keep timestamp at left, legend centered. */
 .statusbar{
   position:relative;
   min-height:28px;
   margin:10px 0 16px;
 }
 .statusbar .last-updated{
-  position:relative;               /* normal flow at left */
+  position:relative;
   font-size:12px; opacity:.85;
 }
 .statusbar .legend{
-  position:absolute;               /* center independently of left content */
+  position:absolute;
   left:50%; transform:translateX(-50%);
   display:flex; gap:12px; flex-wrap:wrap; align-items:center;
   font-size:12px; opacity:.9;
@@ -68,7 +66,7 @@
 .legend .swatch--fresh{border:2px solid #22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
 .legend .swatch--issue{border:2px solid #f97316; box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 
-/* small screens: stack nicely */
+/* small screens */
 @media (max-width: 700px){
   .statusbar{display:grid; row-gap:6px}
   .statusbar .legend{position:static; transform:none; justify-content:center}
@@ -128,7 +126,7 @@
 
     
 <div class="statusbar" role="note" aria-label="Legend and last updated">
-  <div class="last-updated">Last updated: 2025-09-04 20:43 CDT</div>
+  <div class="last-updated">Last updated: 2025-09-04 21:33 CDT</div>
   <div class="legend">
     <span class="legend-item"><span class="swatch swatch--fresh"></span>Updated within a week</span>
     <span class="legend-item"><span class="swatch swatch--issue"></span>Updating incorrectly</span>
@@ -413,6 +411,28 @@
 <div class="kv">  <span class="k">Previous</span>  <span class="v">7E25VAA1 (Beta)</span>  <span class="date">2025-05-16</span></div>
 </div>
     </div>
+    
+<section class="comments">
+  <h2>Comments & Requests</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zediac41/BIOS-UPDATE-TRACKER"
+          data-repo-id="R_kgDOPkR12A"
+          data-category="General"
+          data-category-id="DIC_kwDOPkR12M4Cu6A0"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+</section>
+
   </div>
   
 <script>

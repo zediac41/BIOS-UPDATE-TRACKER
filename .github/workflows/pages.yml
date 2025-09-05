@@ -1,0 +1,83 @@
+name: Build & Push /docs
+
+on:
+  push:
+    branches: [ main ]
+    # avoid loops when the workflow commits to docs/
+    paths-ignore:
+      - 'docs/**'
+  schedule:
+    - cron: '0 10 * * *'   # daily at ~10:00 UTC (~5am CT during DST)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+          # playwright not listed in requirements.txt, install it explicitly:
+          pip install playwright
+          python -m playwright install --with-deps chromium
+        # your requirements file includes requests, bs4, PyYAML, tzdata
+        # (playwright added above explicitly)
+        # ^ keep as-is or expand as needed
+
+      - name: Build site
+        shell: bash
+        run: |
+          set -e
+          mkdir -p docs
+          # If your CSS lives at assets/site.css or site.css, copy it into /docs:
+          mkdir -p docs/assets
+          if [ -f assets/site.css ]; then cp -f assets/site.css docs/assets/site.css; fi
+          if [ -f site.css ]; then cp -f site.css docs/assets/site.css; fi
+
+          # Run the generator (xvfb helps if any vendor needs headful Chromium)
+          xvfb-run -a python bios_tracker.py
+
+          # Ensure Pages doesn't run Jekyll transforms
+          touch docs/.nojekyll
+
+      - name: Commit & push /docs
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # For scheduled runs: always commit (even if no change) so there's a daily refresh.
+          # For push runs: commit only if docs changed.
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            git add -A docs
+            git commit --allow-empty -m "docs: daily refresh ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          else
+            git add -A docs
+            if git diff --quiet --cached -- docs ; then
+              echo "No changes in docs/ on push; skipping commit."
+            else
+              git commit -m "docs: refresh ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+              git push
+            fi
+          fi

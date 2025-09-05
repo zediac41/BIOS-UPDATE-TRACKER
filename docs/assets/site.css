@@ -130,28 +130,34 @@ a{color:#a3c5ff}
   }
 }
 
-/* comments: lighter background + one-line meta with ellipsis */
+/* --- Comments: one-line meta + lighter background --- */
 .comments .comment{
-  background: #16214a !important;    /* lighter than #0f1630 */
+  background: #1b2a63 !important;   /* lighter than #0f1630 */
   border-color: #5a64b5 !important;
 }
 
+/* Keep meta on a single line: [Type] | Website (ellipsized) | Timestamp */
 .comments .comment .meta{
-  /* override earlier flex and wrapping */
   display: grid !important;
-  grid-template-columns: auto 1fr auto !important; /* [Type] | Website | Time */
+  grid-template-columns: auto minmax(0,1fr) auto !important; /* middle can shrink */
   align-items: center !important;
   gap: 8px !important;
-  white-space: nowrap !important;
-  flex-wrap: nowrap !important; /* in case flex is still applied somewhere */
+  white-space: nowrap !important;     /* prevent wrapping */
+  flex-wrap: nowrap !important;       /* in case an older flex rule leaks through */
 }
 
-/* Website cell (middle) truncates with … */
+/* Middle cell (Website): allow shrinking + ellipsis */
 .comments .comment .meta > :nth-child(2){
-  min-width: 0 !important;
+  min-width: 0 !important;            /* critical for grid/flex truncation */
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
+
+/* (Optional) If your Website is a long URL and shows inside .body too, keep that readable */
+.comments .comment .body{
+  overflow-wrap: anywhere;            /* let long unbroken strings wrap in the body */
+}
+
 
 
 

@@ -188,7 +188,7 @@ def main():
     cards_html = "\n".join(build_card(r, issue_names=issue_names, today=today) for r in results)
 
     # Adding Comments
-    omments_html = _comments_block(cfg)
+    comments_html = _comments_block(cfg)
 
     # Write docs
     docs = Path("docs"); docs.mkdir(parents=True, exist_ok=True)

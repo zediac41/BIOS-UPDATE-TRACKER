@@ -13,6 +13,8 @@ h1{font-size:28px;margin:0 0 12px}.muted{opacity:.7}
 .kv .k::after { content:"\\00a0\\00a0"; }
 .kv{display:grid;grid-template-columns:120px 1fr;gap:4px;margin-top:8px}
 .error{color:#ffb4b4}
+.comments{margin:24px 0 40px}
+.comments h2{margin:0 0 8px; font-size:18px}
 footer{margin-top:24px;opacity:.7;font-size:12px}
 a{color:#a3c5ff}
 /* --- Page header & filter bar --- */

@@ -124,12 +124,12 @@
 
     
 <div class="statusbar" role="note" aria-label="Legend and last updated">
-  <div class="last-updated">Last updated: 2025-09-04 22:55 CDT</div>
+  <div class="last-updated">Last updated: 2025-09-04 23:54 CDT</div>
   <div class="legend">
     <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 7 days</span>
     <span class="legend-item"><span class="swatch swatch--issue"></span>Manually flagged</span>
   </div>
-  <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: 2025-09-04 22:55 CDT</div>
+  <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: 2025-09-04 23:54 CDT</div>
 </div>
 
     
@@ -414,7 +414,83 @@
     
 <section class="comments">
   <h2>Report a board</h2>
-  <p class="hint">Owner setup required: configure <code>comments_google</code> in <code>config.yml</code> (form_embed, sheet_id, gid), or edit the constants at the top of <code>bios_tracker.py</code>.</p>
+
+  <div class="comments__toolbar">
+    <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSeeu3yf7GYgZbPWPLX_iDzg_ulEfe7FdgiW66Co3QHUKaG7Cw/viewform" target="_blank" rel="noreferrer">
+      Add a problem / missing board
+    </a>
+  </div>
+
+  <h3 style="margin-top:14px">Recent submissions</h3>
+  <div id="comments-list" class="comment-list">Loading…</div>
+
+  <script>
+  (function() {
+    const LIST = document.getElementById('comments-list');
+    const GVIZ = 'https://docs.google.com/spreadsheets/d/1O6A9AI0wMu5vWrtKgvwFAxJFEGu6aznUal2khv_oukI/gviz/tq?tqx=out:json&gid=1502059609';
+
+    function esc(s) { return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[c] || c); }
+
+    function pick(obj, keys) {
+      const out = {}; keys.forEach(k => out[k] = obj[k] ?? ''); return out;
+    }
+
+    async function load() {
+      try {
+        const res = await fetch(GVIZ, {headers: {'Accept':'text/plain'}});
+        const text = await res.text();
+        // JSON is wrapped in google.visualization JS; strip to the curly braces.
+        const json = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}')+2));
+        const table = json.table || {};
+        const cols = (table.cols||[]).map(c => c.label || c.id);
+        const rows = (table.rows||[]).map(r => {
+          const o = {};
+          (r.c||[]).forEach((cell, i) => o[cols[i] || ('c'+i)] = cell ? cell.v : '');
+          return o;
+        });
+
+        // Expected headers now: "Timestamp", "Type", "Website", "Details"
+        const name = n => cols.find(h => (h||'').toLowerCase() === n) || '';
+        const H = {
+          ts:   name('timestamp') || cols[0] || 'Timestamp',
+          type: name('type')      || 'Type',
+          site: name('website')   || 'Website',
+          det:  name('details')   || 'Details'
+        };
+
+        const items = rows.map(r => pick(r, [H.ts, H.type, H.site, H.det]))
+                          .map(r => ({
+                            ts:   r[H.ts],
+                            type: r[H.type],
+                            website: r[H.site],
+                            details: r[H.det]
+                          }))
+                          .sort((a,b) => new Date(b.ts || 0) - new Date(a.ts || 0));
+
+        if (!items.length) {
+          LIST.innerHTML = '<div class="comment">No entries yet.</div>';
+          return;
+        }
+
+        LIST.innerHTML = items.map(it => `
+          <article class="comment">
+            <div class="meta">
+              <strong>[${esc(it.type)}]</strong>
+              <span>${esc(it.website)}</span>
+              <span>${esc(it.ts)}</span>
+            </div>
+            <div class="body">${esc(it.details)}</div>
+          </article>
+        `).join('');
+      } catch (e) {
+        LIST.innerHTML = 'Failed to load entries.';
+        console.error(e);
+      }
+    }
+
+    load();
+  })();
+  </script>
 </section>
 
   </div>

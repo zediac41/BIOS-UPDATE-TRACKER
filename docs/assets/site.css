@@ -132,8 +132,8 @@ a{color:#a3c5ff}
 
 /* --- Comments: one-line meta + lighter background --- */
 .comments .comment{
-  background: #1b2a63 !important;   /* lighter than #0f1630 */
-  border-color: #5a64b5 !important;
+  background: #757c96 !important;   /* lighter than #0f1630 */
+  border-color: #f3f6f4 !important;
 }
 
 /* Keep meta on a single line: [Type] | Website (ellipsized) | Timestamp */

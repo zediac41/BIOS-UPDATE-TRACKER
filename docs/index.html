@@ -39,63 +39,47 @@
 }
 .toolbar button.active{background:#1b2247;border-color:#5a64b5}
 
-/* NEW: statusbar line — keep timestamp at left, legend centered. */
+/* Status bar with hidden clone for true centering */
 .statusbar{
-  position:relative;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  width:100%;
   min-height:28px;
-  margin:10px 0 16px;
+  margin:10px 0 12px
 }
-.statusbar .last-updated{
-  position:relative;
-  font-size:12px; opacity:.85;
-}
+.statusbar .last-updated{grid-column:1;justify-self:start;align-self:center;font-size:12px;opacity:.85;line-height:1;margin:0}
 .statusbar .legend{
-  position:absolute;
-  left:50%; transform:translateX(-50%);
-  display:flex; gap:12px; flex-wrap:wrap; align-items:center;
-  font-size:12px; opacity:.9;
+  grid-column:2;justify-self:center;align-self:center;display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:12px;opacity:.9;margin:0;text-align:center
 }
-.legend .legend-item{
-  display:flex; align-items:center; gap:6px;
-  background:#0f1630; border:1px solid #39407a;
-  border-radius:999px; padding:4px 8px
-}
-.legend .swatch{
-  width:12px; height:12px; border-radius:2px; display:inline-block
-}
-.legend .swatch--fresh{border:2px solid #22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
-.legend .swatch--issue{border:2px solid #f97316; box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
+.statusbar .last-updated--clone{grid-column:3;visibility:hidden;pointer-events:none;line-height:1}
 
-/* small screens */
-@media (max-width: 700px){
-  .statusbar{display:grid; row-gap:6px}
-  .statusbar .legend{position:static; transform:none; justify-content:center}
-  .statusbar .last-updated{text-align:center}
-}
+/* legend pills & swatches */
+.legend .legend-item{display:flex;align-items:center;gap:6px;background:#0f1630;border:1px solid #39407a;border-radius:999px;padding:4px 8px;line-height:1}
+.legend .swatch{width:12px;height:12px;border-radius:2px;display:inline-block}
+.legend .swatch--fresh{border:2px solid #22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
+.legend .swatch--issue{border:2px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 
-.last-updated{opacity:.75}
+/* notes */
+.notice{margin:8px 0 16px;padding:10px 12px;background:#0f1630;border:1px solid #39407a;border-radius:10px;color:#e6e9f2;font-size:14px}
 
 /* cards */
-.card{padding:22px 22px; border:0}
-.card--fresh{
-  border:3px solid #22c55e;
-  box-shadow:0 0 0 2px rgba(34,197,94,.15);
-}
-.card--issue{
-  border:3px solid #f97316;
-  box-shadow:0 0 0 2px rgba(249,115,22,.18);
-}
+.card{padding:22px 22px;border:0}
+.card--fresh{border:3px solid #22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.15)}
+.card--issue{border:3px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18)}
 .card h3{font-size:16px;line-height:1.25;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
 .card h3 .badge{margin-left:auto}
+.card .meta{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.card .meta a{color:#9fb4ff}
 
-/* kv rows: version normal weight, date at right, two spaces after label */
+/* kv rows */
 .kv{display:flex;align-items:baseline;gap:8px}
 .kv .k{font-weight:600}
 .kv .k::after{content:"\00a0\00a0"} /* two NBSPs */
 .kv .v{font-weight:400}
 .kv .date{margin-left:auto;white-space:nowrap;opacity:.8}
 
-/* grid cap */
+/* grid: max four per row */
 .grid{display:grid;gap:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:1200px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -104,6 +88,20 @@
   .page-header{grid-template-columns:1fr;gap:10px}
   .toolbar{justify-content:flex-start}
 }
+
+/* comments (Google Form button + list) */
+.comments{margin:24px 0 40px}
+.comments h2{margin:0 0 8px;font-size:18px}
+.comments .hint{opacity:.85}
+.comments__toolbar{display:flex;gap:8px;justify-content:flex-end;margin:8px 0}
+.comment-list{display:grid;gap:10px;margin-top:8px}
+.comment{border:1px solid #39407a;border-radius:10px;padding:10px 12px;background:#0f1630}
+.comment .meta{display:flex;gap:10px;align-items:center;font-size:12px;opacity:.85;margin-bottom:6px;flex-wrap:wrap}
+.comment .body{white-space:pre-wrap}
+
+/* generic button look to match your UI */
+.button{background:#1b2247;border:1px solid #5a64b5;color:#e6e9f2;padding:8px 12px;border-radius:8px;font-size:13px;cursor:pointer;text-decoration:none;display:inline-block}
+.button:hover{filter:brightness(1.1)}
 </style>
 
 </head>
@@ -126,13 +124,15 @@
 
     
 <div class="statusbar" role="note" aria-label="Legend and last updated">
-  <div class="last-updated">Last updated: 2025-09-04 21:33 CDT</div>
+  <div class="last-updated">Last updated: 2025-09-04 22:55 CDT</div>
   <div class="legend">
-    <span class="legend-item"><span class="swatch swatch--fresh"></span>Updated within a week</span>
-    <span class="legend-item"><span class="swatch swatch--issue"></span>Updating incorrectly</span>
+    <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 7 days</span>
+    <span class="legend-item"><span class="swatch swatch--issue"></span>Manually flagged</span>
   </div>
+  <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: 2025-09-04 22:55 CDT</div>
 </div>
 
+    
     <div class="grid">
       <div class="card card--fresh" data-vendor="ASUS">
   <h3>ROG STRIX X870-A GAMING WIFI <span class="badge">ASUS</span></h3>
@@ -413,24 +413,8 @@
     </div>
     
 <section class="comments">
-  <h2>Comments & Requests</h2>
-  <script src="https://giscus.app/client.js"
-          data-repo="zediac41/BIOS-UPDATE-TRACKER"
-          data-repo-id="R_kgDOPkR12A"
-          data-category="General"
-          data-category-id="DIC_kwDOPkR12M4Cu6A0"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="preferred_color_scheme"
-          data-lang="en"
-          data-loading="lazy"
-          crossorigin="anonymous"
-          async>
-  </script>
-  <noscript>Please enable JavaScript to view the comments.</noscript>
+  <h2>Report a board</h2>
+  <p class="hint">Owner setup required: configure <code>comments_google</code> in <code>config.yml</code> (form_embed, sheet_id, gid), or edit the constants at the top of <code>bios_tracker.py</code>.</p>
 </section>
 
   </div>
@@ -441,7 +425,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.grid .card');
   const search = document.getElementById('search-input');
   let activeFilter = 'all';
-
   function applyAll(){
     const q = (search.value || '').trim().toLowerCase();
     cards.forEach(c => {
@@ -452,7 +435,6 @@ document.addEventListener('DOMContentLoaded', () => {
       c.style.display = (matchesVendor && matchesQuery) ? '' : 'none';
     });
   }
-
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       activeFilter = btn.dataset.filter || 'all';
@@ -461,7 +443,6 @@ document.addEventListener('DOMContentLoaded', () => {
       applyAll();
     });
   });
-
   search.addEventListener('input', applyAll);
 });
 </script>

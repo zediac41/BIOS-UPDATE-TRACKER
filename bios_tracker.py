@@ -259,20 +259,18 @@ def main():
 }
 .toolbar button.active{background:#1b2247;border-color:#5a64b5}
 
-/* NEW: statusbar line — keep timestamp at left, legend centered.
-   Use position:relative and absolutely center the legend, so it stays centered
-   regardless of the timestamp width. */
+/* NEW: statusbar line — keep timestamp at left, legend centered. */
 .statusbar{
   position:relative;
   min-height:28px;
   margin:10px 0 16px;
 }
 .statusbar .last-updated{
-  position:relative;               /* normal flow at left */
+  position:relative;
   font-size:12px; opacity:.85;
 }
 .statusbar .legend{
-  position:absolute;               /* center independently of left content */
+  position:absolute;
   left:50%; transform:translateX(-50%);
   display:flex; gap:12px; flex-wrap:wrap; align-items:center;
   font-size:12px; opacity:.9;
@@ -288,7 +286,7 @@ def main():
 .legend .swatch--fresh{border:2px solid #22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
 .legend .swatch--issue{border:2px solid #f97316; box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 
-/* small screens: stack nicely */
+/* small screens */
 @media (max-width: 700px){
   .statusbar{display:grid; row-gap:6px}
   .statusbar .legend{position:static; transform:none; justify-content:center}
@@ -363,7 +361,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 """
 
-page_html = f"""<!doctype html>
+    # Assemble page
+    page_html = f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -379,17 +378,18 @@ page_html = f"""<!doctype html>
     <div class="grid">
       {cards_html}
     </div>
-    {comments_html}  <!-- ← add this -->
+    {comments_html}
   </div>
   {filter_js}
 </body>
 </html>
 """
 
-
+    # Write outputs
     idx.write_text(page_html, encoding="utf-8")
     data_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
     print("Done. Wrote docs/index.html and docs/data.json")
 
 if __name__ == "__main__":
     main()
+

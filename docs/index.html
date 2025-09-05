@@ -124,12 +124,12 @@
 
     
 <div class="statusbar" role="note" aria-label="Legend and last updated">
-  <div class="last-updated">Last updated: 2025-09-05 00:13 CDT</div>
+  <div class="last-updated">Last updated: 2025-09-05 00:36 CDT</div>
   <div class="legend">
     <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 7 days</span>
     <span class="legend-item"><span class="swatch swatch--issue"></span>Manually flagged</span>
   </div>
-  <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: 2025-09-05 00:13 CDT</div>
+  <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: 2025-09-05 00:36 CDT</div>
 </div>
 
     
@@ -428,64 +428,111 @@
   (function() {
     const LIST = document.getElementById('comments-list');
     const GVIZ = 'https://docs.google.com/spreadsheets/d/1O6A9AI0wMu5vWrtKgvwFAxJFEGu6aznUal2khv_oukI/gviz/tq?tqx=out:json&gid=1502059609';
+    const CSV  = 'https://docs.google.com/spreadsheets/d/1O6A9AI0wMu5vWrtKgvwFAxJFEGu6aznUal2khv_oukI/export?format=csv&gid=1502059609';
 
     function esc(s) { return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[c] || c); }
-
-    function pick(obj, keys) {
-      const out = {}; keys.forEach(k => out[k] = obj[k] ?? ''); return out;
-    }
+    function pick(obj, keys) { const o={}; keys.forEach(k=>o[k]=obj[k]??''); return o; }
 
     async function load() {
       try {
-        const res = await fetch(GVIZ, {headers: {'Accept':'text/plain'}});
-        const text = await res.text();
-        // JSON is wrapped in google.visualization JS; strip to the curly braces.
-        const json = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}')+2));
-        const table = json.table || {};
-        const cols = (table.cols||[]).map(c => c.label || c.id);
-        const rows = (table.rows||[]).map(r => {
-          const o = {};
-          (r.c||[]).forEach((cell, i) => o[cols[i] || ('c'+i)] = cell ? cell.v : '');
-          return o;
-        });
-
-        // Expected headers now: "Timestamp", "Type", "Website", "Details"
-        const name = n => cols.find(h => (h||'').toLowerCase() === n) || '';
-        const H = {
-          ts:   name('timestamp') || cols[0] || 'Timestamp',
-          type: name('type')      || 'Type',
-          site: name('website')   || 'Website',
-          det:  name('details')   || 'Details'
-        };
-
-        const items = rows.map(r => pick(r, [H.ts, H.type, H.site, H.det]))
-                          .map(r => ({
-                            ts:   r[H.ts],
-                            type: r[H.type],
-                            website: r[H.site],
-                            details: r[H.det]
-                          }))
-                          .sort((a,b) => new Date(b.ts || 0) - new Date(a.ts || 0));
-
-        if (!items.length) {
-          LIST.innerHTML = '<div class="comment">No entries yet.</div>';
-          return;
+        const items = await fetchGviz();
+        render(items);
+      } catch (e1) {
+        console.warn('GViz failed, trying CSV…', e1);
+        try {
+          const items = await fetchCsv();
+          render(items);
+        } catch (e2) {
+          console.error('CSV failed', e2);
+          LIST.innerHTML = '<div class="comment">Failed to load entries.<br><small>'
+            + esc(String(e1).slice(0,200)) + '</small></div>';
         }
-
-        LIST.innerHTML = items.map(it => `
-          <article class="comment">
-            <div class="meta">
-              <strong>[${esc(it.type)}]</strong>
-              <span>${esc(it.website)}</span>
-              <span>${esc(it.ts)}</span>
-            </div>
-            <div class="body">${esc(it.details)}</div>
-          </article>
-        `).join('');
-      } catch (e) {
-        LIST.innerHTML = 'Failed to load entries.';
-        console.error(e);
       }
+    }
+
+    async function fetchGviz() {
+      const res = await fetch(GVIZ, { headers: { 'Accept':'text/plain' } });
+      if (!res.ok) throw new Error('GViz HTTP ' + res.status);
+      const text = await res.text();
+      const start = text.indexOf('{'); const end = text.lastIndexOf('}');
+      if (start < 0 || end < 0) throw new Error('GViz: unexpected response (no JSON found)');
+      const json = JSON.parse(text.slice(start, end+2));
+      const table = json.table || {}; const cols = (table.cols||[]).map(c => c.label || c.id);
+      const rows = (table.rows||[]).map(r => {
+        const o = {}; (r.c||[]).forEach((cell,i)=>o[cols[i] || ('c'+i)] = cell ? cell.v : ''); return o;
+      });
+      const name = n => cols.find(h => (h||'').toLowerCase() === n) || '';
+      const H = {
+        ts:   name('timestamp') || cols[0] || 'Timestamp',
+        type: name('type')      || 'Type',
+        site: name('website')   || 'Website',
+        det:  name('details')   || 'Details'
+      };
+      const items = rows.map(r => pick(r, [H.ts,H.type,H.site,H.det])).map(r => ({
+        ts: r[H.ts], type: r[H.type], website: r[H.site], details: r[H.det]
+      })).sort((a,b)=> new Date(b.ts||0)-new Date(a.ts||0));
+      return items;
+    }
+
+    async function fetchCsv() {
+      const res = await fetch(CSV);
+      if (!res.ok) throw new Error('CSV HTTP ' + res.status);
+      const text = await res.text();
+      const lines = text.split(/\r?\n/).filter(Boolean);
+      if (!lines.length) return [];
+      const headers = lines.shift().split(',').map(h => h.trim().replace(/^"|"$/g,''));
+      const idx = (want) => headers.findIndex(h => h.toLowerCase() === want);
+      const iTs = idx('timestamp'), iType = idx('type'), iSite = idx('website'), iDet = idx('details');
+
+      function parseRow(line){
+        const cells = parseCsvLine(line);
+        return {
+          ts:   cells[iTs]   ?? '',
+          type: cells[iType] ?? '',
+          website: cells[iSite] ?? '',
+          details: cells[iDet] ?? ''
+        };
+      }
+
+      const items = lines.map(parseRow)
+        .filter(x => x.ts || x.details || x.type || x.website)
+        .sort((a,b)=> new Date(b.ts||0)-new Date(a.ts||0));
+      return items;
+    }
+
+    function parseCsvLine(line){
+      const out = []; let cur = ''; let quote = false;
+      for (let i=0;i<line.length;i++) {
+        const ch = line[i];
+        if (quote) {
+          if (ch === '"') {
+            if (line[i+1] === '"') { cur += '"'; i++; } else { quote = false; }
+          } else cur += ch;
+        } else {
+          if (ch === ',') { out.push(cur); cur=''; }
+          else if (ch === '"') quote = true;
+          else cur += ch;
+        }
+      }
+      out.push(cur);
+      return out.map(s => s.trim());
+    }
+
+    function render(items){
+      if (!items.length) {
+        LIST.innerHTML = '<div class="comment">No entries yet.</div>';
+        return;
+      }
+      LIST.innerHTML = items.map(it => `
+        <article class="comment">
+          <div class="meta">
+            <strong>[${esc(it.type)}]</strong>
+            <span>${esc(it.website)}</span>
+            <span>${esc(it.ts)}<\/span>
+          <\/div>
+          <div class="body">${esc(it.details)}<\/div>
+        <\/article>
+      `).join('');
     }
 
     load();

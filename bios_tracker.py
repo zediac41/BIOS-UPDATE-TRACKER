@@ -119,90 +119,11 @@ def _sort_results_newest_first(results: list[dict]) -> list[dict]:
         return (0, -(d.toordinal())) if d else (1, 0)
     return sorted(results, key=key)
 
-def _escape_multiline(s: str) -> str:
-    if not s:
-        return ""
-    return "<br>".join(html.escape(s).splitlines())
-
-def _comments_block(cfg: dict) -> str:
-    """Return HTML for comments widget, based on config.yml -> comments."""
-    c = (cfg.get("comments") or {})
-    provider = (c.get("provider") or "").strip().lower()
-    if provider == "giscus":
-        repo = c.get("repo","")
-        repo_id = c.get("repo_id","")
-        category = c.get("category","")
-        category_id = c.get("category_id","")
-        mapping = c.get("mapping","pathname")
-        reactions = str(c.get("reactions_enabled","1"))
-        emit = str(c.get("emit_metadata","0"))
-        pos = c.get("input_position","top")
-        theme = c.get("theme","preferred_color_scheme")
-        lang = c.get("lang","en")
-        if not (repo and repo_id and category and category_id):
-            return """
-<section class="comments">
-  <h2>Comments & Requests</h2>
-  <p class="hint">Owner setup needed: configure <code>comments</code> in <code>config.yml</code> for giscus (repo_id & category_id). See <a href="https://giscus.app" target="_blank" rel="noreferrer">giscus.app</a>.</p>
-</section>
-"""
-        # giscus widget
-        return f"""
-<section class="comments">
-  <h2>Comments & Requests</h2>
-  <script src="https://giscus.app/client.js"
-          data-repo="{html.escape(repo)}"
-          data-repo-id="{html.escape(repo_id)}"
-          data-category="{html.escape(category)}"
-          data-category-id="{html.escape(category_id)}"
-          data-mapping="{html.escape(mapping)}"
-          data-strict="0"
-          data-reactions-enabled="{html.escape(reactions)}"
-          data-emit-metadata="{html.escape(emit)}"
-          data-input-position="{html.escape(pos)}"
-          data-theme="{html.escape(theme)}"
-          data-lang="{html.escape(lang)}"
-          crossorigin="anonymous"
-          async>
-  </script>
-  <noscript>Please enable JavaScript to view the comments.</noscript>
-</section>
-"""
-    elif provider == "utterances":
-        repo = c.get("repo","")
-        issue_term = c.get("issue_term","pathname")
-        label = c.get("label","comments")
-        theme = c.get("theme","github-dark")
-        if not repo:
-            return """
-<section class="comments">
-  <h2>Comments & Requests</h2>
-  <p class="hint">Owner setup needed: configure <code>comments</code> in <code>config.yml</code> for utterances (repo). See <a href="https://utteranc.es" target="_blank" rel="noreferrer">utteranc.es</a>.</p>
-</section>
-"""
-        return f"""
-<section class="comments">
-  <h2>Comments & Requests</h2>
-  <script src="https://utteranc.es/client.js"
-          repo="{html.escape(repo)}"
-          issue-term="{html.escape(issue_term)}"
-          label="{html.escape(label)}"
-          theme="{html.escape(theme)}"
-          crossorigin="anonymous"
-          async>
-  </script>
-  <noscript>Please enable JavaScript to view the comments.</noscript>
-</section>
-"""
-    else:
-        # Comments disabled or not configured
-        return ""
-
 def main():
     cfg = load_config()
     vendors = (cfg.get("vendors") or {})
 
-    # Manual issue flags (optional)
+    # Collect manual issue flags
     issue_names: set[str] = set(map(str, (cfg.get("issues") or [])))
     for vendor_key, boards in vendors.items():
         for b in boards or []:
@@ -210,9 +131,6 @@ def main():
                 name = str(b.get("name") or b.get("model") or "").strip()
                 if name:
                     issue_names.add(name)
-
-    # Optional notes
-    notes_text = (cfg.get("notes") or "").strip()
 
     results = []
 
@@ -267,31 +185,18 @@ def main():
 </header>
 """
 
-    # Status bar (timestamp left, legend centered with hidden clone on right)
+    # NEW: status bar — left aligned timestamp, legend centered on the same line
     statusbar_html = f"""
 <div class="statusbar" role="note" aria-label="Legend and last updated">
   <div class="last-updated">Last updated: {html.escape(now)}</div>
   <div class="legend">
-    <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 7 days</span>
-    <span class="legend-item"><span class="swatch swatch--issue"></span>Manually flagged</span>
+    <span class="legend-item"><span class="swatch swatch--fresh"></span>Updated within a week</span>
+    <span class="legend-item"><span class="swatch swatch--issue"></span>Updating incorrectly</span>
   </div>
-  <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: {html.escape(now)}</div>
 </div>
 """
 
-    # Optional notes block
-    notes_html = ""
-    if notes_text:
-        notes_html = f"""
-<div class="notice" role="note" aria-label="Site notes">
-  <strong>Notes:</strong> {_escape_multiline(notes_text)}
-</div>
-"""
-
-    # Comments widget block (giscus / utterances / or empty)
-    comments_html = _comments_block(cfg)
-
-    # Styles (statusbar alignment, cards, comments, etc.)
+    # Styles (includes left-fixed timestamp + centered legend)
     inline_css = """
 <style>
 /* wider page */
@@ -326,50 +231,28 @@ def main():
 }
 .toolbar button.active{background:#1b2247;border-color:#5a64b5}
 
-/* Status bar centered legend via hidden clone */
+/* NEW: statusbar line — keep timestamp at left, legend centered.
+   Use position:relative and absolutely center the legend, so it stays centered
+   regardless of the timestamp width. */
 .statusbar{
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  width: 100%;
-  min-height: 28px;
-  margin: 10px 0 12px;
-  box-sizing: border-box;
+  position:relative;
+  min-height:28px;
+  margin:10px 0 16px;
 }
 .statusbar .last-updated{
-  grid-column: 1;
-  justify-self: start;
-  align-self: center;
-  font-size: 12px;
-  opacity: .85;
-  line-height: 1;
-  margin: 0;
+  position:relative;               /* normal flow at left */
+  font-size:12px; opacity:.85;
 }
 .statusbar .legend{
-  grid-column: 2;
-  justify-self: center;
-  align-self: center;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: 12px;
-  opacity: .9;
-  margin: 0;
-  text-align: center;
+  position:absolute;               /* center independently of left content */
+  left:50%; transform:translateX(-50%);
+  display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+  font-size:12px; opacity:.9;
 }
-.statusbar .last-updated--clone{
-  grid-column: 3;
-  visibility: hidden;
-  pointer-events: none;
-  line-height: 1;
-}
-
-/* legend pills */
 .legend .legend-item{
   display:flex; align-items:center; gap:6px;
   background:#0f1630; border:1px solid #39407a;
-  border-radius:999px; padding:4px 8px; line-height:1
+  border-radius:999px; padding:4px 8px
 }
 .legend .swatch{
   width:12px; height:12px; border-radius:2px; display:inline-block
@@ -377,16 +260,14 @@ def main():
 .legend .swatch--fresh{border:2px solid #22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
 .legend .swatch--issue{border:2px solid #f97316; box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 
-/* notice block (optional notes) */
-.notice{
-  margin: 8px 0 16px;
-  padding: 10px 12px;
-  background: #0f1630;
-  border: 1px solid #39407a;
-  border-radius: 10px;
-  color: #e6e9f2;
-  font-size: 14px;
+/* small screens: stack nicely */
+@media (max-width: 700px){
+  .statusbar{display:grid; row-gap:6px}
+  .statusbar .legend{position:static; transform:none; justify-content:center}
+  .statusbar .last-updated{text-align:center}
 }
+
+.last-updated{opacity:.75}
 
 /* cards */
 .card{padding:22px 22px; border:0}
@@ -401,16 +282,10 @@ def main():
 .card h3{font-size:16px;line-height:1.25;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
 .card h3 .badge{margin-left:auto}
 
-/* meta row */
-.card .meta{
-  display:flex; align-items:center; gap:10px; margin:0 0 10px
-}
-.card .meta a{color:#9fb4ff}
-
-/* kv rows */
+/* kv rows: version normal weight, date at right, two spaces after label */
 .kv{display:flex;align-items:baseline;gap:8px}
 .kv .k{font-weight:600}
-.kv .k::after{content:"\\00a0\\00a0"}
+.kv .k::after{content:"\\00a0\\00a0"} /* two NBSPs */
 .kv .v{font-weight:400}
 .kv .date{margin-left:auto;white-space:nowrap;opacity:.8}
 
@@ -423,15 +298,10 @@ def main():
   .page-header{grid-template-columns:1fr;gap:10px}
   .toolbar{justify-content:flex-start}
 }
-
-/* comments block spacing */
-.comments{margin:24px 0 40px}
-.comments h2{margin:0 0 8px; font-size:18px}
-.comments .hint{opacity:.8}
 </style>
 """
 
-    # Filtering/search script
+    # Combined vendor+search filtering
     filter_js = """
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -439,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.grid .card');
   const search = document.getElementById('search-input');
   let activeFilter = 'all';
+
   function applyAll(){
     const q = (search.value || '').trim().toLowerCase();
     cards.forEach(c => {
@@ -449,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
       c.style.display = (matchesVendor && matchesQuery) ? '' : 'none';
     });
   }
+
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       activeFilter = btn.dataset.filter || 'all';
@@ -457,12 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
       applyAll();
     });
   });
+
   search.addEventListener('input', applyAll);
 });
 </script>
 """
 
-    # Build page
     page_html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -476,21 +348,17 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="container">
     {header_html}
     {statusbar_html}
-    {notes_html}
     <div class="grid">
       {cards_html}
     </div>
-    {comments_html}
   </div>
   {filter_js}
 </body>
 </html>
 """
 
-    # Write outputs
-    docs = Path("docs"); docs.mkdir(parents=True, exist_ok=True)
-    (docs / "index.html").write_text(page_html, encoding="utf-8")
-    (docs / "data.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
+    idx.write_text(page_html, encoding="utf-8")
+    data_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
     print("Done. Wrote docs/index.html and docs/data.json")
 
 if __name__ == "__main__":

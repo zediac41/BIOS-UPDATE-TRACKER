@@ -177,7 +177,7 @@ def _google_comments_block(cfg: dict) -> str:
   <h2>Report a board</h2>
 
   <div class="comments__toolbar">
-    <a class="button button--danger" href="{esc(form_plain)}" target="_blank" rel="noreferrer"
+    <a class="button" href="{esc(form_plain)}" target="_blank" rel="noreferrer">
       Report Problem
     </a>
   </div>

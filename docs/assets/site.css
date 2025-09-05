@@ -130,29 +130,27 @@ a{color:#a3c5ff}
   }
 }
 
-/* --- comments: keep meta on one line & lighten background --- */
-.comment{
-  /* lighter card background to distinguish comments */
-  background: #16214a;        /* lighter than #0f1630 */
-  border-color: #5a64b5;      /* a bit brighter border */
+/* comments: lighter background + one-line meta with ellipsis */
+.comments .comment{
+  background: #16214a !important;    /* lighter than #0f1630 */
+  border-color: #5a64b5 !important;
 }
 
-/* one-line meta row with an ellipsizing middle cell */
-.comment .meta{
-  display: grid;
-  grid-template-columns: auto 1fr auto; /* [Type] | Website | Timestamp */
-  align-items: center;
-  gap: 8px;
-
-  /* prevent wrapping */
-  white-space: nowrap;
+.comments .comment .meta{
+  /* override earlier flex and wrapping */
+  display: grid !important;
+  grid-template-columns: auto 1fr auto !important; /* [Type] | Website | Time */
+  align-items: center !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+  flex-wrap: nowrap !important; /* in case flex is still applied somewhere */
 }
 
-/* the Website cell can grow but will truncate with ellipsis */
-.comment .meta > :nth-child(2){
-  min-width: 0;               /* allow shrinking in a grid/flex context */
-  overflow: hidden;
-  text-overflow: ellipsis;    /* add … if too long */
+/* Website cell (middle) truncates with … */
+.comments .comment .meta > :nth-child(2){
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 

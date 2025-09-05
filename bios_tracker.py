@@ -547,8 +547,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <meta charset="utf-8">
   <title>BIOS Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="assets/site.css">
   {inline_css}
+  <link rel="stylesheet" href="assets/site.css?v=3">
 </head>
 <body>
   <div class="container">

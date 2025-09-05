@@ -178,7 +178,7 @@ def _google_comments_block(cfg: dict) -> str:
 
   <div class="comments__toolbar">
     <a class="button" href="{esc(form_plain)}" target="_blank" rel="noreferrer">
-      Add a problem / missing board
+      Report Problem
     </a>
   </div>
 

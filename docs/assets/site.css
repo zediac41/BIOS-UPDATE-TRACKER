@@ -15,6 +15,10 @@ h1{font-size:28px;margin:0 0 12px}.muted{opacity:.7}
 .error{color:#ffb4b4}
 .comments{margin:24px 0 40px}
 .comments h2{margin:0 0 8px; font-size:18px}
+.comment-list{display:grid;gap:10px;margin-top:8px}
+.comment{border:1px solid #39407a;border-radius:10px;padding:10px 12px;background:#0f1630}
+.comment .meta{display:flex;gap:10px;align-items:center;font-size:12px;opacity:.85;margin-bottom:6px;flex-wrap:wrap}
+.comment .body{white-space:pre-wrap}
 footer{margin-top:24px;opacity:.7;font-size:12px}
 a{color:#a3c5ff}
 /* --- Page header & filter bar --- */

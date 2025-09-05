@@ -1,6 +1,22 @@
 [
   {
     "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1701",
+        "date": "2025-09-03"
+      },
+      {
+        "version": "1605",
+        "date": "2025-07-22"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX X870E-E GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -475,22 +491,6 @@
       {
         "version": "1066",
         "date": "2025-06-18"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1605",
-        "date": "2025-07-22"
-      },
-      {
-        "version": "1512",
-        "date": "2025-06-13"
       }
     ],
     "ok": true

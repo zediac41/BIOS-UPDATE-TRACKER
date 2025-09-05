@@ -158,6 +158,17 @@ a{color:#a3c5ff}
   overflow-wrap: anywhere;            /* let long unbroken strings wrap in the body */
 }
 
+/* Red "Report" button */
+.button.button--danger{
+  background: #dc2626 !important;   /* red */
+  border-color: #ef4444 !important; /* lighter red border */
+  color: #ffffff !important;
+}
+.button.button--danger:hover{
+  filter: brightness(0.95) !important;
+}
+
+
 
 
 

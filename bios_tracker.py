@@ -155,21 +155,22 @@ def _get_google_comments_cfg(cfg: dict):
     return form, sid, gid
 
 def _google_comments_block(cfg: dict) -> str:
-    """One button opens the form; we render recent submissions from the Sheet."""
+    """One button opens the form; render recent submissions (Type, Website, Details) with robust fetch + errors."""
     form_embed, sheet_id, gid = _get_google_comments_cfg(cfg)
 
-    # If still placeholders, show a setup note (so the page doesn't break).
+    # If placeholders still present, show setup banner
     if "REPLACE_" in form_embed or "REPLACE_" in sheet_id or "REPLACE_" in gid:
         return """
 <section class="comments">
   <h2>Report a board</h2>
-  <p class="hint">Owner setup required: configure <code>comments_google</code> in <code>config.yml</code> (form_embed, sheet_id, gid), or edit the constants at the top of <code>bios_tracker.py</code>.</p>
+  <p class="hint">Owner setup required: configure the 3 constants at the top of <code>bios_tracker.py</code>: <code>DEFAULT_FORM_EMBED</code>, <code>DEFAULT_SHEET_ID</code>, <code>DEFAULT_GID</code>.</p>
 </section>
 """
 
     from html import escape as esc
     form_plain = form_embed.replace("/viewform?embedded=true", "/viewform")
     gviz = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:json&gid={gid}"
+    csv  = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
 
     return f"""
 <section class="comments">
@@ -188,64 +189,111 @@ def _google_comments_block(cfg: dict) -> str:
   (function() {{
     const LIST = document.getElementById('comments-list');
     const GVIZ = {gviz!r};
+    const CSV  = {csv!r};
 
     function esc(s) {{ return String(s||'').replace(/[&<>"]/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;'}})[c] || c); }}
-
-    function pick(obj, keys) {{
-      const out = {{}}; keys.forEach(k => out[k] = obj[k] ?? ''); return out;
-    }}
+    function pick(obj, keys) {{ const o={{}}; keys.forEach(k=>o[k]=obj[k]??''); return o; }}
 
     async function load() {{
       try {{
-        const res = await fetch(GVIZ, {{headers: {{'Accept':'text/plain'}}}});
-        const text = await res.text();
-        // JSON is wrapped in google.visualization JS; strip to the curly braces.
-        const json = JSON.parse(text.slice(text.indexOf('{{'), text.lastIndexOf('}}')+2));
-        const table = json.table || {{}};
-        const cols = (table.cols||[]).map(c => c.label || c.id);
-        const rows = (table.rows||[]).map(r => {{
-          const o = {{}};
-          (r.c||[]).forEach((cell, i) => o[cols[i] || ('c'+i)] = cell ? cell.v : '');
-          return o;
-        }});
-
-        // Expected headers now: "Timestamp", "Type", "Website", "Details"
-        const name = n => cols.find(h => (h||'').toLowerCase() === n) || '';
-        const H = {{
-          ts:   name('timestamp') || cols[0] || 'Timestamp',
-          type: name('type')      || 'Type',
-          site: name('website')   || 'Website',
-          det:  name('details')   || 'Details'
-        }};
-
-        const items = rows.map(r => pick(r, [H.ts, H.type, H.site, H.det]))
-                          .map(r => ({{
-                            ts:   r[H.ts],
-                            type: r[H.type],
-                            website: r[H.site],
-                            details: r[H.det]
-                          }}))
-                          .sort((a,b) => new Date(b.ts || 0) - new Date(a.ts || 0));
-
-        if (!items.length) {{
-          LIST.innerHTML = '<div class="comment">No entries yet.</div>';
-          return;
+        const items = await fetchGviz();
+        render(items);
+      }} catch (e1) {{
+        console.warn('GViz failed, trying CSV…', e1);
+        try {{
+          const items = await fetchCsv();
+          render(items);
+        }} catch (e2) {{
+          console.error('CSV failed', e2);
+          LIST.innerHTML = '<div class="comment">Failed to load entries.<br><small>'
+            + esc(String(e1).slice(0,200)) + '</small></div>';
         }}
-
-        LIST.innerHTML = items.map(it => `
-          <article class="comment">
-            <div class="meta">
-              <strong>[${{esc(it.type)}}]</strong>
-              <span>${{esc(it.website)}}</span>
-              <span>${{esc(it.ts)}}</span>
-            </div>
-            <div class="body">${{esc(it.details)}}</div>
-          </article>
-        `).join('');
-      }} catch (e) {{
-        LIST.innerHTML = 'Failed to load entries.';
-        console.error(e);
       }}
+    }}
+
+    async function fetchGviz() {{
+      const res = await fetch(GVIZ, {{ headers: {{ 'Accept':'text/plain' }} }});
+      if (!res.ok) throw new Error('GViz HTTP ' + res.status);
+      const text = await res.text();
+      const start = text.indexOf('{{'); const end = text.lastIndexOf('}}');
+      if (start < 0 || end < 0) throw new Error('GViz: unexpected response (no JSON found)');
+      const json = JSON.parse(text.slice(start, end+2));
+      const table = json.table || {{}}; const cols = (table.cols||[]).map(c => c.label || c.id);
+      const rows = (table.rows||[]).map(r => {{
+        const o = {{}}; (r.c||[]).forEach((cell,i)=>o[cols[i] || ('c'+i)] = cell ? cell.v : ''); return o;
+      }});
+      const name = n => cols.find(h => (h||'').toLowerCase() === n) || '';
+      const H = {{
+        ts:   name('timestamp') || cols[0] || 'Timestamp',
+        type: name('type')      || 'Type',
+        site: name('website')   || 'Website',
+        det:  name('details')   || 'Details'
+      }};
+      const items = rows.map(r => pick(r, [H.ts,H.type,H.site,H.det])).map(r => ({{
+        ts: r[H.ts], type: r[H.type], website: r[H.site], details: r[H.det]
+      }})).sort((a,b)=> new Date(b.ts||0)-new Date(a.ts||0));
+      return items;
+    }}
+
+    async function fetchCsv() {{
+      const res = await fetch(CSV);
+      if (!res.ok) throw new Error('CSV HTTP ' + res.status);
+      const text = await res.text();
+      const lines = text.split(/\\r?\\n/).filter(Boolean);
+      if (!lines.length) return [];
+      const headers = lines.shift().split(',').map(h => h.trim().replace(/^"|"$/g,''));
+      const idx = (want) => headers.findIndex(h => h.toLowerCase() === want);
+      const iTs = idx('timestamp'), iType = idx('type'), iSite = idx('website'), iDet = idx('details');
+
+      function parseRow(line){{
+        const cells = parseCsvLine(line);
+        return {{
+          ts:   cells[iTs]   ?? '',
+          type: cells[iType] ?? '',
+          website: cells[iSite] ?? '',
+          details: cells[iDet] ?? ''
+        }};
+      }}
+
+      const items = lines.map(parseRow)
+        .filter(x => x.ts || x.details || x.type || x.website)
+        .sort((a,b)=> new Date(b.ts||0)-new Date(a.ts||0));
+      return items;
+    }}
+
+    function parseCsvLine(line){{
+      const out = []; let cur = ''; let quote = false;
+      for (let i=0;i<line.length;i++) {{
+        const ch = line[i];
+        if (quote) {{
+          if (ch === '"') {{
+            if (line[i+1] === '"') {{ cur += '"'; i++; }} else {{ quote = false; }}
+          }} else cur += ch;
+        }} else {{
+          if (ch === ',') {{ out.push(cur); cur=''; }}
+          else if (ch === '"') quote = true;
+          else cur += ch;
+        }}
+      }}
+      out.push(cur);
+      return out.map(s => s.trim());
+    }}
+
+    function render(items){{
+      if (!items.length) {{
+        LIST.innerHTML = '<div class="comment">No entries yet.</div>';
+        return;
+      }}
+      LIST.innerHTML = items.map(it => `
+        <article class="comment">
+          <div class="meta">
+            <strong>[${{esc(it.type)}}]</strong>
+            <span>${{esc(it.website)}}</span>
+            <span>${{esc(it.ts)}}<\/span>
+          <\/div>
+          <div class="body">${{esc(it.details)}}<\/div>
+        <\/article>
+      `).join('');
     }}
 
     load();
@@ -253,6 +301,7 @@ def _google_comments_block(cfg: dict) -> str:
   </script>
 </section>
 """
+
 
 # -------------------------------------------------------------------
 # Main

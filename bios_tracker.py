@@ -11,17 +11,9 @@ import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-# -------------------------------------------------------------------
-# Google Form / Sheet (comments) — set these 3 values.
-# You can also set them in config.yml under:
-# comments_google:
-#   form_embed: "https://docs.google.com/forms/d/e/.../viewform?embedded=true"
-#   sheet_id:   "1O6A9AI0wMu5vWrtKgvwFAxJFEGu6aznUal2khv_oukI"
-#   gid:        "1502059609"
-# -------------------------------------------------------------------
 DEFAULT_FORM_EMBED = "https://docs.google.com/forms/d/e/1FAIpQLSeeu3yf7GYgZbPWPLX_iDzg_ulEfe7FdgiW66Co3QHUKaG7Cw/viewform?embedded=true"
-DEFAULT_SHEET_ID   = "REPLACE_SHEET_ID"
-DEFAULT_GID        = "REPLACE_GID"
+DEFAULT_SHEET_ID   = "1O6A9AI0wMu5vWrtKgvwFAxJFEGu6aznUal2khv_oukI"
+DEFAULT_GID        = "1502059609"
 
 # -------------------------------------------------------------------
 # Vendor scrapers (your existing modules)

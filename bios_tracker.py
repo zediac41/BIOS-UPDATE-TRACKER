@@ -119,6 +119,31 @@ def _sort_results_newest_first(results: list[dict]) -> list[dict]:
         return (0, -(d.toordinal())) if d else (1, 0)
     return sorted(results, key=key)
 
+def _comments_block(cfg: dict | None = None) -> str:
+    """Embed giscus comments (fixed settings)."""
+    return """
+<section class="comments">
+  <h2>Comments & Requests</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zediac41/BIOS-UPDATE-TRACKER"
+          data-repo-id="R_kgDOPkR12A"
+          data-category="General"
+          data-category-id="DIC_kwDOPkR12M4Cu6A0"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+</section>
+"""
+
 def main():
     cfg = load_config()
     vendors = (cfg.get("vendors") or {})
@@ -161,6 +186,9 @@ def main():
     # Build cards HTML (with highlight logic)
     today = datetime.datetime.now(ZoneInfo("America/Chicago")).date()
     cards_html = "\n".join(build_card(r, issue_names=issue_names, today=today) for r in results)
+
+    # Adding Comments
+    omments_html = _comments_block(cfg)
 
     # Write docs
     docs = Path("docs"); docs.mkdir(parents=True, exist_ok=True)
@@ -335,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 """
 
-    page_html = f"""<!doctype html>
+page_html = f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -351,11 +379,13 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="grid">
       {cards_html}
     </div>
+    {comments_html}  <!-- ← add this -->
   </div>
   {filter_js}
 </body>
 </html>
 """
+
 
     idx.write_text(page_html, encoding="utf-8")
     data_path.write_text(json.dumps(results, indent=2), encoding="utf-8")

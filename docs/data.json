@@ -34,18 +34,19 @@
   {
     "vendor": "MSI",
     "model": "MEG X870E GODLIKE",
-    "url": "https://us.msi.com/Motherboard/MEG-X870E-GODLIKE/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E48V1A50",
+        "version": "7E48v1A50",
         "date": "2025-08-29"
       },
       {
-        "version": "7E48V1A43",
+        "version": "7E48v1A43",
         "date": "2025-07-18"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "GIGABYTE",
@@ -128,6 +129,40 @@
     "ok": true
   },
   {
+    "vendor": "MSI",
+    "model": "PRO Z790-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E06vAI",
+        "date": "2025-08-18"
+      },
+      {
+        "version": "7E06vAH",
+        "date": "2025-06-25"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
+    "model": "MAG Z790 TOMAHAWK MAX WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E25vAA",
+        "date": "2025-08-15"
+      },
+      {
+        "version": "7E25vAA1",
+        "date": "2025-05-16"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING A520M-PLUS",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS",
@@ -162,50 +197,53 @@
   {
     "vendor": "MSI",
     "model": "MAG B650 TOMAHAWK WIFI",
-    "url": "https://us.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7D75V1P3 (Beta version)",
+        "version": "7D75v1P3",
         "date": "2025-08-12"
       },
       {
-        "version": "7D75V1O (Beta version)",
-        "date": "2025-08-12"
+        "version": "7D75v1O",
+        "date": "2025-07-04"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "MSI",
     "model": "PRO X870-P WIFI",
-    "url": "https://us.msi.com/Motherboard/PRO-X870-P-WIFI/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E47V1A76",
+        "version": "7E47v1A76",
         "date": "2025-08-12"
       },
       {
-        "version": "7E47V1A74",
+        "version": "7E47v1A74",
         "date": "2025-07-16"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "MSI",
     "model": "B760M PROJECT ZERO",
-    "url": "https://us.msi.com/Motherboard/B760M-PROJECT-ZERO/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E14V18",
+        "version": "7E14v18",
         "date": "2025-08-12"
       },
       {
-        "version": "7E14V181 (Beta version)",
+        "version": "7E14v181",
         "date": "2025-05-13"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "GIGABYTE",
@@ -226,50 +264,53 @@
   {
     "vendor": "MSI",
     "model": "B650M PROJECT ZERO",
-    "url": "https://us.msi.com/Motherboard/B650M-PROJECT-ZERO/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E09V1H2 (Beta version)",
+        "version": "7E09v1H2",
         "date": "2025-08-08"
       },
       {
-        "version": "7E09V1H1 (Beta version)",
+        "version": "7E09v1H1",
         "date": "2025-07-22"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "MSI",
     "model": "B850 GAMING PLUS WIFI",
-    "url": "https://us.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E56V1A84",
+        "version": "7E56v1A84",
         "date": "2025-08-07"
       },
       {
-        "version": "7E56V1A82",
+        "version": "7E56v1A82",
         "date": "2025-07-24"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "MSI",
     "model": "MAG X870 TOMAHAWK WIFI",
-    "url": "https://us.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E51V1A67",
+        "version": "7E51v1A67",
         "date": "2025-08-06"
       },
       {
-        "version": "7E51V1A65",
+        "version": "7E51v1A65",
         "date": "2025-07-18"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "ASUS",
@@ -322,18 +363,19 @@
   {
     "vendor": "MSI",
     "model": "MAG Z890 TOMAHAWK WIFI",
-    "url": "https://us.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E32V1A90",
+        "version": "7E32v1A90",
         "date": "2025-08-04"
       },
       {
-        "version": "7E32V1A80",
+        "version": "7E32v1A80",
         "date": "2025-06-12"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "ASUS",
@@ -530,50 +572,53 @@
   {
     "vendor": "MSI",
     "model": "PRO Z890-S WIFI PZ",
-    "url": "https://us.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E58V1A50",
+        "version": "7E58v1A50",
         "date": "2025-07-18"
       },
       {
-        "version": "7E58V1A40",
+        "version": "7E58v1A40",
         "date": "2025-05-07"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "MSI",
     "model": "MEG Z890 ACE",
-    "url": "https://us.msi.com/Motherboard/MEG-Z890-ACE/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/MEG-Z890-ACE/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E22V1A70",
+        "version": "7E22v1A70",
         "date": "2025-07-16"
       },
       {
-        "version": "7E22V1A60",
+        "version": "7E22v1A60",
         "date": "2025-06-05"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "MSI",
     "model": "PRO Z890-P WIFI",
-    "url": "https://us.msi.com/Motherboard/PRO-Z890-P-WIFI/support#down-bios",
+    "url": "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios",
+    "ok": true,
     "versions": [
       {
-        "version": "7E34V1AA0",
+        "version": "7E34v1AA0",
         "date": "2025-07-11"
       },
       {
-        "version": "7E34V1A90",
+        "version": "7E34v1A90",
         "date": "2025-05-19"
       }
     ],
-    "ok": true
+    "error": null
   },
   {
     "vendor": "GIGABYTE",
@@ -656,22 +701,6 @@
     "ok": true
   },
   {
-    "vendor": "MSI",
-    "model": "PRO Z790-P WIFI",
-    "url": "https://us.msi.com/Motherboard/PRO-Z790-P-WIFI/support#down-bios",
-    "versions": [
-      {
-        "version": "7E06VAH1 (Beta version)",
-        "date": "2025-06-25"
-      },
-      {
-        "version": "7E06VAF1 (Beta version)",
-        "date": "2024-11-05"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "ASRock",
     "model": "B660M-HDV",
     "url": "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS",
@@ -715,22 +744,6 @@
       {
         "version": "F8A",
         "date": "2025-08-29"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "MAG Z790 TOMAHAWK MAX WIFI",
-    "url": "https://us.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#down-bios",
-    "versions": [
-      {
-        "version": "7E25VA9",
-        "date": "2025-05-16"
-      },
-      {
-        "version": "7E25VAA1 (Beta version)",
-        "date": "2025-05-16"
       }
     ],
     "ok": true

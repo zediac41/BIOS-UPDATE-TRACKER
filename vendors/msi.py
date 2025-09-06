@@ -1,311 +1,280 @@
-# vendors/msi.py
-# Playwright MSI BIOS scraper (latest TWO BIOS versions).
-# - Grabs dates from a small local window around each BIOS tag to avoid cross-talk
-# - Skips windows that smell like drivers/utilities/Intel ME
-# - Sorts newest by date; if date missing, uses a version-aware key that considers suffix letters
-
-import os, re, time, json, sys, datetime as dt
+from __future__ import annotations
+import os
+import re
 from pathlib import Path
+from typing import Optional, List, Dict
 from urllib.parse import urlparse, urlunparse
+
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
-_UA = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-)
+# ---------- patterns ----------
+# Dates like: 2025-08-18 / 2025/08/18 / 2025.08.18
+DATE_RX = re.compile(r"\b(\d{4})[./-](\d{2})[./-](\d{2})\b")
 
-# ---------- URL helpers ----------
-def _slug(s: str) -> str:
-    return str(s).strip().replace(" ", "-")
+# Capture the base BIOS version at the start, ignoring any trailing " (Beta ...)" text.
+# Examples matched (group 1 returned):
+#   "7E06vAI"                      -> 7E06vAI
+#   "7D75v1P3(Beta version)"       -> 7D75v1P3
+#   "7E25vAA1 (Beta)"              -> 7E25vAA1
+#   "7E25vAA1  (Beta test build)"  -> 7E25vAA1
+VERSION_BASE_RX = re.compile(r"\b([A-Za-z0-9]+v[A-Za-z0-9.]+)\b", re.I)
 
-def _guess_support_url(model: str) -> str:
-    return f"https://us.msi.com/Motherboard/{_slug(model)}/support#down-bios"
-
-def _variants(url: str):
-    p = urlparse(url)
-    hosts = ["us.msi.com", "www.msi.com"]
-    anchors = ["down-bios", "bios", ""]
-    seen = set()
-    for h in hosts:
-        for a in anchors:
-            u = urlunparse(p._replace(scheme="https", netloc=h, fragment=a))
-            if u not in seen:
-                seen.add(u); yield u
-
-# ---------- Patterns ----------
-# BIOS tags:
-#   - E7D75AMS.1P3 (AMS form)
-#   - 7D75v1P3     (v-tag form; require digits on both sides of 'v' to avoid "OVERVIEW")
-_PAT_AMS  = re.compile(r"\bE[0-9A-F]{5}AMS\.[0-9A-Z]{2,6}\b", re.I)
-_PAT_VTAG = re.compile(r"\b(?=[0-9A-Z]*\d)[0-9A-Z]{4,6}v(?=[0-9A-Z]*\d)[0-9A-Z]{1,5}\b", re.I)
-
-# Dates (MSI shows ISO like 2025-08-04)
-_DATE_ISO = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
-
-# Local-window helpers
-def _window(txt: str, start: int, end: int, radius: int = 220) -> str:
-    a = max(0, start - radius); b = min(len(txt), end + radius)
-    return txt[a:b]
-
-_BAD_NEAR = (
-    "driver","utility","audio","realtek","lan","chipset","graphics","vga",
-    "raid","sata","wireless","wifi","bluetooth","intel me","management engine"
-)
-
-def _bios_root(soup: BeautifulSoup):
-    # Scope to BIOS area when possible
-    root = None
-    for id_ in ("down-bios", "bios"):
-        root = soup.find(id=id_)
-        if root: break
-    if not root:
-        root = soup.find(lambda t: t.name in ("a","div","section") and (t.get("name") in ("down-bios","bios")))
-    return root or soup
-
-def _parse_iso_date(s: str | None) -> dt.date | None:
-    if not s: return None
-    m = _DATE_ISO.search(s)
-    if not m: return None
-    try:
-        y, mo, d = map(int, m.group(1).split("-"))
-        return dt.date(y, mo, d)
-    except Exception:
+def _norm_date(s: Optional[str]) -> Optional[str]:
+    if not s:
         return None
+    m = DATE_RX.search(str(s))
+    if not m:
+        return None
+    y, mo, d = m.groups()
+    return f"{y}-{mo}-{d}"
 
-# ---------- MSI-specific version sort key ----------
-# Handles AMS and v-tag forms; letters in suffix (e.g., 1B/1C) are ordered A<B<C...
-_LETTER_RANK = {c:i for i,c in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ", start=1)}
+def _extract_base_version(text: Optional[str]) -> Optional[str]:
+    if not text:
+        return None
+    m = VERSION_BASE_RX.search(str(text))
+    return m.group(1) if m else None
 
-def _version_key_parts(v: str):
-    # Strip any beta label
-    base = re.sub(r"\s*\(.*?\)\s*$", "", v).upper()
+def _force_https(url: str) -> str:
+    pr = urlparse(url)
+    if pr.scheme != "https":
+        pr = pr._replace(scheme="https")
+    return urlunparse(pr)
 
-    # AMS form: ...AMS.<SUFFIX>
-    m = re.search(r"AMS\.([0-9A-Z]+)$", base, re.I)
-    suffix = None
-    if m:
-        suffix = m.group(1)
-    else:
-        # v-tag form: ....v<SUFFIX>
-        m2 = re.search(r"V([0-9A-Z]+)$", base, re.I)
-        if m2:
-            suffix = m2.group(1)
+def _with_host(url: str, host: str) -> str:
+    pr = urlparse(url)
+    return urlunparse(pr._replace(netloc=host))
 
-    parts = []
-    if suffix:
-        # Turn e.g. '1P3' -> [1, 'P', 3]
-        i = 0
-        while i < len(suffix):
-            if suffix[i].isdigit():
-                j = i
-                while j < len(suffix) and suffix[j].isdigit(): j += 1
-                parts.append(int(suffix[i:j])); i = j
-            else:
-                parts.append(_LETTER_RANK.get(suffix[i], 0)); i += 1
-    else:
-        # Fallback: all integers in the string
-        parts = [int(n) for n in re.findall(r"\d+", base)]
+def _ensure_bios_anchor(url: str) -> str:
+    pr = urlparse(url)
+    frag = pr.fragment or "bios"
+    return urlunparse(pr._replace(fragment=frag))
 
-    # For descending sort with Python's ascending sort:
-    parts_desc = tuple(-p for p in parts)  # letters already numeric; larger letter = newer
-    return parts_desc
+def _guess_url_from_model(model: str) -> Optional[str]:
+    slug = (model or "").strip().replace(" ", "-").replace("--", "-")
+    return f"https://www.msi.com/Motherboard/{slug}/support#bios" if slug else None
 
-def _sort_latest(items):
-    """
-    Sort by:
-      1) has date -> date desc
-      2) otherwise -> version key desc (numbers/letters considered)
-    """
-    def k(e):
-        d = _parse_iso_date(e.get("date"))
-        if d:
-            return (0, -d.toordinal(), _version_key_parts(e["version"]))
-        return (1, _version_key_parts(e["version"]))
-    return sorted(items, key=k)
+def _slugify_name(model: str) -> str:
+    return re.sub(r"[^A-Za-z0-9_-]+", "-", (model or "msi-board")).strip("-_") or "msi-board"
 
-# ---------- Core parse ----------
-def _extract_versions_from_text(txt: str):
-    """Return list of unique BIOS tags found in text, preferring AMS then v-tag."""
-    out = []
-    out.extend(_PAT_AMS.findall(txt))
-    # allow both patterns within same window (so we don't miss form swaps)
-    out.extend([t for t in _PAT_VTAG.findall(txt) if t not in out])
-    return out
+# ---------- fetch with Playwright (local-friendly) ----------
+def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
+    ua = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+          "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
-def _parse_versions(html: str):
-    soup = BeautifulSoup(html, "html.parser")
-    root = _bios_root(soup)
-
-    results = []
-    # Work at text level to capture windows cleanly
-    for node in root.find_all(["li","div","section","article","tr"], recursive=True):
-        block = node.get_text(" ", strip=True)
-        if not block:
-            continue
-
-        # quick skip: driver/util block with no BIOS mention
-        low_block = block.lower()
-        if (("driver" in low_block or "utility" in low_block) and "bios" not in low_block):
-            continue
-
-        for m in re.finditer(rf"{_PAT_AMS.pattern}|{_PAT_VTAG.pattern}", block, re.I):
-            win = _window(block, m.start(), m.end(), 240)
-            low = win.lower()
-
-            # Discard local windows that look like drivers/ME (unless they say BIOS)
-            if any(x in low for x in _BAD_NEAR) and ("bios" not in low):
-                continue
-
-            # Version label (prefer AMS match if both found)
-            vers = _extract_versions_from_text(win)
-            if not vers:
-                continue
-            ver = vers[0].upper()
-
-            # Beta tag if nearby
-            if "beta" in low and "beta" not in ver.lower():
-                ver = f"{ver} (Beta version)"
-
-            # Date only from the local window
-            d_obj = _parse_iso_date(win)
-            date_iso = d_obj.isoformat() if d_obj else None
-
-            results.append({"version": ver, "date": date_iso})
-
-    # Fallback: whole page scan if nothing found
-    if not results:
-        whole = root.get_text(" ", strip=True)
-        vers = _extract_versions_from_text(whole)
-        for v in vers:
-            results.append({"version": v.upper(), "date": None})
-
-    # De-dup while preserving first occurrence
-    seen, uniq = set(), []
-    for it in results:
-        k = it["version"].upper()
-        if k in seen: continue
-        seen.add(k); uniq.append(it)
-
-    # Newest first
-    return _sort_latest(uniq)
-
-def _is_block_page(html: str) -> bool:
-    t = (html or "").lower()
-    return ("access denied" in t) or ("forbidden" in t and "msi.com" in t) or ("edgesuite.net" in t)
-
-# ---------- Fetch with Playwright ----------
-def _fetch_with_playwright(url: str, headful: bool):
-    save_html = bool(os.getenv("MSI_SAVE_HTML"))
-    debug_dir = Path("cache/msi-debug")
-    if save_html: debug_dir.mkdir(parents=True, exist_ok=True)
+    # Default headful for local debugging; MSIOLD_HEADFUL=0 to force headless
+    headful_env = os.getenv("MSIOLD_HEADFUL")
+    headful = True if headful_env is None else headful_env.lower() in ("1", "true", "yes")
 
     with sync_playwright() as p:
-        if headful:
-            ctx = p.chromium.launch_persistent_context(
-                user_data_dir="source/.pw-msi-profile",
-                headless=False,
-                viewport={"width": 1280, "height": 900},
-                user_agent=_UA,
-                locale="en-US",
-            )
-            page = ctx.new_page()
-        else:
-            browser = p.chromium.launch(headless=True)
-            ctx = browser.new_context(user_agent=_UA, locale="en-US", viewport={"width": 1280, "height": 900})
-            page = ctx.new_page()
+        browser = p.chromium.launch(headless=not headful, args=["--disable-blink-features=AutomationControlled"])
+        ctx = browser.new_context(
+            user_agent=ua,
+            locale="en-US",
+            timezone_id="America/Chicago",
+            viewport={"width": 1400, "height": 1250},
+            extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+        )
+        ctx.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined});")
 
-        try:
-            page.goto(url, wait_until="domcontentloaded", timeout=60_000)
+        page = ctx.new_page()
+        page.set_default_timeout(timeout_ms)
 
-            # Best-effort consent click
-            for sel in ("text=Accept All", "text=I Agree", "text=Accept", "button:has-text('Accept')"):
-                try:
-                    page.locator(sel).first.click(timeout=1500); break
-                except Exception:
-                    pass
+        def _load_once(u: str):
+            if "#bios" not in u:
+                u = u + "#bios"
+            page.goto(u, wait_until="domcontentloaded")
 
-            # Ensure BIOS tab active and allow more time to render list
+            # Cookie banner
             try:
-                page.get_by_role("tab", name=re.compile(r"^\s*BIOS\s*$", re.I)).click(timeout=2000)
+                page.locator("#onetrust-accept-btn-handler").click(timeout=3000)
+            except Exception:
+                pass
+
+            # Ensure BIOS tab is active
+            try:
+                page.get_by_text("BIOS", exact=False).click(timeout=4000)
             except Exception:
                 try:
-                    page.locator("a[href*='#down-bios'], a[href*='#bios']").first.click(timeout=1500)
+                    page.locator("a[href*='#bios']").click(timeout=2500)
                 except Exception:
                     pass
 
-            page.wait_for_timeout(2200)  # extra render time for newest entries
-            html = page.content()
+            page.wait_for_timeout(700)
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            page.wait_for_timeout(900)
 
-            if save_html:
-                fname = re.sub(r"[^A-Za-z0-9._-]+", "_", url)[:120] + ".html"
-                (debug_dir / fname).write_text(html, encoding="utf-8")
-            return html
-        finally:
-            try: ctx.close()
-            except Exception: pass
-            try: browser.close()
-            except Exception: pass
-
-# ---------- Public API ----------
-def latest_two(model: str, override_url: str = None):
-    """
-    Returns:
-      {
-        "vendor": "MSI", "model": <str>, "url": <used_url>,
-        "versions": [{"version": "...", "date": "YYYY-MM-DD" | None}, ...],
-        "ok": True/False, "error": <str-if-any>
-      }
-    """
-    base = override_url or _guess_support_url(model)
-    force_headful = bool(os.getenv("MSI_FORCE_HEADFUL"))
-    last_err = None
-
-    for url in _variants(base):
-        # 1) headless first (fast)
-        if not force_headful:
+            # Wait for spec grid / BIOS text
             try:
-                html = _fetch_with_playwright(url, headful=False)
-                if _is_block_page(html): raise RuntimeError("block-page(headless)")
-                items = _parse_versions(html)
-                if items:
-                    return {"vendor":"MSI","model":model,"url":url,"versions":items[:2],"ok":True}
-            except Exception as e:
-                last_err = f"headless:{e}"
+                page.wait_for_selector("section.spec span:has-text('Title')", timeout=15000)
+            except Exception:
+                pass
+            try:
+                page.wait_for_selector("section.spec span:has-text('BIOS')", timeout=15000)
+            except Exception:
+                pass
 
-        # 2) headful fallback (persistent profile keeps consent cookies)
-        try:
-            html = _fetch_with_playwright(url, headful=True)
-            if _is_block_page(html): raise RuntimeError("block-page(headful)")
-            items = _parse_versions(html)
-            if items:
-                return {"vendor":"MSI","model":model,"url":url,"versions":items[:2],"ok":True}
-        except Exception as e:
-            last_err = f"headful:{e}"
+        url_https = _force_https(url)
+        candidates = [
+            _ensure_bios_anchor(_with_host(url_https, "www.msi.com")),
+            _ensure_bios_anchor(_with_host(url_https, "us.msi.com")),
+        ]
+        for cand in candidates:
+            try:
+                _load_once(cand)
+                html = page.content()
+                ctx.close(); browser.close()
+                return html
+            except Exception:
+                continue
 
-        time.sleep(1.0)
+        html = page.content()
+        ctx.close(); browser.close()
+        return html
+
+# ---------- parsing ----------
+def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
+    """
+    Primary: within each section.spec, find a '...BIOS' title span and scan forward for
+    the next Version (base extracted) and Date. We keep Beta rows but only print base version.
+    """
+    out: List[Dict[str, Optional[str]]] = []
+    for sec in soup.select("section.spec, .spec"):
+        spans = sec.find_all("span")
+        if not spans:
+            continue
+        texts = [s.get_text(strip=True) for s in spans]
+
+        bios_idxs = [i for i, t in enumerate(texts) if "bios" in t.lower()]
+        for i in bios_idxs:
+            ver = None
+            dt  = None
+            for j in range(i + 1, min(i + 12, len(spans))):
+                tj = texts[j]
+                if ver is None:
+                    base = _extract_base_version(tj)
+                    if base:
+                        ver = base
+                if dt is None and DATE_RX.search(tj):
+                    dt = _norm_date(tj)
+                if ver and dt:
+                    break
+
+            if ver and dt:
+                out.append({"title": texts[i], "version": ver, "date": dt})
+
+    # de-dup by (version, date)
+    uniq: List[Dict[str, Optional[str]]] = []
+    seen = set()
+    for r in out:
+        key = (r.get("version"), r.get("date"))
+        if key in seen:
+            continue
+        seen.add(key)
+        uniq.append(r)
+    return uniq
+
+def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
+    """
+    Secondary: strict grid (Title|Version|Release Date|File Size) for clean pages,
+    extracting the base version from the Version cell.
+    """
+    out: List[Dict[str, Optional[str]]] = []
+    for sec in soup.select("section.spec, .spec"):
+        spans = sec.find_all("span")
+        if not spans:
+            continue
+        texts = [s.get_text(strip=True) for s in spans]
+
+        # find a proper header row
+        start = -1
+        for i in range(0, len(texts) - 3):
+            block = [t.lower() for t in texts[i:i+4]]
+            if block == ["title", "version", "release date", "file size"]:
+                start = i + 4
+                break
+        if start < 0:
+            continue
+
+        data = texts[start:]
+        for i in range(0, len(data), 4):
+            chunk = data[i:i+4]
+            if len(chunk) < 3:
+                continue
+            title, ver_raw, date_raw = chunk[0], chunk[1], chunk[2]
+            if "bios" not in title.lower():
+                continue
+            ver = _extract_base_version(ver_raw)
+            dt  = _norm_date(date_raw)
+            if ver and dt:
+                out.append({"title": title, "version": ver, "date": dt})
+    return out
+
+def _parse_bios_rows(html_text: str) -> List[Dict[str, Optional[str]]]:
+    soup = BeautifulSoup(html_text or "", "html.parser")
+    # Prefer robust span lookahead (better on busy pages)
+    rows = _parse_span_lookahead(soup)
+    if rows:
+        return rows
+    # Fall back to strict grid
+    return _parse_grid_sections(soup)
+
+# ---------- public API ----------
+def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
+    """
+    Returns latest two BIOS entries (Beta allowed, but version printed without Beta tag).
+    """
+    url0 = override_url or _guess_url_from_model(model_name)
+    if not url0:
+        return {
+            "vendor": "MSI",
+            "model": model_name,
+            "url": "",
+            "ok": False,
+            "versions": [],
+            "error": "msi: override_url required",
+        }
+
+    final_url = _ensure_bios_anchor(_force_https(url0))
+    html_text = _fetch_html(final_url)
+
+    # Always dump a debug snapshot locally for tuning
+    try:
+        Path("cache/msi-debug").mkdir(parents=True, exist_ok=True)
+        Path(f"cache/msi-debug/{_slugify_name(model_name)}.html").write_text(html_text, encoding="utf-8")
+    except Exception:
+        pass
+
+    rows = _parse_bios_rows(html_text)
+    if not rows:
+        return {
+            "vendor": "MSI",
+            "model": model_name,
+            "url": final_url,
+            "ok": False,
+            "versions": [],
+            "error": "parse:no-versions",
+        }
+
+    # Newest first by date if present; otherwise keep order
+    def key(r):
+        d = r.get("date")
+        return (0, d) if d else (1, "")
+    rows_sorted = sorted(rows, key=key, reverse=True)
+
+    versions = [{"version": r.get("version") or "", "date": r.get("date")} for r in rows_sorted[:2]]
 
     return {
-        "vendor":"MSI","model":model,"url":base,
-        "versions":[], "ok":False, "error": (last_err or "fetch/parse failed")[:200]
+        "vendor": "MSI",   # keep MSI so tiles show under the MSI filter
+        "model": model_name,
+        "url": final_url,
+        "ok": True,
+        "versions": versions,
+        "error": None,
     }
 
-def latest_one(model: str, override_url: str = None):
-    res = latest_two(model, override_url=override_url)
-    if res.get("ok") and res.get("versions"):
-        res["versions"] = res["versions"][:1]
-    return res
-
-__all__ = ["latest_two", "latest_one"]
-
-# ---------- CLI: print VERSIONS ONLY ----------
+# quick local test:
 if __name__ == "__main__":
-    import argparse, re as _re
-    ap = argparse.ArgumentParser(description="MSI BIOS scraper (prints only the 'versions' list)")
-    ap.add_argument("model", help="MSI motherboard model (e.g., 'MAG B650 TOMAHAWK WIFI')")
-    ap.add_argument("--url", dest="url", help="Override support URL (use BIOS tab URL)", default=None)
-    args = ap.parse_args()
-
-    res = latest_two(args.model, override_url=args.url)
-    print(json.dumps(res.get("versions", []), ensure_ascii=False, indent=2))
-    sys.exit(0 if res.get("ok") else 1)
+    import sys as _sys
+    mdl = " ".join(_sys.argv[1:]) or "MAG Z790 TOMAHAWK MAX WIFI"
+    print(latest_two(mdl, override_url=_guess_url_from_model(mdl)))

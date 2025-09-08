@@ -50,7 +50,45 @@ vendors:
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
   asrock:
     - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }
-
     
+    
+   #- { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios", issue: true }
+    
+    
+    
+    
+software:
+  - id: masterplus
+    name: "MasterPlus"
+    vendor: "Cooler Master"
+    url: "https://www.coolermaster.com/en-global/masterplus/"
 
-#   - { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios", issue: true }
+  - id: hyte_nexus
+    name: "HYTE Nexus"
+    vendor: "HYTE"
+    url: "https://hyte.com/nexus/releases"
+    
+  - id: kanali
+    name: "Kanali"
+    vendor: "Tryx"
+    url: "https://www.tryxzone.com/downloads/"
+
+  - id: lconnect3
+    name: "L-Connect3"
+    vendor: "LianLi"
+    url: "https://lian-li.com/l-connect3/"
+    
+  - id: gigabytecs
+    name: "Control Center"
+    vendor: "Gigabyte"
+    url: "https://www.gigabyte.com/Consumer/Software/GIGABYTE-Control-Center"
+  
+  - id: msicenter
+    name: "MSI Center"
+    vendor: "MSI"
+    url: "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#utility"
+
+  - id: armourycrate
+    name: "Armoury Crate"
+    vendor: "ASUS"
+    url: "https://www.asus.com/supportonly/armoury%20crate/helpdesk_download/"

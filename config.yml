@@ -1,56 +1,49 @@
 vendors:
   asus:
     - { name: TUF GAMING A520M-PLUS, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS" }
-    - { name: TUF GAMING A620M-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI" }
-    - { name: TUF GAMING X870-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI" }
-    - { name: TUF GAMING Z790-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI" }
-    - { name: TUF GAMING B860M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI" }
-    - { name: PRIME Z890M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI" }
-    - { name: TUF GAMING Z890-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI" }
-    - { name: Z890 AYW GAMING WIFI W, url: "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W" }
-    - { name: TUF GAMING B850-BTF WIFI W, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W" }
-    - { name: ROG STRIX B860-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG STRIX Z890-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG STRIX B550-F GAMING WIFI II, url: "https://rog.asus.com/us/motherboards/rog-strix/rog-strix-b550-f-gaming-wifi-ii-model/helpdesk_bios/" }
-    - { name: ROG MAXIMUS Z890 HERO BTF, url: "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/" }
-    - { name: ROG STRIX B850-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG STRIX X870-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG STRIX X870E-E GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG CROSSHAIR X870E HERO, url: "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/" }
-    - { name: ROG STRIX B850-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/" }
-    - { name: ROG STRIX X870-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/" }
-    - { name: Pro WS W790-ACE, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE" }
-    - { name: Pro WS W790E-SAGE SE, url: "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE" }
-    - { name: Pro WS TRX50-SAGE WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI" } 
+ 
   msi:
     - { name: MAG B650 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios" }
-    - { name: B850 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios" }
-    - { name: PRO X870-P WIFI, url: "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#bios" }
-    - { name: MAG X870 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios" }
-    - { name: MEG X870E GODLIKE, url: "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support#bios" }
-    - { name: PRO Z790-P WIFI, url: "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support#bios", }
-    - { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios", }
-    - { name: PRO Z890-P WIFI, url: "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios" }
-    - { name: MAG Z890 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios" }
-    - { name: MEG Z890 ACE, url: "https://www.msi.com/Motherboard/MEG-Z890-ACE/support#bios" }
-    - { name: PRO Z890-S WIFI PZ, url: "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#bios" }
-    - { name: B760M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support#bios" }
-    - { name: B650M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios" }
 
   gigabyte:
     - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl" }
-    - { name: B850M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support" }
-    - { name: X870 EAGLE WIFI7, url: "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support" }
-    - { name: X870 AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl" }
-    - { name: Z890M AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl" }
-    - { name: B860M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl" }
-    - { name: Z890 EAGLE WIFI7, url: "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support" }
-    - { name: Z890 AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl" }
-    - { name: X870 AORUS STEALTH ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl" }
-    - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
+
   asrock:
     - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }
-
     
-# To have the orange issue border, add issue: true
-#   - { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios", issue: true }
+software:
+  - id: masterplus
+    name: "MasterPlus"
+    vendor: "Cooler Master"
+    url: "https://www.coolermaster.com/en-global/masterplus/"
+
+  - id: hyte_nexus
+    name: "HYTE Nexus"
+    vendor: "HYTE"
+    url: "https://hyte.com/nexus/releases"
+    
+  - id: kanali
+    name: "Kanali"
+    vendor: "Tryx"
+    url: "https://www.tryxzone.com/downloads/"
+
+  - id: lconnect3
+    name: "L-Connect3"
+    vendor: "LianLi"
+    url: "https://lian-li.com/l-connect3/"
+    
+  - id: gigabytecs
+    name: "Control Center"
+    vendor: "Gigabyte"
+    url: "https://www.gigabyte.com/Consumer/Software/GIGABYTE-Control-Center"
+  
+  - id: msicenter
+    name: "MSI Center"
+    vendor: "MSI"
+    url: "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#utility"
+
+  - id: armourycrate
+    name: "Armoury Crate"
+    vendor: "ASUS"
+    url: "https://www.asus.com/supportonly/armoury%20crate/helpdesk_download/"
+  

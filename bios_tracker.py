@@ -29,6 +29,11 @@ VENDOR_FUNCS = {
 }
 
 # -------------------------------------------------------------------
+# Vendor scrapers (your existing modules)
+# -------------------------------------------------------------------
+from vendors.software import fetch as fetch_software
+
+# -------------------------------------------------------------------
 # Config
 # -------------------------------------------------------------------
 def load_config():
@@ -129,6 +134,36 @@ def build_card(entry, issue_names: set[str] | None = None, today: datetime.date 
 
     parts.append('</div>')
     return "\n".join(parts)
+    
+# make sure: from vendors.software import fetch as fetch_software ; import html
+def _build_software_cards(cfg: dict) -> str:
+    items = cfg.get("software") or []
+    if not items:
+        return "<p>No software configured.</p>"
+
+    rows = []
+    for it in items:
+        sid   = (it.get("id") or "").strip()
+        name  = it.get("name") or sid or "Software"
+        vendor = it.get("vendor") or ""
+        url   = it.get("url") or "#"
+
+        res = fetch_software(sid, name, url)
+        ok, ver, err = res.get("ok"), res.get("version"), res.get("error")
+
+        rows.append(
+            '<div class="card" data-vendor="software">'
+            f'  <h3 class="card-title">{html.escape(name)}'
+            + (f' <span class="badge">{html.escape(vendor.upper())}</span>' if vendor else ' <span class="badge">SOFTWARE</span>')
+            + '</h3>'
+            f'  <div class="kv"><span class="k">Version</span><span class="v">{html.escape(ver or "—")}</span></div>'
+            f'  <div class="meta"><a href="{html.escape(url)}" target="_blank" rel="noreferrer">Official page</a></div>'
+            + (f'  <div class="error">{html.escape(err)}</div>' if (not ok and err) else "")
+            + '</div>'
+        )
+    return "\n".join(rows)
+
+
 
 def _sort_results_newest_first(results: list[dict]) -> list[dict]:
     """Sort tiles by the 'Current' version release date (newest first)."""
@@ -143,6 +178,28 @@ def _escape_multiline(s: str) -> str:
     if not s:
         return ""
     return "<br>".join(html.escape(s).splitlines())
+    
+def write_software_page(cfg: dict, outdir: Path, css_link: str = '<link rel="stylesheet" href="assets/site.css">'):
+    outdir.mkdir(parents=True, exist_ok=True)
+    body = _build_software_cards(cfg)
+    html_page = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>QA Software</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+{css_link}
+</head>
+<body>
+  <main class="container">
+    <h1 style="margin:16px 0;">QA Software</h1>
+    <div class="grid">{body}</div>
+    <p style="margin-top:20px;"><a class="button" href="index.html">← Back to BIOS Tracker</a></p>
+  </main>
+</body>
+</html>"""
+    (outdir / "software.html").write_text(html_page, encoding="utf-8")
+
 
 # -------------------------------------------------------------------
 # Google Form / Sheet comments (Type, Website, Details)
@@ -387,6 +444,14 @@ def main():
 </header>
 """
 
+    nav_buttons_html = """
+<div class="nav-buttons">
+  <a class="button" href="software.html" title="QA Software">QA Software</a>
+  <a class="button" href="images.html" title="Motherboard Images">Motherboard Images</a>
+</div>
+"""
+
+
     # Status bar — timestamp left; legend centered via hidden clone
     statusbar_html = f"""
 <div class="statusbar" role="note" aria-label="Legend and last updated">
@@ -506,6 +571,9 @@ def main():
 /* generic button look to match your UI */
 .button{background:#1b2247;border:1px solid #5a64b5;color:#e6e9f2;padding:8px 12px;border-radius:8px;font-size:13px;cursor:pointer;text-decoration:none;display:inline-block}
 .button:hover{filter:brightness(1.1)}
+/* top nav buttons */
+.nav-buttons{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+
 </style>
 """
 
@@ -553,6 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <body>
   <div class="container">
     {header_html}
+    {nav_buttons_html}
     {statusbar_html}
     {notes_html}
     <div class="grid">
@@ -569,6 +638,11 @@ document.addEventListener('DOMContentLoaded', () => {
     idx.write_text(page_html, encoding="utf-8")
     data_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
     print("Done. Wrote docs/index.html and docs/data.json")
+ 
+    docs_dir = Path("docs")
+    # re-use your real CSS link if you build a cache-busted one; otherwise the default is fine
+    write_software_page(cfg, docs_dir)
+
 
 if __name__ == "__main__":
     main()

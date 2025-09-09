@@ -1,5 +1,22 @@
 [
   {
+    "vendor": "MSI",
+    "model": "MEG X870E GODLIKE",
+    "url": "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E48v1A51",
+        "date": "2025-09-09"
+      },
+      {
+        "version": "7E48v1A50",
+        "date": "2025-08-29"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX X870-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
@@ -30,23 +47,6 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "MEG X870E GODLIKE",
-    "url": "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E48v1A50",
-        "date": "2025-08-29"
-      },
-      {
-        "version": "7E48v1A43",
-        "date": "2025-07-18"
-      }
-    ],
-    "error": null
   },
   {
     "vendor": "GIGABYTE",

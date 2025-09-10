@@ -22,7 +22,6 @@ vendors:
     - { name: Pro WS W790-ACE, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE" }
     - { name: Pro WS W790E-SAGE SE, url: "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE" }
     - { name: Pro WS TRX50-SAGE WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI" }
-    - { name: ROG STRIX X870-A GAMING WIFI, url: "https://rog.asus.com/us/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/" }
     - { name: TUF GAMING B850M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI" }
     - { name: ROG MAXIMUS Z890 HERO, url: "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/" }
   msi:

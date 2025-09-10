@@ -8,6 +8,7 @@ import html
 import time
 import sys
 import re
+import csv
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -180,8 +181,93 @@ def _escape_multiline(s: str) -> str:
     return "<br>".join(html.escape(s).splitlines())
     
 def write_software_page(cfg: dict, outdir: Path, css_link: str = '<link rel="stylesheet" href="assets/site.css">'):
+    """
+    Build docs/software.html and docs/software.json.
+    Adds a bright border around any software tile whose version differs from the previous run.
+    """
+    from html import escape as esc
     outdir.mkdir(parents=True, exist_ok=True)
-    body = _build_software_cards(cfg)
+
+    # 1) Load previous versions (if any)
+    prev_path = outdir / "software.json"
+    prev_versions: dict[str, str] = {}
+    if prev_path.exists():
+        try:
+            prev = json.loads(prev_path.read_text(encoding="utf-8"))
+            if isinstance(prev, dict):
+                prev_versions = {str(k): str(v) for k, v in prev.items()}
+            elif isinstance(prev, list):
+                # backward-compat: convert list of objects to {id/name: version}
+                for it in prev:
+                    if isinstance(it, dict):
+                        key = str(it.get("id") or it.get("name") or "").strip()
+                        ver = str(it.get("version") or "").strip()
+                        if key:
+                            prev_versions[key] = ver
+        except Exception:
+            prev_versions = {}
+
+    # 2) Fetch current versions
+    items = cfg.get("software") or []
+    results = []
+    current_versions: dict[str, str] = {}
+    for it in items:
+        sid    = (it.get("id") or "").strip()
+        name   = (it.get("name") or sid or "Software").strip()
+        vendor = (it.get("vendor") or "SOFTWARE").strip()
+        url    = it.get("url") or "#"
+
+        res = fetch_software(sid, name, url)
+        ok, ver, err = res.get("ok"), (res.get("version") or ""), res.get("error")
+
+        key = sid or name  # stable identity across runs
+        current_versions[key] = ver
+
+        prev_ver = prev_versions.get(key, "")
+        changed  = bool(ok and ver and prev_ver and ver != prev_ver)
+
+        # Build the card with a “changed” class if version differs from last run
+        classes = ["card"]
+        if changed:
+            classes.append("card--swchanged")
+
+        html_card = (
+            f'<div class="{" ".join(classes)}" data-vendor="software">'
+            f'  <h3 class="card-title">{esc(name)}'
+            f'    <span class="badge">{esc(vendor.upper())}</span>'
+            f'  </h3>'
+            f'  <div class="kv"><span class="k">Version</span><span class="v">{esc(ver or "—")}</span></div>'
+            f'  <div class="meta"><a href="{esc(url)}" target="_blank" rel="noreferrer">Official page</a></div>'
+            + (f'  <div class="error">{esc(err)}</div>' if (not ok and err) else "")
+            + '</div>'
+        )
+        results.append(html_card)
+
+    body = "\n".join(results) if results else "<p>No software configured.</p>"
+
+    # 3) Write the page (include a tiny style for the “changed” border)
+    style = """
+<style>
+/* highlight: different version than previous run */
+.card--swchanged{border:3px solid #38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.18)}
+/* ensure cards/grid look good even if site.css changes */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1200px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.grid{grid-template-columns:1fr}}
+.card{padding:22px 22px;border:0}
+.card h3{font-size:16px;line-height:1.25;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
+.card h3 .badge{margin-left:auto}
+.kv{display:flex;align-items:baseline;gap:8px}
+.kv .k{font-weight:600}
+.kv .k::after{content:"\\00a0\\00a0"}
+.kv .v{font-weight:400}
+.meta{display:flex;align-items:center;gap:10px;margin:8px 0 0}
+.button{background:#1b2247;border:1px solid #5a64b5;color:#e6e9f2;padding:8px 12px;border-radius:8px;font-size:13px;text-decoration:none;display:inline-block}
+.button:hover{filter:brightness(1.1)}
+</style>
+""".strip()
+
     html_page = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -189,16 +275,175 @@ def write_software_page(cfg: dict, outdir: Path, css_link: str = '<link rel="sty
 <title>QA Software</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 {css_link}
+{style}
 </head>
 <body>
   <main class="container">
     <h1 style="margin:16px 0;">QA Software</h1>
+    <p style="margin:0 0 10px;font-size:13px;opacity:.85">
+      <span style="display:inline-block;border:3px solid #38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.18);width:14px;height:14px;border-radius:3px;vertical-align:middle;margin-right:6px"></span>
+      Highlight = version changed since last run
+    </p>
     <div class="grid">{body}</div>
     <p style="margin-top:20px;"><a class="button" href="index.html">← Back to BIOS Tracker</a></p>
   </main>
 </body>
 </html>"""
     (outdir / "software.html").write_text(html_page, encoding="utf-8")
+
+    # 4) Persist current versions for next comparison
+    prev_path.write_text(json.dumps(current_versions, indent=2), encoding="utf-8")
+
+
+
+
+# ===== Motherboard Images (text-only, Name + Date Updated) =====
+import csv, html
+from pathlib import Path
+
+def _load_images_csv_ordered(csv_path: Path) -> list[dict]:
+    """
+    Load images.csv in file order; keep rows as-typed.
+    Accepts headers like:
+      name,date
+      title,date
+      model,date
+      name,Date Updated
+    """
+    rows = []
+    if not csv_path.exists():
+        return rows
+
+    # utf-8-sig tolerates BOM
+    with csv_path.open("r", newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        if not reader.fieldnames:
+            return rows
+
+        def get(r, *names):
+            for n in names:
+                if n in r and r[n] is not None:
+                    return r[n]
+            return ""
+
+        for r in reader:
+            name = get(r, "name", "Name", "title", "Title", "model", "Model").strip()
+            date = get(r, "date", "Date", "date updated", "Date Updated").strip()
+            if not name:
+                continue
+            rows.append({"name": name, "date": date})
+
+    return rows  # preserve insertion order
+
+def _render_images_html_grouped(rows: list[dict], site_title: str = "Motherboard Images") -> str:
+    # Build data rows with inline zebra backgrounds so external CSS cannot override
+    if rows:
+        parts = []
+        for i, r in enumerate(rows, start=1):
+            bg = "#0e1530" if (i % 2 == 0) else "#0f1630"  # even / odd
+            name = html.escape(r["name"])
+            date = html.escape(r.get("date", ""))
+            parts.append(
+                f'''<div class="row" style="background:{bg};">
+                       <div class="cell name">{name}</div>
+                       <div class="cell date">{date}</div>
+                    </div>'''
+            )
+        rows_html = "\n".join(parts)
+    else:
+        rows_html = '''<div class="row" style="background:#0f1630;">
+                          <div class="cell name" style="grid-column:1 / span 2;">No entries yet. Edit <code>images.csv</code> to add rows.</div>
+                        </div>'''
+
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{site_title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/site.css?cb=imgzebra">
+  <style>
+    /* Scope to this page */
+    body.images-page .nav-buttons{{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}}
+    body.images-page .button{{background:#1b2247;border:1px solid #5a64b5;color:#e6e9f2;padding:8px 12px;border-radius:8px;font-size:13px;text-decoration:none;display:inline-block}}
+    body.images-page .button:hover{{filter:brightness(1.1)}}
+
+    /* Sheet frame */
+    body.images-page .sheet{{border:1px solid #39407a; background:#0f1630}}
+
+    /* Each row is a 2-col grid: Name | Date */
+    body.images-page .row{{display:grid; grid-template-columns:minmax(320px,1fr) 170px}}
+
+    /* Cells are transparent; row carries the zebra background */
+    body.images-page .cell{{
+      box-sizing:border-box;
+      padding:10px 12px;
+      border-bottom:1px solid #39407a;
+      border-right:1px solid #39407a;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      text-align:left;       /* LEFT align both columns */
+      line-height:1.35;
+      background:transparent;
+    }}
+    /* Clean outer border */
+    body.images-page .row .cell:last-child{{border-right:none}}
+
+    /* Header row */
+    body.images-page .row.head{{background:#141b3a}}
+    body.images-page .row.head .cell{{font-weight:600}}
+
+    @media (max-width:700px){{
+      body.images-page .row{{grid-template-columns:minmax(240px,1fr) 140px}}
+    }}
+  </style>
+</head>
+<body class="images-page">
+  <main class="container">
+    <h1 style="margin:16px 0;">Motherboard Images</h1>
+    <div class="nav-buttons">
+      <a class="button" href="index.html">← BIOS Tracker</a>
+      <a class="button" href="software.html">QA Software</a>
+      <a class="button" href="images.html" aria-current="page">Motherboard Images</a>
+    </div>
+
+    <div class="sheet">
+      <div class="row head">
+        <div class="cell name">Name</div>
+        <div class="cell date">Date Updated</div>
+      </div>
+      {rows_html}
+    </div>
+  </main>
+</body>
+</html>"""
+
+
+
+
+
+
+
+
+def write_images_page(outdir: Path, csv_path: Path | None = None):
+    """
+    Build docs/images.html from images.csv (Name + Date).
+    Finds the CSV next to this script by default; preserves row order.
+    """
+    outdir.mkdir(parents=True, exist_ok=True)
+    # Prefer images.csv next to this script; fall back to CWD
+    if csv_path is None:
+        repo_root = Path(__file__).parent
+        candidates = [repo_root / "images.csv", Path.cwd() / "images.csv"]
+        csv_path = next((p for p in candidates if p.exists()), candidates[0])
+
+    rows = _load_images_csv_ordered(csv_path)
+    html_page = _render_images_html_grouped(rows)
+    (outdir / "images.html").write_text(html_page, encoding="utf-8")
+    print(f"[images] Loaded {len(rows)} rows from {csv_path}")
+
+
 
 
 # -------------------------------------------------------------------
@@ -642,6 +887,8 @@ document.addEventListener('DOMContentLoaded', () => {
     docs_dir = Path("docs")
     # re-use your real CSS link if you build a cache-busted one; otherwise the default is fine
     write_software_page(cfg, docs_dir)
+    write_images_page(docs_dir)
+
 
 
 if __name__ == "__main__":

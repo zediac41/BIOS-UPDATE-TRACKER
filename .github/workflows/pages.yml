@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - 'docs/**'
   schedule:
-    - cron: '0 10 * * 1-5'   # daily at ~12:00 UTC (~7am CT during DST)
+    - cron: '0 12 * * 1-5'   # daily at ~12:00 UTC (~7am CT during DST)
   workflow_dispatch:
 
 permissions:

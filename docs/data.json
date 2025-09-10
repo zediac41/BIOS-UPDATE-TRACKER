@@ -34,6 +34,22 @@
   },
   {
     "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/us/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1701",
+        "date": "2025-09-03"
+      },
+      {
+        "version": "1605",
+        "date": "2025-07-22"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX X870E-E GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -361,6 +377,22 @@
     "ok": true
   },
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1078",
+        "date": "2025-08-05"
+      },
+      {
+        "version": "1065",
+        "date": "2025-06-18"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "MAG Z890 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
@@ -477,6 +509,22 @@
     "vendor": "ASUS",
     "model": "ROG MAXIMUS Z890 HERO BTF",
     "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2006",
+        "date": "2025-07-29"
+      },
+      {
+        "version": "1901",
+        "date": "2025-05-09"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z890 HERO",
+    "url": "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
     "versions": [
       {
         "version": "2006",
@@ -747,5 +795,22 @@
       }
     ],
     "ok": true
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO B760-P WIFI DDR4",
+    "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D98v1F1",
+        "date": "2025-05-19"
+      },
+      {
+        "version": "7D98v1E",
+        "date": "2025-05-12"
+      }
+    ],
+    "error": null
   }
 ]

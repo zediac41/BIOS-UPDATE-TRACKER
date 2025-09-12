@@ -1,12 +1,15 @@
-name: Build (scheduled/manual only)
+name: Build & Deploy Pages (manual/scheduled only)
 
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "0 12 * * *"   # ~ early morning US Central
+    # ~5–6am US Central without DST fuss (11:00 UTC)
+    - cron: "0 11 * * *"
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: "pages"
@@ -24,19 +27,56 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
+          set -euxo pipefail
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          # python -m playwright install --with-deps chromium  # if you need it
+          # If your scrapers use Playwright, install browsers + system deps
+          python - <<'PY'
+          import importlib.util, subprocess, sys
+          if importlib.util.find_spec("playwright"):
+              subprocess.check_call([sys.executable, "-m", "playwright", "install", "--with-deps", "chromium"])
+          PY
 
       - name: Build site
-        run: python bios_tracker.py
-
-      - name: Commit docs
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git commit -m "Update docs" || echo "No changes"
-          git push || true
+          set -euxo pipefail
+          python --version
+          python bios_tracker.py
+
+      - name: Verify docs exist
+        run: |
+          if [ ! -f docs/index.html ]; then
+            echo "::error::docs/index.html not found. Ensure bios_tracker.py writes to docs/."
+            exit 1
+          fi
+          ls -lha docs || true
+
+      - name: Upload debug artifacts on failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-debug
+          path: |
+            docs/**
+            cache/**
+            data.json
+            software.html
+            **/*.log
+            *.log
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

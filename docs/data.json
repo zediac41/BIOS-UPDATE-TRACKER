@@ -1,5 +1,17 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2102",
+        "date": "2025-09-11"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "PRO X870-P WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#bios",
@@ -555,22 +567,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "ROG STRIX Z890-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2006",
-        "date": "2025-07-29"
-      },
-      {
-        "version": "1901",
-        "date": "2025-05-09"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "ROG MAXIMUS Z890 HERO BTF",
     "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
     "versions": [
@@ -589,6 +585,38 @@
     "vendor": "ASUS",
     "model": "ROG MAXIMUS Z890 HERO",
     "url": "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2006",
+        "date": "2025-07-29"
+      },
+      {
+        "version": "1901",
+        "date": "2025-05-09"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2006",
+        "date": "2025-07-29"
+      },
+      {
+        "version": "1901",
+        "date": "2025-05-09"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/",
     "versions": [
       {
         "version": "2006",

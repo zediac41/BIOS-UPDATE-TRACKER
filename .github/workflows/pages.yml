@@ -1,71 +1,79 @@
-name: Build & Deploy Pages (manual/scheduled only)
+name: Build & Push /docs
 
 on:
-  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+    # avoid loops when the workflow commits to docs/
+    paths-ignore:
+      - 'docs/**'
   schedule:
-    # ~5–6am US Central without DST fuss (11:00 UTC)
-    - cron: "0 11 * * *"
+    - cron: '0 12 * * 1-5'   # daily at ~12:00 UTC (~7am CT during DST)
+  workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: docs-build
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
+
     steps:
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
-          set -euxo pipefail
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
-          # If your scrapers use Playwright, install browsers + system deps
-          python - <<'PY'
-          import importlib.util, subprocess, sys
-          if importlib.util.find_spec("playwright"):
-              subprocess.check_call([sys.executable, "-m", "playwright", "install", "--with-deps", "chromium"])
-          PY
+          # playwright not listed in requirements.txt, install it explicitly:
+          pip install playwright
+          python -m playwright install --with-deps chromium
+        # your requirements file includes requests, bs4, PyYAML, tzdata
+        # (playwright added above explicitly)
+        # ^ keep as-is or expand as needed
 
       - name: Build site
+        shell: bash
         run: |
-          set -euxo pipefail
-          python --version
-          python bios_tracker.py
+          set -e
+          mkdir -p docs
+          # If your CSS lives at assets/site.css or site.css, copy it into /docs:
+          mkdir -p docs/assets
+          if [ -f assets/site.css ]; then cp -f assets/site.css docs/assets/site.css; fi
+          if [ -f site.css ]; then cp -f site.css docs/assets/site.css; fi
 
-      - name: Verify docs exist
+          # Run the generator (xvfb helps if any vendor needs headful Chromium)
+          xvfb-run -a python bios_tracker.py
+
+          # Ensure Pages doesn't run Jekyll transforms
+          touch docs/.nojekyll
+
+      - name: Commit & push /docs
         run: |
-          if [ ! -f docs/index.html ]; then
-            echo "::error::docs/index.html not found. Ensure bios_tracker.py writes to docs/."
-            exit 1
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            git commit --allow-empty -m "Rebuild: no content changes"
+          else
+            git commit -m "Rebuild: updated generated pages"
           fi
-          ls -lha docs || true
+          git push
 
-      - name: Upload debug artifacts on failure
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-debug
-          path: |
-            docs/**
-            cache/**
-            data.json
-            software.html
-            **/*.log
-            *.log
-
+      # Deploy via GitHub Pages action (works if your Pages source is set to "GitHub Actions")
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

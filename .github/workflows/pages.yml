@@ -7,11 +7,13 @@ on:
     paths-ignore:
       - 'docs/**'
   schedule:
-    - cron: '0 12 * * 1-5'   # daily at ~12:00 UTC (~7am CT during DST)
+    - cron: '0 11 * * *'   # daily at ~12:00 UTC (~7am CT during DST)
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write     # needed to commit/push docs (and empty commit when no changes)
+  pages: write        # needed for actions/deploy-pages
+  id-token: write     # OIDC for pages deploy
 
 concurrency:
   group: docs-build

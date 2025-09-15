@@ -1,6 +1,6 @@
 vendors:
   asus:
-    - { name: TUF GAMING A520M-PLUS, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS" }
+    - { name: TUF GAMING A520M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI" }
     - { name: TUF GAMING A620M-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI" }
     - { name: TUF GAMING X870-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI" }
     - { name: TUF GAMING Z790-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI" }

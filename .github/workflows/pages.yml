@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - 'docs/**'
   schedule:
-    - cron: '0 12 * * 1-5'
+    - cron: '30 11 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -43,9 +43,6 @@ jobs:
           # playwright not listed in requirements.txt, install it explicitly:
           pip install playwright
           python -m playwright install --with-deps chromium
-        # your requirements file includes requests, bs4, PyYAML, tzdata
-        # (playwright added above explicitly)
-        # ^ keep as-is or expand as needed
 
       - name: Build site
         shell: bash
@@ -57,10 +54,8 @@ jobs:
           if [ -f assets/site.css ]; then cp -f assets/site.css docs/assets/site.css; fi
           if [ -f site.css ]; then cp -f site.css docs/assets/site.css; fi
 
-          # Run the generator (xvfb helps if any vendor needs headful Chromium)
           xvfb-run -a python bios_tracker.py
 
-          # Ensure Pages doesn't run Jekyll transforms
           touch docs/.nojekyll
 
       - name: Commit & push /docs

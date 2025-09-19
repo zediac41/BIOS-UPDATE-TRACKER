@@ -224,6 +224,22 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
+    "versions": [
+      {
+        "version": "F21I",
+        "date": "2025-09-03"
+      },
+      {
+        "version": "F21G",
+        "date": "2025-03-11"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX X870E-E GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
@@ -370,22 +386,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
-    "versions": [
-      {
-        "version": "F21H",
-        "date": "2025-08-12"
-      },
-      {
-        "version": "F21G",
-        "date": "2025-03-11"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",

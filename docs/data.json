@@ -1,6 +1,22 @@
 [
   {
     "vendor": "ASUS",
+    "model": "TUF GAMING A620M-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "3283",
+        "date": "2025-09-19"
+      },
+      {
+        "version": "3278",
+        "date": "2025-08-05"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX Z890-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -171,6 +187,22 @@
       {
         "version": "F6",
         "date": "2025-07-31"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
+    "versions": [
+      {
+        "version": "F8B",
+        "date": "2025-09-05"
+      },
+      {
+        "version": "F7",
+        "date": "2025-07-18"
       }
     ],
     "ok": true
@@ -403,22 +435,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING A620M-PLUS WIFI",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3278",
-        "date": "2025-08-05"
-      },
-      {
-        "version": "3263",
-        "date": "2025-07-02"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "ASUS",
@@ -788,22 +804,6 @@
       {
         "version": "1805",
         "date": "2024-11-04"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [
-      {
-        "version": "F79B",
-        "date": "2025-05-20"
-      },
-      {
-        "version": "F8B",
-        "date": "2025-09-05"
       }
     ],
     "ok": true

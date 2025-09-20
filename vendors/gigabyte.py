@@ -1,8 +1,7 @@
 # vendors/gigabyte.py
 # GIGABYTE BIOS scraper (latest TWO BIOS versions) using Playwright to bypass 403.
-# - Scrapes versions like F22 / F22a / F17G
-# - Couples each version to the NEAREST date within a small local window (prevents driver bleed)
-# - Sorts by version (F number, then letter) desc; ties broken by date desc
+# Parsing tightened to only consider BIOS download links for the model, attach a nearby date,
+# filter outliers, and sort by date first (then version) to avoid stray tokens outranking real releases.
 
 import os, re, time, json, sys, datetime as dt
 from pathlib import Path
@@ -41,13 +40,11 @@ def _variants(url: str):
     yield url
 
 # ---------- Patterns ----------
-# BIOS version tokens: F1 .. F135, optional trailing letter (a/b/c)
+# BIOS version tokens: F1..F135 with optional trailing letter (A..Z)
 _PAT_F = re.compile(r"\bF(?P<num>[0-9]{1,3})(?P<let>[A-Z])?\b", re.I)
 
-# Date patterns:
-# 1) YYYY-MM-DD or YYYY/MM/DD
+# Dates:
 _DATE_YMD = re.compile(r"\b(?P<y>\d{4})[/-](?P<m>\d{2})[/-](?P<d>\d{2})\b")
-# 2) Month-name dates like "Aug 12, 2025" / "August 12, 2025" (optional dot in "Aug.")
 _DATE_MON = re.compile(
     r"""\b
     (?P<mon>
@@ -76,8 +73,7 @@ def _bios_root(soup: BeautifulSoup):
     root = soup.select_one(sel)
     return root or soup
 
-def _window(txt: str, start: int, end: int, radius: int = 200) -> tuple[str,int]:
-    """Return (substring window, center_index_in_window)."""
+def _window(txt: str, start: int, end: int, radius: int = 260) -> tuple[str,int]:
     a = max(0, start - radius)
     b = min(len(txt), end + radius)
     return txt[a:b], (start - a)
@@ -87,7 +83,6 @@ def _norm_date_from_match_group(gdict) -> str | None:
         if {"y","m","d"} <= set(gdict):
             y, mo, d = int(gdict["y"]), int(gdict["m"]), int(gdict["d"])
             return dt.date(y, mo, d).isoformat()
-        # month-name
         mon_token = gdict["mon"].lower().rstrip(".")
         if mon_token.startswith("september"): mon_token = "sep"
         if mon_token not in _MON_MAP and mon_token.startswith("sep"): mon_token = "sept"
@@ -98,9 +93,8 @@ def _norm_date_from_match_group(gdict) -> str | None:
         return None
 
 def _nearest_date_iso(win_text: str, center_idx: int) -> str | None:
-    """Find the date closest to the version token within this window."""
     best = None
-    def consider(m, kind: str):
+    def consider(m):
         nonlocal best
         s = m.start()
         dist = abs(s - center_idx)
@@ -108,18 +102,15 @@ def _nearest_date_iso(win_text: str, center_idx: int) -> str | None:
         if not iso: return
         if (best is None) or (dist < best[0]):
             best = (dist, iso)
-    for m in _DATE_YMD.finditer(win_text):
-        consider(m, "ymd")
-    for m in _DATE_MON.finditer(win_text):
-        consider(m, "mon")
+    for m in _DATE_YMD.finditer(win_text): consider(m)
+    for m in _DATE_MON.finditer(win_text): consider(m)
     return best[1] if best else None
 
 _LETTER_RANK = {c:i for i,c in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ", start=1)}
 def _version_key(ver: str):
     """
-    Return a key for sorting GIGABYTE F-versions newest first:
+    Key for version tie-breakers:
       F<number><letter?>  -> (number desc, letter_rank desc)
-    We'll invert at compare time by returning negatives.
     """
     m = _PAT_F.search(ver.upper())
     if not m:
@@ -131,15 +122,33 @@ def _version_key(ver: str):
 
 def _sort_latest(items):
     """
-    Primary: version newest (F number, then letter)
-    Secondary: date desc (when available)
+    NEW: sort by date (newest first), then by F-number/letter.
+    This prevents a stray big F-number (e.g., F79B) from outranking the real newest (e.g., F8B).
     """
     def k(e):
-        vkey = _version_key(e.get("version",""))
         d = e.get("date")
-        d_ord = -dt.date.fromisoformat(d).toordinal() if (d and re.match(r"\d{4}-\d{2}-\d{2}$", d)) else 0
-        return (vkey, d_ord)
+        d_ord = -dt.date.fromisoformat(d).toordinal() if (d and re.match(r"^\d{4}-\d{2}-\d{2}$", d)) else float("inf")
+        vkey = _version_key(e.get("version",""))
+        return (d_ord, vkey)
     return sorted(items, key=k)
+
+def _num_part(ver: str) -> int | None:
+    m = _PAT_F.search((ver or "").upper())
+    return int(m.group("num")) if m else None
+
+def _filter_outliers(items):
+    """
+    If there is a tight cluster of small F-numbers (e.g., 7 and 8),
+    drop huge outliers (e.g., 79) that are likely from unrelated elements.
+    Heuristic: compute median; keep items with num <= median+20 (generous).
+    """
+    nums = [n for n in (_num_part(x.get("version","")) for x in items) if n is not None]
+    if len(nums) < 2:
+        return items
+    nums_sorted = sorted(nums)
+    median = nums_sorted[len(nums_sorted)//2]
+    filtered = [x for x in items if (_num_part(x.get("version","")) or 0) <= (median + 20)]
+    return filtered if filtered else items
 
 # ---------- Parsing ----------
 def _parse_versions(html: str):
@@ -147,47 +156,76 @@ def _parse_versions(html: str):
     root = _bios_root(soup)
 
     results = []
-    candidates = root.find_all(["li", "div", "section", "article", "tr"], recursive=True)
-    for node in candidates:
-        txt = node.get_text(" ", strip=True)
-        if not txt:
-            continue
-        low = txt.lower()
-        # Skip obvious driver/utility blocks when they don't mention BIOS
-        if (("driver" in low or "utility" in low) and "bios" not in low):
+
+    # (A) Prefer anchors that clearly point to BIOS zip files inside the BIOS section
+    anchors = root.select("a[href$='.zip'], a[href*='.zip?']")
+    for a in anchors:
+        href = a.get("href","")
+        low = href.lower()
+        if "bios" not in low:  # only BIOS packages
             continue
 
-        for m in _PAT_F.finditer(txt):
-            win, center = _window(txt, m.start(), m.end(), radius=220)
-            win_low = win.lower()
+        # Extract version from filename or surrounding text
+        ver = None
+        m = _PAT_F.search(href)
+        if m:
+            ver = m.group(0).upper()
 
-            # If the local context smells like a driver and doesn't say BIOS, skip
-            if any(b in win_low for b in _BAD_NEAR) and ("bios" not in win_low):
+        # Gather local text from a nearby container for date sniffing
+        block = a
+        blk_text = ""
+        for _ in range(3):  # climb a few levels to reach the item row/card
+            if block is None: break
+            blk_text = block.get_text(" ", strip=True) or blk_text
+            block = block.parent
+
+        # Require BIOS/Version context in the text block
+        if ("bios" not in blk_text.lower()) and ("version" not in blk_text.lower()):
+            continue
+
+        # If version not found in href, try the text block
+        if not ver:
+            m2 = _PAT_F.search(blk_text)
+            if not m2:
                 continue
+            ver = m2.group(0).upper()
 
-            ver = m.group(0).upper()  # e.g., F22a -> F22A
-            if "beta" in win_low and "beta" not in ver.lower():
-                ver = f"{ver} (Beta version)"
+        # Couple to nearest date within the same block text
+        idx = blk_text.upper().find(ver)
+        if idx < 0:
+            idx = max(0, len(blk_text)//2)
+        date_iso = _nearest_date_iso(blk_text, idx)
+        if not date_iso:
+            continue
 
-            date_iso = _nearest_date_iso(win, center)
-            results.append({"version": ver, "date": date_iso})
+        # Mark Beta if present near the block text
+        if ("beta" in blk_text.lower()) and ("BETA" not in ver):
+            ver = f"{ver} (Beta version)"
 
-    # Fallback: whole page
+        results.append({"version": ver, "date": date_iso})
+
+    # (B) Fallback: scan only within the BIOS root (NOT whole page), keeping only tokens near a date
     if not results:
         flat = root.get_text(" ", strip=True)
-        for m in _PAT_F.finditer(flat):
-            ver = m.group(0).upper()
-            results.append({"version": ver, "date": None})
+        flat_low = flat.lower()
+        if "bios" in flat_low:
+            for m in _PAT_F.finditer(flat):
+                win, center = _window(flat, m.start(), m.end(), radius=320)
+                date_iso = _nearest_date_iso(win, center)
+                if date_iso:
+                    ver = m.group(0).upper()
+                    results.append({"version": ver, "date": date_iso})
 
     # De-dup (keep first occurrence)
     seen, uniq = set(), []
     for it in results:
-        key = it["version"].upper()
-        if key in seen: 
+        key = (it["version"].upper(), it.get("date"))
+        if key in seen:
             continue
         seen.add(key); uniq.append(it)
 
-    # Newest first by version, then by date
+    # NEW: prune obvious outliers, then sort (date-first)
+    uniq = _filter_outliers(uniq)
     return _sort_latest(uniq)
 
 def _is_block(html: str) -> bool:
@@ -210,6 +248,7 @@ def _fetch_with_playwright(url: str, headful: bool):
                 locale="en-US",
             )
             page = ctx.new_page()
+            browser = None
         else:
             browser = p.chromium.launch(headless=True)
             ctx = browser.new_context(user_agent=_UA, locale="en-US", viewport={"width": 1280, "height": 900})
@@ -218,14 +257,14 @@ def _fetch_with_playwright(url: str, headful: bool):
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=60_000)
 
-            # Cookie consent (best-effort)
+            # Consent (best-effort)
             for sel in ("text=Accept All", "text=I Agree", "text=Accept", "button:has-text('Accept')"):
                 try:
                     page.locator(sel).first.click(timeout=1500); break
                 except Exception:
                     pass
 
-            # Ensure the BIOS tab is active
+            # Ensure BIOS tab is active
             try:
                 page.get_by_role("tab", name=re.compile(r"^\s*BIOS\s*$", re.I)).click(timeout=2000)
             except Exception:
@@ -244,8 +283,10 @@ def _fetch_with_playwright(url: str, headful: bool):
         finally:
             try: ctx.close()
             except Exception: pass
-            try: browser.close()
-            except Exception: pass
+            try:
+                if browser: browser.close()
+            except Exception:
+                pass
 
 # ---------- Public API ----------
 def latest_two(model: str, override_url: str = None):
@@ -289,7 +330,7 @@ def latest_one(model: str, override_url: str = None):
 
 __all__ = ["latest_two", "latest_one"]
 
-# ---------- CLI: print VERSIONS ONLY ----------
+# ---------- CLI ----------
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser(description="GIGABYTE BIOS scraper (prints only the 'versions' list)")

@@ -1,5 +1,22 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO B760-P WIFI DDR4",
+    "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D98v1F",
+        "date": "2025-09-23"
+      },
+      {
+        "version": "7D98v1F1",
+        "date": "2025-05-19"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING A620M-PLUS WIFI",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
@@ -807,22 +824,5 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B760-P WIFI DDR4",
-    "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7D98v1F1",
-        "date": "2025-05-19"
-      },
-      {
-        "version": "7D98v1E",
-        "date": "2025-05-12"
-      }
-    ],
-    "error": null
   }
 ]

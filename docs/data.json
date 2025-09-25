@@ -1,5 +1,37 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING A520M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "3634",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "3631",
+        "date": "2025-08-14"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B550-F GAMING WIFI II",
+    "url": "https://rog.asus.com/us/motherboards/rog-strix/rog-strix-b550-f-gaming-wifi-ii-model/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3634",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "3631",
+        "date": "2025-08-14"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "MAG X870 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios",
@@ -369,38 +401,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING A520M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3631",
-        "date": "2025-08-14"
-      },
-      {
-        "version": "3621",
-        "date": "2025-04-01"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B550-F GAMING WIFI II",
-    "url": "https://rog.asus.com/us/motherboards/rog-strix/rog-strix-b550-f-gaming-wifi-ii-model/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3631",
-        "date": "2025-08-14"
-      },
-      {
-        "version": "3621",
-        "date": "2025-04-01"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",

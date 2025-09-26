@@ -1,6 +1,54 @@
 [
   {
     "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1715",
+        "date": "2025-09-25"
+      },
+      {
+        "version": "1701",
+        "date": "2025-09-03"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870E-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1715",
+        "date": "2025-09-25"
+      },
+      {
+        "version": "1701",
+        "date": "2025-08-29"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1715",
+        "date": "2025-09-25"
+      },
+      {
+        "version": "1605",
+        "date": "2025-07-22"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "TUF GAMING A520M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI",
     "versions": [
@@ -289,22 +337,6 @@
     "ok": true
   },
   {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1701",
-        "date": "2025-09-03"
-      },
-      {
-        "version": "1605",
-        "date": "2025-07-22"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "GIGABYTE",
     "model": "A520I AC",
     "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
@@ -316,22 +348,6 @@
       {
         "version": "F21G",
         "date": "2025-03-11"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870E-E GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1701",
-        "date": "2025-08-29"
-      },
-      {
-        "version": "1605",
-        "date": "2025-07-22"
       }
     ],
     "ok": true
@@ -706,22 +722,6 @@
       {
         "version": "1066",
         "date": "2025-06-18"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E HERO",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1605",
-        "date": "2025-07-22"
-      },
-      {
-        "version": "1512",
-        "date": "2025-06-13"
       }
     ],
     "ok": true

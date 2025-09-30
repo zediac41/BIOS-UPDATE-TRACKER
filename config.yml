@@ -55,7 +55,7 @@ vendors:
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
   asrock:
     - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }
-    - { name: ASROCK B650M Pro RS WiFi, url: "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS" }
+    - { name: B650M Pro RS WiFi, url: "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS" }
     
     
    #- { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios", issue: true }

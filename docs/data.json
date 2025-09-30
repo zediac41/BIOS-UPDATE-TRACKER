@@ -417,6 +417,22 @@
     "ok": true
   },
   {
+    "vendor": "ASRock",
+    "model": "B650M Pro RS WiFi",
+    "url": "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS",
+    "versions": [
+      {
+        "version": "3.40",
+        "date": "2025-09-02"
+      },
+      {
+        "version": "3.30",
+        "date": "2025-06-17"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "Pro WS W790-ACE",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE",

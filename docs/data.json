@@ -1,5 +1,37 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B860M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1801",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1606",
+        "date": "2025-07-29"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "PRIME Z890M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "2401",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "2207",
+        "date": "2025-07-29"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASRock",
     "model": "B650M Pro RS WiFi",
     "url": "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS",
@@ -613,38 +645,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B860M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1606",
-        "date": "2025-07-29"
-      },
-      {
-        "version": "1406",
-        "date": "2025-05-14"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "PRIME Z890M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "2207",
-        "date": "2025-07-29"
-      },
-      {
-        "version": "2005",
-        "date": "2025-05-14"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "ASUS",

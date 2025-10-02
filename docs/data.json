@@ -1,6 +1,22 @@
 [
   {
     "vendor": "ASUS",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1078",
+        "date": "2025-07-22"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "TUF GAMING B860M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
     "versions": [
@@ -27,6 +43,134 @@
       {
         "version": "2207",
         "date": "2025-07-29"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z890-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "2401",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "2207",
+        "date": "2025-07-29"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Z890 AYW GAMING WIFI W",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
+    "versions": [
+      {
+        "version": "2401",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "2207",
+        "date": "2025-07-29"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-BTF WIFI W",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
+    "versions": [
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1079",
+        "date": "2025-08-05"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B860-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1801",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1606",
+        "date": "2025-07-29"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1078",
+        "date": "2025-07-22"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1078",
+        "date": "2025-08-05"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1078",
+        "date": "2025-07-22"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      },
+      {
+        "version": "1078",
+        "date": "2025-08-05"
       }
     ],
     "ok": true
@@ -582,54 +726,6 @@
     "error": null
   },
   {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-BTF WIFI W",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
-    "versions": [
-      {
-        "version": "1079",
-        "date": "2025-08-05"
-      },
-      {
-        "version": "1065",
-        "date": "2025-06-24"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1078",
-        "date": "2025-08-05"
-      },
-      {
-        "version": "1067",
-        "date": "2025-07-09"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1078",
-        "date": "2025-08-05"
-      },
-      {
-        "version": "1065",
-        "date": "2025-06-18"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "MAG Z890 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
@@ -648,54 +744,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "TUF GAMING Z890-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "2207",
-        "date": "2025-07-29"
-      },
-      {
-        "version": "2005",
-        "date": "2025-05-14"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "Z890 AYW GAMING WIFI W",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
-    "versions": [
-      {
-        "version": "2207",
-        "date": "2025-07-29"
-      },
-      {
-        "version": "2006",
-        "date": "2025-05-14"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B860-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1606",
-        "date": "2025-07-29"
-      },
-      {
-        "version": "1405",
-        "date": "2025-05-14"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "Pro WS TRX50-SAGE WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI",
     "versions": [
@@ -706,54 +754,6 @@
       {
         "version": "0803",
         "date": "2024-10-14"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1078",
-        "date": "2025-07-22"
-      },
-      {
-        "version": "1066",
-        "date": "2025-06-24"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1078",
-        "date": "2025-07-22"
-      },
-      {
-        "version": "1066",
-        "date": "2025-06-18"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1078",
-        "date": "2025-07-22"
-      },
-      {
-        "version": "1063",
-        "date": "2025-07-02"
       }
     ],
     "ok": true

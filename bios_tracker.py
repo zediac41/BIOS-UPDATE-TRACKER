@@ -42,7 +42,7 @@ def load_config():
         return yaml.safe_load(f) or {}
 
 # -------------------------------------------------------------------
-# Helpers: Beta label, date parsing, highlight (fresh within 7 days)
+# Helpers: Beta label, date parsing, highlight (fresh within 5 days)
 # -------------------------------------------------------------------
 _BETA_PARENS = re.compile(r"\(\s*beta\s+version\s*\)", re.I)
 _BETA_BARE   = re.compile(r"\b(beta(?:\s+version)?)\b", re.I)
@@ -70,14 +70,14 @@ def _parse_date(date_str: str | None) -> datetime.date | None:
         return None
 
 def _is_fresh_release(date_str: str | None, today: datetime.date | None = None) -> bool:
-    """Fresh means released within the last 7 days."""
+    """Fresh means released within the last 5 days."""
     d = _parse_date(date_str)
     if not d:
         return False
     if today is None:
         today = datetime.datetime.now(ZoneInfo("America/Chicago")).date()
     delta = (today - d).days
-    return 0 <= delta <= 7
+    return 0 <= delta <= 5
 
 # -------------------------------------------------------------------
 # Card rows & rendering
@@ -702,7 +702,7 @@ def main():
 <div class="statusbar" role="note" aria-label="Legend and last updated">
   <div class="last-updated">Last updated: {html.escape(now)}</div>
   <div class="legend">
-    <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 7 days</span>
+    <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 5 days</span>
     <span class="legend-item"><span class="swatch swatch--issue"></span>Manually flagged</span>
   </div>
   <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: {html.escape(now)}</div>

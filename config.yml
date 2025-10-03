@@ -26,6 +26,7 @@ vendors:
     - { name: ROG MAXIMUS Z890 HERO, url: "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/" }
     - { name: ROG STRIX Z890-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/" }
     - { name: ROG STRIX Z890-E GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/" }
+    - { name: TUF GAMING B850-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI" }
   msi:
     - { name: MAG B650 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios" }
     - { name: B850 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios" }

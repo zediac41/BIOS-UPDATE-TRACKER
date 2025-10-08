@@ -249,7 +249,7 @@ def write_software_page(cfg: dict, outdir: Path, css_link: str = '<link rel="sty
     style = """
 <style>
 /* highlight: different version than previous run */
-.card--swchanged{border:3px solid #38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.18)}
+.card--swchanged{border:3px solid #f87338;box-shadow:0 0 0 2px rgba(56,189,248,.18)}
 /* ensure cards/grid look good even if site.css changes */
 .grid{display:grid;gap:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:1200px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -281,7 +281,7 @@ def write_software_page(cfg: dict, outdir: Path, css_link: str = '<link rel="sty
   <main class="container">
     <h1 style="margin:16px 0;">QA Software</h1>
     <p style="margin:0 0 10px;font-size:13px;opacity:.85">
-      <span style="display:inline-block;border:3px solid #38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.18);width:14px;height:14px;border-radius:3px;vertical-align:middle;margin-right:6px"></span>
+      <span style="display:inline-block;border:3px solid #f87338;box-shadow:0 0 0 2px rgba(56,189,248,.18);width:14px;height:14px;border-radius:3px;vertical-align:middle;margin-right:6px"></span>
       Highlight = version changed since last run
     </p>
     <div class="grid">{body}</div>

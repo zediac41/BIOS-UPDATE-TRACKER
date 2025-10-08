@@ -466,6 +466,22 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "B850M EAGLE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE/support",
+    "versions": [
+      {
+        "version": "F5D",
+        "date": "2025-09-18"
+      },
+      {
+        "version": "F4",
+        "date": "2025-07-18"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX Z890-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
@@ -604,22 +620,6 @@
       {
         "version": "F7C",
         "date": "2025-05-22"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
-    "versions": [
-      {
-        "version": "F21I",
-        "date": "2025-09-03"
-      },
-      {
-        "version": "F21G",
-        "date": "2025-03-11"
       }
     ],
     "ok": true
@@ -853,6 +853,22 @@
       {
         "version": "1805",
         "date": "2024-11-04"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
+    "versions": [
+      {
+        "version": "F21G",
+        "date": "2025-03-11"
+      },
+      {
+        "version": "F21D",
+        "date": "2024-09-02"
       }
     ],
     "ok": true

@@ -385,6 +385,86 @@
     "error": null
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "Z890M AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F17",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "F17H",
+        "date": "2025-09-09"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F7",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "F7E",
+        "date": "2025-09-09"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
+    "versions": [
+      {
+        "version": "F17",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "F17G",
+        "date": "2025-09-09"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F17",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "F17G",
+        "date": "2025-09-09"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860I AORUS PRO ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
+    "versions": [
+      {
+        "version": "F7",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "F7H",
+        "date": "2025-09-09"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "PRO B760-P WIFI DDR4",
     "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
@@ -559,86 +639,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890M AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F17H",
-        "date": "2025-09-09"
-      },
-      {
-        "version": "F17C",
-        "date": "2025-04-18"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B860M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F7E",
-        "date": "2025-09-09"
-      },
-      {
-        "version": "F7A",
-        "date": "2025-05-22"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
-    "versions": [
-      {
-        "version": "F17G",
-        "date": "2025-09-09"
-      },
-      {
-        "version": "F17B",
-        "date": "2025-04-18"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F17G",
-        "date": "2025-09-09"
-      },
-      {
-        "version": "F17B",
-        "date": "2025-04-18"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B860I AORUS PRO ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
-    "versions": [
-      {
-        "version": "F7H",
-        "date": "2025-09-09"
-      },
-      {
-        "version": "F7C",
-        "date": "2025-05-22"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "ASUS",

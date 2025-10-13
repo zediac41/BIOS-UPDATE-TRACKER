@@ -1,3 +1,3 @@
-2025/10/10-11:43:59.851 2056 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/metadata/MANIFEST-000001
-2025/10/10-11:43:59.852 2056 Recovering log #3
-2025/10/10-11:43:59.853 2056 Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/metadata/000003.log 
+2025/10/13-11:45:46.000 204b Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/metadata/MANIFEST-000001
+2025/10/13-11:45:46.001 204b Recovering log #3
+2025/10/13-11:45:46.001 204b Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/metadata/000003.log 

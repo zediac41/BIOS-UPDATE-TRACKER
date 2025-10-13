@@ -578,6 +578,22 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "B850M GAMING X WIFI6E",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
+    "versions": [
+      {
+        "version": "F6D",
+        "date": "2025-09-18"
+      },
+      {
+        "version": "F5",
+        "date": "2025-07-18"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX Z890-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",

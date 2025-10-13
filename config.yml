@@ -55,6 +55,7 @@ vendors:
     - { name: X870 AORUS STEALTH ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl" }
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
     - { name: B850M EAGLE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE/support" }
+    - { name: B850M GAMING X WIFI6E, url: "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support" }
   asrock:
     - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }
     - { name: B650M Pro RS WiFi, url: "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS" }

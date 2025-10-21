@@ -1,5 +1,22 @@
 [
   {
+    "vendor": "MSI",
+    "model": "MAG B650 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D75v1P5",
+        "date": "2025-10-21"
+      },
+      {
+        "version": "7D75v1P3",
+        "date": "2025-08-12"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "GIGABYTE",
     "model": "A520I AC",
     "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
@@ -718,23 +735,6 @@
       {
         "version": "7E25vAA1",
         "date": "2025-05-16"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "MAG B650 TOMAHAWK WIFI",
-    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7D75v1P3",
-        "date": "2025-08-12"
-      },
-      {
-        "version": "7D75v1O",
-        "date": "2025-07-04"
       }
     ],
     "error": null

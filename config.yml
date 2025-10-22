@@ -27,6 +27,7 @@ vendors:
     - { name: ROG STRIX Z890-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/" }
     - { name: ROG STRIX Z890-E GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/" }
     - { name: TUF GAMING B850-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI" }
+    - { name: ProArt Z890-CREATOR WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios?model2Name=ProArt-Z890-CREATOR-WIFI" }
   msi:
     - { name: MAG B650 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios" }
     - { name: B850 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios" }
@@ -42,6 +43,7 @@ vendors:
     - { name: B760M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support#bios" }
     - { name: B650M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios" }
     - { name: PRO B760-P WIFI DDR4, url: "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios" }
+    - { name: PRO B760M-VC WIFI BULK, url: "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support" }
 
   gigabyte:
     - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl" }

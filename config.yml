@@ -43,7 +43,7 @@ vendors:
     - { name: B760M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support#bios" }
     - { name: B650M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios" }
     - { name: PRO B760-P WIFI DDR4, url: "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios" }
-    - { name: PRO B760M-VC WIFI BULK, url: "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios" }
+    - { name: PRO B760M-VC WIFI BULK, url: "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios" issue: true}
 
   gigabyte:
     - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl" }

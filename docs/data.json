@@ -306,6 +306,22 @@
   },
   {
     "vendor": "ASUS",
+    "model": "ProArt Z890-CREATOR WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios?model2Name=ProArt-Z890-CREATOR-WIFI",
+    "versions": [
+      {
+        "version": "2201",
+        "date": "2025-09-26"
+      },
+      {
+        "version": "2006",
+        "date": "2025-07-29"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX X870-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -888,5 +904,13 @@
       }
     ],
     "ok": true
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO B760M-VC WIFI BULK",
+    "url": "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios",
+    "ok": false,
+    "versions": [],
+    "error": "parse:no-versions"
   }
 ]

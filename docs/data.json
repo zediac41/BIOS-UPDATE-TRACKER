@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "B650M PROJECT ZERO",
+    "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E09v1H3",
+        "date": "2025-10-23"
+      },
+      {
+        "version": "7E09v1H2",
+        "date": "2025-08-08"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "MAG B650 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
     "ok": true,
@@ -768,23 +785,6 @@
       {
         "version": "7E14v181",
         "date": "2025-05-13"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "B650M PROJECT ZERO",
-    "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E09v1H2",
-        "date": "2025-08-08"
-      },
-      {
-        "version": "7E09v1H1",
-        "date": "2025-07-22"
       }
     ],
     "error": null

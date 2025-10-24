@@ -17,6 +17,22 @@
     "error": null
   },
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING A620M-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "3287",
+        "date": "2025-10-22"
+      },
+      {
+        "version": "3283",
+        "date": "2025-09-19"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "MAG B650 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
@@ -530,22 +546,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING A620M-PLUS WIFI",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3283",
-        "date": "2025-09-19"
-      },
-      {
-        "version": "3278",
-        "date": "2025-08-05"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "GIGABYTE",

@@ -909,17 +909,8 @@
     "vendor": "MSI",
     "model": "PRO B760M-VC WIFI BULK",
     "url": "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "msiNav02.min.css",
-        "date": null
-      },
-      {
-        "version": "Geneva",
-        "date": null
-      }
-    ],
-    "error": null
+    "ok": false,
+    "versions": [],
+    "error": "parse:no-versions"
   }
 ]

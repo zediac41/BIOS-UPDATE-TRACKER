@@ -1,5 +1,21 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z790-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1825",
+        "date": "2025-10-28"
+      },
+      {
+        "version": "1820",
+        "date": "2025-05-21"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "B650M PROJECT ZERO",
     "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios",
@@ -885,22 +901,6 @@
       {
         "version": "19.01",
         "date": "2024-10-04"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING Z790-PLUS WIFI",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1820",
-        "date": "2025-05-21"
-      },
-      {
-        "version": "1805",
-        "date": "2024-11-04"
       }
     ],
     "ok": true

@@ -82,22 +82,6 @@
     "error": null
   },
   {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
-    "versions": [
-      {
-        "version": "F21",
-        "date": "2025-10-01"
-      },
-      {
-        "version": "F21G",
-        "date": "2025-03-11"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "ASUS",
     "model": "TUF GAMING X870-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
@@ -905,6 +889,22 @@
       {
         "version": "19.01",
         "date": "2024-10-04"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
+    "versions": [
+      {
+        "version": "F21G",
+        "date": "2025-03-11"
+      },
+      {
+        "version": "F21D",
+        "date": "2024-09-02"
       }
     ],
     "ok": true

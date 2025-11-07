@@ -28,6 +28,7 @@ vendors:
     - { name: ROG STRIX Z890-E GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/" }
     - { name: TUF GAMING B850-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI" }
     - { name: ProArt Z890-CREATOR WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios?model2Name=ProArt-Z890-CREATOR-WIFI" }
+    - { name: ROG CROSSHAIR X870E EXTREME, url: "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/" }
   msi:
     - { name: MAG B650 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios" }
     - { name: B850 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios" }

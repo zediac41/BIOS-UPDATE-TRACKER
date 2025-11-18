@@ -827,6 +827,23 @@
   },
   {
     "vendor": "MSI",
+    "model": "MPG Z790 EDGE TI MAX WIFI",
+    "url": "https://www.msi.com/Motherboard/MPG-Z790-EDGE-TI-MAX-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E25v1A",
+        "date": "2025-08-12"
+      },
+      {
+        "version": "7E25v1A1",
+        "date": "2025-05-09"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "MAG Z890 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
     "ok": true,
@@ -921,6 +938,22 @@
       {
         "version": "19.01",
         "date": "2024-10-04"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z790 DARK HERO",
+    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z790-dark-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2001",
+        "date": "2025-05-19"
+      },
+      {
+        "version": "1801",
+        "date": "2024-12-06"
       }
     ],
     "ok": true

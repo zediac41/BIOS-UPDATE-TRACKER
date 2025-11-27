@@ -47,8 +47,8 @@ vendors:
     - { name: PRO B760-P WIFI DDR4, url: "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios" }
     - { name: PRO B760M-VC WIFI BULK, url: "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios", issue: true }
     - { name: MPG Z790 EDGE TI MAX WIFI, url: "https://www.msi.com/Motherboard/MPG-Z790-EDGE-TI-MAX-WIFI/support#bios" }
-    - { name: MSI PRO B840-P WIFI, url: "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios" }
-    - { name: MSI B860-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios" }
+    - { name: PRO B840-P WIFI, url: "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios" }
+    - { name: B860-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios" }
   gigabyte:
     - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl" }
     - { name: B850M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support" }

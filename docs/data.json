@@ -500,7 +500,7 @@
   },
   {
     "vendor": "MSI",
-    "model": "MSI PRO B840-P WIFI",
+    "model": "PRO B840-P WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
     "ok": true,
     "versions": [
@@ -945,7 +945,7 @@
   },
   {
     "vendor": "MSI",
-    "model": "MSI B860-VC WIFI",
+    "model": "B860-VC WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios",
     "ok": true,
     "versions": [

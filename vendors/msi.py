@@ -20,6 +20,7 @@ DATE_RX = re.compile(r"\b(\d{4})[./-](\d{2})[./-](\d{2})\b")
 #   "7E25vAA1  (Beta test build)"  -> 7E25vAA1
 VERSION_BASE_RX = re.compile(r"\b([A-Za-z0-9]+v[A-Za-z0-9.]+)\b", re.I)
 
+
 def _norm_date(s: Optional[str]) -> Optional[str]:
     if not s:
         return None
@@ -29,11 +30,13 @@ def _norm_date(s: Optional[str]) -> Optional[str]:
     y, mo, d = m.groups()
     return f"{y}-{mo}-{d}"
 
+
 def _extract_base_version(text: Optional[str]) -> Optional[str]:
     if not text:
         return None
     m = VERSION_BASE_RX.search(str(text))
     return m.group(1) if m else None
+
 
 def _force_https(url: str) -> str:
     pr = urlparse(url)
@@ -41,33 +44,43 @@ def _force_https(url: str) -> str:
         pr = pr._replace(scheme="https")
     return urlunparse(pr)
 
+
 def _with_host(url: str, host: str) -> str:
     pr = urlparse(url)
     return urlunparse(pr._replace(netloc=host))
+
 
 def _ensure_bios_anchor(url: str) -> str:
     pr = urlparse(url)
     frag = pr.fragment or "bios"
     return urlunparse(pr._replace(fragment=frag))
 
+
 def _guess_url_from_model(model: str) -> Optional[str]:
     slug = (model or "").strip().replace(" ", "-").replace("--", "-")
     return f"https://www.msi.com/Motherboard/{slug}/support#bios" if slug else None
 
+
 def _slugify_name(model: str) -> str:
     return re.sub(r"[^A-Za-z0-9_-]+", "-", (model or "msi-board")).strip("-_") or "msi-board"
 
+
 # ---------- fetch with Playwright (local-friendly) ----------
 def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
-    ua = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-          "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
+    ua = (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+    )
 
     # Default headful for local debugging; MSIOLD_HEADFUL=0 to force headless
     headful_env = os.getenv("MSIOLD_HEADFUL")
     headful = True if headful_env is None else headful_env.lower() in ("1", "true", "yes")
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=not headful, args=["--disable-blink-features=AutomationControlled"])
+        browser = p.chromium.launch(
+            headless=not headful,
+            args=["--disable-blink-features=AutomationControlled"],
+        )
         ctx = browser.new_context(
             user_agent=ua,
             locale="en-US",
@@ -75,7 +88,9 @@ def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
             viewport={"width": 1400, "height": 1250},
             extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
         )
-        ctx.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined});")
+        ctx.add_init_script(
+            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
+        )
 
         page = ctx.new_page()
         page.set_default_timeout(timeout_ms)
@@ -123,14 +138,17 @@ def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
             try:
                 _load_once(cand)
                 html = page.content()
-                ctx.close(); browser.close()
+                ctx.close()
+                browser.close()
                 return html
             except Exception:
                 continue
 
         html = page.content()
-        ctx.close(); browser.close()
+        ctx.close()
+        browser.close()
         return html
+
 
 # ---------- parsing ----------
 def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
@@ -148,7 +166,7 @@ def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]
         bios_idxs = [i for i, t in enumerate(texts) if "bios" in t.lower()]
         for i in bios_idxs:
             ver = None
-            dt  = None
+            dt = None
             for j in range(i + 1, min(i + 12, len(spans))):
                 tj = texts[j]
                 if ver is None:
@@ -174,6 +192,7 @@ def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]
         uniq.append(r)
     return uniq
 
+
 def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
     """
     Secondary: strict grid (Title|Version|Release Date|File Size) for clean pages,
@@ -189,7 +208,7 @@ def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
         # find a proper header row
         start = -1
         for i in range(0, len(texts) - 3):
-            block = [t.lower() for t in texts[i:i+4]]
+            block = [t.lower() for t in texts[i : i + 4]]
             if block == ["title", "version", "release date", "file size"]:
                 start = i + 4
                 break
@@ -198,17 +217,59 @@ def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
 
         data = texts[start:]
         for i in range(0, len(data), 4):
-            chunk = data[i:i+4]
+            chunk = data[i : i + 4]
             if len(chunk) < 3:
                 continue
             title, ver_raw, date_raw = chunk[0], chunk[1], chunk[2]
             if "bios" not in title.lower():
                 continue
             ver = _extract_base_version(ver_raw)
-            dt  = _norm_date(date_raw)
+            dt = _norm_date(date_raw)
             if ver and dt:
                 out.append({"title": title, "version": ver, "date": dt})
     return out
+
+
+def _parse_text_fallback(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
+    """Loose fallback: scan all text on the page for MSI-style BIOS versions (7D98v1F, etc.)
+    and the nearest date. This is used only if the stricter parsers fail, so it mainly helps on
+    pages where MSI has changed the markup for the downloads grid.
+    """
+    text = soup.get_text("\n", strip=True)
+    lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+    out: List[Dict[str, Optional[str]]] = []
+
+    for i, line in enumerate(lines):
+        ver = _extract_base_version(line)
+        if not ver:
+            continue
+
+        # Try to find a date on the same line or within a small window of nearby lines.
+        dt = _norm_date(line)
+        if not dt:
+            for j in range(max(0, i - 3), min(len(lines), i + 4)):
+                if j == i:
+                    continue
+                dt = _norm_date(lines[j])
+                if dt:
+                    break
+
+        if not dt:
+            continue
+
+        out.append({"title": "", "version": ver, "date": dt})
+
+    # de-dup by (version, date) and keep order of first appearance
+    uniq: List[Dict[str, Optional[str]]] = []
+    seen = set()
+    for r in out:
+        key = (r.get("version"), r.get("date"))
+        if key in seen:
+            continue
+        seen.add(key)
+        uniq.append(r)
+    return uniq
+
 
 def _parse_bios_rows(html_text: str) -> List[Dict[str, Optional[str]]]:
     soup = BeautifulSoup(html_text or "", "html.parser")
@@ -217,7 +278,12 @@ def _parse_bios_rows(html_text: str) -> List[Dict[str, Optional[str]]]:
     if rows:
         return rows
     # Fall back to strict grid
-    return _parse_grid_sections(soup)
+    rows = _parse_grid_sections(soup)
+    if rows:
+        return rows
+    # Last-resort loose text scan (helps for odd layouts like some BULK / OEM pages)
+    return _parse_text_fallback(soup)
+
 
 # ---------- public API ----------
 def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
@@ -241,7 +307,9 @@ def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
     # Always dump a debug snapshot locally for tuning
     try:
         Path("cache/msi-debug").mkdir(parents=True, exist_ok=True)
-        Path(f"cache/msi-debug/{_slugify_name(model_name)}.html").write_text(html_text, encoding="utf-8")
+        Path(f"cache/msi-debug/{_slugify_name(model_name)}.html").write_text(
+            html_text, encoding="utf-8"
+        )
     except Exception:
         pass
 
@@ -260,12 +328,15 @@ def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
     def key(r):
         d = r.get("date")
         return (0, d) if d else (1, "")
+
     rows_sorted = sorted(rows, key=key, reverse=True)
 
-    versions = [{"version": r.get("version") or "", "date": r.get("date")} for r in rows_sorted[:2]]
+    versions = [
+        {"version": r.get("version") or "", "date": r.get("date")} for r in rows_sorted[:2]
+    ]
 
     return {
-        "vendor": "MSI",   # keep MSI so tiles show under the MSI filter
+        "vendor": "MSI",  # keep MSI so tiles show under the MSI filter
         "model": model_name,
         "url": final_url,
         "ok": True,
@@ -273,8 +344,10 @@ def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
         "error": None,
     }
 
+
 # quick local test:
 if __name__ == "__main__":
     import sys as _sys
+
     mdl = " ".join(_sys.argv[1:]) or "MAG Z790 TOMAHAWK MAX WIFI"
     print(latest_two(mdl, override_url=_guess_url_from_model(mdl)))

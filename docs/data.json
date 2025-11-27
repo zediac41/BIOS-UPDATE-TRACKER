@@ -1,5 +1,21 @@
 [
   {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F8",
+        "date": "2025-11-20"
+      },
+      {
+        "version": "F7",
+        "date": "2025-07-18"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX X870-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
@@ -833,22 +849,6 @@
     "vendor": "GIGABYTE",
     "model": "X870 EAGLE WIFI7",
     "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [
-      {
-        "version": "F7",
-        "date": "2025-07-18"
-      },
-      {
-        "version": "F6",
-        "date": "2025-05-29"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
     "versions": [
       {
         "version": "F7",

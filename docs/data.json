@@ -1,15 +1,15 @@
 [
   {
     "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl",
     "versions": [
       {
-        "version": "F8",
+        "version": "F5",
         "date": "2025-11-20"
       },
       {
-        "version": "F7",
+        "version": "F4",
         "date": "2025-07-18"
       }
     ],
@@ -863,16 +863,16 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X870 AORUS STEALTH ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
     "versions": [
       {
-        "version": "F4",
+        "version": "F7",
         "date": "2025-07-18"
       },
       {
-        "version": "F2",
-        "date": "2025-05-16"
+        "version": "F6",
+        "date": "2025-05-29"
       }
     ],
     "ok": true

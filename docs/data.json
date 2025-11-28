@@ -1,5 +1,37 @@
 [
   {
+    "vendor": "ASRock",
+    "model": "B660M-HDV",
+    "url": "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS",
+    "versions": [
+      {
+        "version": "20.01",
+        "date": "2025-11-28"
+      },
+      {
+        "version": "19.03",
+        "date": "2025-05-28"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1805",
+        "date": "2025-11-27"
+      },
+      {
+        "version": "1715",
+        "date": "2025-09-25"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "GIGABYTE",
     "model": "B850M AORUS ELITE WIFI6E ICE",
     "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
@@ -531,22 +563,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E HERO",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1715",
-        "date": "2025-09-25"
-      },
-      {
-        "version": "1605",
-        "date": "2025-07-22"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "TUF GAMING A520M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI",
     "versions": [
@@ -959,22 +975,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASRock",
-    "model": "B660M-HDV",
-    "url": "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS",
-    "versions": [
-      {
-        "version": "19.03",
-        "date": "2025-05-28"
-      },
-      {
-        "version": "19.01",
-        "date": "2024-10-04"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "ASUS",

@@ -1,6 +1,55 @@
 [
   {
     "vendor": "ASUS",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1402",
+        "date": "2025-12-04"
+      },
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1402",
+        "date": "2025-12-04"
+      },
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO Z890-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E34v1AB0",
+        "date": "2025-12-04"
+      },
+      {
+        "version": "7E34v1AA0",
+        "date": "2025-07-11"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX B850-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -339,22 +388,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      },
-      {
-        "version": "1078",
-        "date": "2025-07-22"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "TUF GAMING B860M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
     "versions": [
@@ -445,22 +478,6 @@
       {
         "version": "1078",
         "date": "2025-07-22"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      },
-      {
-        "version": "1078",
-        "date": "2025-08-05"
       }
     ],
     "ok": true
@@ -938,23 +955,6 @@
       {
         "version": "7E22v1A60",
         "date": "2025-06-05"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO Z890-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E34v1AA0",
-        "date": "2025-07-11"
-      },
-      {
-        "version": "7E34v1A90",
-        "date": "2025-05-19"
       }
     ],
     "error": null

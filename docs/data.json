@@ -726,6 +726,23 @@
   },
   {
     "vendor": "MSI",
+    "model": "PRO B550M-VC WIFI",
+    "url": "https://www.msi.com/Motherboard/Pro-B550M-VC-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7C95vHF1",
+        "date": "2025-09-24"
+      },
+      {
+        "version": "7C95vHE",
+        "date": "2025-09-23"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "PRO B760-P WIFI DDR4",
     "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
     "ok": true,
@@ -737,6 +754,23 @@
       {
         "version": "7D98v1F1",
         "date": "2025-05-19"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO B760-VC WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D98vBH",
+        "date": "2025-09-23"
+      },
+      {
+        "version": "7D98vBG",
+        "date": "2025-09-04"
       }
     ],
     "error": null
@@ -961,7 +995,7 @@
   },
   {
     "vendor": "MSI",
-    "model": "B860-VC WIFI",
+    "model": "PRO B860-VC WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios",
     "ok": true,
     "versions": [

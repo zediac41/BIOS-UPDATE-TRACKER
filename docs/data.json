@@ -1,5 +1,54 @@
 [
   {
+    "vendor": "MSI",
+    "model": "MEG Z890 ACE",
+    "url": "https://www.msi.com/Motherboard/MEG-Z890-ACE/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E22v1A80",
+        "date": "2025-12-09"
+      },
+      {
+        "version": "7E22v1A70",
+        "date": "2025-07-16"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING A620M-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "3602",
+        "date": "2025-12-08"
+      },
+      {
+        "version": "3287",
+        "date": "2025-10-22"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1402",
+        "date": "2025-12-08"
+      },
+      {
+        "version": "1087",
+        "date": "2025-09-30"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING X870-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
@@ -434,22 +483,6 @@
     "error": null
   },
   {
-    "vendor": "ASUS",
-    "model": "TUF GAMING A620M-PLUS WIFI",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3287",
-        "date": "2025-10-22"
-      },
-      {
-        "version": "3283",
-        "date": "2025-09-19"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "MAG B650 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
@@ -542,22 +575,6 @@
       {
         "version": "1606",
         "date": "2025-07-29"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      },
-      {
-        "version": "1078",
-        "date": "2025-07-22"
       }
     ],
     "ok": true
@@ -972,23 +989,6 @@
       {
         "version": "7E58v1A40",
         "date": "2025-05-07"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "MEG Z890 ACE",
-    "url": "https://www.msi.com/Motherboard/MEG-Z890-ACE/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E22v1A70",
-        "date": "2025-07-16"
-      },
-      {
-        "version": "7E22v1A60",
-        "date": "2025-06-05"
       }
     ],
     "error": null

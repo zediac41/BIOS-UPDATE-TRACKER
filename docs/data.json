@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "MAG Z890 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E32v1AA0",
+        "date": "2025-12-10"
+      },
+      {
+        "version": "7E32v1A90",
+        "date": "2025-08-04"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "MEG Z890 ACE",
     "url": "https://www.msi.com/Motherboard/MEG-Z890-ACE/support#bios",
     "ok": true,
@@ -939,23 +956,6 @@
       {
         "version": "7E25v1A1",
         "date": "2025-05-09"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "MAG Z890 TOMAHAWK WIFI",
-    "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E32v1A90",
-        "date": "2025-08-04"
-      },
-      {
-        "version": "7E32v1A80",
-        "date": "2025-06-12"
       }
     ],
     "error": null

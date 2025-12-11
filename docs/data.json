@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "PRO Z890-S WIFI PZ",
+    "url": "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E58v1A60",
+        "date": "2025-12-11"
+      },
+      {
+        "version": "7E58v1A50",
+        "date": "2025-07-18"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "MAG Z890 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
     "ok": true,
@@ -975,23 +992,6 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO Z890-S WIFI PZ",
-    "url": "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E58v1A50",
-        "date": "2025-07-18"
-      },
-      {
-        "version": "7E58v1A40",
-        "date": "2025-05-07"
-      }
-    ],
-    "error": null
   },
   {
     "vendor": "MSI",

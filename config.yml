@@ -52,7 +52,7 @@ vendors:
     - { name: PRO B550M-VC WIFI, url: "https://www.msi.com/Motherboard/Pro-B550M-VC-WIFI/support#bios" }
     - { name: PRO B760-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios" }
   gigabyte:
-    - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl" }
+    - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios" }
     - { name: B850M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support" }
     - { name: X870 EAGLE WIFI7, url: "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support" }
     - { name: X870 AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl" }
@@ -62,7 +62,7 @@ vendors:
     - { name: Z890 AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl" }
     - { name: X870 AORUS STEALTH ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl" }
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
-    - { name: B850M EAGLE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE/support" }
+    - { name: B850M EAGLE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios" }
     - { name: B850M GAMING X WIFI6E, url: "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support" }
   asrock:
     - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }

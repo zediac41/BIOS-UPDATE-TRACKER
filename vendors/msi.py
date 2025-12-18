@@ -9,32 +9,22 @@ from urllib.parse import urlparse, urlunparse
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
+
 # ---------- patterns ----------
 # Dates like: 2025-08-18 / 2025/08/18 / 2025.08.18
 DATE_RX = re.compile(r"\b(\d{4})[./-](\d{2})[./-](\d{2})\b")
 
-# Typical MSI BIOS version tokens shown on support pages.
-# Examples:
-#   7D98vBH
-#   7D98vBG1(Beta version)
-#   7D75v1P3
-MSI_BIOS_VER_RX = re.compile(r"\b([0-9A-Z]{4,6}v[0-9A-Z]{1,6}(?:\.[0-9A-Z]+)?)\b", re.I)
-
-# Keep the older permissive token as a fallback (some pages are inconsistent).
+# Base MSI BIOS tokens like 7D37vB7, 7D75v1P3, 7E25vAA1, etc.
 VERSION_BASE_RX = re.compile(r"\b([A-Za-z0-9]+v[A-Za-z0-9.]+)\b", re.I)
 
-# MSI internal BIOS file naming sometimes shows up as:
-#   E7D98IMS.BG1 / E7C95AMS.2L0 / etc.
-MSI_FILE_VER_RX = re.compile(
-    r"\b(E[0-9A-Z]{4,6}(?:IMS|AMS|IGD|IZ1)\.[0-9A-Z]{2,4})\b", re.I
-)
-
-# Text fallback helper for pages where the DOM structure differs:
-#   "Version7D37vB4. Release Date2024-10-15"
+# Explicit label-pair form frequently seen on MSI support pages (including BULK/OEM variants):
+#   "Version7D37vB7. Release Date2025-09-23"
+#   "Version 7D37vB6 (Beta version) Release Date 2025/08/29"
 MSI_VERSION_RELEASEDATE_RX = re.compile(
     r"Version\s*([0-9A-Za-z.]+(?:\s*\([^)]*\))?)\s*\.?\s*Release\s*Date\s*(\d{4}[./-]\d{2}[./-]\d{2})",
-    re.I
+    re.I,
 )
+
 
 def _norm_date(s: Optional[str]) -> Optional[str]:
     if not s:
@@ -45,25 +35,14 @@ def _norm_date(s: Optional[str]) -> Optional[str]:
     y, mo, d = m.groups()
     return f"{y}-{mo}-{d}"
 
+
 def _extract_base_version(text: Optional[str]) -> Optional[str]:
-    """Extract the BIOS version token we want to display."""
+    """Return the MSI BIOS token (without any trailing '(Beta ...)' text)."""
     if not text:
         return None
-    s = str(text)
+    m = VERSION_BASE_RX.search(str(text))
+    return m.group(1) if m else None
 
-    m = MSI_BIOS_VER_RX.search(s)
-    if m:
-        return m.group(1)
-
-    m = VERSION_BASE_RX.search(s)
-    if m:
-        return m.group(1)
-
-    m = MSI_FILE_VER_RX.search(s)
-    if m:
-        return m.group(1)
-
-    return None
 
 def _force_https(url: str) -> str:
     pr = urlparse(url)
@@ -71,33 +50,60 @@ def _force_https(url: str) -> str:
         pr = pr._replace(scheme="https")
     return urlunparse(pr)
 
+
 def _with_host(url: str, host: str) -> str:
     pr = urlparse(url)
     return urlunparse(pr._replace(netloc=host))
+
 
 def _ensure_bios_anchor(url: str) -> str:
     pr = urlparse(url)
     frag = pr.fragment or "bios"
     return urlunparse(pr._replace(fragment=frag))
 
+
 def _guess_url_from_model(model: str) -> Optional[str]:
     slug = (model or "").strip().replace(" ", "-").replace("--", "-")
     return f"https://www.msi.com/Motherboard/{slug}/support#bios" if slug else None
 
+
 def _slugify_name(model: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", (model or "").strip()) or "msi-board"
 
+
 # ---------- playwright fetching ----------
 
-def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
+def _fetch_html(url: str, timeout_ms: int = 60000) -> str:
+    """
+    Fetch the MSI support page with Playwright and return a *combined* string containing:
+      - page.content() (DOM HTML)
+      - page.inner_text('body') (visible text)
+      - a small set of captured JSON/XHR responses (when available)
+
+    This combo is important for BULK/OEM pages where the BIOS list is produced via XHR and
+    the DOM can be sparse or the text ends up in client-side templates.
+    """
     ua = (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
     )
 
-    # Default headful for local debugging; MSIOLD_HEADFUL=0 to force headless
-    headful_env = os.getenv("MSIOLD_HEADFUL")
-    headful = True if headful_env is None else headful_env.lower() in ("1", "true", "yes")
+    # Default to headless for CI (GitHub Actions). Set MSI_HEADFUL=1 for local debugging.
+    # Back-compat: if MSIOLD_HEADFUL exists, honor it.
+    headful_env = os.getenv("MSI_HEADFUL")
+    if headful_env is None:
+        headful_env = os.getenv("MSIOLD_HEADFUL")
+    headful = True if (headful_env and headful_env.lower() in ("1", "true", "yes")) else False
+
+    captured: List[str] = []
+
+    def _should_capture(resp_url: str, content_type: str) -> bool:
+        u = (resp_url or "").lower()
+        ct = (content_type or "").lower()
+        if "application/json" in ct:
+            return True
+        # MSI often uses non-json CTs even for structured payloads; capture likely endpoints
+        return any(k in u for k in ("/api/", "support", "download", "bios", "drivers", "utilities"))
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -114,99 +120,176 @@ def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
 
         page = ctx.new_page()
 
-        def _load_once(target_url: str) -> None:
-            """Navigate once and wait for the support content to settle."""
-            page.goto(target_url, wait_until="domcontentloaded", timeout=timeout_ms)
-
-            # Give scripts time to bootstrap.
-            page.wait_for_timeout(1200)
+        # Capture XHR/JSON responses that may contain BIOS rows.
+        def _on_response(resp):
             try:
-                page.wait_for_load_state("networkidle", timeout=15000)
-            except Exception:
-                pass
-
-            # Accept cookies if the banner is present
-            for label in ("Accept all", "Accept All", "I Accept", "AGREE"):
+                ct = ""
                 try:
-                    page.locator(f"button:has-text('{label}')").click(timeout=2000)
+                    ct = resp.headers.get("content-type", "")
+                except Exception:
+                    ct = ""
+                if not _should_capture(resp.url, ct):
+                    return
+                # Avoid huge payloads
+                txt = resp.text()
+                if not txt:
+                    return
+                if ("Release Date" in txt) or ("AMI BIOS" in txt) or ("Version" in txt and DATE_RX.search(txt)):
+                    captured.append(txt[:400000])
+            except Exception:
+                return
+
+        page.on("response", _on_response)
+
+        def _dismiss_overlays() -> None:
+            # Cookie banners / overlays
+            for label in ("Accept all", "Accept All", "I Accept", "AGREE", "Accept", "OK", "Close"):
+                try:
+                    page.locator(f"button:has-text('{label}')").first.click(timeout=1200)
                     break
                 except Exception:
                     pass
 
-            # Try to switch to the SUPPORT tab if needed
-            try:
-                page.locator("a[href*='support']").click(timeout=2000)
-            except Exception:
-                pass
-
-            # Make sure we're somewhere near BIOS content
-            try:
-                page.locator("a[href*='#bios']").click(timeout=2500)
-            except Exception:
+            # Location switch overlays (these show up as "switchLocationNotice" on some regions)
+            for label in (
+                "Continue",
+                "Stay",
+                "Stay Here",
+                "Stay on",
+                "I understand",
+                "Got it",
+                "Confirm",
+            ):
                 try:
-                    page.locator("a:has-text('BIOS')").click(timeout=2500)
+                    page.locator(f"button:has-text('{label}')").first.click(timeout=1200)
                 except Exception:
                     pass
 
-            # Some pages lazy-load the list; scroll a bit and wait.
-            page.wait_for_timeout(800)
+        def _scroll_nudge() -> None:
+            try:
+                page.evaluate(
+                    "(() => { window.scrollTo(0, 0); })()"
+                )
+            except Exception:
+                pass
+            page.wait_for_timeout(300)
+            for _ in range(3):
+                try:
+                    page.evaluate(
+                        "(() => { window.scrollBy(0, Math.max(600, window.innerHeight)); })()"
+                    )
+                except Exception:
+                    pass
+                page.wait_for_timeout(400)
+
             try:
                 page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
             except Exception:
                 pass
-            page.wait_for_timeout(900)
+            page.wait_for_timeout(600)
 
-            # Wait for any common BIOS markers to appear (best-effort)
+        def _go_to_bios_tab() -> None:
+            # Force hash and try several click strategies
+            try:
+                page.evaluate("(() => { location.hash = '#bios'; window.dispatchEvent(new HashChangeEvent('hashchange')); })()")
+            except Exception:
+                pass
+
             for sel in (
-                "section.spec span:has-text('Title')",
-                "section.spec span:has-text('Version')",
-                "text=Release Date",
-                "text=AMI BIOS",
+                "a[href*='#bios']",
+                "button:has-text('BIOS')",
+                "a:has-text('BIOS')",
+                "text=BIOS",
             ):
                 try:
-                    page.wait_for_selector(sel, timeout=8000)
+                    page.locator(sel).first.click(timeout=1800)
+                    break
+                except Exception:
+                    pass
+
+        def _load_once(target_url: str) -> str:
+            page.goto(target_url, wait_until="domcontentloaded", timeout=timeout_ms)
+            page.wait_for_timeout(1200)
+            _dismiss_overlays()
+
+            # Let client scripts do their thing
+            try:
+                page.wait_for_load_state("networkidle", timeout=20000)
+            except Exception:
+                pass
+
+            # Some pages need a nudge to land on support + BIOS
+            try:
+                page.locator("a[href*='support']").first.click(timeout=1500)
+            except Exception:
+                pass
+
+            _go_to_bios_tab()
+            page.wait_for_timeout(800)
+            _scroll_nudge()
+
+            # Best-effort: wait for any BIOS-ish markers to show up
+            for marker in ("Release Date", "AMI BIOS", "File Size", "Download"):
+                try:
+                    page.locator(f"text={marker}").first.wait_for(timeout=15000)
                     break
                 except Exception:
                     continue
 
-        url_https = _force_https(url)
-        candidates = [
-            _ensure_bios_anchor(_with_host(url_https, "www.msi.com")),
-            _ensure_bios_anchor(_with_host(url_https, "us.msi.com")),
-        ]
-
-        try:
-            for cand in candidates:
-                try:
-                    _load_once(cand)
-                    html = page.content()
-                    ctx.close()
-                    browser.close()
-                    return html
-                except Exception:
-                    continue
-
-            # If all candidates failed, still return whatever we have
-            html = page.content()
-            ctx.close()
-            browser.close()
-            return html
-        except Exception:
-            # On a hard failure, propagate a minimal error page
+            html = ""
+            visible = ""
             try:
                 html = page.content()
             except Exception:
                 html = ""
+            try:
+                visible = page.inner_text("body")
+            except Exception:
+                visible = ""
+
+            combo = html + "\n\n<!--VISIBLE_TEXT-->\n" + (visible or "")
+            if captured:
+                combo += "\n\n<!--CAPTURED_RESPONSES-->\n" + "\n\n".join(captured[:6])
+            return combo
+
+        url_https = _force_https(url)
+        candidates = [
+            _ensure_bios_anchor(_with_host(url_https, "us.msi.com")),
+            _ensure_bios_anchor(_with_host(url_https, "www.msi.com")),
+        ]
+
+        try:
+            last = ""
+            for cand in candidates:
+                try:
+                    last = _load_once(cand)
+                    # If we already see Version/Release Date in the combined text, we're good.
+                    if "Release Date" in last and "Version" in last:
+                        ctx.close()
+                        browser.close()
+                        return last
+                except Exception:
+                    continue
+
             ctx.close()
             browser.close()
-            return html
+            return last
+        except Exception:
+            try:
+                last = page.content()
+            except Exception:
+                last = ""
+            ctx.close()
+            browser.close()
+            return last
+
 
 # ---------- parsing helpers ----------
 
 def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
     """
-    Primary: within each section.spec, find a span containing 'BIOS' and scan forward for
-    a Version token and a Release Date.
+    Primary: within each section.spec, find a '...BIOS' title span and scan forward for
+    the next Version token and Date.
     """
     out: List[Dict[str, Optional[str]]] = []
     for sec in soup.select("section.spec, .spec"):
@@ -221,7 +304,7 @@ def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]
             dt = None
             for j in range(i + 1, min(i + 14, len(spans))):
                 tj = texts[j]
-                if ver is None and ("version" in tj.lower() or MSI_BIOS_VER_RX.search(tj) or VERSION_BASE_RX.search(tj)):
+                if ver is None and ("version" in tj.lower() or VERSION_BASE_RX.search(tj)):
                     ver = _extract_base_version(tj)
                 if dt is None and ("date" in tj.lower() or DATE_RX.search(tj)):
                     dt = _norm_date(tj)
@@ -230,9 +313,10 @@ def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]
                     break
     return out
 
+
 def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
     """
-    Secondary: strict grid (Title|Version|Release Date|File Size) for clean pages.
+    Secondary: strict grid (Title|Version|Release Date|File Size) in spans.
     """
     out: List[Dict[str, Optional[str]]] = []
     for sec in soup.select("section.spec, .spec"):
@@ -241,7 +325,7 @@ def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
             continue
         texts = [s.get_text(strip=True) for s in spans]
 
-        # find a proper header row
+        # find a header row
         start = -1
         for i in range(0, len(texts) - 3):
             header = [t.lower() for t in texts[i:i + 4]]
@@ -259,7 +343,6 @@ def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
             if len(chunk) < 3:
                 continue
             title, ver_raw, date_raw = chunk[0], chunk[1], chunk[2]
-            # Only keep items that look like BIOS *and* have a BIOS-ish version token.
             if "bios" not in title.lower():
                 continue
             ver = _extract_base_version(ver_raw)
@@ -268,15 +351,16 @@ def _parse_grid_sections(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
                 out.append({"title": title, "version": ver, "date": dt})
     return out
 
+
 def _parse_text_fallback(html_text: str) -> List[Dict[str, Optional[str]]]:
     """
-    Last-resort parser for odd MSI pages (OEM / regional / BULK) where the DOM structure
-    differs and the span/grid parsers miss everything.
+    Fallback for MSI pages that don't match the span/grid structure.
 
-    Strategy:
-      1) Strip to plain text.
-      2) Prefer explicit 'Version ... Release Date ...' pairs.
-      3) Otherwise scan for BIOS-like version tokens and pick a nearby date.
+    We prioritize explicit pairs:
+      Version <X> ... Release Date <YYYY-MM-DD>
+
+    This is exactly the format MSI uses on many support pages, including
+    PRO B760M-VC WIFI BULK.
     """
     if not html_text:
         return []
@@ -289,73 +373,59 @@ def _parse_text_fallback(html_text: str) -> List[Dict[str, Optional[str]]]:
     rows: List[Dict[str, Optional[str]]] = []
     seen: Dict[str, Optional[str]] = {}
 
-    # (1) Label-pair extraction (fixes PRO B760M-VC WIFI BULK style pages)
-    keywords = ("bios", "ami", "microcode", "m-flash", "uefi", "me firmware", "file size", "download", "description")
+    # (1) Label-pair extraction
     for m in MSI_VERSION_RELEASEDATE_RX.finditer(full_txt):
         ver_raw = m.group(1)
         dt_raw = m.group(2)
-
-        # Light sanity filter: keep pairs that look BIOS-related in their neighborhood.
-        ws = max(0, m.start() - 600)
-        we = min(len(full_txt), m.end() + 600)
-        window = full_txt[ws:we].lower()
-        if not any(k in window for k in keywords):
-            continue
-
         ver = _extract_base_version(ver_raw)
-        dt_norm = _norm_date(dt_raw)
+        dt = _norm_date(dt_raw)
         if not ver:
             continue
-
         prev = seen.get(ver)
-        if prev is None or (dt_norm and (prev or "") < dt_norm):
-            seen[ver] = dt_norm
+        if prev is None or (dt and (prev or "") < dt):
+            seen[ver] = dt
 
     if seen:
         for ver, dt in seen.items():
             rows.append({"title": "BIOS", "version": ver, "date": dt})
         return rows
 
-    # (2) Token scan with looser context rules than the old version.
-    for m in MSI_BIOS_VER_RX.finditer(full_txt):
+    # (2) Token scan with a wider context window (handles pages missing the 'Version' label)
+    for m in VERSION_BASE_RX.finditer(full_txt):
         ver = m.group(1)
+        ws = max(0, m.start() - 650)
+        we = min(len(full_txt), m.end() + 650)
+        window = full_txt[ws:we].lower()
 
-        ws = max(0, m.start() - 500)
-        we = min(len(full_txt), m.end() + 500)
-        window = full_txt[ws:we]
-
-        # Require some BIOS-ish context, but allow pages that don't repeat 'BIOS' near the version.
-        wlow = window.lower()
-        if not ("bios" in wlow or "release date" in wlow or "ami" in wlow or "microcode" in wlow):
+        # require some BIOS-ish context
+        if not ("bios" in window or "release date" in window or "ami" in window):
             continue
 
         dmatch = DATE_RX.search(window)
-        dt_norm = _norm_date(dmatch.group(0)) if dmatch else None
-
+        dt = _norm_date(dmatch.group(0)) if dmatch else None
         prev = seen.get(ver)
-        if prev is None or (dt_norm and (prev or "") < dt_norm):
-            seen[ver] = dt_norm
+        if prev is None or (dt and (prev or "") < dt):
+            seen[ver] = dt
 
     for ver, dt in seen.items():
         rows.append({"title": "BIOS", "version": ver, "date": dt})
 
     return rows
 
+
 def _parse_bios_rows(html_text: str) -> List[Dict[str, Optional[str]]]:
     soup = BeautifulSoup(html_text or "", "html.parser")
 
-    # Prefer robust span lookahead (better on busy pages)
     rows = _parse_span_lookahead(soup)
     if rows:
         return rows
 
-    # Next try the strict spec-grid parser
     rows = _parse_grid_sections(soup)
     if rows:
         return rows
 
-    # Last resort: text-only fallback for weird OEM / BULK pages
     return _parse_text_fallback(html_text)
+
 
 # ---------- public API ----------
 
@@ -373,16 +443,20 @@ def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
         }
 
     final_url = _ensure_bios_anchor(_force_https(url0))
-    html_text = _fetch_html(final_url)
+    combo_text = _fetch_html(final_url)
 
     # Always dump a debug snapshot locally for tuning
     try:
         Path("cache/msi-debug").mkdir(parents=True, exist_ok=True)
-        Path(f"cache/msi-debug/{_slugify_name(model_name)}.html").write_text(html_text, encoding="utf-8")
+        slug = _slugify_name(model_name)
+        Path(f"cache/msi-debug/{slug}.html").write_text(combo_text, encoding="utf-8")
+        # Also dump the extracted plain text for easy inspection
+        soup = BeautifulSoup(combo_text or "", "html.parser")
+        Path(f"cache/msi-debug/{slug}.txt").write_text(soup.get_text("\n", strip=True), encoding="utf-8")
     except Exception:
         pass
 
-    rows = _parse_bios_rows(html_text)
+    rows = _parse_bios_rows(combo_text)
     if not rows:
         return {
             "vendor": "MSI",
@@ -401,12 +475,12 @@ def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
     rows_sorted = sorted(rows, key=key, reverse=True)
 
     versions = [
-        {"version": r.get("version") or "", "date": r.get("date")}
+        {"version": (r.get("version") or ""), "date": r.get("date")}
         for r in rows_sorted[:2]
     ]
 
     return {
-        "vendor": "MSI",  # keep MSI so tiles show under the MSI filter
+        "vendor": "MSI",
         "model": model_name,
         "url": final_url,
         "ok": True,
@@ -414,7 +488,8 @@ def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
         "error": None,
     }
 
+
 if __name__ == "__main__":
     import sys as _sys
-    mdl = " ".join(_sys.argv[1:]) or "MAG Z790 TOMAHAWK MAX WIFI"
-    print(latest_two(mdl, override_url=_guess_url_from_model(mdl)))
+    mdl = " ".join(_sys.argv[1:]) or "PRO B760M-VC WIFI BULK"
+    print(latest_two(mdl, override_url="https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios"))

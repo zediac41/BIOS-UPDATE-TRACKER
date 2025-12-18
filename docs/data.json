@@ -470,6 +470,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "B850M EAGLE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F5",
+        "date": "2025-11-24"
+      },
+      {
+        "version": "F4",
+        "date": "2025-07-18"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B850M GAMING X WIFI6E",
     "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
     "versions": [
@@ -576,6 +592,22 @@
       {
         "version": "1715",
         "date": "2025-09-25"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F22",
+        "date": "2025-10-29"
+      },
+      {
+        "version": "F20",
+        "date": "2024-03-25"
       }
     ],
     "ok": true
@@ -1001,21 +1033,5 @@
     "ok": false,
     "versions": [],
     "error": "parse:no-versions"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#dl",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B850M EAGLE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE/support",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
   }
 ]

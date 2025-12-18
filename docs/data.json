@@ -129,6 +129,22 @@
     "ok": true
   },
   {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z790 DARK HERO",
+    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z790-dark-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2107",
+        "date": "2025-12-15"
+      },
+      {
+        "version": "2001",
+        "date": "2025-05-19"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "PRO Z890-S WIFI PZ",
     "url": "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#bios",
@@ -325,6 +341,86 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "Z890M AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F6",
+        "date": "2025-12-01"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F6",
+        "date": "2025-12-01"
+      },
+      {
+        "version": "F6",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
+    "versions": [
+      {
+        "version": "F6",
+        "date": "2025-12-01"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F6",
+        "date": "2025-12-01"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860I AORUS PRO ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
+    "versions": [
+      {
+        "version": "F6",
+        "date": "2025-12-01"
+      },
+      {
+        "version": "F6",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASRock",
     "model": "B660M-HDV",
     "url": "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS",
@@ -352,6 +448,86 @@
       {
         "version": "1715",
         "date": "2025-09-25"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
+    "versions": [
+      {
+        "version": "F7",
+        "date": "2025-11-24"
+      },
+      {
+        "version": "F6",
+        "date": "2025-07-31"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M GAMING X WIFI6E",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
+    "versions": [
+      {
+        "version": "F6",
+        "date": "2025-11-24"
+      },
+      {
+        "version": "F5",
+        "date": "2025-07-18"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
+    "versions": [
+      {
+        "version": "F8",
+        "date": "2025-11-20"
+      },
+      {
+        "version": "F7",
+        "date": "2025-07-18"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F8",
+        "date": "2025-11-20"
+      },
+      {
+        "version": "F7",
+        "date": "2025-07-18"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F5",
+        "date": "2025-11-20"
+      },
+      {
+        "version": "F4",
+        "date": "2025-07-18"
       }
     ],
     "ok": true
@@ -819,22 +995,6 @@
     "ok": true
   },
   {
-    "vendor": "ASUS",
-    "model": "ROG MAXIMUS Z790 DARK HERO",
-    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z790-dark-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2001",
-        "date": "2025-05-19"
-      },
-      {
-        "version": "1801",
-        "date": "2024-12-06"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "PRO B760M-VC WIFI BULK",
     "url": "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios",
@@ -852,88 +1012,8 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "B850M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890M AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B860M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS STEALTH ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B860I AORUS PRO ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "B850M EAGLE WIFI6E ICE",
     "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE/support",
-    "versions": [],
-    "ok": false,
-    "error": "headless:block-page(headless)"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B850M GAMING X WIFI6E",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
     "versions": [],
     "ok": false,
     "error": "headless:block-page(headless)"

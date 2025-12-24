@@ -1,3 +1,3 @@
-2025/12/23-14:02:23.707 2298 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Local Storage/leveldb/MANIFEST-000001
-2025/12/23-14:02:23.714 2298 Recovering log #36
-2025/12/23-14:02:23.715 2298 Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Local Storage/leveldb/000036.log 
+2025/12/24-13:58:07.819 2461 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Local Storage/leveldb/MANIFEST-000001
+2025/12/24-13:58:07.828 2461 Recovering log #38
+2025/12/24-13:58:07.828 2461 Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Local Storage/leveldb/000038.log 

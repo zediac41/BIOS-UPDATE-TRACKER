@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "MAG X870 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E51v1A70",
+        "date": "2025-12-26"
+      },
+      {
+        "version": "7E51v1A69",
+        "date": "2025-09-24"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "PRO B860-VC WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios",
     "ok": true,
@@ -773,23 +790,6 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "MAG X870 TOMAHAWK WIFI",
-    "url": "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E51v1A69",
-        "date": "2025-09-24"
-      },
-      {
-        "version": "7E51v1A67",
-        "date": "2025-08-06"
-      }
-    ],
-    "error": null
   },
   {
     "vendor": "MSI",

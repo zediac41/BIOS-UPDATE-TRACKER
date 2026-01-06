@@ -1,5 +1,21 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "PRIME Z890M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "2403",
+        "date": "2026-01-05"
+      },
+      {
+        "version": "2401",
+        "date": "2025-09-30"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "MAG X870 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios",
@@ -690,22 +706,6 @@
       },
       {
         "version": "1606",
-        "date": "2025-07-29"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "PRIME Z890M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "2401",
-        "date": "2025-09-30"
-      },
-      {
-        "version": "2207",
         "date": "2025-07-29"
       }
     ],

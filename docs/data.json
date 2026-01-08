@@ -1,6 +1,38 @@
 [
   {
     "vendor": "ASUS",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1404",
+        "date": "2026-01-08"
+      },
+      {
+        "version": "1402",
+        "date": "2025-12-04"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1404",
+        "date": "2026-01-08"
+      },
+      {
+        "version": "1402",
+        "date": "2025-12-02"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "PRIME Z890M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
     "versions": [
@@ -358,22 +390,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1402",
-        "date": "2025-12-04"
-      },
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "TUF GAMING B850M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
     "versions": [
@@ -441,22 +457,6 @@
     "vendor": "ASUS",
     "model": "TUF GAMING B850-BTF WIFI W",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
-    "versions": [
-      {
-        "version": "1402",
-        "date": "2025-12-02"
-      },
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
     "versions": [
       {
         "version": "1402",

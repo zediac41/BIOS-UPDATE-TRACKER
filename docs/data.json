@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "B850 GAMING PLUS WIFI",
+    "url": "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E56v1A87",
+        "date": "2026-01-15"
+      },
+      {
+        "version": "7E56v1A85",
+        "date": "2025-09-10"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "PRO Z890-P WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios",
     "ok": true,
@@ -889,23 +906,6 @@
       {
         "version": "7E47v1A76",
         "date": "2025-08-12"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "B850 GAMING PLUS WIFI",
-    "url": "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E56v1A85",
-        "date": "2025-09-10"
-      },
-      {
-        "version": "7E56v1A84",
-        "date": "2025-08-07"
       }
     ],
     "error": null

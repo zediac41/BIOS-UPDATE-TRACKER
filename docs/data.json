@@ -1,5 +1,21 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "Pro WS W790-ACE",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE",
+    "versions": [
+      {
+        "version": "1904",
+        "date": "2026-01-22"
+      },
+      {
+        "version": "1801",
+        "date": "2025-08-27"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "B850 GAMING PLUS WIFI",
     "url": "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios",
@@ -15,6 +31,70 @@
       }
     ],
     "error": null
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Pro WS W790E-SAGE SE",
+    "url": "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE",
+    "versions": [
+      {
+        "version": "1904",
+        "date": "2026-01-21"
+      },
+      {
+        "version": "1801",
+        "date": "2025-08-27"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
+    "versions": [
+      {
+        "version": "F10",
+        "date": "2026-01-16"
+      },
+      {
+        "version": "F9",
+        "date": "2025-12-17"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F10",
+        "date": "2026-01-16"
+      },
+      {
+        "version": "F9",
+        "date": "2025-12-17"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F7",
+        "date": "2026-01-16"
+      },
+      {
+        "version": "F6",
+        "date": "2025-12-17"
+      }
+    ],
+    "ok": true
   },
   {
     "vendor": "MSI",
@@ -195,54 +275,6 @@
       {
         "version": "F7",
         "date": "2025-11-24"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [
-      {
-        "version": "F9",
-        "date": "2025-12-17"
-      },
-      {
-        "version": "F8",
-        "date": "2025-11-20"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F9",
-        "date": "2025-12-17"
-      },
-      {
-        "version": "F8",
-        "date": "2025-11-20"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS STEALTH ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-17"
-      },
-      {
-        "version": "F5",
-        "date": "2025-11-20"
       }
     ],
     "ok": true
@@ -909,38 +941,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "Pro WS W790-ACE",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE",
-    "versions": [
-      {
-        "version": "1801",
-        "date": "2025-08-27"
-      },
-      {
-        "version": "1502",
-        "date": "2024-12-25"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "Pro WS W790E-SAGE SE",
-    "url": "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE",
-    "versions": [
-      {
-        "version": "1801",
-        "date": "2025-08-27"
-      },
-      {
-        "version": "1502",
-        "date": "2024-11-15"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",

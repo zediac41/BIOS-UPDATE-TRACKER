@@ -1,5 +1,39 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO X870-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E47v1A7B",
+        "date": "2026-01-26"
+      },
+      {
+        "version": "7E47v1A77",
+        "date": "2025-09-11"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO B840-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E57v1A55",
+        "date": "2026-01-26"
+      },
+      {
+        "version": "7E57v1A53",
+        "date": "2025-09-24"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "Pro WS W790-ACE",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE",
@@ -50,6 +84,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "B850M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
+    "versions": [
+      {
+        "version": "F9",
+        "date": "2026-01-16"
+      },
+      {
+        "version": "F8",
+        "date": "2025-12-17"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "X870 EAGLE WIFI7",
     "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
     "versions": [
@@ -91,6 +141,38 @@
       },
       {
         "version": "F6",
+        "date": "2025-12-17"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M EAGLE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F7",
+        "date": "2026-01-16"
+      },
+      {
+        "version": "F6",
+        "date": "2025-12-17"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M GAMING X WIFI6E",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
+    "versions": [
+      {
+        "version": "F8",
+        "date": "2026-01-16"
+      },
+      {
+        "version": "F7",
         "date": "2025-12-17"
       }
     ],
@@ -259,54 +341,6 @@
       {
         "version": "2401",
         "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B850M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
-    "versions": [
-      {
-        "version": "F8",
-        "date": "2025-12-17"
-      },
-      {
-        "version": "F7",
-        "date": "2025-11-24"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B850M EAGLE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-17"
-      },
-      {
-        "version": "F5",
-        "date": "2025-11-24"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B850M GAMING X WIFI6E",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
-    "versions": [
-      {
-        "version": "F7",
-        "date": "2025-12-17"
-      },
-      {
-        "version": "F6",
-        "date": "2025-11-24"
       }
     ],
     "ok": true
@@ -859,23 +893,6 @@
   },
   {
     "vendor": "MSI",
-    "model": "PRO B840-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E57v1A53",
-        "date": "2025-09-24"
-      },
-      {
-        "version": "7E57v1A52",
-        "date": "2025-08-06"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
     "model": "PRO B550M-VC WIFI",
     "url": "https://www.msi.com/Motherboard/Pro-B550M-VC-WIFI/support#bios",
     "ok": true,
@@ -921,23 +938,6 @@
       {
         "version": "7D98vBG",
         "date": "2025-09-04"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO X870-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E47v1A77",
-        "date": "2025-09-11"
-      },
-      {
-        "version": "7E47v1A76",
-        "date": "2025-08-12"
       }
     ],
     "error": null

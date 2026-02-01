@@ -50,7 +50,10 @@ vendors:
     - { name: PRO B840-P WIFI, url: "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios" }
     - { name: PRO B860-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios" }
     - { name: PRO B550M-VC WIFI, url: "https://www.msi.com/Motherboard/Pro-B550M-VC-WIFI/support#bios" }
-    - { name: PRO B760-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios" }
+    - { name: Z890 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios" }    
+    - { name: X870E GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/X870E-GAMING-PLUS-WIFI/support#bios" }
+    - { name: PRO B850M-A WIFI PZ, url: "https://www.msi.com/Motherboard/PRO-B850M-A-WIFI-PZ/support#bios" }
+    - { name: PRO B760-VC WIFI, url: "https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI/support#bios" }
   gigabyte:
     - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios" }
     - { name: B850M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support" }

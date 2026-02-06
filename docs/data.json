@@ -373,6 +373,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "B850M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
+    "versions": [
+      {
+        "version": "F9",
+        "date": "2026-01-16"
+      },
+      {
+        "version": "F8",
+        "date": "2025-12-17"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "X870 EAGLE WIFI7",
     "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
     "versions": [
@@ -435,22 +451,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B850M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
-    "versions": [
-      {
-        "version": "F9",
-        "date": "2026-01-15"
-      },
-      {
-        "version": "F8",
-        "date": "2025-12-16"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "GIGABYTE",
@@ -782,22 +782,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "Z890M AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-01"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "B860M AORUS ELITE WIFI6E ICE",
     "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
     "versions": [
@@ -856,6 +840,22 @@
       {
         "version": "F6",
         "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890M AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F6",
+        "date": "2025-11-30"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-11"
       }
     ],
     "ok": true

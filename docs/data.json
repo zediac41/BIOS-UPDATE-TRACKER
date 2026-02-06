@@ -1,6 +1,22 @@
 [
   {
     "vendor": "ASUS",
+    "model": "ROG STRIX B860-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3002",
+        "date": "2026-02-05"
+      },
+      {
+        "version": "1801",
+        "date": "2025-09-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "TUF GAMING A520M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI",
     "versions": [
@@ -357,22 +373,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "B850M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
-    "versions": [
-      {
-        "version": "F9",
-        "date": "2026-01-16"
-      },
-      {
-        "version": "F8",
-        "date": "2025-12-17"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "X870 EAGLE WIFI7",
     "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
     "versions": [
@@ -435,6 +435,22 @@
       }
     ],
     "error": null
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
+    "versions": [
+      {
+        "version": "F9",
+        "date": "2026-01-15"
+      },
+      {
+        "version": "F8",
+        "date": "2025-12-16"
+      }
+    ],
+    "ok": true
   },
   {
     "vendor": "GIGABYTE",
@@ -925,22 +941,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B860-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1801",
-        "date": "2025-09-30"
-      },
-      {
-        "version": "1606",
-        "date": "2025-07-29"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",

@@ -1,6 +1,150 @@
 [
   {
     "vendor": "ASUS",
+    "model": "TUF GAMING B850-BTF WIFI W",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
+    "versions": [
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      },
+      {
+        "version": "1402",
+        "date": "2025-12-02"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      },
+      {
+        "version": "1402",
+        "date": "2025-12-08"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      },
+      {
+        "version": "1402",
+        "date": "2025-12-03"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      },
+      {
+        "version": "1404",
+        "date": "2026-01-08"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      },
+      {
+        "version": "1402",
+        "date": "2025-12-03"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2101",
+        "date": "2026-02-10"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870E-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2101",
+        "date": "2026-02-10"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2101",
+        "date": "2026-02-10"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E EXTREME",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2101",
+        "date": "2026-02-10"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX B860-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -144,6 +288,54 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "Z890M AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F20",
+        "date": "2026-02-02"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
+    "versions": [
+      {
+        "version": "F20",
+        "date": "2026-02-02"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F19",
+        "date": "2026-02-02"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING B860M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
@@ -241,54 +433,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "ROG STRIX X870-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "1804",
-        "date": "2025-11-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870E-E GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "1804",
-        "date": "2025-11-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E HERO",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "1805",
-        "date": "2025-11-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "ROG MAXIMUS Z890 HERO",
     "url": "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
     "versions": [
@@ -347,22 +491,6 @@
       {
         "version": "2302",
         "date": "2025-12-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E EXTREME",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "1804",
-        "date": "2025-11-16"
       }
     ],
     "ok": true
@@ -620,22 +748,6 @@
     "ok": true
   },
   {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1404",
-        "date": "2026-01-08"
-      },
-      {
-        "version": "1402",
-        "date": "2025-12-02"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "PRO B760-VC WIFI",
     "url": "https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI/support#bios",
@@ -702,22 +814,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "ROG STRIX B850-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1402",
-        "date": "2025-12-08"
-      },
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "TUF GAMING B850M-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
     "versions": [
@@ -733,70 +829,6 @@
     "ok": true
   },
   {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1402",
-        "date": "2025-12-03"
-      },
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1402",
-        "date": "2025-12-03"
-      },
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-BTF WIFI W",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
-    "versions": [
-      {
-        "version": "1402",
-        "date": "2025-12-02"
-      },
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890M AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-01"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "GIGABYTE",
     "model": "B860M AORUS ELITE WIFI6E ICE",
     "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
@@ -807,38 +839,6 @@
       },
       {
         "version": "F6",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-01"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-01"
-      },
-      {
-        "version": "F16",
         "date": "2025-03-12"
       }
     ],

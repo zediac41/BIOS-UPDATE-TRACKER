@@ -1,5 +1,38 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO B850M-A WIFI PZ",
+    "url": "https://www.msi.com/Motherboard/PRO-B850M-A-WIFI-PZ/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E78v1A20",
+        "date": "2026-02-12"
+      },
+      {
+        "version": "7E78v1A13",
+        "date": "2026-01-13"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      },
+      {
+        "version": "1404",
+        "date": "2026-01-08"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING B850-BTF WIFI W",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
@@ -59,6 +92,22 @@
       {
         "version": "1404",
         "date": "2026-01-08"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      },
+      {
+        "version": "1402",
+        "date": "2025-12-04"
       }
     ],
     "ok": true
@@ -193,22 +242,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F11",
-        "date": "2026-02-05"
-      },
-      {
-        "version": "F10",
-        "date": "2026-01-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "B850M GAMING X WIFI6E",
     "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
     "versions": [
@@ -219,6 +252,22 @@
       {
         "version": "F8",
         "date": "2026-01-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F11",
+        "date": "2026-02-04"
+      },
+      {
+        "version": "F10",
+        "date": "2026-01-15"
       }
     ],
     "ok": true
@@ -305,6 +354,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "B860M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F10",
+        "date": "2026-02-02"
+      },
+      {
+        "version": "F6",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "Z890 EAGLE WIFI7",
     "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
     "versions": [
@@ -330,6 +395,22 @@
       },
       {
         "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860I AORUS PRO ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
+    "versions": [
+      {
+        "version": "F9",
+        "date": "2026-02-02"
+      },
+      {
+        "version": "F6",
         "date": "2025-03-12"
       }
     ],
@@ -699,23 +780,6 @@
   },
   {
     "vendor": "MSI",
-    "model": "PRO B850M-A WIFI PZ",
-    "url": "https://www.msi.com/Motherboard/PRO-B850M-A-WIFI-PZ/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E78v1A13",
-        "date": "2026-01-13"
-      },
-      {
-        "version": "7E78v1A12",
-        "date": "2025-09-26"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
     "model": "MEG X870E GODLIKE",
     "url": "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support#bios",
     "ok": true,
@@ -730,22 +794,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1404",
-        "date": "2026-01-08"
-      },
-      {
-        "version": "1402",
-        "date": "2025-12-04"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",
@@ -808,54 +856,6 @@
       {
         "version": "3287",
         "date": "2025-10-22"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1402",
-        "date": "2025-12-04"
-      },
-      {
-        "version": "1087",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B860M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-01"
-      },
-      {
-        "version": "F6",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B860I AORUS PRO ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
-    "versions": [
-      {
-        "version": "F6",
-        "date": "2025-12-01"
-      },
-      {
-        "version": "F6",
-        "date": "2025-03-12"
       }
     ],
     "ok": true

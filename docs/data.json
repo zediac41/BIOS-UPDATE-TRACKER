@@ -193,6 +193,23 @@
     "ok": true
   },
   {
+    "vendor": "MSI",
+    "model": "PRO B850M-VC WIFI6E",
+    "url": "https://us.msi.com/Motherboard/PRO-B850M-VC-WIFI6E/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E71v1A50",
+        "date": "2026-02-09"
+      },
+      {
+        "version": "7E71v1A48",
+        "date": "2026-01-26"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX B860-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
@@ -242,6 +259,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F11",
+        "date": "2026-02-05"
+      },
+      {
+        "version": "F10",
+        "date": "2026-01-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B850M GAMING X WIFI6E",
     "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
     "versions": [
@@ -252,22 +285,6 @@
       {
         "version": "F8",
         "date": "2026-01-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F11",
-        "date": "2026-02-04"
-      },
-      {
-        "version": "F10",
-        "date": "2026-01-15"
       }
     ],
     "ok": true

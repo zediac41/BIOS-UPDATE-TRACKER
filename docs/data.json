@@ -291,6 +291,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F11",
+        "date": "2026-02-05"
+      },
+      {
+        "version": "F10",
+        "date": "2026-01-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B850M GAMING X WIFI6E",
     "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
     "versions": [
@@ -301,22 +317,6 @@
       {
         "version": "F8",
         "date": "2026-01-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F11",
-        "date": "2026-02-04"
-      },
-      {
-        "version": "F10",
-        "date": "2026-01-15"
       }
     ],
     "ok": true

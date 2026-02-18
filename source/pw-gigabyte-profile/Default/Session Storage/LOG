@@ -1,3 +1,6 @@
-2026/02/17-13:59:09.800 27f1 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Session Storage/MANIFEST-000001
-2026/02/17-13:59:09.801 27f1 Recovering log #61
-2026/02/17-13:59:09.801 27f1 Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Session Storage/000061.log 
+2026/02/18-14:00:29.374 27cf Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Session Storage/MANIFEST-000001
+2026/02/18-14:00:29.375 27cf Recovering log #61
+2026/02/18-14:00:29.375 27cf Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Session Storage/000061.log 
+2026/02/18-14:00:37.502 27d1 Level-0 table #65: started
+2026/02/18-14:00:37.503 27d1 Level-0 table #65: 11877 bytes OK
+2026/02/18-14:00:37.504 27d1 Delete type=0 #61

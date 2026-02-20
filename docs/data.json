@@ -275,22 +275,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X870 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [
-      {
-        "version": "F11",
-        "date": "2026-02-05"
-      },
-      {
-        "version": "F10",
-        "date": "2026-01-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "X870 AORUS ELITE WIFI7 ICE",
     "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE/support#dl",
     "versions": [
@@ -317,6 +301,22 @@
       {
         "version": "F8",
         "date": "2026-01-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
+    "versions": [
+      {
+        "version": "F11",
+        "date": "2026-02-04"
+      },
+      {
+        "version": "F10",
+        "date": "2026-01-15"
       }
     ],
     "ok": true

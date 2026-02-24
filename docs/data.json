@@ -1,5 +1,38 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO B840-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E57v1A60",
+        "date": "2026-02-24"
+      },
+      {
+        "version": "7E57v1A55",
+        "date": "2026-01-26"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "ASRock",
+    "model": "B650M Pro RS WiFi",
+    "url": "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS",
+    "versions": [
+      {
+        "version": "4.10",
+        "date": "2026-02-24"
+      },
+      {
+        "version": "4.03",
+        "date": "2025-12-16"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING A620M-PLUS WIFI",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
@@ -677,23 +710,6 @@
     "error": null
   },
   {
-    "vendor": "MSI",
-    "model": "PRO B840-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E57v1A55",
-        "date": "2026-01-26"
-      },
-      {
-        "version": "7E57v1A53",
-        "date": "2025-09-24"
-      }
-    ],
-    "error": null
-  },
-  {
     "vendor": "ASUS",
     "model": "Pro WS W790-ACE",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE",
@@ -860,22 +876,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASRock",
-    "model": "B650M Pro RS WiFi",
-    "url": "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS",
-    "versions": [
-      {
-        "version": "4.03",
-        "date": "2025-12-16"
-      },
-      {
-        "version": "3.50",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "ASUS",

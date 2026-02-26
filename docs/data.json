@@ -1,5 +1,69 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2102",
+        "date": "2026-02-25"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870E-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2102",
+        "date": "2026-02-25"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2102",
+        "date": "2026-02-25"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E EXTREME",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2102",
+        "date": "2026-02-25"
+      },
+      {
+        "version": "2004",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "PRO B840-P WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
@@ -192,70 +256,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2101",
-        "date": "2026-02-10"
-      },
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870E-E GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2101",
-        "date": "2026-02-10"
-      },
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E HERO",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2101",
-        "date": "2026-02-10"
-      },
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E EXTREME",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2101",
-        "date": "2026-02-10"
-      },
-      {
-        "version": "2004",
-        "date": "2026-01-30"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",

@@ -1,5 +1,22 @@
 [
   {
+    "vendor": "MSI",
+    "model": "B650M PROJECT ZERO",
+    "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E09v1H5",
+        "date": "2026-03-04"
+      },
+      {
+        "version": "7E09v1H3",
+        "date": "2025-10-23"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING A620M-PLUS WIFI",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
@@ -940,23 +957,6 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "B650M PROJECT ZERO",
-    "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E09v1H3",
-        "date": "2025-10-23"
-      },
-      {
-        "version": "7E09v1H2",
-        "date": "2025-08-08"
-      }
-    ],
-    "error": null
   },
   {
     "vendor": "MSI",

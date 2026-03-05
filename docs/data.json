@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "MAG B650 TOMAHAWK WIFI",
+    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D75v1P7",
+        "date": "2026-03-05"
+      },
+      {
+        "version": "7D75v1P5",
+        "date": "2025-10-21"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "B650M PROJECT ZERO",
     "url": "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios",
     "ok": true,
@@ -895,22 +912,6 @@
     "ok": true
   },
   {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F22",
-        "date": "2025-10-29"
-      },
-      {
-        "version": "F20",
-        "date": "2024-03-25"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "ASUS",
     "model": "TUF GAMING Z790-PLUS WIFI",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
@@ -927,21 +928,20 @@
     "ok": true
   },
   {
-    "vendor": "MSI",
-    "model": "MAG B650 TOMAHAWK WIFI",
-    "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
-    "ok": true,
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
     "versions": [
       {
-        "version": "7D75v1P5",
-        "date": "2025-10-21"
+        "version": "F22",
+        "date": "2025-10-28"
       },
       {
-        "version": "7D75v1P3",
-        "date": "2025-08-12"
+        "version": "F20",
+        "date": "2024-03-24"
       }
     ],
-    "error": null
+    "ok": true
   },
   {
     "vendor": "MSI",

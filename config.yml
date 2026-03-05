@@ -20,8 +20,6 @@ vendors:
     - { name: ROG STRIX B850-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/" }
     - { name: ROG STRIX X870-I GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/" }
     - { name: Pro WS W790-ACE, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-w790-ace/helpdesk_bios?model2Name=Pro-WS-W790-ACE" }
-    - { name: Pro WS W790E-SAGE SE, url: "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE" }
-    - { name: Pro WS TRX50-SAGE WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI" }
     - { name: TUF GAMING B850M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI" }
     - { name: ROG MAXIMUS Z890 HERO, url: "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/" }
     - { name: ROG STRIX Z890-A GAMING WIFI, url: "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/" }
@@ -35,7 +33,6 @@ vendors:
     - { name: B850 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/support#bios" }
     - { name: PRO X870-P WIFI, url: "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#bios" }
     - { name: MAG X870 TOMAHAWK WIFI, url: "https://www.msi.com/Motherboard/MAG-X870-TOMAHAWK-WIFI/support#bios" }
-    - { name: MEG X870E GODLIKE, url: "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support#bios" }
     - { name: PRO Z790-P WIFI, url: "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support#bios" }
     - { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios" }
     - { name: PRO Z890-P WIFI, url: "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios" }
@@ -55,6 +52,7 @@ vendors:
     - { name: PRO B850M-A WIFI PZ, url: "https://www.msi.com/Motherboard/PRO-B850M-A-WIFI-PZ/support#bios" }
     - { name: PRO B760-VC WIFI, url: "https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI/support#bios" }
     - { name: PRO B850M-VC WIFI6E, url: "https://us.msi.com/Motherboard/PRO-B850M-VC-WIFI6E/support#bios" }
+    - { name: MPG X870E EDGE TI WIFI, url: "https://www.msi.com/Motherboard/MPG-X870E-EDGE-TI-WIFI/support#bios" }
   gigabyte:
     - { name: A520I AC, url: "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios" }
     - { name: B850M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support" }

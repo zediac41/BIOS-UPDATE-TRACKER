@@ -242,22 +242,6 @@
     "ok": true
   },
   {
-    "vendor": "ASUS",
-    "model": "Pro WS TRX50-SAGE WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/workstation/pro-ws-trx50-sage-wifi/helpdesk_bios?model2Name=Pro-WS-TRX50-SAGE-WIFI",
-    "versions": [
-      {
-        "version": "1317",
-        "date": "2026-02-13"
-      },
-      {
-        "version": "1203",
-        "date": "2025-07-23"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "PRO B850M-A WIFI PZ",
     "url": "https://www.msi.com/Motherboard/PRO-B850M-A-WIFI-PZ/support#bios",
@@ -694,6 +678,23 @@
   },
   {
     "vendor": "MSI",
+    "model": "MPG X870E EDGE TI WIFI",
+    "url": "https://www.msi.com/Motherboard/MPG-X870E-EDGE-TI-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E59v1A80",
+        "date": "2026-01-30"
+      },
+      {
+        "version": "7E59v1A71",
+        "date": "2026-01-22"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "X870E GAMING PLUS WIFI",
     "url": "https://www.msi.com/Motherboard/X870E-GAMING-PLUS-WIFI/support#bios",
     "ok": true,
@@ -734,22 +735,6 @@
       {
         "version": "1904",
         "date": "2026-01-22"
-      },
-      {
-        "version": "1801",
-        "date": "2025-08-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "Pro WS W790E-SAGE SE",
-    "url": "https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-w790e-sage-se/helpdesk_bios?model2Name=Pro-WS-W790E-SAGE-SE",
-    "versions": [
-      {
-        "version": "1904",
-        "date": "2026-01-21"
       },
       {
         "version": "1801",
@@ -856,23 +841,6 @@
       {
         "version": "7E22v1A80",
         "date": "2025-12-09"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "MEG X870E GODLIKE",
-    "url": "https://www.msi.com/Motherboard/MEG-X870E-GODLIKE/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E48v1A54",
-        "date": "2026-01-09"
-      },
-      {
-        "version": "7E48v1A51",
-        "date": "2025-09-09"
       }
     ],
     "error": null

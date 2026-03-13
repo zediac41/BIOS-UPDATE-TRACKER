@@ -10,8 +10,8 @@
         "date": "2026-03-11"
       },
       {
-        "version": "7E51v1A71",
-        "date": "2026-01-13"
+        "version": "7E51v1A80",
+        "date": "2026-03-04"
       }
     ],
     "error": null
@@ -624,6 +624,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F19",
+        "date": "2026-02-02"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B860I AORUS PRO ICE",
     "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
     "versions": [
@@ -634,22 +650,6 @@
       {
         "version": "F6",
         "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F19",
-        "date": "2026-02-01"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-11"
       }
     ],
     "ok": true
@@ -914,22 +914,6 @@
     "ok": true
   },
   {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F22",
-        "date": "2025-10-29"
-      },
-      {
-        "version": "F20",
-        "date": "2024-03-25"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "ASUS",
     "model": "TUF GAMING Z790-PLUS WIFI",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
@@ -941,6 +925,22 @@
       {
         "version": "1820",
         "date": "2025-05-21"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F22",
+        "date": "2025-10-28"
+      },
+      {
+        "version": "F20",
+        "date": "2024-03-24"
       }
     ],
     "ok": true

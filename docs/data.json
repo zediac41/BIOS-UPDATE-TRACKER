@@ -1,6 +1,38 @@
 [
   {
     "vendor": "ASUS",
+    "model": "TUF GAMING B850M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1644",
+        "date": "2026-03-19"
+      },
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1644",
+        "date": "2026-03-19"
+      },
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "TUF GAMING X870-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
     "versions": [
@@ -415,38 +447,6 @@
     "vendor": "ASUS",
     "model": "ROG STRIX B850-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1642",
-        "date": "2026-02-26"
-      },
-      {
-        "version": "1627",
-        "date": "2026-02-11"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1642",
-        "date": "2026-02-26"
-      },
-      {
-        "version": "1627",
-        "date": "2026-02-11"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
     "versions": [
       {
         "version": "1642",

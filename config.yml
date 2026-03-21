@@ -61,8 +61,8 @@ vendors:
     - { name: Z890M AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#dl" }
     - { name: B860M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl" }
     - { name: Z890 EAGLE WIFI7, url: "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support" }
-    - { name: Z890 AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#dl" }
-    - { name: X870 AORUS STEALTH ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE/support#dl" }
+    - { name: Z890 AORUS ELITE WIFI7 ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios" }
+    - { name: X870 AORUS STEALTH ICE, url: "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios" }
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
     - { name: B850M EAGLE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios" }
     - { name: B850M GAMING X WIFI6E, url: "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support" }

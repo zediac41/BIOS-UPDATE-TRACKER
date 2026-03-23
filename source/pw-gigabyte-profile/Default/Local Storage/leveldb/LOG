@@ -1,3 +1,5 @@
-2026/03/21-00:25:56.445 26d8 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Local Storage/leveldb/MANIFEST-000001
-2026/03/21-00:25:56.453 26d8 Recovering log #61
-2026/03/21-00:25:56.454 26d8 Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Local Storage/leveldb/000061.log 
+2026/03/23-12:12:49.840 26f2 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/Local Storage/leveldb/MANIFEST-000001
+2026/03/23-12:12:49.846 26f2 Recovering log #61
+2026/03/23-12:12:49.847 26f2 Level-0 table #63: started
+2026/03/23-12:12:49.850 26f2 Level-0 table #63: 9083 bytes OK
+2026/03/23-12:12:49.853 26f2 Delete type=0 #61

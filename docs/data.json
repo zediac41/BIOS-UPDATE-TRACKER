@@ -1,6 +1,55 @@
 [
   {
     "vendor": "MSI",
+    "model": "X870E GAMING PLUS WIFI",
+    "url": "https://www.msi.com/Motherboard/X870E-GAMING-PLUS-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E70v1A52",
+        "date": "2026-03-24"
+      },
+      {
+        "version": "7E70v1A50",
+        "date": "2026-01-27"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1644",
+        "date": "2026-03-23"
+      },
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1644",
+        "date": "2026-03-23"
+      },
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "MSI",
     "model": "MAG B650 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
     "ok": true,
@@ -528,22 +577,6 @@
     "ok": true
   },
   {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1642",
-        "date": "2026-02-26"
-      },
-      {
-        "version": "1627",
-        "date": "2026-02-11"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "ASRock",
     "model": "B650M Pro RS WiFi",
     "url": "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS",
@@ -575,22 +608,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1627",
-        "date": "2026-02-11"
-      },
-      {
-        "version": "1402",
-        "date": "2025-12-03"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "ASUS",
@@ -879,23 +896,6 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "X870E GAMING PLUS WIFI",
-    "url": "https://www.msi.com/Motherboard/X870E-GAMING-PLUS-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E70v1A50",
-        "date": "2026-01-27"
-      },
-      {
-        "version": "7E70v1A45",
-        "date": "2026-01-22"
-      }
-    ],
-    "error": null
   },
   {
     "vendor": "ASUS",

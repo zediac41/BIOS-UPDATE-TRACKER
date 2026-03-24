@@ -217,6 +217,23 @@
     "ok": true
   },
   {
+    "vendor": "MSI",
+    "model": "PRO B860M-VC WIFI6E",
+    "url": "https://www.msi.com/Motherboard/PRO-B860M-VC-WIFI6E/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E42v1A8",
+        "date": "2026-03-17"
+      },
+      {
+        "version": "7E42v1A71",
+        "date": "2026-03-10"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING X870-PLUS WIFI",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",

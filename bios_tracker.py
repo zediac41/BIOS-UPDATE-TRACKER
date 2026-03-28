@@ -28,13 +28,12 @@ index 898834bcce63f8832728b4a314d3cc5c05527ca6..77fc4d8b7963f9e3cd16cec1a8952b4d
  # Vendor scrapers (your existing modules)
  # Each module must expose: latest_two(model_name, override_url=None) -> dict
  # -------------------------------------------------------------------
- from vendors import asus, msi, gigabyte, asrock
+ from vendors import asus, msi, gigabyte
  
  VENDOR_FUNCS = {
      "asus": asus.latest_two,
      "msi": msi.latest_two,
      "gigabyte": gigabyte.latest_two,
-     "asrock": asrock.latest_two,
  }
  
  # -------------------------------------------------------------------

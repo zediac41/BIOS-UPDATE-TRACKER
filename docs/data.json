@@ -1,5 +1,21 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-BTF WIFI W",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
+    "versions": [
+      {
+        "version": "1644",
+        "date": "2026-03-27"
+      },
+      {
+        "version": "1627",
+        "date": "2026-02-11"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "MAG Z890 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
@@ -580,54 +596,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "TUF GAMING A620M-PLUS WIFI",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3841",
-        "date": "2026-02-26"
-      },
-      {
-        "version": "3827",
-        "date": "2026-02-13"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-BTF WIFI W",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
-    "versions": [
-      {
-        "version": "1642",
-        "date": "2026-02-26"
-      },
-      {
-        "version": "1627",
-        "date": "2026-02-11"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASRock",
-    "model": "B650M Pro RS WiFi",
-    "url": "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS",
-    "versions": [
-      {
-        "version": "4.10",
-        "date": "2026-02-24"
-      },
-      {
-        "version": "4.03",
-        "date": "2025-12-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "ROG STRIX B860-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -638,22 +606,6 @@
       {
         "version": "1801",
         "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING A520M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3636",
-        "date": "2026-02-03"
-      },
-      {
-        "version": "3634",
-        "date": "2025-09-24"
       }
     ],
     "ok": true
@@ -745,11 +697,11 @@
     "versions": [
       {
         "version": "F9",
-        "date": "2026-02-01"
+        "date": "2026-02-02"
       },
       {
         "version": "F6",
-        "date": "2025-03-11"
+        "date": "2025-03-12"
       }
     ],
     "ok": true
@@ -942,22 +894,6 @@
       {
         "version": "2001",
         "date": "2025-05-19"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASRock",
-    "model": "B660M-HDV",
-    "url": "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS",
-    "versions": [
-      {
-        "version": "20.01",
-        "date": "2025-11-28"
-      },
-      {
-        "version": "19.03",
-        "date": "2025-05-28"
       }
     ],
     "ok": true

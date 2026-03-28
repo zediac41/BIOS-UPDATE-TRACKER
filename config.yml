@@ -1,7 +1,5 @@
 vendors:
   asus:
-    - { name: TUF GAMING A520M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a520m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A520M-PLUS-WIFI" }
-    - { name: TUF GAMING A620M-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-a620m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-A620M-PLUS-WIFI" }
     - { name: TUF GAMING X870-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI" }
     - { name: TUF GAMING Z790-PLUS WIFI, url: "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI" }
     - { name: TUF GAMING B860M-PLUS WIFI, url: "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI" }
@@ -67,9 +65,6 @@ vendors:
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
     - { name: B850M EAGLE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios" }
     - { name: B850M GAMING X WIFI6E, url: "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support" }
-  asrock:
-    - { name: B660M-HDV, url: "https://www.asrock.com/mb/Intel/B660M-HDV/index.asp#BIOS" }
-    - { name: B650M Pro RS WiFi, url: "https://www.asrock.com/MB/AMD/B650M%20Pro%20RS%20WiFi/index.asp#BIOS" }
     
     
    #- { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios", issue: true }

@@ -133,6 +133,22 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F9B",
+        "date": "2026-03-23"
+      },
+      {
+        "version": "F8",
+        "date": "2026-02-04"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "MAG B650 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
@@ -414,22 +430,6 @@
     "ok": true
   },
   {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS STEALTH ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F9B",
-        "date": "2026-03-12"
-      },
-      {
-        "version": "F8",
-        "date": "2026-02-04"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "PRO Z890-S WIFI PZ",
     "url": "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#bios",
@@ -676,22 +676,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "Z890 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F19",
-        "date": "2026-02-02"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "B860I AORUS PRO ICE",
     "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
     "versions": [
@@ -702,6 +686,22 @@
       {
         "version": "F6",
         "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F19",
+        "date": "2026-02-01"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-11"
       }
     ],
     "ok": true

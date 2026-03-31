@@ -676,6 +676,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F19",
+        "date": "2026-02-02"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B860I AORUS PRO ICE",
     "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
     "versions": [
@@ -686,22 +702,6 @@
       {
         "version": "F6",
         "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F19",
-        "date": "2026-02-01"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-11"
       }
     ],
     "ok": true

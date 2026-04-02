@@ -496,6 +496,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "B850M EAGLE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F9A",
+        "date": "2026-03-11"
+      },
+      {
+        "version": "F8",
+        "date": "2026-02-05"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B850M GAMING X WIFI6E",
     "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
     "versions": [
@@ -543,22 +559,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B850M EAGLE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F9A",
-        "date": "2026-03-10"
-      },
-      {
-        "version": "F8",
-        "date": "2026-02-04"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",
@@ -697,11 +697,11 @@
     "versions": [
       {
         "version": "F9",
-        "date": "2026-02-02"
+        "date": "2026-02-01"
       },
       {
         "version": "F6",
-        "date": "2025-03-12"
+        "date": "2025-03-11"
       }
     ],
     "ok": true

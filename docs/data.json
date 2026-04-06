@@ -1,8 +1,88 @@
 [
   {
     "vendor": "ASUS",
+    "model": "ROG STRIX Z890-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3103",
+        "date": "2026-04-02"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z890 HERO BTF",
+    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3103",
+        "date": "2026-04-02"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z890 HERO",
+    "url": "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3103",
+        "date": "2026-04-02"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX Z890-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3103",
+        "date": "2026-04-02"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3103",
+        "date": "2026-04-02"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ProArt Z890-CREATOR WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios?model2Name=ProArt-Z890-CREATOR-WIFI",
     "versions": [
       {
         "version": "3103",
@@ -496,6 +576,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F12A",
+        "date": "2026-03-11"
+      },
+      {
+        "version": "F11",
+        "date": "2026-02-05"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B850M EAGLE WIFI6E ICE",
     "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
     "versions": [
@@ -559,22 +655,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F12A",
-        "date": "2026-03-10"
-      },
-      {
-        "version": "F11",
-        "date": "2026-02-04"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",
@@ -782,86 +862,6 @@
       {
         "version": "2401",
         "date": "2025-09-30"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX Z890-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2301",
-        "date": "2025-12-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG MAXIMUS Z890 HERO BTF",
-    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2302",
-        "date": "2025-12-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG MAXIMUS Z890 HERO",
-    "url": "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2302",
-        "date": "2025-12-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX Z890-E GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2302",
-        "date": "2025-12-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ProArt Z890-CREATOR WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios?model2Name=ProArt-Z890-CREATOR-WIFI",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2302",
-        "date": "2025-12-15"
       }
     ],
     "ok": true

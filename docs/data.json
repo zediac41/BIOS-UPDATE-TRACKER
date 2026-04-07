@@ -1,5 +1,39 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO Z890-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E34v1AD0",
+        "date": "2026-04-07"
+      },
+      {
+        "version": "7E34v1AC1",
+        "date": "2026-03-10"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
+    "model": "B760M PROJECT ZERO",
+    "url": "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E14v19",
+        "date": "2026-04-07"
+      },
+      {
+        "version": "7E14v18",
+        "date": "2025-08-12"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX Z890-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
@@ -641,23 +675,6 @@
   },
   {
     "vendor": "MSI",
-    "model": "PRO Z890-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E34v1AC1",
-        "date": "2026-03-10"
-      },
-      {
-        "version": "7E34v1AC0",
-        "date": "2026-01-15"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
     "model": "MPG Z790 EDGE TI MAX WIFI",
     "url": "https://www.msi.com/Motherboard/MPG-Z790-EDGE-TI-MAX-WIFI/support#bios",
     "ok": true,
@@ -793,11 +810,11 @@
     "versions": [
       {
         "version": "F9",
-        "date": "2026-02-02"
+        "date": "2026-02-01"
       },
       {
         "version": "F6",
-        "date": "2025-03-12"
+        "date": "2025-03-11"
       }
     ],
     "ok": true
@@ -994,23 +1011,6 @@
       {
         "version": "7E06vAH",
         "date": "2025-06-25"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "B760M PROJECT ZERO",
-    "url": "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E14v18",
-        "date": "2025-08-12"
-      },
-      {
-        "version": "7E14v181",
-        "date": "2025-05-13"
       }
     ],
     "error": null

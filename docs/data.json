@@ -1,5 +1,55 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B860-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "3011",
+        "date": "2026-04-10"
+      },
+      {
+        "version": "3002",
+        "date": "2026-02-05"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "MSI",
+    "model": "PRO B760-P WIFI DDR4",
+    "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D98v1G",
+        "date": "2026-04-10"
+      },
+      {
+        "version": "7D98v1F",
+        "date": "2025-09-23"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
+    "model": "Z890 GAMING PLUS WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D98vBI",
+        "date": "2026-04-10"
+      },
+      {
+        "version": "7D98vBH",
+        "date": "2025-09-23"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "MSI",
     "model": "PRO Z890-S WIFI PZ",
     "url": "https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/support#bios",
@@ -594,22 +644,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X870 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [
-      {
-        "version": "F12A",
-        "date": "2026-03-11"
-      },
-      {
-        "version": "F11",
-        "date": "2026-02-05"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "X870 AORUS ELITE WIFI7 ICE",
     "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
     "versions": [
@@ -674,6 +708,22 @@
     "error": null
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
+    "versions": [
+      {
+        "version": "F12A",
+        "date": "2026-03-10"
+      },
+      {
+        "version": "F11",
+        "date": "2026-02-04"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "MPG Z790 EDGE TI MAX WIFI",
     "url": "https://www.msi.com/Motherboard/MPG-Z790-EDGE-TI-MAX-WIFI/support#bios",
@@ -706,22 +756,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B860-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-02-05"
-      },
-      {
-        "version": "1801",
-        "date": "2025-09-30"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "ASUS",
@@ -960,40 +994,6 @@
       {
         "version": "7C95vHE",
         "date": "2025-09-23"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B760-P WIFI DDR4",
-    "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7D98v1F",
-        "date": "2025-09-23"
-      },
-      {
-        "version": "7D98v1F1",
-        "date": "2025-05-19"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "Z890 GAMING PLUS WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7D98vBH",
-        "date": "2025-09-23"
-      },
-      {
-        "version": "7D98vBG",
-        "date": "2025-09-04"
       }
     ],
     "error": null

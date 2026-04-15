@@ -1,5 +1,101 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2202",
+        "date": "2026-04-15"
+      },
+      {
+        "version": "2103",
+        "date": "2026-03-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870E-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2202",
+        "date": "2026-04-15"
+      },
+      {
+        "version": "2103",
+        "date": "2026-03-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2202",
+        "date": "2026-04-15"
+      },
+      {
+        "version": "2103",
+        "date": "2026-03-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E EXTREME",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "2202",
+        "date": "2026-04-15"
+      },
+      {
+        "version": "2103",
+        "date": "2026-03-16"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B860M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "3011",
+        "date": "2026-04-14"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z890-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "3012",
+        "date": "2026-04-14"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "PRO B860M-VC WIFI6E",
     "url": "https://www.msi.com/Motherboard/PRO-B860M-VC-WIFI6E/support#bios",
@@ -548,54 +644,6 @@
   },
   {
     "vendor": "ASUS",
-    "model": "ROG STRIX X870-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2103",
-        "date": "2026-03-16"
-      },
-      {
-        "version": "2102",
-        "date": "2026-02-25"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870E-E GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2103",
-        "date": "2026-03-16"
-      },
-      {
-        "version": "2102",
-        "date": "2026-02-25"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E HERO",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2103",
-        "date": "2026-03-16"
-      },
-      {
-        "version": "2102",
-        "date": "2026-02-25"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
     "model": "ROG STRIX X870-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -606,22 +654,6 @@
       {
         "version": "1627",
         "date": "2026-02-11"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E EXTREME",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2103",
-        "date": "2026-03-16"
-      },
-      {
-        "version": "2102",
-        "date": "2026-02-25"
       }
     ],
     "ok": true
@@ -844,27 +876,11 @@
     "versions": [
       {
         "version": "F9",
-        "date": "2026-02-01"
+        "date": "2026-02-02"
       },
       {
         "version": "F6",
-        "date": "2025-03-11"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B860M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "1801",
-        "date": "2025-09-30"
+        "date": "2025-03-12"
       }
     ],
     "ok": true
@@ -881,22 +897,6 @@
       {
         "version": "2403",
         "date": "2026-01-05"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING Z890-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2401",
-        "date": "2025-09-30"
       }
     ],
     "ok": true

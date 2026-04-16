@@ -1,6 +1,38 @@
 [
   {
     "vendor": "ASUS",
+    "model": "PRIME Z890M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "3012",
+        "date": "2026-04-16"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Z890 AYW GAMING WIFI W",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
+    "versions": [
+      {
+        "version": "3012",
+        "date": "2026-04-16"
+      },
+      {
+        "version": "3002",
+        "date": "2026-01-30"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX X870-A GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
     "versions": [
@@ -147,7 +179,7 @@
   },
   {
     "vendor": "MSI",
-    "model": "Z890 GAMING PLUS WIFI",
+    "model": "PRO B760-VC WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios",
     "ok": true,
     "versions": [
@@ -545,7 +577,7 @@
   },
   {
     "vendor": "MSI",
-    "model": "PRO B760-VC WIFI",
+    "model": "Z890 GAMING PLUS WIFI",
     "url": "https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI/support#bios",
     "ok": true,
     "versions": [
@@ -660,22 +692,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "B850M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
-    "versions": [
-      {
-        "version": "F11A",
-        "date": "2026-03-11"
-      },
-      {
-        "version": "F10",
-        "date": "2026-02-05"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "X870 EAGLE WIFI7",
     "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
     "versions": [
@@ -754,6 +770,22 @@
       }
     ],
     "error": null
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support",
+    "versions": [
+      {
+        "version": "F11A",
+        "date": "2026-03-10"
+      },
+      {
+        "version": "F10",
+        "date": "2026-02-04"
+      }
+    ],
+    "ok": true
   },
   {
     "vendor": "MSI",
@@ -881,38 +913,6 @@
       {
         "version": "F6",
         "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "PRIME Z890M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2403",
-        "date": "2026-01-05"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "Z890 AYW GAMING WIFI W",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
-    "versions": [
-      {
-        "version": "3002",
-        "date": "2026-01-30"
-      },
-      {
-        "version": "2401",
-        "date": "2025-09-30"
       }
     ],
     "ok": true

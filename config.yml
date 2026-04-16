@@ -45,10 +45,10 @@ vendors:
     - { name: PRO B840-P WIFI, url: "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios" }
     - { name: PRO B860-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios" }
     - { name: PRO B550M-VC WIFI, url: "https://www.msi.com/Motherboard/Pro-B550M-VC-WIFI/support#bios" }
-    - { name: Z890 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios" }    
+    - { name: Z890 GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI/support#bios" }    
     - { name: X870E GAMING PLUS WIFI, url: "https://www.msi.com/Motherboard/X870E-GAMING-PLUS-WIFI/support#bios" }
     - { name: PRO B850M-A WIFI PZ, url: "https://www.msi.com/Motherboard/PRO-B850M-A-WIFI-PZ/support#bios" }
-    - { name: PRO B760-VC WIFI, url: "https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI/support#bios" }
+    - { name: PRO B760-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/support#bios" }
     - { name: PRO B850M-VC WIFI6E, url: "https://us.msi.com/Motherboard/PRO-B850M-VC-WIFI6E/support#bios" }
     - { name: MPG X870E EDGE TI WIFI, url: "https://www.msi.com/Motherboard/MPG-X870E-EDGE-TI-WIFI/support#bios" }
     - { name: PRO B860M-VC WIFI6E, url: "https://www.msi.com/Motherboard/PRO-B860M-VC-WIFI6E/support#bios" }

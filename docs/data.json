@@ -708,22 +708,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X870 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [
-      {
-        "version": "F12A",
-        "date": "2026-03-11"
-      },
-      {
-        "version": "F11",
-        "date": "2026-02-05"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "X870 AORUS ELITE WIFI7 ICE",
     "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
     "versions": [
@@ -755,22 +739,6 @@
     "ok": true
   },
   {
-    "vendor": "GIGABYTE",
-    "model": "B850M GAMING X WIFI6E",
-    "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
-    "versions": [
-      {
-        "version": "F10A",
-        "date": "2026-03-11"
-      },
-      {
-        "version": "F9",
-        "date": "2026-02-05"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "MAG Z790 TOMAHAWK MAX WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios",
@@ -786,6 +754,38 @@
       }
     ],
     "error": null
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
+    "versions": [
+      {
+        "version": "F12A",
+        "date": "2026-03-10"
+      },
+      {
+        "version": "F11",
+        "date": "2026-02-04"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B850M GAMING X WIFI6E",
+    "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support",
+    "versions": [
+      {
+        "version": "F10A",
+        "date": "2026-03-10"
+      },
+      {
+        "version": "F9",
+        "date": "2026-02-04"
+      }
+    ],
+    "ok": true
   },
   {
     "vendor": "MSI",

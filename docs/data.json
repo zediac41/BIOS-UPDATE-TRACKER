@@ -1,5 +1,22 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO B860-VC WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E41v1A91",
+        "date": "2026-05-07"
+      },
+      {
+        "version": "7E41v1A90",
+        "date": "2026-03-27"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "Z890 AYW GAMING WIFI W",
     "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
@@ -658,23 +675,6 @@
       },
       {
         "version": "7E32v1AB1",
-        "date": "2026-03-11"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B860-VC WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E41v1A90",
-        "date": "2026-03-27"
-      },
-      {
-        "version": "7E41v1A81",
         "date": "2026-03-11"
       }
     ],

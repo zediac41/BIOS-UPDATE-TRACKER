@@ -950,6 +950,22 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F22",
+        "date": "2025-10-29"
+      },
+      {
+        "version": "F20",
+        "date": "2024-03-25"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING Z790-PLUS WIFI",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
@@ -961,22 +977,6 @@
       {
         "version": "1820",
         "date": "2025-05-21"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F22",
-        "date": "2025-10-28"
-      },
-      {
-        "version": "F20",
-        "date": "2024-03-24"
       }
     ],
     "ok": true

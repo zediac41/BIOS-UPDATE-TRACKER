@@ -1,5 +1,22 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO B760-P WIFI DDR4",
+    "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D98v1H1",
+        "date": "2026-05-13"
+      },
+      {
+        "version": "7D98v1G",
+        "date": "2026-04-10"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "ROG STRIX Z890-I GAMING WIFI",
     "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
@@ -574,23 +591,6 @@
       {
         "version": "7E42v1A8",
         "date": "2026-03-17"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B760-P WIFI DDR4",
-    "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7D98v1G",
-        "date": "2026-04-10"
-      },
-      {
-        "version": "7D98v1F",
-        "date": "2025-09-23"
       }
     ],
     "error": null

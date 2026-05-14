@@ -1,5 +1,21 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z790-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1836",
+        "date": "2026-05-14"
+      },
+      {
+        "version": "1825",
+        "date": "2025-10-28"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "PRO B760-P WIFI DDR4",
     "url": "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios",
@@ -532,22 +548,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "X870 AORUS STEALTH ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F9C",
-        "date": "2026-04-20"
-      },
-      {
-        "version": "F9B",
-        "date": "2026-04-17"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "B850M EAGLE WIFI6E ICE",
     "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
     "versions": [
@@ -579,6 +579,22 @@
     "ok": true
   },
   {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F9C",
+        "date": "2026-04-19"
+      },
+      {
+        "version": "F9B",
+        "date": "2026-04-16"
+      }
+    ],
+    "ok": true
+  },
+  {
     "vendor": "MSI",
     "model": "PRO B860M-VC WIFI6E",
     "url": "https://www.msi.com/Motherboard/PRO-B860M-VC-WIFI6E/support#bios",
@@ -594,6 +610,22 @@
       }
     ],
     "error": null
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "A520I AC",
+    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F23A",
+        "date": "2026-04-14"
+      },
+      {
+        "version": "F20",
+        "date": "2024-03-25"
+      }
+    ],
+    "ok": true
   },
   {
     "vendor": "MSI",
@@ -945,38 +977,6 @@
       {
         "version": "2001",
         "date": "2025-05-19"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "A520I AC",
-    "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-1x/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F22",
-        "date": "2025-10-29"
-      },
-      {
-        "version": "F20",
-        "date": "2024-03-25"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING Z790-PLUS WIFI",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1825",
-        "date": "2025-10-28"
-      },
-      {
-        "version": "1820",
-        "date": "2025-05-21"
       }
     ],
     "ok": true

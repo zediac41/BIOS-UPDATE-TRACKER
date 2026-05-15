@@ -548,6 +548,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F9C",
+        "date": "2026-04-20"
+      },
+      {
+        "version": "F9B",
+        "date": "2026-04-17"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B850M EAGLE WIFI6E ICE",
     "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios",
     "versions": [
@@ -574,22 +590,6 @@
       {
         "version": "F10A",
         "date": "2026-03-11"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS STEALTH ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F9C",
-        "date": "2026-04-19"
-      },
-      {
-        "version": "F9B",
-        "date": "2026-04-16"
       }
     ],
     "ok": true

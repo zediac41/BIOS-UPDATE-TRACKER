@@ -1,5 +1,22 @@
 [
   {
+    "vendor": "MSI",
+    "model": "PRO B840-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E57v1A70",
+        "date": "2026-05-19"
+      },
+      {
+        "version": "7E57v1A61",
+        "date": "2026-03-20"
+      }
+    ],
+    "error": null
+  },
+  {
     "vendor": "ASUS",
     "model": "TUF GAMING Z790-PLUS WIFI",
     "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
@@ -810,23 +827,6 @@
       {
         "version": "7E51v1A81",
         "date": "2026-03-11"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B840-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E57v1A61",
-        "date": "2026-03-20"
-      },
-      {
-        "version": "7E57v1A60",
-        "date": "2026-02-24"
       }
     ],
     "error": null

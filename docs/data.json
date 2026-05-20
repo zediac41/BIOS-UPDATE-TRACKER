@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "PRO Z790-P WIFI",
+    "url": "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E06vAJ",
+        "date": "2026-05-20"
+      },
+      {
+        "version": "7E06vAI",
+        "date": "2025-08-18"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "PRO B840-P WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios",
     "ok": true,
@@ -994,23 +1011,6 @@
       {
         "version": "7C95vHE",
         "date": "2025-09-23"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO Z790-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E06vAI",
-        "date": "2025-08-18"
-      },
-      {
-        "version": "7E06vAH",
-        "date": "2025-06-25"
       }
     ],
     "error": null

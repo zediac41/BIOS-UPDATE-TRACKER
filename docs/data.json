@@ -1,6 +1,23 @@
 [
   {
     "vendor": "MSI",
+    "model": "PRO B850M-VC WIFI6E",
+    "url": "https://us.msi.com/Motherboard/PRO-B850M-VC-WIFI6E/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E71v1A60",
+        "date": "2026-05-21"
+      },
+      {
+        "version": "7E71v1A52",
+        "date": "2026-03-20"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "PRO Z790-P WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support#bios",
     "ok": true,
@@ -422,22 +439,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "Z890 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
-    "versions": [
-      {
-        "version": "F21A",
-        "date": "2026-04-28"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "Z890 AORUS ELITE WIFI7 ICE",
     "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#Support-Bios",
     "versions": [
@@ -528,6 +529,22 @@
       {
         "version": "2202",
         "date": "2026-04-15"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "Z890 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
+    "versions": [
+      {
+        "version": "F21A",
+        "date": "2026-04-27"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-11"
       }
     ],
     "ok": true
@@ -861,23 +878,6 @@
       {
         "version": "7E34v2A91",
         "date": "2026-03-10"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B850M-VC WIFI6E",
-    "url": "https://us.msi.com/Motherboard/PRO-B850M-VC-WIFI6E/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E71v1A52",
-        "date": "2026-03-20"
-      },
-      {
-        "version": "7E71v1A50",
-        "date": "2026-02-09"
       }
     ],
     "error": null

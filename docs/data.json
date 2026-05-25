@@ -1,6 +1,40 @@
 [
   {
     "vendor": "MSI",
+    "model": "PRO B550M-VC WIFI",
+    "url": "https://www.msi.com/Motherboard/Pro-B550M-VC-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7C95vHF",
+        "date": "2026-05-25"
+      },
+      {
+        "version": "7C95vHF1",
+        "date": "2025-09-24"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
+    "model": "MPG X870E EDGE TI WIFI",
+    "url": "https://www.msi.com/Motherboard/MPG-X870E-EDGE-TI-WIFI/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7E59v1A90",
+        "date": "2026-05-25"
+      },
+      {
+        "version": "7E59v1A82",
+        "date": "2026-03-20"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "MAG B650 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/support#bios",
     "ok": true,
@@ -884,23 +918,6 @@
   },
   {
     "vendor": "MSI",
-    "model": "MPG X870E EDGE TI WIFI",
-    "url": "https://www.msi.com/Motherboard/MPG-X870E-EDGE-TI-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E59v1A82",
-        "date": "2026-03-20"
-      },
-      {
-        "version": "7E59v1A80",
-        "date": "2026-01-30"
-      }
-    ],
-    "error": null
-  },
-  {
-    "vendor": "MSI",
     "model": "MAG Z790 TOMAHAWK MAX WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios",
     "ok": true,
@@ -997,23 +1014,6 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B550M-VC WIFI",
-    "url": "https://www.msi.com/Motherboard/Pro-B550M-VC-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7C95vHF1",
-        "date": "2025-09-24"
-      },
-      {
-        "version": "7C95vHE",
-        "date": "2025-09-23"
-      }
-    ],
-    "error": null
   },
   {
     "vendor": "MSI",

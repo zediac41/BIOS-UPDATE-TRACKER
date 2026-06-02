@@ -51,22 +51,6 @@
   },
   {
     "vendor": "GIGABYTE",
-    "model": "B860M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F11B",
-        "date": "2026-05-29"
-      },
-      {
-        "version": "F6",
-        "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
     "model": "Z890 EAGLE WIFI7",
     "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support",
     "versions": [
@@ -109,6 +93,22 @@
       {
         "version": "F6",
         "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F11B",
+        "date": "2026-05-28"
+      },
+      {
+        "version": "F6",
+        "date": "2025-03-11"
       }
     ],
     "ok": true
@@ -704,11 +704,11 @@
     "versions": [
       {
         "version": "F10B",
-        "date": "2026-04-19"
+        "date": "2026-04-20"
       },
       {
         "version": "F10A",
-        "date": "2026-03-10"
+        "date": "2026-03-11"
       }
     ],
     "ok": true

@@ -1,3 +1,13 @@
-2026/06/01-16:38:06.392 2536 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/MANIFEST-000001
-2026/06/01-16:38:06.392 2536 Recovering log #96
-2026/06/01-16:38:06.393 2536 Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/000096.log 
+2026/06/02-01:02:21.214 e50 Reusing MANIFEST /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/MANIFEST-000001
+2026/06/02-01:02:21.214 e50 Recovering log #96
+2026/06/02-01:02:21.215 e50 Reusing old log /home/runner/work/BIOS-UPDATE-TRACKER/BIOS-UPDATE-TRACKER/source/pw-gigabyte-profile/Default/shared_proto_db/000096.log 
+2026/06/02-01:02:51.769 e50 Compacting 2@0 + 1@1 files
+2026/06/02-01:02:51.771 e50 Generated table #99@0: 1961 keys, 33539 bytes
+2026/06/02-01:02:51.771 e50 Compacted 2@0 + 1@1 files => 33539 bytes
+2026/06/02-01:02:51.771 e50 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/02-01:02:51.823 e50 Level-0 table #101: started
+2026/06/02-01:02:51.825 e50 Level-0 table #101: 70436 bytes OK
+2026/06/02-01:02:51.825 e50 Delete type=2 #94
+2026/06/02-01:02:51.826 e50 Delete type=2 #97
+2026/06/02-01:02:51.826 e50 Delete type=2 #91
+2026/06/02-01:02:51.826 e50 Delete type=0 #96

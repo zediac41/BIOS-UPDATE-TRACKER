@@ -230,81 +230,103 @@ def _is_block(html: str) -> bool:
     )
 
 # ---------- Fetch with Playwright ----------
-def _fetch_with_playwright(url: str, headful: bool):
+def _save_html_if_requested(url: str, html: str):
     save_html = bool(os.getenv("GIGABYTE_SAVE_HTML"))
+    if not save_html:
+        return
     debug_dir = Path("cache/gigabyte-debug")
-    if save_html: debug_dir.mkdir(parents=True, exist_ok=True)
+    debug_dir.mkdir(parents=True, exist_ok=True)
+    fname = re.sub(r"[^A-Za-z0-9._-]+", "_", url)[:120] + ".html"
+    (debug_dir / fname).write_text(html, encoding="utf-8")
 
-    with sync_playwright() as p:
-        if headful:
-            ctx = p.chromium.launch_persistent_context(
-                user_data_dir="source/pw-gigabyte-profile",
-                headless=False,
-                viewport={"width": 1366, "height": 900},
-                user_agent=_UA,
-                locale="en-US",
-            )
-            page = ctx.new_page()
-            browser = None
+def _open_context(playwright, headful: bool):
+    if headful:
+        ctx = playwright.chromium.launch_persistent_context(
+            user_data_dir="source/pw-gigabyte-profile",
+            headless=False,
+            viewport={"width": 1366, "height": 900},
+            user_agent=_UA,
+            locale="en-US",
+        )
+        _block_heavy_assets(ctx)
+        return ctx, None, ctx.new_page()
+
+    browser = playwright.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
+    ctx = browser.new_context(user_agent=_UA, locale="en-US", viewport={"width": 1366, "height": 900})
+    _block_heavy_assets(ctx)
+    return ctx, browser, ctx.new_page()
+
+def _block_heavy_assets(ctx):
+    def route_handler(route):
+        if route.request.resource_type in {"image", "media", "font"}:
+            route.abort()
         else:
-            browser = p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
-            ctx = browser.new_context(user_agent=_UA, locale="en-US", viewport={"width": 1366, "height": 900})
-            page = ctx.new_page()
+            route.continue_()
+    ctx.route("**/*", route_handler)
 
+def _close_context(ctx, browser):
+    try:
+        ctx.close()
+    except Exception:
+        pass
+    try:
+        if browser:
+            browser.close()
+    except Exception:
+        pass
+
+def _fetch_with_page(page, url: str):
+    timeout_ms = int(os.getenv("GIGABYTE_TIMEOUT_MS", "30000"))
+    page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
+
+    # Cookies/consent (best-effort)
+    for sel in ("text=Accept All", "text=I Agree", "text=Accept", "button:has-text('Accept')"):
         try:
-            page.goto(url, wait_until="domcontentloaded", timeout=60_000)
+            page.locator(sel).first.click(timeout=1500); break
+        except Exception:
+            pass
 
-            # Cookies/consent (best-effort)
-            for sel in ("text=Accept All", "text=I Agree", "text=Accept", "button:has-text('Accept')"):
-                try:
-                    page.locator(sel).first.click(timeout=1500); break
-                except Exception:
-                    pass
+    # Open Downloads/BIOS area. The site uses a generic #dl area with a BIOS filter/tab.
+    tried = False
+    for sel in (
+        "a[href*='#support-dl-bios']",
+        "a[href*='#dl']",
+        "button[role='tab']:has-text('BIOS')",
+        "a[role='tab']:has-text('BIOS')",
+        "text=/\\bBIOS\\b/i",
+    ):
+        try:
+            page.locator(sel).first.click(timeout=1800); tried = True; break
+        except Exception:
+            pass
 
-            # Open Downloads/BIOS area – site now uses a generic #dl area with a BIOS filter/tab
-            tried = False
-            for sel in (
-                "a[href*='#support-dl-bios']",
-                "a[href*='#dl']",
-                "button[role='tab']:has-text('BIOS')",
-                "a[role='tab']:has-text('BIOS')",
-                "text=/\\bBIOS\\b/i",
-            ):
-                try:
-                    page.locator(sel).first.click(timeout=1800); tried = True; break
-                except Exception:
-                    pass
+    # If not clicked, at least scroll a bit to trigger lazy loads.
+    if not tried:
+        page.mouse.wheel(0, 1200)
 
-            # If not clicked, at least scroll a bit to trigger lazy loads
-            if not tried:
-                page.mouse.wheel(0, 1200)
+    page.wait_for_timeout(1800)
+    html = page.content()
+    _save_html_if_requested(url, html)
+    return html
 
-            page.wait_for_timeout(1800)
-            html = page.content()
-
-            if save_html:
-                fname = re.sub(r"[^A-Za-z0-9._-]+", "_", url)[:120] + ".html"
-                (debug_dir / fname).write_text(html, encoding="utf-8")
-            return html
+def _fetch_with_playwright(url: str, headful: bool):
+    with sync_playwright() as p:
+        ctx, browser, page = _open_context(p, headful)
+        try:
+            return _fetch_with_page(page, url)
         finally:
-            try: ctx.close()
-            except Exception: pass
-            try:
-                if browser: browser.close()
-            except Exception:
-                pass
+            _close_context(ctx, browser)
 
-# ---------- Public API ----------
-def latest_two(model: str, override_url: str = None):
+def _latest_two_with_fetchers(model: str, override_url: str = None, *, fetch_headless=None, fetch_headful=None):
     urls = [override_url] if override_url else list(_candidates(model))
     force_headful = bool(os.getenv("GIGABYTE_FORCE_HEADFUL"))
     last_err = None
 
     for base in urls:
         for url in _variants(base):
-            if not force_headful:
+            if not force_headful and fetch_headless:
                 try:
-                    html = _fetch_with_playwright(url, headful=False)
+                    html = fetch_headless(url)
                     if _is_block(html): raise RuntimeError("block-page(headless)")
                     items = _parse_versions(html)
                     if items:
@@ -313,7 +335,7 @@ def latest_two(model: str, override_url: str = None):
                     last_err = f"headless:{e}"
 
             try:
-                html = _fetch_with_playwright(url, headful=True)
+                html = fetch_headful(url)
                 if _is_block(html): raise RuntimeError("block-page(headful)")
                 items = _parse_versions(html)
                 if items:
@@ -321,20 +343,74 @@ def latest_two(model: str, override_url: str = None):
             except Exception as e:
                 last_err = f"headful:{e}"
 
-            time.sleep(0.8)
-
     return {
         "vendor":"GIGABYTE","model":model,"url":urls[0] if urls else "",
         "versions":[], "ok":False, "error": (last_err or "fetch/parse failed")[:200]
     }
 
+# ---------- Public API ----------
+def latest_two(model: str, override_url: str = None):
+    force_headful = bool(os.getenv("GIGABYTE_FORCE_HEADFUL"))
+    return _latest_two_with_fetchers(
+        model,
+        override_url=override_url,
+        fetch_headless=None if force_headful else (lambda url: _fetch_with_playwright(url, headful=False)),
+        fetch_headful=lambda url: _fetch_with_playwright(url, headful=True),
+    )
+
+def latest_many(items):
+    results = []
+    try_headless = os.getenv("GIGABYTE_BATCH_TRY_HEADLESS", "").lower() in ("1", "true", "yes")
+    force_headful = bool(os.getenv("GIGABYTE_FORCE_HEADFUL")) or not try_headless
+
+    with sync_playwright() as p:
+        headless_ctx = headless_browser = headless_page = None
+        headful_ctx = headful_browser = headful_page = None
+
+        try:
+            if not force_headful:
+                headless_ctx, headless_browser, headless_page = _open_context(p, headful=False)
+
+            def fetch_headless(url: str):
+                if headless_page is None:
+                    raise RuntimeError("headless disabled")
+                return _fetch_with_page(headless_page, url)
+
+            def fetch_headful(url: str):
+                nonlocal headful_ctx, headful_browser, headful_page
+                if headful_page is None:
+                    headful_ctx, headful_browser, headful_page = _open_context(p, headful=True)
+                return _fetch_with_page(headful_page, url)
+
+            for item in items:
+                model = str(item.get("model") or "").strip()
+                override_url = item.get("url")
+                try:
+                    results.append(_latest_two_with_fetchers(
+                        model,
+                        override_url=override_url,
+                        fetch_headless=None if force_headful else fetch_headless,
+                        fetch_headful=fetch_headful,
+                    ))
+                except Exception as e:
+                    results.append({
+                        "vendor":"GIGABYTE","model":model,"url":override_url or "",
+                        "versions":[], "ok":False, "error": str(e)[:200]
+                    })
+        finally:
+            if headless_ctx:
+                _close_context(headless_ctx, headless_browser)
+            if headful_ctx:
+                _close_context(headful_ctx, headful_browser)
+
+    return results
 def latest_one(model: str, override_url: str = None):
     res = latest_two(model, override_url=override_url)
     if res.get("ok") and res.get("versions"):
         res["versions"] = res["versions"][:1]
     return res
 
-__all__ = ["latest_two", "latest_one"]
+__all__ = ["latest_two", "latest_one", "latest_many"]
 
 # ---------- CLI ----------
 if __name__ == "__main__":

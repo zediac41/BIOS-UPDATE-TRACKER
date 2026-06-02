@@ -2,11 +2,16 @@ from __future__ import annotations
 import os
 import re
 from pathlib import Path
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Any
 from urllib.parse import urlparse, urlunparse
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
+
+_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+)
 
 # ---------- patterns ----------
 # Dates like: 2025-08-18 / 2025/08/18 / 2025.08.18
@@ -58,79 +63,98 @@ def _slugify_name(model: str) -> str:
     return re.sub(r"[^A-Za-z0-9_-]+", "-", (model or "msi-board")).strip("-_") or "msi-board"
 
 # ---------- fetch with Playwright (local-friendly) ----------
-def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
-    ua = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-          "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
-
+def _headful_enabled() -> bool:
     # Default headful for local debugging; MSIOLD_HEADFUL=0 to force headless
     headful_env = os.getenv("MSIOLD_HEADFUL")
-    headful = True if headful_env is None else headful_env.lower() in ("1", "true", "yes")
+    return True if headful_env is None else headful_env.lower() in ("1", "true", "yes")
 
+def _new_context(playwright, headful: bool):
+    browser = playwright.chromium.launch(
+        headless=not headful,
+        args=["--disable-blink-features=AutomationControlled"],
+    )
+    ctx = browser.new_context(
+        user_agent=_UA,
+        locale="en-US",
+        timezone_id="America/Chicago",
+        viewport={"width": 1400, "height": 1250},
+        extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+    )
+    ctx.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined});")
+    _block_heavy_assets(ctx)
+    return browser, ctx
+
+def _block_heavy_assets(ctx):
+    def route_handler(route):
+        if route.request.resource_type in {"image", "media", "font"}:
+            route.abort()
+        else:
+            route.continue_()
+    ctx.route("**/*", route_handler)
+
+def _load_once(page, u: str):
+    if "#bios" not in u:
+        u = u + "#bios"
+    page.goto(u, wait_until="domcontentloaded")
+
+    # Cookie banner
+    try:
+        page.locator("#onetrust-accept-btn-handler").click(timeout=3000)
+    except Exception:
+        pass
+
+    # Ensure BIOS tab is active
+    try:
+        page.get_by_text("BIOS", exact=False).click(timeout=4000)
+    except Exception:
+        try:
+            page.locator("a[href*='#bios']").click(timeout=2500)
+        except Exception:
+            pass
+
+    page.wait_for_timeout(700)
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_timeout(900)
+
+    # Wait for spec grid / BIOS text
+    try:
+        page.wait_for_selector("section.spec span:has-text('Title')", timeout=15000)
+    except Exception:
+        pass
+    try:
+        page.wait_for_selector("section.spec span:has-text('BIOS')", timeout=15000)
+    except Exception:
+        pass
+
+def _fetch_html_with_page(page, url: str) -> str:
+    url_https = _force_https(url)
+    candidates = [
+        _ensure_bios_anchor(_with_host(url_https, "www.msi.com")),
+        _ensure_bios_anchor(_with_host(url_https, "us.msi.com")),
+    ]
+    last_html = ""
+    for cand in candidates:
+        try:
+            _load_once(page, cand)
+            return page.content()
+        except Exception:
+            try:
+                last_html = page.content()
+            except Exception:
+                last_html = ""
+            continue
+    return last_html
+
+def _fetch_html(url: str, timeout_ms: int = 50000) -> str:
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=not headful, args=["--disable-blink-features=AutomationControlled"])
-        ctx = browser.new_context(
-            user_agent=ua,
-            locale="en-US",
-            timezone_id="America/Chicago",
-            viewport={"width": 1400, "height": 1250},
-            extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
-        )
-        ctx.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined});")
-
+        browser, ctx = _new_context(p, _headful_enabled())
         page = ctx.new_page()
         page.set_default_timeout(timeout_ms)
-
-        def _load_once(u: str):
-            if "#bios" not in u:
-                u = u + "#bios"
-            page.goto(u, wait_until="domcontentloaded")
-
-            # Cookie banner
-            try:
-                page.locator("#onetrust-accept-btn-handler").click(timeout=3000)
-            except Exception:
-                pass
-
-            # Ensure BIOS tab is active
-            try:
-                page.get_by_text("BIOS", exact=False).click(timeout=4000)
-            except Exception:
-                try:
-                    page.locator("a[href*='#bios']").click(timeout=2500)
-                except Exception:
-                    pass
-
-            page.wait_for_timeout(700)
-            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-            page.wait_for_timeout(900)
-
-            # Wait for spec grid / BIOS text
-            try:
-                page.wait_for_selector("section.spec span:has-text('Title')", timeout=15000)
-            except Exception:
-                pass
-            try:
-                page.wait_for_selector("section.spec span:has-text('BIOS')", timeout=15000)
-            except Exception:
-                pass
-
-        url_https = _force_https(url)
-        candidates = [
-            _ensure_bios_anchor(_with_host(url_https, "www.msi.com")),
-            _ensure_bios_anchor(_with_host(url_https, "us.msi.com")),
-        ]
-        for cand in candidates:
-            try:
-                _load_once(cand)
-                html = page.content()
-                ctx.close(); browser.close()
-                return html
-            except Exception:
-                continue
-
-        html = page.content()
-        ctx.close(); browser.close()
-        return html
+        try:
+            return _fetch_html_with_page(page, url)
+        finally:
+            ctx.close()
+            browser.close()
 
 # ---------- parsing ----------
 def _parse_span_lookahead(soup: BeautifulSoup) -> List[Dict[str, Optional[str]]]:
@@ -219,25 +243,7 @@ def _parse_bios_rows(html_text: str) -> List[Dict[str, Optional[str]]]:
     # Fall back to strict grid
     return _parse_grid_sections(soup)
 
-# ---------- public API ----------
-def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
-    """
-    Returns latest two BIOS entries (Beta allowed, but version printed without Beta tag).
-    """
-    url0 = override_url or _guess_url_from_model(model_name)
-    if not url0:
-        return {
-            "vendor": "MSI",
-            "model": model_name,
-            "url": "",
-            "ok": False,
-            "versions": [],
-            "error": "msi: override_url required",
-        }
-
-    final_url = _ensure_bios_anchor(_force_https(url0))
-    html_text = _fetch_html(final_url)
-
+def _result_from_html(model_name: str, final_url: str, html_text: str) -> Dict[str, Any]:
     # Always dump a debug snapshot locally for tuning
     try:
         Path("cache/msi-debug").mkdir(parents=True, exist_ok=True)
@@ -272,6 +278,66 @@ def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
         "versions": versions,
         "error": None,
     }
+
+# ---------- public API ----------
+def latest_two(model_name: str, override_url: Optional[str] = None) -> Dict:
+    """
+    Returns latest two BIOS entries (Beta allowed, but version printed without Beta tag).
+    """
+    url0 = override_url or _guess_url_from_model(model_name)
+    if not url0:
+        return {
+            "vendor": "MSI",
+            "model": model_name,
+            "url": "",
+            "ok": False,
+            "versions": [],
+            "error": "msi: override_url required",
+        }
+
+    final_url = _ensure_bios_anchor(_force_https(url0))
+    html_text = _fetch_html(final_url)
+    return _result_from_html(model_name, final_url, html_text)
+
+def latest_many(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    results: List[Dict[str, Any]] = []
+    with sync_playwright() as p:
+        browser, ctx = _new_context(p, _headful_enabled())
+        page = ctx.new_page()
+        page.set_default_timeout(50000)
+        try:
+            for item in items:
+                model_name = str(item.get("model") or "").strip()
+                override_url = item.get("url")
+                url0 = override_url or _guess_url_from_model(model_name)
+                if not url0:
+                    results.append({
+                        "vendor": "MSI",
+                        "model": model_name,
+                        "url": "",
+                        "ok": False,
+                        "versions": [],
+                        "error": "msi: override_url required",
+                    })
+                    continue
+
+                final_url = _ensure_bios_anchor(_force_https(str(url0)))
+                try:
+                    html_text = _fetch_html_with_page(page, final_url)
+                    results.append(_result_from_html(model_name, final_url, html_text))
+                except Exception as e:
+                    results.append({
+                        "vendor": "MSI",
+                        "model": model_name,
+                        "url": final_url,
+                        "ok": False,
+                        "versions": [],
+                        "error": str(e)[:200],
+                    })
+        finally:
+            ctx.close()
+            browser.close()
+    return results
 
 # quick local test:
 if __name__ == "__main__":

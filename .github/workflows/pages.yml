@@ -7,8 +7,11 @@ on:
     paths-ignore:
       - 'docs/**'
   schedule:
-    - cron: '30 12 * * 1-5'
+    - cron: '30 18 * * 1-5'
   workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: write     # needed to commit/push docs (and empty commit when no changes)
@@ -26,12 +29,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -40,8 +43,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
-          # playwright not listed in requirements.txt, install it explicitly:
-          pip install playwright
           python -m playwright install --with-deps chromium
 
       - name: Build site
@@ -72,9 +73,10 @@ jobs:
 
       # Deploy via GitHub Pages action (works if your Pages source is set to "GitHub Actions")
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs
+          include-hidden-files: true
 
   deploy:
     needs: build
@@ -84,4 +86,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

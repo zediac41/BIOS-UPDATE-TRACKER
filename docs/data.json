@@ -168,6 +168,22 @@
   },
   {
     "vendor": "GIGABYTE",
+    "model": "Z890 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F20B",
+        "date": "2026-05-29"
+      },
+      {
+        "version": "F16",
+        "date": "2025-03-12"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "vendor": "GIGABYTE",
     "model": "B860I AORUS PRO ICE",
     "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support",
     "versions": [
@@ -178,22 +194,6 @@
       {
         "version": "F6",
         "date": "2025-03-12"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "Z890 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F20B",
-        "date": "2026-05-28"
-      },
-      {
-        "version": "F16",
-        "date": "2025-03-11"
       }
     ],
     "ok": true
@@ -329,118 +329,6 @@
     "ok": true
   },
   {
-    "vendor": "ASUS",
-    "model": "TUF GAMING Z790-PLUS WIFI",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1836",
-        "date": "2026-05-14"
-      },
-      {
-        "version": "1825",
-        "date": "2025-10-28"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX Z890-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3202",
-        "date": "2026-05-08"
-      },
-      {
-        "version": "3103",
-        "date": "2026-04-02"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG MAXIMUS Z890 HERO BTF",
-    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3202",
-        "date": "2026-05-08"
-      },
-      {
-        "version": "3103",
-        "date": "2026-04-02"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG MAXIMUS Z890 HERO",
-    "url": "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3202",
-        "date": "2026-05-08"
-      },
-      {
-        "version": "3103",
-        "date": "2026-04-02"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX Z890-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3202",
-        "date": "2026-05-08"
-      },
-      {
-        "version": "3103",
-        "date": "2026-04-02"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX Z890-E GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3202",
-        "date": "2026-05-08"
-      },
-      {
-        "version": "3103",
-        "date": "2026-04-02"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ProArt Z890-CREATOR WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios?model2Name=ProArt-Z890-CREATOR-WIFI",
-    "versions": [
-      {
-        "version": "3202",
-        "date": "2026-05-08"
-      },
-      {
-        "version": "3103",
-        "date": "2026-04-02"
-      }
-    ],
-    "ok": true
-  },
-  {
     "vendor": "MSI",
     "model": "PRO B860-VC WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios",
@@ -456,262 +344,6 @@
       }
     ],
     "error": null
-  },
-  {
-    "vendor": "ASUS",
-    "model": "Z890 AYW GAMING WIFI W",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
-    "versions": [
-      {
-        "version": "3020",
-        "date": "2026-04-30"
-      },
-      {
-        "version": "3012",
-        "date": "2026-04-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "1654",
-        "date": "2026-04-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B860M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3020",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "3011",
-        "date": "2026-04-14"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "PRIME Z890M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3020",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "3012",
-        "date": "2026-04-16"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING Z890-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "3020",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "3012",
-        "date": "2026-04-14"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-BTF WIFI W",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
-    "versions": [
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "1654",
-        "date": "2026-04-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B860-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3020",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "3011",
-        "date": "2026-04-10"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "1654",
-        "date": "2026-04-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "1654",
-        "date": "2026-04-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "1654",
-        "date": "2026-04-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "1654",
-        "date": "2026-04-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      },
-      {
-        "version": "1654",
-        "date": "2026-04-27"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2301",
-        "date": "2026-04-27"
-      },
-      {
-        "version": "2202",
-        "date": "2026-04-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870E-E GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2301",
-        "date": "2026-04-27"
-      },
-      {
-        "version": "2202",
-        "date": "2026-04-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E HERO",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2301",
-        "date": "2026-04-27"
-      },
-      {
-        "version": "2202",
-        "date": "2026-04-15"
-      }
-    ],
-    "ok": true
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG CROSSHAIR X870E EXTREME",
-    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "2301",
-        "date": "2026-04-27"
-      },
-      {
-        "version": "2202",
-        "date": "2026-04-15"
-      }
-    ],
-    "ok": true
   },
   {
     "vendor": "MSI",
@@ -936,19 +568,195 @@
   },
   {
     "vendor": "ASUS",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=TUF+GAMING+X870-PLUS+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z790-PLUS WIFI",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z790-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=TUF+GAMING+Z790-PLUS+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B860M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B860M-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=TUF+GAMING+B860M-PLUS+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "PRIME Z890M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/helpdesk_bios?model2Name=PRIME-Z890M-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=PRIME+Z890M-PLUS+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING Z890-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-Z890-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=TUF+GAMING+Z890-PLUS+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "Z890 AYW GAMING WIFI W",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/helpdesk_bios?model2Name=Z890-AYW-GAMING-WIFI-W",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=Z890+AYW+GAMING+WIFI+W"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-BTF WIFI W",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=TUF+GAMING+B850-BTF+WIFI+W"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B860-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+B860-I+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+Z890-I+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
     "model": "ROG STRIX B550-F GAMING WIFI II",
     "url": "https://rog.asus.com/us/motherboards/rog-strix/rog-strix-b550-f-gaming-wifi-ii-model/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "3636",
-        "date": "2026-02-03"
-      },
-      {
-        "version": "3634",
-        "date": "2025-09-24"
-      }
-    ],
-    "ok": true
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+B550-F+GAMING+WIFI+II"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z890 HERO BTF",
+    "url": "https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+MAXIMUS+Z890+HERO+BTF"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+B850-A+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+X870-A+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870E-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+X870E-E+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+CROSSHAIR+X870E+HERO"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+B850-I+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+X870-I+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=TUF+GAMING+B850M-PLUS+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG MAXIMUS Z890 HERO",
+    "url": "https://rog.asus.com/us/motherboards/rog-maximus/rog-maximus-z890-hero/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+MAXIMUS+Z890+HERO"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+Z890-A+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX Z890-E GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+STRIX+Z890-E+GAMING+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=TUF+GAMING+B850-PLUS+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ProArt Z890-CREATOR WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/helpdesk_bios?model2Name=ProArt-Z890-CREATOR-WIFI",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ProArt+Z890-CREATOR+WIFI"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG CROSSHAIR X870E EXTREME",
+    "url": "https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/helpdesk_bios/",
+    "versions": [],
+    "ok": false,
+    "error": "rog.asus.com us: 403 Client Error: Forbidden for url: https://rog.asus.com/support/api/product.asmx/GetPDBIOS?website=us&model=ROG+CROSSHAIR+X870E+EXTREME"
   },
   {
     "vendor": "MSI",

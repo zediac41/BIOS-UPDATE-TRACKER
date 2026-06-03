@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 import requests
 from urllib.parse import quote_plus
+from bs4 import BeautifulSoup
 
 _UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -77,6 +78,14 @@ def _save_debug_json(model: str, host: str, website: str, payload: Dict[str, Any
     name = f"{host}_{website}_{quote_plus(model)}.json"
     (dbg / name).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
+def _save_debug_html(model: str, html_text: str):
+    if not os.getenv("ASUS_SAVE_HTML"):
+        return
+    dbg = Path("cache/asus-debug")
+    dbg.mkdir(parents=True, exist_ok=True)
+    name = f"support_{quote_plus(model)}.html"
+    (dbg / name).write_text(html_text, encoding="utf-8")
+
 def _looks_like_bios_version(version_raw: str) -> bool:
     """
     Minimal, reliable BIOS gate for ASUS: version string must be 3–5 digits only.
@@ -116,8 +125,44 @@ def _call_api(model: str) -> Tuple[List[Dict[str, Any]], str]:
                 last_err = f"no items from {host} website={website}"
             except Exception as e:
                 last_err = f"{host} {website}: {e}"
+                status_code = getattr(getattr(e, "response", None), "status_code", None)
+                if status_code == 403:
+                    raise RuntimeError(last_err) from e
             time.sleep(0.6)
     raise RuntimeError(last_err or "API calls failed")
+
+def _support_urls(model: str, override_url: str | None = None):
+    seen = set()
+    for url in (override_url, _guess_support_url(model)):
+        if url and url not in seen:
+            seen.add(url)
+            yield url
+
+def _call_support_page(model: str, override_url: str | None = None) -> Tuple[List[Dict[str, Any]], str]:
+    """
+    Fallback for when ASUS' product API is unavailable. The support pages include
+    the BIOS list as visible page text, so parse that before the Firmware section.
+    """
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": _UA,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+    })
+
+    last_err = None
+    for url in _support_urls(model, override_url):
+        try:
+            r = session.get(url, timeout=25)
+            r.raise_for_status()
+            _save_debug_html(model, r.text)
+            items = _extract_versions_from_support_html(r.text)
+            if items:
+                return items, url
+            last_err = f"no BIOS items found on {url}"
+        except Exception as e:
+            last_err = f"{url}: {e}"
+    raise RuntimeError(last_err or "support page fetch failed")
 
 def _extract_versions_from_api(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
@@ -165,6 +210,52 @@ def _extract_versions_from_api(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
     # de-dupe keep order
     return _dedupe_keep_order(results)
 
+def _extract_versions_from_support_html(html_text: str) -> List[Dict[str, Any]]:
+    soup = BeautifulSoup(html_text or "", "html.parser")
+    lines = [line.strip() for line in soup.get_text("\n").splitlines() if line.strip()]
+    results: List[Dict[str, Any]] = []
+    in_bios_section = False
+
+    for i, line in enumerate(lines):
+        low = line.lower()
+
+        if low == "bios":
+            in_bios_section = True
+            continue
+
+        if not in_bios_section:
+            continue
+
+        if results and low in {"firmware", "driver & tools", "need help?", "shop and learn"}:
+            break
+
+        if not line.lower().startswith("version "):
+            continue
+
+        version_raw = line.split(" ", 1)[1].strip()
+        if not _looks_like_bios_version(version_raw):
+            continue
+
+        lookahead = []
+        for next_line in lines[i + 1:i + 14]:
+            if next_line.lower().startswith("version "):
+                break
+            lookahead.append(next_line)
+
+        date_iso = None
+        for next_line in lookahead:
+            date_iso = _normalize_iso(next_line)
+            if date_iso:
+                break
+
+        version = version_raw
+        if any("beta" in next_line.lower() for next_line in lookahead[:4]):
+            version = f"{version} (Beta version)"
+
+        results.append({"version": version, "date": date_iso})
+
+    return _dedupe_keep_order(results)
+
 # ---------- Public API ----------
 def latest_two(model: str, override_url: str | None = None):
     """
@@ -176,7 +267,13 @@ def latest_two(model: str, override_url: str | None = None):
       }
     """
     try:
-        items, human_url = _call_api(model)
+        try:
+            items, human_url = _call_api(model)
+        except Exception as api_error:
+            try:
+                items, human_url = _call_support_page(model, override_url=override_url)
+            except Exception as page_error:
+                raise RuntimeError(f"api failed: {api_error}; support page failed: {page_error}") from page_error
         top2 = _pick_two_sorted(items)
         return {
             "vendor": "ASUS",
@@ -214,4 +311,3 @@ if __name__ == "__main__":
     out = latest_two(args.model, override_url=args.url)
     print(json.dumps(out.get("versions", []), ensure_ascii=False, indent=2))
     sys.exit(0 if out.get("ok") else 1)
-

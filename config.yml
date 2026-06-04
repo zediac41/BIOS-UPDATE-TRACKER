@@ -36,7 +36,7 @@ vendors:
     - { name: B760M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B760M-PROJECT-ZERO/support#bios" }
     - { name: B650M PROJECT ZERO, url: "https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/support#bios" }
     - { name: PRO B760-P WIFI DDR4, url: "https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/support#bios" }
-    - { name: PRO B760M-VC WIFI BULK, url: "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios", issue: true }
+    - { name: PRO B760M-VC WIFI BULK, url: "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios" }
     - { name: MPG Z790 EDGE TI MAX WIFI, url: "https://www.msi.com/Motherboard/MPG-Z790-EDGE-TI-MAX-WIFI/support#bios" }
     - { name: PRO B840-P WIFI, url: "https://www.msi.com/Motherboard/PRO-B840-P-WIFI/support#bios" }
     - { name: PRO B860-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/support#bios" }

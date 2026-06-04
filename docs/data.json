@@ -800,6 +800,23 @@
   },
   {
     "vendor": "MSI",
+    "model": "PRO B760M-VC WIFI BULK",
+    "url": "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios",
+    "ok": true,
+    "versions": [
+      {
+        "version": "7D37vB8",
+        "date": "2026-04-07"
+      },
+      {
+        "version": "7D37vB7",
+        "date": "2025-09-23"
+      }
+    ],
+    "error": null
+  },
+  {
+    "vendor": "MSI",
     "model": "MAG Z890 TOMAHAWK WIFI",
     "url": "https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/support#bios",
     "ok": true,
@@ -949,13 +966,5 @@
       }
     ],
     "ok": true
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO B760M-VC WIFI BULK",
-    "url": "https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/support#bios",
-    "ok": false,
-    "versions": [],
-    "error": "parse:no-versions"
   }
 ]

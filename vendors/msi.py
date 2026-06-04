@@ -50,6 +50,14 @@ def _with_host(url: str, host: str) -> str:
     pr = urlparse(url)
     return urlunparse(pr._replace(netloc=host))
 
+def _host_candidates(url: str) -> List[str]:
+    original = urlparse(url).netloc.lower()
+    hosts = []
+    for host in (original, "www.msi.com", "us.msi.com"):
+        if host and host not in hosts:
+            hosts.append(host)
+    return hosts
+
 def _ensure_bios_anchor(url: str) -> str:
     pr = urlparse(url)
     frag = pr.fragment or "bios"
@@ -61,6 +69,13 @@ def _guess_url_from_model(model: str) -> Optional[str]:
 
 def _slugify_name(model: str) -> str:
     return re.sub(r"[^A-Za-z0-9_-]+", "-", (model or "msi-board")).strip("-_") or "msi-board"
+
+def _is_unusable_page(html_text: str) -> bool:
+    text = BeautifulSoup(html_text or "", "html.parser").get_text(" ", strip=True).lower()
+    return (
+        "404 not found" in text
+        or "the page you requested no longer exists" in text
+    )
 
 # ---------- fetch with Playwright (local-friendly) ----------
 def _headful_enabled() -> bool:
@@ -129,14 +144,18 @@ def _load_once(page, u: str):
 def _fetch_html_with_page(page, url: str) -> str:
     url_https = _force_https(url)
     candidates = [
-        _ensure_bios_anchor(_with_host(url_https, "www.msi.com")),
-        _ensure_bios_anchor(_with_host(url_https, "us.msi.com")),
+        _ensure_bios_anchor(_with_host(url_https, host))
+        for host in _host_candidates(url_https)
     ]
     last_html = ""
     for cand in candidates:
         try:
             _load_once(page, cand)
-            return page.content()
+            html = page.content()
+            last_html = html
+            if _is_unusable_page(html):
+                continue
+            return html
         except Exception:
             try:
                 last_html = page.content()

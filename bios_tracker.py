@@ -1,4 +1,5 @@
 import json
+import os
 import yaml
 import datetime
 import html
@@ -81,7 +82,7 @@ def _is_fresh_release(date_str: str | None, today: datetime.date | None = None) 
 def _row(label: str, version: str | None, date: str | None):
     """One key/value row: label, version, date right-aligned."""
     v_txt = normalize_beta(version)
-    v_html = html.escape(v_txt or "—")
+    v_html = html.escape(v_txt or "-")
     d_html = html.escape(date) if date else ""
     return (
         '<div class="kv">'
@@ -98,15 +99,18 @@ def build_card(entry, issue_names: set[str] | None = None, today: datetime.date 
     ok = entry.get("ok", False)
     vlist = entry.get("versions", [])[:2]
     err = entry.get("error")
+    is_stale = bool(entry.get("stale"))
 
     # Highlight classes
-    current_date_str = vlist[0].get("date") if (ok and vlist) else None
+    current_date_str = vlist[0].get("date") if vlist else None
     is_issue = bool(issue_names and model in issue_names)
     is_fresh = _is_fresh_release(current_date_str, today=today)
 
     classes = ["card"]
-    if is_issue:
-        classes.append("card--issue")  # manual orange wins
+    if is_stale:
+        classes.append("card--stale")
+    elif is_issue:
+        classes.append("card--issue")
     elif is_fresh:
         classes.append("card--fresh")
 
@@ -116,7 +120,7 @@ def build_card(entry, issue_names: set[str] | None = None, today: datetime.date 
     if url:
         parts.append(f'  <div class="meta"><a href="{html.escape(url)}" target="_blank" rel="noreferrer">Vendor page</a></div>')
 
-    if ok and vlist:
+    if vlist:
         cur_v = vlist[0].get("version") if len(vlist) >= 1 else None
         cur_d = vlist[0].get("date") if len(vlist) >= 1 else None
         parts.append(_row("Current", cur_v, cur_d))
@@ -124,10 +128,15 @@ def build_card(entry, issue_names: set[str] | None = None, today: datetime.date 
             prev_v = vlist[1].get("version")
             prev_d = vlist[1].get("date")
             parts.append(_row("Previous", prev_v, prev_d))
+        if is_stale:
+            detail = ""
+            if entry.get("last_success_at"):
+                detail = f' <span>Last good check: {html.escape(str(entry.get("last_success_at")))}</span>'
+            parts.append(f'  <div class="warning">{html.escape(_friendly_error(err, stale=True))}{detail}</div>')
+            parts.append(_error_details_html(err))
     else:
-        parts.append('  <div class="error">Couldn’t fetch versions.</div>')
-        if err:
-            parts.append(f'  <pre class="meta">{html.escape(str(err))}</pre>')
+        parts.append(f'  <div class="error">{html.escape(_friendly_error(err))}</div>')
+        parts.append(_error_details_html(err))
 
     parts.append('</div>')
     return "\n".join(parts)
@@ -145,6 +154,144 @@ def _escape_multiline(s: str) -> str:
     if not s:
         return ""
     return "<br>".join(html.escape(s).splitlines())
+
+def _board_key(vendor: str | None, model: str | None) -> tuple[str, str]:
+    model_key = re.sub(r"\s+", " ", str(model or "").strip()).casefold()
+    return str(vendor or "").strip().upper(), model_key
+
+def _load_previous_results(data_path: Path) -> dict[tuple[str, str], dict]:
+    try:
+        raw = json.loads(data_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+    if isinstance(raw, dict):
+        entries = raw.get("results") or raw.get("boards") or []
+    elif isinstance(raw, list):
+        entries = raw
+    else:
+        entries = []
+
+    previous: dict[tuple[str, str], dict] = {}
+    for entry in entries:
+        if not isinstance(entry, dict) or not entry.get("versions"):
+            continue
+        previous[_board_key(entry.get("vendor"), entry.get("model"))] = entry
+    return previous
+
+def _previous_success_time(entry: dict) -> str | None:
+    return (
+        entry.get("last_success_at")
+        or entry.get("checked_at")
+        or entry.get("last_updated")
+        or entry.get("updated_at")
+    )
+
+def _apply_last_good_fallback(results: list[dict], previous: dict[tuple[str, str], dict], checked_at: str):
+    for res in results:
+        res["checked_at"] = checked_at
+
+        if res.get("ok") and res.get("versions"):
+            res["stale"] = False
+            res["last_success_at"] = checked_at
+            continue
+
+        prior = previous.get(_board_key(res.get("vendor"), res.get("model")))
+        if not prior or not prior.get("versions"):
+            res["stale"] = False
+            continue
+
+        res["versions"] = list(prior.get("versions") or [])[:2]
+        res["url"] = res.get("url") or prior.get("url") or ""
+        res["ok"] = False
+        res["stale"] = True
+        res["last_success_at"] = _previous_success_time(prior)
+        res["fallback_reason"] = "Scrape failed; showing last good result."
+
+def _friendly_error(error: str | None, stale: bool = False) -> str:
+    if stale:
+        return "Scrape failed. Showing last good result."
+    err = str(error or "")
+    low = err.lower()
+    if "403" in low or "forbidden" in low:
+        return "Vendor blocked the request this run."
+    if "timeout" in low:
+        return "Vendor page timed out."
+    if "parse:no-versions" in low or "no versions" in low or "no bios items" in low:
+        return "Page loaded, but no BIOS versions were found."
+    if "404" in low or "not found" in low:
+        return "Vendor page was not found."
+    return "Scrape failed. No previous result is available yet."
+
+def _error_details_html(error: str | None) -> str:
+    if not error:
+        return ""
+    return (
+        '  <details class="error-details">'
+        '    <summary>Details</summary>'
+        f'    <pre class="meta">{html.escape(str(error))}</pre>'
+        '  </details>'
+    )
+
+def _append_github_summary(results: list[dict], updated_at: str):
+    summary_path = os.getenv("GITHUB_STEP_SUMMARY")
+    if not summary_path:
+        return
+
+    stale = [r for r in results if r.get("stale")]
+    failed = [r for r in results if not r.get("ok") and not r.get("stale")]
+    ok = [r for r in results if r.get("ok")]
+
+    def current_version(entry: dict) -> str:
+        versions = entry.get("versions") or []
+        if not versions:
+            return ""
+        cur = versions[0]
+        version = cur.get("version") or ""
+        date = cur.get("date") or ""
+        return f"{version} ({date})" if date else str(version)
+
+    def row(entry: dict) -> str:
+        model = str(entry.get("model") or "").replace("|", "\\|")
+        vendor = str(entry.get("vendor") or "").replace("|", "\\|")
+        status = _friendly_error(entry.get("error"), stale=bool(entry.get("stale"))).replace("|", "\\|")
+        return f"| {vendor} | {model} | {current_version(entry)} | {status} |"
+
+    lines = [
+        "## BIOS tracker summary",
+        "",
+        f"- Last updated: {updated_at}",
+        f"- Boards checked: {len(results)}",
+        f"- Successful: {len(ok)}",
+        f"- Showing last good result: {len(stale)}",
+        f"- Failed with no backup: {len(failed)}",
+    ]
+
+    if stale:
+        lines.extend([
+            "",
+            "### Showing Last Good Result",
+            "",
+            "| Vendor | Board | Last Good BIOS | Status |",
+            "| --- | --- | --- | --- |",
+            *[row(entry) for entry in stale],
+        ])
+
+    if failed:
+        lines.extend([
+            "",
+            "### Failed With No Backup",
+            "",
+            "| Vendor | Board | Last Good BIOS | Status |",
+            "| --- | --- | --- | --- |",
+            *[row(entry) for entry in failed],
+        ])
+
+    try:
+        with open(summary_path, "a", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+    except Exception as e:
+        print(f"Could not write GitHub summary: {e}", file=sys.stderr)
     
 # -------------------------------------------------------------------
 # Google Form / Sheet comments (Type, Website, Details)
@@ -324,6 +471,10 @@ def main():
     # Optional notes
     notes_text = (cfg.get("notes") or "").strip()
 
+    docs = Path("docs")
+    data_path = docs / "data.json"
+    previous_results = _load_previous_results(data_path)
+
     results: list[dict] = []
 
     def normalize_model(item):
@@ -376,6 +527,9 @@ def main():
             results.append(res)
             time.sleep(0.3)
 
+    now = datetime.datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
+    _apply_last_good_fallback(results, previous_results, now)
+
     # Sort cards by current release date (newest first)
     results = _sort_results_newest_first(results)
 
@@ -387,11 +541,8 @@ def main():
     comments_html = _google_comments_block(cfg)
 
     # Write docs
-    docs = Path("docs"); docs.mkdir(parents=True, exist_ok=True)
+    docs.mkdir(parents=True, exist_ok=True)
     idx = docs / "index.html"
-    data_path = docs / "data.json"
-
-    now = datetime.datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
 
     header_html = f"""
 <header class="page-header">
@@ -415,6 +566,7 @@ def main():
   <div class="legend">
     <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 5 days</span>
     <span class="legend-item"><span class="swatch swatch--issue"></span>Manually flagged</span>
+    <span class="legend-item"><span class="swatch swatch--stale"></span>Showing last good result</span>
   </div>
   <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: {html.escape(now)}</div>
 </div>
@@ -484,6 +636,7 @@ def main():
 .legend .swatch{width:12px;height:12px;border-radius:2px;display:inline-block}
 .legend .swatch--fresh{border:2px solid #22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
 .legend .swatch--issue{border:2px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
+.legend .swatch--stale{border:2px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 
 /* notes */
 .notice{margin:8px 0 16px;padding:10px 12px;background:#0f1630;border:1px solid #39407a;border-radius:10px;color:#e6e9f2;font-size:14px}
@@ -492,10 +645,16 @@ def main():
 .card{padding:22px 22px;border:0}
 .card--fresh{border:3px solid #22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.15)}
 .card--issue{border:3px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18)}
+.card--stale{border:3px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18)}
 .card h3{font-size:16px;line-height:1.25;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
 .card h3 .badge{margin-left:auto}
 .card .meta{display:flex;align-items:center;gap:10px;margin:0 0 10px}
 .card .meta a{color:#9fb4ff}
+.warning{margin-top:10px;color:#fed7aa;font-size:13px;line-height:1.35}
+.warning span{opacity:.85}
+.error-details{margin-top:8px}
+.error-details summary{cursor:pointer;color:#fed7aa;font-size:12px}
+.error-details pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0 0}
 
 /* kv rows */
 .kv{display:flex;align-items:baseline;gap:8px}
@@ -589,6 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
     # Write outputs
     idx.write_text(page_html, encoding="utf-8")
     data_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
+    _append_github_summary(results, now)
     print("Done. Wrote docs/index.html and docs/data.json")
 
 if __name__ == "__main__":

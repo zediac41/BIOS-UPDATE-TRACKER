@@ -3,6 +3,7 @@ import os, re, json, sys, time, datetime as dt
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 import requests
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import quote_plus
 from bs4 import BeautifulSoup
 
@@ -298,7 +299,44 @@ def latest_one(model: str, override_url: str | None = None):
         res["versions"] = res["versions"][:1]
     return res
 
-__all__ = ["latest_two", "latest_one"]
+def latest_many(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    workers_raw = os.getenv("ASUS_WORKERS", "4")
+    try:
+        max_workers = max(1, int(workers_raw))
+    except ValueError:
+        max_workers = 4
+
+    results: List[Dict[str, Any] | None] = [None] * len(items)
+
+    def run_one(index: int, item: Dict[str, Any]):
+        model = str(item.get("model") or "").strip()
+        override_url = item.get("url")
+        return index, latest_two(model, override_url=override_url)
+
+    with ThreadPoolExecutor(max_workers=min(max_workers, max(1, len(items)))) as pool:
+        futures = {
+            pool.submit(run_one, index, item): (index, item)
+            for index, item in enumerate(items)
+        }
+        for future in as_completed(futures):
+            index, item = futures[future]
+            try:
+                _, result = future.result()
+                results[index] = result
+            except Exception as e:
+                model = str(item.get("model") or "").strip()
+                results[index] = {
+                    "vendor": "ASUS",
+                    "model": model,
+                    "url": item.get("url") or _guess_support_url(model),
+                    "versions": [],
+                    "ok": False,
+                    "error": str(e)[:200],
+                }
+
+    return [result for result in results if result is not None]
+
+__all__ = ["latest_two", "latest_one", "latest_many"]
 
 # ---------- CLI: print VERSIONS ONLY ----------
 if __name__ == "__main__":

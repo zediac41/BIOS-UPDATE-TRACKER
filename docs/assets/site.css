@@ -65,7 +65,7 @@ a{color:#a3c5ff}
     grid-template-columns: 7ch 1fr auto !important;
   }
 }
-/* Hidden by default; show only when "fresh" or "issue" */
+/* Hidden by default; show only when fresh */
 .card {
   border: 0;
 }
@@ -74,12 +74,6 @@ a{color:#a3c5ff}
 .card--fresh {
   border: 3px solid #22c55e; /* light green */
   box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15);
-}
-
-/* Manual issue highlight */
-.card--issue {
-  border: 3px solid #f97316; /* orange */
-  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.18);
 }
 /* Status bar: full width, timestamp fixed left, legend perfectly centered */
 .statusbar{
@@ -157,7 +151,6 @@ a{color:#a3c5ff}
 .comments .comment .body{
   overflow-wrap: anywhere;            /* let long unbroken strings wrap in the body */
 }
-
 
 
 

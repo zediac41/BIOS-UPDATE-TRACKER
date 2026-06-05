@@ -92,7 +92,7 @@ def _row(label: str, version: str | None, date: str | None):
         '</div>'
     )
 
-def build_card(entry, issue_names: set[str] | None = None, today: datetime.date | None = None):
+def build_card(entry, today: datetime.date | None = None):
     vendor = entry.get("vendor", "")
     model = entry.get("model", "")
     url = entry.get("url", "#")
@@ -103,14 +103,11 @@ def build_card(entry, issue_names: set[str] | None = None, today: datetime.date 
 
     # Highlight classes
     current_date_str = vlist[0].get("date") if vlist else None
-    is_issue = bool(issue_names and model in issue_names)
     is_fresh = _is_fresh_release(current_date_str, today=today)
 
     classes = ["card"]
     if is_stale:
         classes.append("card--stale")
-    elif is_issue:
-        classes.append("card--issue")
     elif is_fresh:
         classes.append("card--fresh")
 
@@ -459,15 +456,6 @@ def main():
     cfg = load_config()
     vendors = (cfg.get("vendors") or {})
 
-    # Manual issue flags (optional)
-    issue_names: set[str] = set(map(str, (cfg.get("issues") or [])))
-    for vendor_key, boards in vendors.items():
-        for b in boards or []:
-            if isinstance(b, dict) and b.get("issue"):
-                name = str(b.get("name") or b.get("model") or "").strip()
-                if name:
-                    issue_names.add(name)
-
     # Optional notes
     notes_text = (cfg.get("notes") or "").strip()
 
@@ -535,7 +523,7 @@ def main():
 
     # Build cards
     today = datetime.datetime.now(ZoneInfo("America/Chicago")).date()
-    cards_html = "\n".join(build_card(r, issue_names=issue_names, today=today) for r in results)
+    cards_html = "\n".join(build_card(r, today=today) for r in results)
 
     # Comments section (Google Form + Sheet)
     comments_html = _google_comments_block(cfg)
@@ -565,7 +553,6 @@ def main():
   <div class="last-updated">Last updated: {html.escape(now)}</div>
   <div class="legend">
     <span class="legend-item"><span class="swatch swatch--fresh"></span>New in last 5 days</span>
-    <span class="legend-item"><span class="swatch swatch--issue"></span>Manually flagged</span>
     <span class="legend-item"><span class="swatch swatch--stale"></span>Showing last good result</span>
   </div>
   <div class="last-updated last-updated--clone" aria-hidden="true">Last updated: {html.escape(now)}</div>
@@ -635,7 +622,6 @@ def main():
 .legend .legend-item{display:flex;align-items:center;gap:6px;background:#0f1630;border:1px solid #39407a;border-radius:999px;padding:4px 8px;line-height:1}
 .legend .swatch{width:12px;height:12px;border-radius:2px;display:inline-block}
 .legend .swatch--fresh{border:2px solid #22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.15) inset}
-.legend .swatch--issue{border:2px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 .legend .swatch--stale{border:2px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18) inset}
 
 /* notes */
@@ -644,7 +630,6 @@ def main():
 /* cards */
 .card{padding:22px 22px;border:0}
 .card--fresh{border:3px solid #22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.15)}
-.card--issue{border:3px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18)}
 .card--stale{border:3px solid #f97316;box-shadow:0 0 0 2px rgba(249,115,22,.18)}
 .card h3{font-size:16px;line-height:1.25;margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
 .card h3 .badge{margin-left:auto}

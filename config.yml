@@ -61,6 +61,3 @@ vendors:
     - { name: B860I AORUS PRO ICE, url: "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support" }
     - { name: B850M EAGLE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#Support-Bios" }
     - { name: B850M GAMING X WIFI6E, url: "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/support" }
-    
-    
-   #- { name: MAG Z790 TOMAHAWK MAX WIFI, url: "https://www.msi.com/Motherboard/MAG-Z790-TOMAHAWK-MAX-WIFI/support#bios", issue: true }

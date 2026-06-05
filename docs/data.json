@@ -14,7 +14,10 @@
         "date": "2026-06-01"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -31,7 +34,10 @@
         "date": "2026-05-13"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -48,7 +54,10 @@
         "date": "2026-05-19"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -65,7 +74,10 @@
         "date": "2026-05-21"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -82,7 +94,10 @@
         "date": "2026-05-25"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -99,7 +114,10 @@
         "date": "2026-05-20"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -116,7 +134,10 @@
         "date": "2026-03-20"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -132,7 +153,10 @@
         "date": "2025-03-12"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -148,7 +172,10 @@
         "date": "2025-03-12"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -164,7 +191,10 @@
         "date": "2025-03-12"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -180,7 +210,10 @@
         "date": "2025-03-12"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -196,7 +229,10 @@
         "date": "2025-03-12"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -213,7 +249,10 @@
         "date": "2025-09-24"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -230,7 +269,10 @@
         "date": "2026-04-28"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -246,7 +288,10 @@
         "date": "2026-02-05"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -262,7 +307,10 @@
         "date": "2026-02-05"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -278,7 +326,10 @@
         "date": "2026-02-05"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -294,7 +345,10 @@
         "date": "2026-02-05"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -310,7 +364,10 @@
         "date": "2026-02-05"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -326,7 +383,10 @@
         "date": "2026-02-05"
       }
     ],
-    "ok": true
+    "ok": true,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "ASUS",
@@ -342,7 +402,12 @@
         "date": "2025-10-28"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=TUF+GAMING+Z790-PLUS+WIFI; support page failed: https",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -358,7 +423,12 @@
         "date": "2026-04-02"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+Z890-I+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -374,7 +444,12 @@
         "date": "2026-04-02"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+MAXIMUS+Z890+HERO+BTF; support page failed: https",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -390,7 +465,12 @@
         "date": "2026-04-02"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+MAXIMUS+Z890+HERO; support page failed: https://w",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -406,7 +486,12 @@
         "date": "2026-04-02"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+Z890-A+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -422,7 +507,12 @@
         "date": "2026-04-02"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+Z890-E+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -438,7 +528,12 @@
         "date": "2026-04-02"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ProArt+Z890-CREATOR+WIFI; support page failed: https:",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "MSI",
@@ -455,7 +550,10 @@
         "date": "2026-03-27"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "ASUS",
@@ -471,7 +569,12 @@
         "date": "2026-04-16"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=Z890+AYW+GAMING+WIFI+W; support page failed: https://",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -487,7 +590,12 @@
         "date": "2026-04-27"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=TUF+GAMING+X870-PLUS+WIFI; support page failed: https",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -503,7 +611,12 @@
         "date": "2026-04-14"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=TUF+GAMING+B860M-PLUS+WIFI; support page failed: http",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -519,7 +632,12 @@
         "date": "2026-04-16"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=PRIME+Z890M-PLUS+WIFI; support page failed: https://w",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -535,7 +653,12 @@
         "date": "2026-04-14"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=TUF+GAMING+Z890-PLUS+WIFI; support page failed: https",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -551,7 +674,12 @@
         "date": "2026-04-27"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=TUF+GAMING+B850-BTF+WIFI+W; support page failed: http",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -567,7 +695,12 @@
         "date": "2026-04-10"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+B860-I+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -583,7 +716,12 @@
         "date": "2026-04-27"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+B850-A+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -599,7 +737,12 @@
         "date": "2026-04-27"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+B850-I+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -615,7 +758,12 @@
         "date": "2026-04-27"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+X870-I+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -631,7 +779,12 @@
         "date": "2026-04-27"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=TUF+GAMING+B850M-PLUS+WIFI; support page failed: http",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -647,7 +800,12 @@
         "date": "2026-04-27"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=TUF+GAMING+B850-PLUS+WIFI; support page failed: https",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -663,7 +821,12 @@
         "date": "2026-04-15"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+X870-A+GAMING+WIFI; support page failed: ht",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -679,7 +842,12 @@
         "date": "2026-04-15"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+X870E-E+GAMING+WIFI; support page failed: h",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -695,7 +863,12 @@
         "date": "2026-04-15"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+CROSSHAIR+X870E+HERO; support page failed: https:",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "ASUS",
@@ -711,7 +884,12 @@
         "date": "2026-04-15"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+CROSSHAIR+X870E+EXTREME; support page failed: htt",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   },
   {
     "vendor": "MSI",
@@ -728,7 +906,10 @@
         "date": "2026-03-17"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -745,7 +926,10 @@
         "date": "2025-09-23"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -762,7 +946,10 @@
         "date": "2026-03-11"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -779,7 +966,10 @@
         "date": "2026-03-10"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -796,7 +986,10 @@
         "date": "2025-08-12"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -813,7 +1006,10 @@
         "date": "2025-09-23"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -830,7 +1026,10 @@
         "date": "2026-03-11"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -847,7 +1046,10 @@
         "date": "2026-02-12"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -864,7 +1066,10 @@
         "date": "2026-03-10"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -881,7 +1086,10 @@
         "date": "2026-01-27"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -898,7 +1106,10 @@
         "date": "2026-03-06"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -915,7 +1126,10 @@
         "date": "2026-03-10"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -932,7 +1146,10 @@
         "date": "2025-08-12"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "MSI",
@@ -949,7 +1166,10 @@
         "date": "2025-10-23"
       }
     ],
-    "error": null
+    "error": null,
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": false,
+    "last_success_at": "2026-06-05 15:48 CDT"
   },
   {
     "vendor": "ASUS",
@@ -965,6 +1185,11 @@
         "date": "2025-09-24"
       }
     ],
-    "ok": true
+    "ok": false,
+    "error": "api failed: www.asus.com global: 403 Client Error: Forbidden for url: https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global&model=ROG+STRIX+B550-F+GAMING+WIFI+II; support page failed:",
+    "checked_at": "2026-06-05 15:48 CDT",
+    "stale": true,
+    "last_success_at": null,
+    "fallback_reason": "Scrape failed; showing last good result."
   }
 ]

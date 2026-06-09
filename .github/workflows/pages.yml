@@ -1,11 +1,6 @@
 name: Build & Push /docs
 
 on:
-  push:
-    branches: [ main ]
-    # avoid loops when the workflow commits to docs/
-    paths-ignore:
-      - 'docs/**'
   schedule:
     # 7:00 AM Central during daylight saving time (12:00 UTC).
     # Change to 13:00 UTC when Central Standard Time returns.
@@ -78,7 +73,6 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
-          include-hidden-files: true
 
   deploy:
     needs: build

@@ -7,20 +7,22 @@ on:
     paths-ignore:
       - 'docs/**'
   schedule:
-    - cron: '30 12 * * 1-5'
+    # 7:00 AM Central during daylight saving time (12:00 UTC).
+    # Change to 13:00 UTC when Central Standard Time returns.
+    - cron: '0 12 * * 1-5'
   workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
-  contents: write     # needed to commit/push docs (and empty commit when no changes)
+  contents: write     # needed to commit/push docs when generated files change
   pages: write        # needed for actions/deploy-pages
   id-token: write     # OIDC for pages deploy
 
 concurrency:
-  group: docs-build
-  cancel-in-progress: true
+  group: bios-tracker-pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -65,11 +67,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff --cached --quiet; then
-            git commit --allow-empty -m "Rebuild: no content changes"
+            echo "No generated file changes to commit."
           else
             git commit -m "Rebuild: updated generated pages"
+            git push
           fi
-          git push
 
       # Deploy via GitHub Pages action (works if your Pages source is set to "GitHub Actions")
       - name: Upload Pages artifact

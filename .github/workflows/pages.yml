@@ -2,9 +2,10 @@ name: Build & Push /docs
 
 on:
   schedule:
-    # 7:00 AM Central during daylight saving time (12:00 UTC).
-    # Change to 13:00 UTC when Central Standard Time returns.
-    - cron: '0 12 * * 1-5'
+    # 7:07 AM Central, Monday-Friday.
+    # The offset avoids GitHub's heavier top-of-hour schedule queue.
+    - cron: '7 7 * * 1-5'
+      timezone: "America/Chicago"
   workflow_dispatch:
 
 permissions:

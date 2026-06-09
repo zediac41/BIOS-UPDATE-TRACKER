@@ -7,9 +7,6 @@ on:
     - cron: '0 12 * * 1-5'
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 permissions:
   contents: write     # needed to commit/push docs when generated files change
   pages: write        # needed for actions/deploy-pages
@@ -70,7 +67,7 @@ jobs:
 
       # Deploy via GitHub Pages action (works if your Pages source is set to "GitHub Actions")
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs
 

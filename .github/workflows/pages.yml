@@ -2,16 +2,13 @@ name: Build & Push /docs
 
 on:
   schedule:
-    # 7:07 AM Central, Monday-Friday.
-    # The offset avoids GitHub's heavier top-of-hour schedule queue.
-    - cron: '7 7 * * 1-5'
-      timezone: "America/Chicago"
+    # 7:00 AM Central during daylight saving time (12:00 UTC).
+    # Change to 13:00 UTC when Central Standard Time returns.
+    - cron: '0 12 * * 1-5'
   workflow_dispatch:
 
 permissions:
-  contents: write     # needed to commit/push docs when generated files change
-  pages: write        # needed for actions/deploy-pages
-  id-token: write     # OIDC for pages deploy
+  contents: read
 
 concurrency:
   group: bios-tracker-pages
@@ -54,30 +51,63 @@ jobs:
 
           touch docs/.nojekyll
 
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs
+          include-hidden-files: true
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+  publish:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Download generated site
+        uses: actions/download-artifact@v7
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/pages
+
+      - name: Restore generated /docs
+        shell: bash
+        run: |
+          rm -rf docs
+          mkdir -p docs
+          tar -xf "$RUNNER_TEMP/pages/artifact.tar" -C docs
+
       - name: Commit & push /docs
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add -A docs
           if git diff --cached --quiet; then
             echo "No generated file changes to commit."
           else
             git commit -m "Rebuild: updated generated pages"
             git push
           fi
-
-      # Deploy via GitHub Pages action (works if your Pages source is set to "GitHub Actions")
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: docs
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5

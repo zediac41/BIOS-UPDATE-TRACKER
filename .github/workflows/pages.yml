@@ -2,9 +2,7 @@ name: Build & Push /docs
 
 on:
   schedule:
-    # 7:00 AM Central during daylight saving time (12:00 UTC).
-    # Change to 13:00 UTC when Central Standard Time returns.
-    - cron: '0 12 * * 1-5'
+    - cron: '22 11 * * 1-5'
   workflow_dispatch:
 
 permissions:

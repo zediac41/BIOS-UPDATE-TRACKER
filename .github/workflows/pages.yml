@@ -2,7 +2,7 @@ name: Build & Push /docs
 
 on:
   schedule:
-    - cron: '17 10 * * 1-5'
+    - cron: '17 09 * * 1-5'
   workflow_dispatch:
 
 permissions:

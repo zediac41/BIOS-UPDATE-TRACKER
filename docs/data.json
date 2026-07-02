@@ -1,5 +1,138 @@
 [
   {
+    "vendor": "ASUS",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1686",
+        "date": "2026-07-02"
+      },
+      {
+        "version": "1681",
+        "date": "2026-06-22"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-BTF WIFI W",
+    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
+    "versions": [
+      {
+        "version": "1686",
+        "date": "2026-07-02"
+      },
+      {
+        "version": "1681",
+        "date": "2026-06-22"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-A GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1686",
+        "date": "2026-07-02"
+      },
+      {
+        "version": "1681",
+        "date": "2026-06-22"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX B850-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1686",
+        "date": "2026-07-02"
+      },
+      {
+        "version": "1681",
+        "date": "2026-06-22"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "ROG STRIX X870-I GAMING WIFI",
+    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
+    "versions": [
+      {
+        "version": "1686",
+        "date": "2026-07-02"
+      },
+      {
+        "version": "1681",
+        "date": "2026-06-22"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850M-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1686",
+        "date": "2026-07-02"
+      },
+      {
+        "version": "1681",
+        "date": "2026-06-22"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "ASUS",
+    "model": "TUF GAMING B850-PLUS WIFI",
+    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
+    "versions": [
+      {
+        "version": "1686",
+        "date": "2026-07-02"
+      },
+      {
+        "version": "1681",
+        "date": "2026-06-22"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
     "vendor": "MSI",
     "model": "PRO X870-P WIFI",
     "url": "https://www.msi.com/Motherboard/PRO-X870-P-WIFI/support#bios",
@@ -15,9 +148,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -35,9 +168,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -55,9 +188,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -74,9 +207,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -94,9 +227,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -114,9 +247,66 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 EAGLE WIFI7",
+    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
+    "versions": [
+      {
+        "version": "F13C",
+        "date": "2026-06-30"
+      },
+      {
+        "version": "F12",
+        "date": "2026-05-21"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F13B",
+        "date": "2026-06-30"
+      },
+      {
+        "version": "F12",
+        "date": "2026-05-21"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS STEALTH ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F10B",
+        "date": "2026-06-30"
+      },
+      {
+        "version": "F9",
+        "date": "2026-05-21"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-07-02 06:51 CDT",
+    "stale": false,
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -133,9 +323,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -152,9 +342,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -171,9 +361,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -190,9 +380,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -210,9 +400,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -230,9 +420,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -250,9 +440,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -270,9 +460,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -290,142 +480,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING X870-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-X870-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1681",
-        "date": "2026-06-22"
-      },
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-BTF WIFI W",
-    "url": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/helpdesk_bios?model2Name=TUF-GAMING-B850-BTF-WIFI-W",
-    "versions": [
-      {
-        "version": "1681",
-        "date": "2026-06-22"
-      },
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-A GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1681",
-        "date": "2026-06-22"
-      },
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1681",
-        "date": "2026-06-22"
-      },
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX X870-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1681",
-        "date": "2026-06-22"
-      },
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850M-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850M-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1681",
-        "date": "2026-06-22"
-      },
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "TUF GAMING B850-PLUS WIFI",
-    "url": "https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/helpdesk_bios?model2Name=TUF-GAMING-B850-PLUS-WIFI",
-    "versions": [
-      {
-        "version": "1681",
-        "date": "2026-06-22"
-      },
-      {
-        "version": "1670",
-        "date": "2026-04-29"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -443,9 +500,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -462,9 +519,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -481,9 +538,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -500,9 +557,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -519,9 +576,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -539,9 +596,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -558,66 +615,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 EAGLE WIFI7",
-    "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support",
-    "versions": [
-      {
-        "version": "F13A",
-        "date": "2026-06-10"
-      },
-      {
-        "version": "F12",
-        "date": "2026-05-21"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F13A",
-        "date": "2026-06-10"
-      },
-      {
-        "version": "F12",
-        "date": "2026-05-21"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS STEALTH ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F10A",
-        "date": "2026-06-10"
-      },
-      {
-        "version": "F9",
-        "date": "2026-05-21"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
-    "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -634,9 +634,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -653,9 +653,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -673,9 +673,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -693,9 +693,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -713,9 +713,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -733,9 +733,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -752,9 +752,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -771,9 +771,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -790,9 +790,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -809,9 +809,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -828,9 +828,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -847,9 +847,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -866,9 +866,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -885,9 +885,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -904,9 +904,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -923,9 +923,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "ASUS",
@@ -942,9 +942,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -962,9 +962,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -982,9 +982,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -1002,9 +1002,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -1022,9 +1022,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -1042,9 +1042,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -1062,9 +1062,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -1082,9 +1082,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "MSI",
@@ -1102,9 +1102,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -1121,9 +1121,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -1140,8 +1140,8 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-07-01 07:25 CDT",
+    "checked_at": "2026-07-02 06:51 CDT",
     "stale": false,
-    "last_success_at": "2026-07-01 07:25 CDT"
+    "last_success_at": "2026-07-02 06:51 CDT"
   }
 ]

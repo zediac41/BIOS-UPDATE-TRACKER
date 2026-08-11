@@ -2,9 +2,9 @@ name: Build & Push /docs
 
 on:
   schedule:
-    # 7:00 AM Central during daylight saving time (12:00 UTC).
-    # Change to 13:00 UTC when Central Standard Time returns.
-    - cron: '17 09 * * 1-5'
+    # 7:07 AM Central during daylight saving time (12:07 UTC).
+    # Change to 13:07 UTC when Central Standard Time returns.
+    - cron: '7 12 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -24,6 +24,7 @@ jobs:
     env:
       GIGABYTE_BATCH_TRY_HEADLESS: "1"
       GIGABYTE_PROFILE_DIR: /tmp/gigabyte-profile
+      GIGABYTE_SAVE_HTML: "1"
 
     steps:
       - name: Checkout
@@ -56,6 +57,16 @@ jobs:
           xvfb-run -a python bios_tracker.py
 
           touch docs/.nojekyll
+
+      - name: Upload Gigabyte debug pages
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: gigabyte-debug-pages
+          path: cache/gigabyte-debug
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Commit & push /docs
         id: commit

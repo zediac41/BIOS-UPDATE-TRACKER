@@ -51,7 +51,7 @@ def _variants(url: str):
     yield url
 
 # ---------- Patterns ----------
-_PAT_F = re.compile(r"\bF(?P<num>[0-9]{1,3})(?P<let>[A-Z])?\b", re.I)
+_PAT_F = re.compile(r"(?<![A-Z0-9])F(?P<num>[0-9]{1,3})(?P<let>[A-Z])?(?![A-Z0-9])", re.I)
 
 _DATE_YMD = re.compile(r"\b(?P<y>\d{4})[/-](?P<m>\d{2})[/-](?P<d>\d{2})\b")
 _DATE_MON = re.compile(
@@ -175,8 +175,14 @@ def _parse_versions(html: str):
             block = block.parent
 
         low = blk_text.lower()
+        href_low = (href or "").lower()
+        is_bios_download = (
+            "/filelist/bios/" in href_low
+            or "filelist/bios" in href_low
+            or "_bios_" in href_low
+        )
         # Require a BIOS context around the control to avoid grabbing drivers/utilities
-        if ("bios" not in low) and ("uefi" not in low):
+        if ("bios" not in low) and ("uefi" not in low) and not is_bios_download:
             continue
 
         # Version: prefer in href (Fxx), else in the block text
@@ -230,13 +236,27 @@ def _parse_versions(html: str):
 
 def _is_block(html: str) -> bool:
     t = (html or "").lower()
-    return (
-        ("access denied" in t) or ("forbidden" in t and "gigabyte.com" in t) or
-        ("please enable javascript" in t) or ("captcha" in t) or
-        ("you have been blocked" in t) or
-        ("attention required" in t and "cloudflare" in t) or
-        ("security service" in t and "blocked" in t)
-    )
+    if "access denied" in t or "you have been blocked" in t:
+        return True
+    if "attention required" in t and "cloudflare" in t:
+        return True
+    if "security service" in t and ("blocked" in t or "forbidden" in t):
+        return True
+    if "forbidden" in t and ("403" in t or "gigabyte.com" in t):
+        return True
+    if "please enable javascript" in t and ("checking your browser" in t or "verify" in t):
+        return True
+    if "captcha" in t and any(
+        phrase in t
+        for phrase in (
+            "complete the captcha",
+            "captcha verification",
+            "verify you are human",
+            "are you human",
+        )
+    ):
+        return True
+    return False
 
 # ---------- Fetch with Playwright ----------
 def _save_html_if_requested(url: str, html: str):

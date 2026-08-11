@@ -337,10 +337,22 @@ def _fetch_with_playwright(url: str, headful: bool):
         finally:
             _close_context(ctx, browser)
 
+def _format_attempt_error(mode: str, err) -> str:
+    msg = str(err).replace("\r", " ").replace("\n", " ").strip()
+    return f"{mode}:{msg[:120]}"
+
+def _combined_attempt_errors(errors: list[str], fallback: str) -> str:
+    unique = []
+    for err in errors:
+        if err and err not in unique:
+            unique.append(err)
+    return "; ".join(unique[-4:]) or fallback
+
 def _latest_two_with_fetchers(model: str, override_url: str = None, *, fetch_headless=None, fetch_headful=None):
     urls = [override_url] if override_url else list(_candidates(model))
     force_headful = _env_flag("GIGABYTE_FORCE_HEADFUL")
     last_err = None
+    errors = []
 
     for base in urls:
         for url in _variants(base):
@@ -351,8 +363,11 @@ def _latest_two_with_fetchers(model: str, override_url: str = None, *, fetch_hea
                     items = _parse_versions(html)
                     if items:
                         return {"vendor":"GIGABYTE","model":model,"url":url,"versions":items[:2],"ok":True}
+                    last_err = "headless:parse:no-versions"
+                    errors.append(last_err)
                 except Exception as e:
-                    last_err = f"headless:{e}"
+                    last_err = _format_attempt_error("headless", e)
+                    errors.append(last_err)
 
             try:
                 html = fetch_headful(url)
@@ -360,12 +375,15 @@ def _latest_two_with_fetchers(model: str, override_url: str = None, *, fetch_hea
                 items = _parse_versions(html)
                 if items:
                     return {"vendor":"GIGABYTE","model":model,"url":url,"versions":items[:2],"ok":True}
+                last_err = "headful:parse:no-versions"
+                errors.append(last_err)
             except Exception as e:
-                last_err = f"headful:{e}"
+                last_err = _format_attempt_error("headful", e)
+                errors.append(last_err)
 
     return {
         "vendor":"GIGABYTE","model":model,"url":urls[0] if urls else "",
-        "versions":[], "ok":False, "error": (last_err or "fetch/parse failed")[:200]
+        "versions":[], "ok":False, "error": _combined_attempt_errors(errors, last_err or "fetch/parse failed")[:240]
     }
 
 # ---------- Public API ----------

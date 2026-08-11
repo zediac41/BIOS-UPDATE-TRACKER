@@ -21,6 +21,9 @@ jobs:
     permissions:
       actions: write
       contents: write
+    env:
+      GIGABYTE_BATCH_TRY_HEADLESS: "1"
+      GIGABYTE_PROFILE_DIR: ${{ runner.temp }}/gigabyte-profile
 
     steps:
       - name: Checkout

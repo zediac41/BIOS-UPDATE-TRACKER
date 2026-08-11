@@ -11,8 +11,14 @@ from playwright.sync_api import sync_playwright
 
 _UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
 )
+
+def _env_flag(name: str, default: bool = False) -> bool:
+    val = os.getenv(name)
+    if val is None:
+        return default
+    return val.strip().lower() in ("1", "true", "yes", "on")
 
 # ---------- URL helpers ----------
 def _slug(s: str) -> str:
@@ -226,7 +232,10 @@ def _is_block(html: str) -> bool:
     t = (html or "").lower()
     return (
         ("access denied" in t) or ("forbidden" in t and "gigabyte.com" in t) or
-        ("please enable javascript" in t) or ("captcha" in t)
+        ("please enable javascript" in t) or ("captcha" in t) or
+        ("you have been blocked" in t) or
+        ("attention required" in t and "cloudflare" in t) or
+        ("security service" in t and "blocked" in t)
     )
 
 # ---------- Fetch with Playwright ----------
@@ -241,18 +250,29 @@ def _save_html_if_requested(url: str, html: str):
 
 def _open_context(playwright, headful: bool):
     if headful:
+        profile_dir = os.getenv("GIGABYTE_PROFILE_DIR", "cache/gigabyte-profile")
         ctx = playwright.chromium.launch_persistent_context(
-            user_data_dir="source/pw-gigabyte-profile",
+            user_data_dir=profile_dir,
             headless=False,
             viewport={"width": 1366, "height": 900},
             user_agent=_UA,
             locale="en-US",
+            extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+            args=["--disable-blink-features=AutomationControlled"],
         )
         _block_heavy_assets(ctx)
         return ctx, None, ctx.new_page()
 
-    browser = playwright.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
-    ctx = browser.new_context(user_agent=_UA, locale="en-US", viewport={"width": 1366, "height": 900})
+    browser = playwright.chromium.launch(
+        headless=True,
+        args=["--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage"],
+    )
+    ctx = browser.new_context(
+        user_agent=_UA,
+        locale="en-US",
+        viewport={"width": 1366, "height": 900},
+        extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+    )
     _block_heavy_assets(ctx)
     return ctx, browser, ctx.new_page()
 
@@ -319,7 +339,7 @@ def _fetch_with_playwright(url: str, headful: bool):
 
 def _latest_two_with_fetchers(model: str, override_url: str = None, *, fetch_headless=None, fetch_headful=None):
     urls = [override_url] if override_url else list(_candidates(model))
-    force_headful = bool(os.getenv("GIGABYTE_FORCE_HEADFUL"))
+    force_headful = _env_flag("GIGABYTE_FORCE_HEADFUL")
     last_err = None
 
     for base in urls:
@@ -350,7 +370,7 @@ def _latest_two_with_fetchers(model: str, override_url: str = None, *, fetch_hea
 
 # ---------- Public API ----------
 def latest_two(model: str, override_url: str = None):
-    force_headful = bool(os.getenv("GIGABYTE_FORCE_HEADFUL"))
+    force_headful = _env_flag("GIGABYTE_FORCE_HEADFUL")
     return _latest_two_with_fetchers(
         model,
         override_url=override_url,
@@ -360,15 +380,15 @@ def latest_two(model: str, override_url: str = None):
 
 def latest_many(items):
     results = []
-    try_headless = os.getenv("GIGABYTE_BATCH_TRY_HEADLESS", "").lower() in ("1", "true", "yes")
-    force_headful = bool(os.getenv("GIGABYTE_FORCE_HEADFUL")) or not try_headless
+    try_headless = _env_flag("GIGABYTE_BATCH_TRY_HEADLESS", default=True)
+    force_headful = _env_flag("GIGABYTE_FORCE_HEADFUL")
 
     with sync_playwright() as p:
         headless_ctx = headless_browser = headless_page = None
         headful_ctx = headful_browser = headful_page = None
 
         try:
-            if not force_headful:
+            if try_headless and not force_headful:
                 headless_ctx, headless_browser, headless_page = _open_context(p, headful=False)
 
             def fetch_headless(url: str):
@@ -389,7 +409,7 @@ def latest_many(items):
                     results.append(_latest_two_with_fetchers(
                         model,
                         override_url=override_url,
-                        fetch_headless=None if force_headful else fetch_headless,
+                        fetch_headless=None if (force_headful or not try_headless) else fetch_headless,
                         fetch_headful=fetch_headful,
                     ))
                 except Exception as e:

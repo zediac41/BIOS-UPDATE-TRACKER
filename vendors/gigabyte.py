@@ -7,6 +7,7 @@
 import os, re, time, json, sys, datetime as dt
 from pathlib import Path
 from bs4 import BeautifulSoup
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
 _UA = (
@@ -297,8 +298,19 @@ def _open_context(playwright, headful: bool):
     return ctx, browser, ctx.new_page()
 
 def _block_heavy_assets(ctx):
+    tracker_hosts = (
+        "doubleclick.net",
+        "google-analytics.com",
+        "googleadservices.com",
+        "googletagmanager.com",
+    )
+
     def route_handler(route):
-        if route.request.resource_type in {"image", "media", "font"}:
+        request_url = route.request.url.lower()
+        if (
+            route.request.resource_type in {"image", "media", "font"}
+            or any(host in request_url for host in tracker_hosts)
+        ):
             route.abort()
         else:
             route.continue_()
@@ -317,7 +329,13 @@ def _close_context(ctx, browser):
 
 def _fetch_with_page(page, url: str):
     timeout_ms = int(os.getenv("GIGABYTE_TIMEOUT_MS", "30000"))
-    page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
+    navigation_timed_out = False
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
+    except PlaywrightTimeoutError:
+        # Gigabyte can leave third-party requests hanging after the useful page
+        # content has arrived. Continue and inspect that content before failing.
+        navigation_timed_out = True
 
     # Cookies/consent (best-effort)
     for sel in ("text=Accept All", "text=I Agree", "text=Accept", "button:has-text('Accept')"):
@@ -347,7 +365,19 @@ def _fetch_with_page(page, url: str):
     page.wait_for_timeout(1800)
     html = page.content()
     _save_html_if_requested(url, html)
+    if navigation_timed_out and len(html) < 10_000:
+        raise RuntimeError("navigation timeout before usable content loaded")
     return html
+
+def _fetch_with_fresh_page(ctx, url: str):
+    page = ctx.new_page()
+    try:
+        return _fetch_with_page(page, url)
+    finally:
+        try:
+            page.close()
+        except Exception:
+            pass
 
 def _fetch_with_playwright(url: str, headful: bool):
     with sync_playwright() as p:
@@ -389,17 +419,26 @@ def _latest_two_with_fetchers(model: str, override_url: str = None, *, fetch_hea
                     last_err = _format_attempt_error("headless", e)
                     errors.append(last_err)
 
-            try:
-                html = fetch_headful(url)
-                if _is_block(html): raise RuntimeError("block-page(headful)")
-                items = _parse_versions(html)
-                if items:
-                    return {"vendor":"GIGABYTE","model":model,"url":url,"versions":items[:2],"ok":True}
-                last_err = "headful:parse:no-versions"
-                errors.append(last_err)
-            except Exception as e:
-                last_err = _format_attempt_error("headful", e)
-                errors.append(last_err)
+            headful_attempts = max(1, int(os.getenv("GIGABYTE_HEADFUL_ATTEMPTS", "2")))
+            for attempt in range(1, headful_attempts + 1):
+                mode = "headful" if headful_attempts == 1 else f"headful#{attempt}"
+                try:
+                    html = fetch_headful(url)
+                    if _is_block(html):
+                        raise RuntimeError("block-page(headful)")
+                    items = _parse_versions(html)
+                    if items:
+                        return {"vendor":"GIGABYTE","model":model,"url":url,"versions":items[:2],"ok":True}
+                    last_err = f"{mode}:parse:no-versions"
+                    errors.append(last_err)
+                except Exception as e:
+                    last_err = _format_attempt_error(mode, e)
+                    errors.append(last_err)
+
+                if "block-page" in (last_err or ""):
+                    break
+                if attempt < headful_attempts:
+                    time.sleep(1.0)
 
     return {
         "vendor":"GIGABYTE","model":model,"url":urls[0] if urls else "",
@@ -428,17 +467,21 @@ def latest_many(items):
         try:
             if try_headless and not force_headful:
                 headless_ctx, headless_browser, headless_page = _open_context(p, headful=False)
+                headless_page.close()
+                headless_page = None
 
             def fetch_headless(url: str):
-                if headless_page is None:
+                if headless_ctx is None:
                     raise RuntimeError("headless disabled")
-                return _fetch_with_page(headless_page, url)
+                return _fetch_with_fresh_page(headless_ctx, url)
 
             def fetch_headful(url: str):
                 nonlocal headful_ctx, headful_browser, headful_page
-                if headful_page is None:
+                if headful_ctx is None:
                     headful_ctx, headful_browser, headful_page = _open_context(p, headful=True)
-                return _fetch_with_page(headful_page, url)
+                    headful_page.close()
+                    headful_page = None
+                return _fetch_with_fresh_page(headful_ctx, url)
 
             for item in items:
                 model = str(item.get("model") or "").strip()

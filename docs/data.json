@@ -14,9 +14,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -33,9 +33,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -52,9 +52,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -71,9 +71,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -90,9 +90,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -109,9 +109,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -128,17 +128,17 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
     "model": "ROG STRIX B860-I GAMING WIFI",
-    "url": "https://rog.asus.com/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
+    "url": "https://www.asus.com/us/supportonly/rog%20strix%20b860-i%20gaming%20wifi/helpdesk_bios/",
     "versions": [
       {
-        "version": "3403",
+        "version": "3403 (Beta version)",
         "date": "2026-09-23"
       },
       {
@@ -146,12 +146,10 @@
         "date": "2026-08-13"
       }
     ],
-    "ok": false,
-    "error": "api failed: rog.asus.com us: 404 Client Error: Not Found for url: https://www.asus.com/pageerror/?aspxerrorpath=/support/api/product.asmx/GetPDBIOS; support page failed: no BIOS items found on https://www.asus.com/supportonly/rog-strix-b860-i-gaming-wifi/helpdesk_bios/; browser page failed: no BIOS items found in browser on https://www.asus.com/supportonly/rog-strix-b860-i-gaming-wifi/helpdesk_bios/",
-    "checked_at": "2026-10-15 12:06 CDT",
-    "stale": true,
-    "last_success_at": "2026-10-12 16:24 CDT",
-    "fallback_reason": "Scrape failed; showing last good result."
+    "ok": true,
+    "checked_at": "2026-10-15 20:23 CDT",
+    "stale": false,
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -168,9 +166,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -187,9 +185,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -206,9 +204,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -225,9 +223,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -244,9 +242,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -263,9 +261,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -282,9 +280,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -301,9 +299,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -320,9 +318,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -339,9 +337,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -358,9 +356,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -377,9 +375,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -396,9 +394,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -415,9 +413,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -434,9 +432,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -453,9 +451,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -472,9 +470,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -491,9 +489,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -510,9 +508,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -529,9 +527,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -548,28 +546,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
-  },
-  {
-    "vendor": "ASUS",
-    "model": "ROG STRIX B850-A GAMING WIFI R2",
-    "url": "https://www.asus.com/us/supportonly/rog%20strix%20b850-a%20gaming%20wifi%20r2/helpdesk_bios/",
-    "versions": [
-      {
-        "version": "1804 (Beta version)",
-        "date": "2026-09-21"
-      },
-      {
-        "version": "1686 (Beta version)",
-        "date": "2026-07-02"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
-    "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -587,9 +566,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -607,9 +586,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "ASUS",
@@ -626,9 +605,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -646,9 +625,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -666,9 +645,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -686,9 +665,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -706,9 +685,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -726,9 +705,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -746,9 +725,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -766,9 +745,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -786,9 +765,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -806,9 +785,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -826,9 +805,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -846,9 +825,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -866,9 +845,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -886,29 +865,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
-  },
-  {
-    "vendor": "MSI",
-    "model": "PRO Z790-P WIFI",
-    "url": "https://www.msi.com/Motherboard/PRO-Z790-P-WIFI/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7E06vAK",
-        "date": "2026-08-28"
-      },
-      {
-        "version": "7E06vAJ",
-        "date": "2026-05-20"
-      }
-    ],
-    "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
-    "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -926,29 +885,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
-  },
-  {
-    "vendor": "MSI",
-    "model": "B550M GAMING PLUS WIFI6E",
-    "url": "https://www.msi.com/Motherboard/B550M-GAMING-PLUS-WIFI6E/support#bios",
-    "ok": true,
-    "versions": [
-      {
-        "version": "7C95vN12",
-        "date": "2026-08-21"
-      },
-      {
-        "version": "7C95vN11",
-        "date": "2026-07-24"
-      }
-    ],
-    "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
-    "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -966,9 +905,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -986,9 +925,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -1006,9 +945,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -1026,9 +965,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -1046,9 +985,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -1066,9 +1005,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -1086,9 +1025,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "MSI",
@@ -1106,9 +1045,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -1125,9 +1064,28 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "B860M AORUS ELITE WIFI6E ICE",
+    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
+    "versions": [
+      {
+        "version": "F11",
+        "date": "2026-06-11"
+      },
+      {
+        "version": "F11B",
+        "date": "2026-05-29"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-10-15 20:23 CDT",
+    "stale": false,
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -1144,28 +1102,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "B860M AORUS ELITE WIFI6E ICE",
-    "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#dl",
-    "versions": [
-      {
-        "version": "F11",
-        "date": "2026-06-10"
-      },
-      {
-        "version": "F11B",
-        "date": "2026-05-28"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
-    "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -1174,17 +1113,17 @@
     "versions": [
       {
         "version": "F20",
-        "date": "2026-06-10"
+        "date": "2026-06-11"
       },
       {
         "version": "F20B",
-        "date": "2026-05-28"
+        "date": "2026-05-29"
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   },
   {
     "vendor": "GIGABYTE",
@@ -1193,16 +1132,16 @@
     "versions": [
       {
         "version": "F10",
-        "date": "2026-06-10"
+        "date": "2026-06-11"
       },
       {
         "version": "F10B",
-        "date": "2026-05-28"
+        "date": "2026-05-29"
       }
     ],
     "ok": true,
-    "checked_at": "2026-10-15 12:06 CDT",
+    "checked_at": "2026-10-15 20:23 CDT",
     "stale": false,
-    "last_success_at": "2026-10-15 12:06 CDT"
+    "last_success_at": "2026-10-15 20:23 CDT"
   }
 ]

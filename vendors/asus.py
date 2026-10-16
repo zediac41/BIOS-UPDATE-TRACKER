@@ -3,7 +3,7 @@ import os, re, json, sys, time, datetime as dt
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 import requests
-from urllib.parse import quote_plus
+from urllib.parse import quote, quote_plus
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
@@ -21,6 +21,12 @@ _BIOS_VER_NUMERIC = re.compile(r"^\d{3,5}$")
 _BIOS_VER_IN_TEXT = re.compile(r"\b(\d{3,5})\b")
 
 def _guess_support_url(model: str) -> str:
+    # ASUS' current support-only routes keep the model name in the path and
+    # encode spaces instead of replacing them with hyphens.
+    model_path = quote(model.strip().lower(), safe="")
+    return f"https://www.asus.com/us/supportonly/{model_path}/helpdesk_bios/"
+
+def _legacy_support_url(model: str) -> str:
     slug = (
         model.strip()
         .lower()
@@ -153,7 +159,7 @@ def _call_api(model: str) -> Tuple[List[Dict[str, Any]], str]:
 
 def _support_urls(model: str, override_url: str | None = None):
     seen = set()
-    for url in (override_url, _guess_support_url(model)):
+    for url in (override_url, _guess_support_url(model), _legacy_support_url(model)):
         if url and url not in seen:
             seen.add(url)
             yield url

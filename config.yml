@@ -49,6 +49,7 @@ vendors:
     - { name: MPG X870E EDGE TI WIFI, url: "https://www.msi.com/Motherboard/MPG-X870E-EDGE-TI-WIFI/support#bios" }
     - { name: PRO B860M-VC WIFI6E, url: "https://www.msi.com/Motherboard/PRO-B860M-VC-WIFI6E/support#bios" }
     - { name: PRO B850-VC WIFI, url: "https://www.msi.com/Motherboard/PRO-B850-VC-WIFI/support#bios" }
+    - { name: B550M PRO-VDH WIFI, url: "https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI/support#bios" }
   gigabyte:
     - { name: B850M AORUS ELITE WIFI6E ICE, url: "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support" }
     - { name: X870 EAGLE WIFI7, url: "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support" }

@@ -15,9 +15,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -35,9 +35,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -55,9 +55,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -74,9 +74,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -93,28 +93,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
-  },
-  {
-    "vendor": "GIGABYTE",
-    "model": "X870 AORUS ELITE WIFI7 ICE",
-    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
-    "versions": [
-      {
-        "version": "F13E",
-        "date": "2026-10-19"
-      },
-      {
-        "version": "F1",
-        "date": "2026-10-19"
-      }
-    ],
-    "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
-    "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -131,9 +112,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -150,9 +131,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -169,9 +150,28 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
+  },
+  {
+    "vendor": "GIGABYTE",
+    "model": "X870 AORUS ELITE WIFI7 ICE",
+    "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#Support-Bios",
+    "versions": [
+      {
+        "version": "F13E",
+        "date": "2026-10-18"
+      },
+      {
+        "version": "F1",
+        "date": "2026-10-18"
+      }
+    ],
+    "ok": true,
+    "checked_at": "2026-11-04 13:51 CST",
+    "stale": false,
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -188,9 +188,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -207,9 +207,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -226,9 +226,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -245,9 +245,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -264,9 +264,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -283,9 +283,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -302,9 +302,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -321,9 +321,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -340,9 +340,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -359,9 +359,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -378,9 +378,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -397,9 +397,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -416,9 +416,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -435,9 +435,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -454,9 +454,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -473,9 +473,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -492,9 +492,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -511,9 +511,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -530,9 +530,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -549,9 +549,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -568,9 +568,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -587,9 +587,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -606,9 +606,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -626,9 +626,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -646,9 +646,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "ASUS",
@@ -665,9 +665,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -685,9 +685,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -705,9 +705,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -725,9 +725,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -745,9 +745,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -765,9 +765,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -785,9 +785,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -805,9 +805,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -825,9 +825,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -845,9 +845,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -865,9 +865,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -885,9 +885,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -905,9 +905,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -925,9 +925,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -945,9 +945,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -965,9 +965,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -985,9 +985,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -1005,9 +1005,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -1025,9 +1025,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -1045,9 +1045,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "MSI",
@@ -1065,9 +1065,9 @@
       }
     ],
     "error": null,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -1084,9 +1084,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -1103,9 +1103,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -1122,9 +1122,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -1141,9 +1141,9 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   },
   {
     "vendor": "GIGABYTE",
@@ -1160,8 +1160,8 @@
       }
     ],
     "ok": true,
-    "checked_at": "2026-11-03 13:41 CST",
+    "checked_at": "2026-11-04 13:51 CST",
     "stale": false,
-    "last_success_at": "2026-11-03 13:41 CST"
+    "last_success_at": "2026-11-04 13:51 CST"
   }
 ]

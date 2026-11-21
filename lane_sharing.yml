@@ -1,0 +1,114 @@
+schema_version: 1
+# Researched once. The daily build only reads this file; it never fetches manuals.
+# Missing boards remain pending in the UI until an entry is verified here.
+boards:
+  - vendor: ASUS
+    model: ROG STRIX X870E-E GAMING WIFI
+    status: verified
+    reviewed_on: '2026-11-21'
+    revision: Original X870E-E GAMING WIFI; not WIFI7 NEO or R2
+    baseline: Ryzen 7000 / 9000 series, with an x16-capable GPU in PCIEX16(G5).
+    gpu_summary: Using M.2_2 or M.2_3 reduces the main GPU slot from PCIe 5.0 x16 to x8.
+    sources:
+      - id: specs
+        title: ASUS official specifications
+        url: https://rog.asus.com/us/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/spec/
+        section: Expansion Slots and Storage; includes single-slot sharing clarification
+      - id: manual
+        title: ASUS user manual E24074, First Edition
+        url: https://dlcdnets.asus.com/pub/ASUS/mb/SocketAM5/ROG_STRIX_X870E-E_GAMING_WIFI/E24074_ROG_STRIX_X870E-E_GAMING_WIFI_EM_WEB_1.pdf#page=14
+        section: Pages 8-9, 14 and 24; shared-bandwidth table on page 14
+    slots:
+      - {name: M.2_1, connection: CPU, speed: PCIe 5.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
+      - {name: M.2_2, connection: CPU, speed: PCIe 5.0 x4, note: Shares the main GPU lanes with M.2_3 and PCIEX16(G5)., sources: [specs, manual]}
+      - {name: M.2_3, connection: CPU, speed: PCIe 5.0 x4, note: Shares the main GPU lanes with M.2_2 and PCIEX16(G5)., sources: [specs, manual]}
+      - {name: M.2_4, connection: Chipset, speed: PCIe 4.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
+      - {name: M.2_5, connection: Chipset, speed: PCIe 4.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
+    rules:
+      - trigger: M.2_2 or M.2_3 is enabled for an SSD
+        affects: PCIEX16(G5), main GPU slot
+        result: Runs at x8 instead of x16. This applies with either shared M.2 slot used alone or both used together.
+        condition: Ryzen 7000 / 9000 series
+        sources: [specs, manual]
+      - trigger: PCIEX16(G5) must retain all 16 CPU lanes
+        affects: M.2_2 and M.2_3
+        result: These two slots cannot use those lanes in the x16 GPU configuration. M.2_1, M.2_4 and M.2_5 do not use this shared group.
+        condition: Lane allocation shown in the manual; GPU presence alone does not disable the M.2 slots.
+        sources: [manual, specs]
+    cpu_notes:
+      - text: With Ryzen 8000 series, M.2_2 and M.2_3 are unavailable; M.2_1 supports PCIe 4.0 x4. The main GPU slot supports PCIe 4.0 x8 or x4 depending on the CPU.
+        sources: [specs]
+
+  - vendor: MSI
+    model: MAG X870 TOMAHAWK WIFI
+    status: verified
+    reviewed_on: '2026-11-21'
+    revision: MAG X870 TOMAHAWK WIFI; not X870E or MAX
+    baseline: Ryzen 7000 / 9000 series; default BIOS lane allocation unless stated.
+    gpu_summary: No M.2 sharing with the main PCI_E1 GPU slot is documented. Its maximum is PCIe 5.0 x16 with Ryzen 7000 / 9000.
+    sources:
+      - id: manual
+        title: MSI MAG X870 TOMAHAWK WIFI user guide
+        url: https://download-2.msi.com/archive/mnu_exe/mb/MAGX870TOMAHAWKWIFI_English.pdf#page=17
+        section: Pages 17-18, 20, 24, 33 and 41; PCIe, M.2 and USB4 sharing notes
+    slots:
+      - {name: M2_1, connection: CPU, speed: PCIe 5.0 x4, note: No slot-sharing conflict documented., sources: [manual]}
+      - {name: M2_2, connection: CPU, speed: PCIe 5.0 x2 shared / x4 selectable, note: Shares a four-lane CPU connection with the rear USB4 controller., sources: [manual]}
+      - {name: M2_3, connection: Chipset, speed: PCIe 4.0 x2, note: Shares lanes with the secondary PCI_E3 slot., sources: [manual]}
+      - {name: M2_4, connection: Chipset, speed: PCIe 4.0 x4, note: No slot-sharing conflict documented., sources: [manual]}
+    rules:
+      - trigger: An SSD is installed in M2_2
+        affects: M2_2 and rear USB 40Gbps Type-C controller
+        result: Each receives a PCIe 5.0 x2 connection from the shared x4 link. This describes controller lanes, not a guaranteed USB transfer rate.
+        condition: Ryzen 7000 / 9000 series; shared mode
+        sources: [manual]
+      - trigger: M2_2 is set to PCIe x4 in BIOS
+        affects: Rear USB 40Gbps Type-C ports
+        result: USB4 ports are disabled so M2_2 can receive all four lanes.
+        condition: BIOS alternative to shared mode
+        sources: [manual]
+      - trigger: An SSD is installed in M2_3
+        affects: PCI_E3, secondary full-length slot
+        result: PCI_E3 runs at PCIe 4.0 x2 instead of x4. M2_3 supports PCIe 4.0 x2.
+        condition: Shared mode; applies to an add-in card or GPU in PCI_E3
+        sources: [manual]
+      - trigger: PCI_E3 is forced to x4 in BIOS for an add-in card
+        affects: M2_3
+        result: M2_3 is disabled. Installing a card alone is not documented as automatically selecting this BIOS mode.
+        condition: BIOS alternative to shared mode
+        sources: [manual]
+    cpu_notes:
+      - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8. Ryzen 8500 / 8300 series limit it to PCIe 4.0 x4 and make M2_2 unavailable. M2_1 runs at PCIe 4.0 x4 with Ryzen 8000 series.
+        sources: [manual]
+
+  - vendor: GIGABYTE
+    model: X870 AORUS ELITE WIFI7 ICE
+    status: verified
+    reviewed_on: '2026-11-21'
+    revision: PCB rev. 1.0 / 1.1 only
+    baseline: Ryzen 7000 / 9000 series, with an x16-capable GPU in PCIEX16.
+    gpu_summary: An SSD in M2B_CPU or M2C_CPU reduces PCIEX16 from PCIe 5.0 x16 to at most x8.
+    sources:
+      - id: specs
+        title: Gigabyte official rev. 1.0 / 1.1 specifications
+        url: https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/sp
+        section: Expansion Slots and Storage Interface
+    slots:
+      - {name: M2A_CPU, connection: CPU, speed: PCIe 5.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
+      - {name: M2B_CPU, connection: CPU, speed: PCIe 5.0 x4, note: Shares lanes with PCIEX16 and M2C_CPU., sources: [specs]}
+      - {name: M2C_CPU, connection: CPU, speed: PCIe 5.0 x4, note: Shares lanes with PCIEX16 and M2B_CPU., sources: [specs]}
+      - {name: M2D_SB, connection: Chipset, speed: PCIe 4.0 x4, note: Disables PCIEX4 when occupied., sources: [specs]}
+    rules:
+      - trigger: An SSD is installed in M2B_CPU or M2C_CPU
+        affects: PCIEX16, main GPU slot
+        result: Runs at up to x8 instead of x16, whether one or both shared M.2 connectors are populated.
+        condition: Ryzen 7000 / 9000 series
+        sources: [specs]
+      - trigger: An SSD is installed in M2D_SB
+        affects: PCIEX4, secondary full-length slot
+        result: PCIEX4 is unavailable, including for a GPU or add-in card. The SSD has documented priority; the source does not say that installing a card disables M2D_SB.
+        condition: M2D_SB and PCIEX4 share their connection
+        sources: [specs]
+    cpu_notes:
+      - text: Ryzen 8000 Phoenix 1 / Phoenix 2 processors make M2B_CPU and M2C_CPU unavailable. PCIEX16 supports PCIe 4.0 x8 with Phoenix 1 or x4 with Phoenix 2. M2A_CPU supports PCIe 4.0 x4.
+        sources: [specs]

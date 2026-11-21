@@ -2,9 +2,10 @@
 
 Fetch the latest **two** BIOS versions for selected motherboards and publish a static page via GitHub Pages.
 
-Click a board tile to open its M.2 / PCIe lane-sharing details. The pilot covers
-ROG STRIX X870E-E GAMING WIFI, MAG X870 TOMAHAWK WIFI, and X870 AORUS ELITE WIFI7 ICE
-(PCB rev. 1.0/1.1). Other boards explicitly show research pending.
+Click a board tile to open its M.2 / PCIe lane-sharing details. All 60 currently
+configured boards have completed their initial research. Each finding links to
+official documentation and states the model/revision and CPU assumptions.
+An unresearched future board explicitly shows research pending.
 
 ## Lane-sharing research
 

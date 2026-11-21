@@ -24,20 +24,23 @@ def run():
         assert page.locator('.card').count() == sum(len(items) for items in config['vendors'].values())
         research = yaml.safe_load((ROOT / 'lane_sharing.yml').read_text(encoding='utf-8'))
         assert page.locator('.lane-status--verified').count() == sum(record['status'] != 'pending' for record in research['boards'])
-        for model in PILOTS:
+        models = [item['name'] if isinstance(item, dict) else item for items in config['vendors'].values() for item in items]
+        for model in models:
             page.locator('#search-input').fill(model)
-            card = page.locator('.card:visible')
+            button = page.get_by_role('button', name=f'{model}: M.2 and PCIe lane sharing', exact=True)
+            card = page.locator('.card').filter(has=button)
             assert card.count() == 1
             card.locator('.kv').first.click()
             assert page.locator('#lane-dialog').is_visible()
             assert page.locator('#lane-title').inner_text() == model
-            assert page.locator('#lane-body .lane-slots tbody tr').count() >= 4
+            assert page.locator('#lane-body .lane-slots tbody tr').count() >= 2
             assert page.locator('#lane-body a[href^="https://"]').count() > 0
             page.keyboard.press('Escape')
             assert not page.locator('#lane-dialog').is_visible()
             expect(card.locator('.lane-open')).to_be_focused()
             card.locator('.lane-open').press('Enter')
-            page.screenshot(path=str(output / (model.split()[0].lower() + '-desktop.png')))
+            if model in PILOTS:
+                page.screenshot(path=str(output / (model.split()[0].lower() + '-desktop.png')))
             page.locator('#lane-close').click()
 
         # A link or an error disclosure must retain its own action.
@@ -46,7 +49,7 @@ def run():
         assert not page.locator('#lane-dialog').is_visible()
         page.locator('#search-input').fill('B550M PRO-VDH WIFI')
         page.locator('.card:visible .lane-open').click()
-        assert 'Slot conflicts are unknown' in page.locator('#lane-body').inner_text()
+        assert 'M2_2' in page.locator('#lane-body').inner_text()
         page.mouse.click(2, 2)
         assert not page.locator('#lane-dialog').is_visible()
         page.locator('#search-input').fill('')
@@ -65,7 +68,7 @@ def run():
             page.locator('#lane-close').click()
         assert not errors, errors
         browser.close()
-    print('Desktop/mobile dialog, keyboard, source links, pending state and filters passed.')
+    print('All board dialogs, keyboard, source links, desktop/mobile layouts and filters passed.')
 
 
 if __name__ == '__main__':

@@ -1,114 +1,2613 @@
 schema_version: 1
-# Researched once. The daily build only reads this file; it never fetches manuals.
-# Missing boards remain pending in the UI until an entry is verified here.
 boards:
-  - vendor: ASUS
-    model: ROG STRIX X870E-E GAMING WIFI
-    status: verified
-    reviewed_on: '2026-11-21'
-    revision: Original X870E-E GAMING WIFI; not WIFI7 NEO or R2
-    baseline: Ryzen 7000 / 9000 series, with an x16-capable GPU in PCIEX16(G5).
-    gpu_summary: Using M.2_2 or M.2_3 reduces the main GPU slot from PCIe 5.0 x16 to x8.
+- vendor: ASUS
+  model: ROG STRIX X870E-E GAMING WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Original X870E-E GAMING WIFI; not WIFI7 NEO or R2
+  baseline: Ryzen 7000 / 9000 series, with an x16-capable GPU in PCIEX16(G5).
+  gpu_summary: Using M.2_2 or M.2_3 reduces the main GPU slot from PCIe 5.0 x16 to x8.
+  sources:
+  - id: specs
+    title: ASUS official specifications
+    url: https://rog.asus.com/us/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/spec/
+    section: Expansion Slots and Storage; includes single-slot sharing clarification
+  - id: manual
+    title: ASUS user manual E24074, First Edition
+    url: https://dlcdnets.asus.com/pub/ASUS/mb/SocketAM5/ROG_STRIX_X870E-E_GAMING_WIFI/E24074_ROG_STRIX_X870E-E_GAMING_WIFI_EM_WEB_1.pdf#page=14
+    section: Pages 8-9, 14 and 24; shared-bandwidth table on page 14
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented.
     sources:
-      - id: specs
-        title: ASUS official specifications
-        url: https://rog.asus.com/us/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/spec/
-        section: Expansion Slots and Storage; includes single-slot sharing clarification
-      - id: manual
-        title: ASUS user manual E24074, First Edition
-        url: https://dlcdnets.asus.com/pub/ASUS/mb/SocketAM5/ROG_STRIX_X870E-E_GAMING_WIFI/E24074_ROG_STRIX_X870E-E_GAMING_WIFI_EM_WEB_1.pdf#page=14
-        section: Pages 8-9, 14 and 24; shared-bandwidth table on page 14
-    slots:
-      - {name: M.2_1, connection: CPU, speed: PCIe 5.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
-      - {name: M.2_2, connection: CPU, speed: PCIe 5.0 x4, note: Shares the main GPU lanes with M.2_3 and PCIEX16(G5)., sources: [specs, manual]}
-      - {name: M.2_3, connection: CPU, speed: PCIe 5.0 x4, note: Shares the main GPU lanes with M.2_2 and PCIEX16(G5)., sources: [specs, manual]}
-      - {name: M.2_4, connection: Chipset, speed: PCIe 4.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
-      - {name: M.2_5, connection: Chipset, speed: PCIe 4.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
-    rules:
-      - trigger: M.2_2 or M.2_3 is enabled for an SSD
-        affects: PCIEX16(G5), main GPU slot
-        result: Runs at x8 instead of x16. This applies with either shared M.2 slot used alone or both used together.
-        condition: Ryzen 7000 / 9000 series
-        sources: [specs, manual]
-      - trigger: PCIEX16(G5) must retain all 16 CPU lanes
-        affects: M.2_2 and M.2_3
-        result: These two slots cannot use those lanes in the x16 GPU configuration. M.2_1, M.2_4 and M.2_5 do not use this shared group.
-        condition: Lane allocation shown in the manual; GPU presence alone does not disable the M.2 slots.
-        sources: [manual, specs]
-    cpu_notes:
-      - text: With Ryzen 8000 series, M.2_2 and M.2_3 are unavailable; M.2_1 supports PCIe 4.0 x4. The main GPU slot supports PCIe 4.0 x8 or x4 depending on the CPU.
-        sources: [specs]
-
-  - vendor: MSI
-    model: MAG X870 TOMAHAWK WIFI
-    status: verified
-    reviewed_on: '2026-11-21'
-    revision: MAG X870 TOMAHAWK WIFI; not X870E or MAX
-    baseline: Ryzen 7000 / 9000 series; default BIOS lane allocation unless stated.
-    gpu_summary: No M.2 sharing with the main PCI_E1 GPU slot is documented. Its maximum is PCIe 5.0 x16 with Ryzen 7000 / 9000.
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the main GPU lanes with M.2_3 and PCIEX16(G5).
     sources:
-      - id: manual
-        title: MSI MAG X870 TOMAHAWK WIFI user guide
-        url: https://download-2.msi.com/archive/mnu_exe/mb/MAGX870TOMAHAWKWIFI_English.pdf#page=17
-        section: Pages 17-18, 20, 24, 33 and 41; PCIe, M.2 and USB4 sharing notes
-    slots:
-      - {name: M2_1, connection: CPU, speed: PCIe 5.0 x4, note: No slot-sharing conflict documented., sources: [manual]}
-      - {name: M2_2, connection: CPU, speed: PCIe 5.0 x2 shared / x4 selectable, note: Shares a four-lane CPU connection with the rear USB4 controller., sources: [manual]}
-      - {name: M2_3, connection: Chipset, speed: PCIe 4.0 x2, note: Shares lanes with the secondary PCI_E3 slot., sources: [manual]}
-      - {name: M2_4, connection: Chipset, speed: PCIe 4.0 x4, note: No slot-sharing conflict documented., sources: [manual]}
-    rules:
-      - trigger: An SSD is installed in M2_2
-        affects: M2_2 and rear USB 40Gbps Type-C controller
-        result: Each receives a PCIe 5.0 x2 connection from the shared x4 link. This describes controller lanes, not a guaranteed USB transfer rate.
-        condition: Ryzen 7000 / 9000 series; shared mode
-        sources: [manual]
-      - trigger: M2_2 is set to PCIe x4 in BIOS
-        affects: Rear USB 40Gbps Type-C ports
-        result: USB4 ports are disabled so M2_2 can receive all four lanes.
-        condition: BIOS alternative to shared mode
-        sources: [manual]
-      - trigger: An SSD is installed in M2_3
-        affects: PCI_E3, secondary full-length slot
-        result: PCI_E3 runs at PCIe 4.0 x2 instead of x4. M2_3 supports PCIe 4.0 x2.
-        condition: Shared mode; applies to an add-in card or GPU in PCI_E3
-        sources: [manual]
-      - trigger: PCI_E3 is forced to x4 in BIOS for an add-in card
-        affects: M2_3
-        result: M2_3 is disabled. Installing a card alone is not documented as automatically selecting this BIOS mode.
-        condition: BIOS alternative to shared mode
-        sources: [manual]
-    cpu_notes:
-      - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8. Ryzen 8500 / 8300 series limit it to PCIe 4.0 x4 and make M2_2 unavailable. M2_1 runs at PCIe 4.0 x4 with Ryzen 8000 series.
-        sources: [manual]
-
-  - vendor: GIGABYTE
-    model: X870 AORUS ELITE WIFI7 ICE
-    status: verified
-    reviewed_on: '2026-11-21'
-    revision: PCB rev. 1.0 / 1.1 only
-    baseline: Ryzen 7000 / 9000 series, with an x16-capable GPU in PCIEX16.
-    gpu_summary: An SSD in M2B_CPU or M2C_CPU reduces PCIEX16 from PCIe 5.0 x16 to at most x8.
+    - specs
+    - manual
+  - name: M.2_3
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the main GPU lanes with M.2_2 and PCIEX16(G5).
     sources:
-      - id: specs
-        title: Gigabyte official rev. 1.0 / 1.1 specifications
-        url: https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/sp
-        section: Expansion Slots and Storage Interface
-    slots:
-      - {name: M2A_CPU, connection: CPU, speed: PCIe 5.0 x4, note: No slot-sharing conflict documented., sources: [specs]}
-      - {name: M2B_CPU, connection: CPU, speed: PCIe 5.0 x4, note: Shares lanes with PCIEX16 and M2C_CPU., sources: [specs]}
-      - {name: M2C_CPU, connection: CPU, speed: PCIe 5.0 x4, note: Shares lanes with PCIEX16 and M2B_CPU., sources: [specs]}
-      - {name: M2D_SB, connection: Chipset, speed: PCIe 4.0 x4, note: Disables PCIEX4 when occupied., sources: [specs]}
-    rules:
-      - trigger: An SSD is installed in M2B_CPU or M2C_CPU
-        affects: PCIEX16, main GPU slot
-        result: Runs at up to x8 instead of x16, whether one or both shared M.2 connectors are populated.
-        condition: Ryzen 7000 / 9000 series
-        sources: [specs]
-      - trigger: An SSD is installed in M2D_SB
-        affects: PCIEX4, secondary full-length slot
-        result: PCIEX4 is unavailable, including for a GPU or add-in card. The SSD has documented priority; the source does not say that installing a card disables M2D_SB.
-        condition: M2D_SB and PCIEX4 share their connection
-        sources: [specs]
-    cpu_notes:
-      - text: Ryzen 8000 Phoenix 1 / Phoenix 2 processors make M2B_CPU and M2C_CPU unavailable. PCIEX16 supports PCIe 4.0 x8 with Phoenix 1 or x4 with Phoenix 2. M2A_CPU supports PCIe 4.0 x4.
-        sources: [specs]
+    - specs
+    - manual
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented.
+    sources:
+    - specs
+  - name: M.2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented.
+    sources:
+    - specs
+  rules:
+  - trigger: M.2_2 or M.2_3 is enabled for an SSD
+    affects: PCIEX16(G5), main GPU slot
+    result: Runs at x8 instead of x16. This applies with either shared M.2 slot used alone or both used
+      together.
+    condition: Ryzen 7000 / 9000 series
+    sources:
+    - specs
+    - manual
+  - trigger: PCIEX16(G5) must retain all 16 CPU lanes
+    affects: M.2_2 and M.2_3
+    result: These two slots cannot use those lanes in the x16 GPU configuration. M.2_1, M.2_4 and M.2_5
+      do not use this shared group.
+    condition: Lane allocation shown in the manual; GPU presence alone does not disable the M.2 slots.
+    sources:
+    - manual
+    - specs
+  cpu_notes:
+  - text: With Ryzen 8000 series, M.2_2 and M.2_3 are unavailable; M.2_1 supports PCIe 4.0 x4. The main
+      GPU slot supports PCIe 4.0 x8 or x4 depending on the CPU.
+    sources:
+    - specs
+- vendor: MSI
+  model: MAG X870 TOMAHAWK WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: MAG X870 TOMAHAWK WIFI; not X870E or MAX
+  baseline: Ryzen 7000 / 9000 series; default BIOS lane allocation unless stated.
+  gpu_summary: No M.2 sharing with the main PCI_E1 GPU slot is documented. Its maximum is PCIe 5.0 x16
+    with Ryzen 7000 / 9000.
+  sources:
+  - id: manual
+    title: MSI MAG X870 TOMAHAWK WIFI user guide
+    url: https://download-2.msi.com/archive/mnu_exe/mb/MAGX870TOMAHAWKWIFI_English.pdf#page=17
+    section: Pages 17-18, 20, 24, 33 and 41; PCIe, M.2 and USB4 sharing notes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented.
+    sources:
+    - manual
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 5.0 x2 shared / x4 selectable
+    note: Shares a four-lane CPU connection with the rear USB4 controller.
+    sources:
+    - manual
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Shares lanes with the secondary PCI_E3 slot.
+    sources:
+    - manual
+  - name: M2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented.
+    sources:
+    - manual
+  rules:
+  - trigger: An SSD is installed in M2_2
+    affects: M2_2 and rear USB 40Gbps Type-C controller
+    result: Each receives a PCIe 5.0 x2 connection from the shared x4 link. This describes controller
+      lanes, not a guaranteed USB transfer rate.
+    condition: Ryzen 7000 / 9000 series; shared mode
+    sources:
+    - manual
+  - trigger: M2_2 is set to PCIe x4 in BIOS
+    affects: Rear USB 40Gbps Type-C ports
+    result: USB4 ports are disabled so M2_2 can receive all four lanes.
+    condition: BIOS alternative to shared mode
+    sources:
+    - manual
+  - trigger: An SSD is installed in M2_3
+    affects: PCI_E3, secondary full-length slot
+    result: PCI_E3 runs at PCIe 4.0 x2 instead of x4. M2_3 supports PCIe 4.0 x2.
+    condition: Shared mode; applies to an add-in card or GPU in PCI_E3
+    sources:
+    - manual
+  - trigger: PCI_E3 is forced to x4 in BIOS for an add-in card
+    affects: M2_3
+    result: M2_3 is disabled. Installing a card alone is not documented as automatically selecting this
+      BIOS mode.
+    condition: BIOS alternative to shared mode
+    sources:
+    - manual
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8. Ryzen 8500 / 8300 series limit
+      it to PCIe 4.0 x4 and make M2_2 unavailable. M2_1 runs at PCIe 4.0 x4 with Ryzen 8000 series.
+    sources:
+    - manual
+- vendor: GIGABYTE
+  model: X870 AORUS ELITE WIFI7 ICE
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: PCB rev. 1.0 / 1.1 only
+  baseline: Ryzen 7000 / 9000 series, with an x16-capable GPU in PCIEX16.
+  gpu_summary: An SSD in M2B_CPU or M2C_CPU reduces PCIEX16 from PCIe 5.0 x16 to at most x8.
+  sources:
+  - id: specs
+    title: Gigabyte official rev. 1.0 / 1.1 specifications
+    url: https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/sp
+    section: Expansion Slots and Storage Interface
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares lanes with PCIEX16 and M2C_CPU.
+    sources:
+    - specs
+  - name: M2C_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares lanes with PCIEX16 and M2B_CPU.
+    sources:
+    - specs
+  - name: M2D_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Disables PCIEX4 when occupied.
+    sources:
+    - specs
+  rules:
+  - trigger: An SSD is installed in M2B_CPU or M2C_CPU
+    affects: PCIEX16, main GPU slot
+    result: Runs at up to x8 instead of x16, whether one or both shared M.2 connectors are populated.
+    condition: Ryzen 7000 / 9000 series
+    sources:
+    - specs
+  - trigger: An SSD is installed in M2D_SB
+    affects: PCIEX4, secondary full-length slot
+    result: PCIEX4 is unavailable, including for a GPU or add-in card. The SSD has documented priority;
+      the source does not say that installing a card disables M2D_SB.
+    condition: M2D_SB and PCIEX4 share their connection
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 Phoenix 1 / Phoenix 2 processors make M2B_CPU and M2C_CPU unavailable. PCIEX16 supports
+      PCIe 4.0 x8 with Phoenix 1 or x4 with Phoenix 2. M2A_CPU supports PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: ASUS
+  model: TUF GAMING X870-PLUS WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact TUF GAMING X870-PLUS WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: M.2_2 reduces the main GPU slot to x8.
+  sources:
+  - id: specs
+    title: ASUS official TUF GAMING X870-PLUS WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-x870-plus-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Uses lanes from the main GPU slot.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Shares with PCIEX16(G4).
+    sources:
+    - specs
+  rules:
+  - trigger: SSD active in M.2_2
+    affects: PCIEX16(G5)
+    result: GPU connection becomes x8 instead of x16.
+    condition: Ryzen 7000 / 9000
+    sources:
+    - specs
+  - trigger: SSD active in M.2_4
+    affects: PCIEX16(G4)
+    result: Secondary expansion slot is disabled.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 series changes the main GPU slot to PCIe 4.0 x8 or x4 depending on the CPU; CPU-attached
+      M.2 links also change as listed by ASUS.
+    sources:
+    - specs
+  - text: M.2_2 is unavailable with Ryzen 8000; M.2_1 becomes PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: ASUS
+  model: TUF GAMING Z790-PLUS WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact TUF GAMING Z790-PLUS WIFI model in the linked official specifications.
+  baseline: Supported Intel LGA1700 processor; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official TUF GAMING Z790-PLUS WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z790-plus-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: ASUS
+  model: TUF GAMING B860M-PLUS WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact TUF GAMING B860M-PLUS WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official TUF GAMING B860M-PLUS WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b860m-plus-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: ASUS
+  model: PRIME Z890M-PLUS WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRIME Z890M-PLUS WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official PRIME Z890M-PLUS WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/prime/prime-z890m-plus-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: ASUS
+  model: TUF GAMING Z890-PLUS WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact TUF GAMING Z890-PLUS WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official TUF GAMING Z890-PLUS WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: ASUS
+  model: Z890 AYW GAMING WIFI W
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact Z890 AYW GAMING WIFI W model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official Z890 AYW GAMING WIFI W specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/others/z890-ayw-gaming-wifi-w/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: ASUS
+  model: TUF GAMING B850-BTF WIFI W
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact TUF GAMING B850-BTF WIFI W model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official TUF GAMING B850-BTF WIFI W specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-btf-wifi-w/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Expansion-slot priority applies.
+    sources:
+    - specs
+  rules:
+  - trigger: Card operating in PCIEX16(G4)
+    affects: M.2_3
+    result: M.2_3 is disabled. This source gives the expansion slot priority.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 series changes the main GPU slot to PCIe 4.0 x8 or x4 depending on the CPU; CPU-attached
+      M.2 links also change as listed by ASUS.
+    sources:
+    - specs
+  - text: With Ryzen 8000, M.2_1 is PCIe 4.0 x4 and M.2_2 supports x4 or x2 depending on CPU.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG STRIX B860-I GAMING WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX B860-I GAMING WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX B860-I GAMING WIFI specifications
+    url: https://rog.asus.com/fi/motherboards/rog-strix/rog-strix-b860-i-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: ASUS
+  model: ROG STRIX Z890-I GAMING WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX Z890-I GAMING WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: M.2_2 reduces the main GPU slot to x8.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX Z890-I GAMING WIFI specifications
+    url: https://rog.asus.com/hk/motherboards/rog-strix/rog-strix-z890-i-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the GPU lanes.
+    sources:
+    - specs
+  rules:
+  - trigger: SSD installed in M.2_2
+    affects: PCIEX16(G5)
+    result: Main GPU slot runs at x8 instead of x16.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: ASUS
+  model: ROG STRIX B550-F GAMING WIFI II
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX B550-F GAMING WIFI II model in the linked official specifications.
+  baseline: Supported AM4 CPU; CPU-attached link generation depends on the processor.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX B550-F GAMING WIFI II specifications
+    url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b550-f-gaming-wifi-ii-model/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: Chipset
+    speed: PCIe 3.0 x4 / SATA
+    note: Disables SATA6G_5 and SATA6G_6.
+    sources:
+    - specs
+  rules:
+  - trigger: Drive installed in M.2_2
+    affects: SATA6G_5 / SATA6G_6
+    result: Both SATA ports are disabled; ASUS does not limit this note to SATA-mode M.2 drives.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  - trigger: Devices in PCIe 3.0 x1 slots
+    affects: Secondary PCIe 3.0 x16 slot
+    result: The secondary slot shares bandwidth with the three x1 slots. The specification does not state
+      the resulting width.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: CPU-attached PCIe generation depends on the installed AM4 processor.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG MAXIMUS Z890 HERO
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG MAXIMUS Z890 HERO model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: The M.2_3 / M.2_4 group shares GPU lanes and can reduce the GPU link to x8.
+  sources:
+  - id: specs
+    title: ASUS official ROG MAXIMUS Z890 HERO specifications
+    url: https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares GPU lanes.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares GPU lanes.
+    sources:
+    - specs
+  - name: M.2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_6
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: M.2_3 or M.2_4 enabled for an SSD
+    affects: PCIEX16(G5)
+    result: GPU slot runs at x8 instead of x16; use the other M.2 slots to avoid this shared group.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: ASUS
+  model: ROG MAXIMUS Z890 HERO BTF
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG MAXIMUS Z890 HERO BTF model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: The M.2_3 / M.2_4 group shares GPU lanes and can reduce the GPU link to x8.
+  sources:
+  - id: specs
+    title: ASUS official ROG MAXIMUS Z890 HERO BTF specifications
+    url: https://rog.asus.com/motherboards/rog-maximus/rog-maximus-z890-hero-btf/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares GPU lanes.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares GPU lanes.
+    sources:
+    - specs
+  - name: M.2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_6
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: M.2_3 or M.2_4 enabled for an SSD
+    affects: PCIEX16(G5)
+    result: GPU slot runs at x8 instead of x16; use the other M.2 slots to avoid this shared group.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: ASUS
+  model: ROG STRIX Z890-E GAMING WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX Z890-E GAMING WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: The M.2_3 / M.2_4 group shares GPU lanes and can reduce the GPU link to x8.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX Z890-E GAMING WIFI specifications
+    url: https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-e-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  - id: manual-jp
+    title: ASUS official Japanese ROG STRIX Z890-E GAMING WIFI manual
+    url: https://dlcdnets.asus.com/pub/ASUS/mb/LGA1851/ROG_STRIX_Z890-E_GAMING_WIFI/J24152_ROG_STRIX_Z890-E_GAMING_WIFI_EM_WEB.pdf?model=ROG+STRIX+Z890-E+GAMING+WIFI
+    section: Page 24, M.2 Socket 3 notes; explicitly confirms either M.2_3 or M.2_4 limits the GPU slot to x8
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares GPU lanes.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares GPU lanes.
+    sources:
+    - specs
+  - name: M.2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_6
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_7
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: M.2_3 or M.2_4 enabled for an SSD
+    affects: PCIEX16(G5)
+    result: GPU slot runs at x8 instead of x16; use the other M.2 slots to avoid this shared group.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+    - manual-jp
+  cpu_notes: []
+- vendor: ASUS
+  model: ROG STRIX B850-A GAMING WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX B850-A GAMING WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX B850-A GAMING WIFI specifications
+    url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-a-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Secondary PCIe slot has documented priority.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: Card operating in PCIEX16(G4)
+    affects: M.2_3
+    result: M.2_3 is disabled.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 series changes the main GPU slot to PCIe 4.0 x8 or x4 depending on the CPU; CPU-attached
+      M.2 links also change as listed by ASUS.
+    sources:
+    - specs
+  - text: Ryzen 8000 changes M.2_1 to PCIe 4.0 x4 and M.2_2 to x4/x2 according to CPU.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG STRIX X870-A GAMING WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX X870-A GAMING WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: M.2_2 reduces the main GPU slot to x8.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX X870-A GAMING WIFI specifications
+    url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-a-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares GPU lanes.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Disables the secondary PCIe slot.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: SSD in M.2_2
+    affects: PCIEX16(G5)
+    result: Main GPU slot runs at x8.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  - trigger: SSD in M.2_3
+    affects: PCIEX16(G4)
+    result: Secondary PCIe slot is disabled.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 series changes the main GPU slot to PCIe 4.0 x8 or x4 depending on the CPU; CPU-attached
+      M.2 links also change as listed by ASUS.
+    sources:
+    - specs
+  - text: Ryzen 8000 disables M.2_2; M.2_1 supports PCIe 4.0 x4/x2 according to CPU.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG CROSSHAIR X870E HERO
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG CROSSHAIR X870E HERO model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: M.2_2 or M.2_3 reduces the first GPU slot to x8; secondary-slot availability depends on
+    which M.2 slot is used.
+  sources:
+  - id: specs
+    title: ASUS official ROG CROSSHAIR X870E HERO specifications
+    url: https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-hero/spec/?config=90MB1IE0-M0AAY0
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the two CPU expansion slots.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the two CPU expansion slots.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: Second GPU / add-in card in PCIEX16_2
+    affects: PCIEX16_1 and PCIEX16_2
+    result: The two CPU slots share the x16 connection as x8/x8 when both are used.
+    condition: Ryzen 7000 / 9000; shared M.2 slots not taking those lanes.
+    sources:
+    - specs
+  - trigger: M.2_2 enabled, alone or with M.2_3
+    affects: PCIEX16_1 / PCIEX16_2
+    result: First slot becomes x8; second slot is disabled.
+    condition: Ryzen 7000 / 9000.
+    sources:
+    - specs
+  - trigger: M.2_3 enabled and M.2_2 unused
+    affects: PCIEX16_1 / PCIEX16_2
+    result: First slot becomes x8 and second slot becomes x4.
+    condition: Ryzen 7000 / 9000.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 disables M.2_2, M.2_3 and the second CPU expansion slot. The first slot is PCIe 4.0
+      x8 or x4 according to CPU; M.2_1 is PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG CROSSHAIR X870E EXTREME
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG CROSSHAIR X870E EXTREME model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: M.2_2 or M.2_3 reduces the first GPU slot to x8; secondary-slot availability depends on
+    which M.2 slot is used.
+  sources:
+  - id: specs
+    title: ASUS official ROG CROSSHAIR X870E EXTREME specifications
+    url: https://rog.asus.com/motherboards/rog-crosshair/rog-crosshair-x870e-extreme/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the two CPU expansion slots.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the two CPU expansion slots.
+    sources:
+    - specs
+  - name: DIMM.2_1
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: DIMM.2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: Second GPU / add-in card in PCIEX16_2
+    affects: PCIEX16_1 and PCIEX16_2
+    result: The two CPU slots share the x16 connection as x8/x8 when both are used.
+    condition: Ryzen 7000 / 9000; shared M.2 slots not taking those lanes.
+    sources:
+    - specs
+  - trigger: M.2_2 enabled, alone or with M.2_3
+    affects: PCIEX16_1 / PCIEX16_2
+    result: First slot becomes x8; second slot is disabled.
+    condition: Ryzen 7000 / 9000.
+    sources:
+    - specs
+  - trigger: M.2_3 enabled and M.2_2 unused
+    affects: PCIEX16_1 / PCIEX16_2
+    result: First slot becomes x8 and second slot becomes x4.
+    condition: Ryzen 7000 / 9000.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 disables M.2_2, M.2_3 and the second CPU expansion slot. The first slot is PCIe 4.0
+      x8 or x4 according to CPU; M.2_1 is PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG STRIX B850-I GAMING WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX B850-I GAMING WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX B850-I GAMING WIFI specifications
+    url: https://rog.asus.com/motherboards/rog-strix/rog-strix-b850-i-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8000 changes the listed M.2 links to PCIe 4.0; CPU-specific support varies.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG STRIX X870-I GAMING WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX X870-I GAMING WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX X870-I GAMING WIFI specifications
+    url: https://rog.asus.com/motherboards/rog-strix/rog-strix-x870-i-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8000 series changes the main GPU slot to PCIe 4.0 x8 or x4 depending on the CPU; CPU-attached
+      M.2 links also change as listed by ASUS.
+    sources:
+    - specs
+  - text: Ryzen 8000 changes M.2_1 to PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: ASUS
+  model: TUF GAMING B850M-PLUS WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact TUF GAMING B850M-PLUS WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official TUF GAMING B850M-PLUS WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850m-plus-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8000 series changes the main GPU slot to PCIe 4.0 x8 or x4 depending on the CPU; CPU-attached
+      M.2 links also change as listed by ASUS.
+    sources:
+    - specs
+  - text: Ryzen 8000 changes M.2_1 to PCIe 4.0 x4 and M.2_2 to x4/x2 according to CPU.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ROG STRIX Z890-A GAMING WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact ROG STRIX Z890-A GAMING WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official ROG STRIX Z890-A GAMING WIFI specifications
+    url: https://rog.asus.com/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/spec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: ASUS
+  model: TUF GAMING B850-PLUS WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact TUF GAMING B850-PLUS WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: ASUS official TUF GAMING B850-PLUS WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b850-plus-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Disables PCIEX16(G4).
+    sources:
+    - specs
+  rules:
+  - trigger: SSD active in M.2_3
+    affects: PCIEX16(G4)
+    result: Secondary expansion slot is disabled.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8000 series changes the main GPU slot to PCIe 4.0 x8 or x4 depending on the CPU; CPU-attached
+      M.2 links also change as listed by ASUS.
+    sources:
+    - specs
+  - text: Ryzen 8000 changes M.2_1 to PCIe 4.0 x4 and M.2_2 to x4/x2 according to CPU.
+    sources:
+    - specs
+- vendor: ASUS
+  model: ProArt Z890-CREATOR WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact ProArt Z890-CREATOR WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: The second CPU expansion slot divides GPU lanes to x8/x8. No M.2-to-main-GPU sharing is
+    documented.
+  sources:
+  - id: specs
+    title: ASUS official ProArt Z890-CREATOR WIFI specifications
+    url: https://www.asus.com/us/motherboards-components/motherboards/proart/proart-z890-creator-wifi/techspec/
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M.2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M.2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: Shares with the chipset expansion slot.
+    sources:
+    - specs
+  rules:
+  - trigger: Card installed in the second CPU PCIe 5.0 slot
+    affects: CPU PCIe 5.0 slots
+    result: The CPU slots use x8/x8 instead of a single x16 link.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  - trigger: M.2_5 operating
+    affects: Chipset PCIe 4.0 x16 slot
+    result: The chipset expansion slot is disabled.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: MSI
+  model: MAG B650 TOMAHAWK WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact MAG B650 TOMAHAWK WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official MAG B650 TOMAHAWK WIFI specifications
+    url: https://www.msi.com/Motherboard/MAG-B650-TOMAHAWK-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Can drop to x2 when sharing with PCI_E2.
+    sources:
+    - specs
+  rules:
+  - trigger: Devices installed in M2_3 and PCI_E2
+    affects: M2_3 and PCI_E2
+    result: Each receives x2 lanes. M2_3's standalone maximum is x4.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: M2_2 is unavailable with Ryzen 8500 / 8300 series.
+    sources:
+    - specs
+- vendor: MSI
+  model: B850 GAMING PLUS WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact B850 GAMING PLUS WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official B850 GAMING PLUS WIFI specifications
+    url: https://www.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Fixed x2 maximum; not an M.2-to-GPU sharing penalty.
+    sources:
+    - specs
+  rules:
+  - trigger: Card installed in PCI_E2 or PCI_E4
+    affects: PCI_E3
+    result: Secondary x4 slot becomes x2. This sharing group does not include the main GPU slot or M.2
+      sockets.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: Ryzen 8000 changes M2_1 to PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: MSI
+  model: PRO B850-VC WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B850-VC WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B850-VC WIFI specifications
+    url: https://www.msi.com/Motherboard/PRO-B850-VC-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Fixed x2 maximum; not an M.2-to-GPU sharing penalty.
+    sources:
+    - specs
+  rules:
+  - trigger: Card installed in PCI_E2 or PCI_E4
+    affects: PCI_E3
+    result: Secondary x4 slot becomes x2. This sharing group does not include the main GPU slot or M.2
+      sockets.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: Ryzen 8000 changes M2_1 to PCIe 4.0 x4.
+    sources:
+    - specs
+  - text: Ryzen 8700 / 8600 / 8400 makes M2_2 PCIe 3.0 x4; Ryzen 8500 / 8300 makes it PCIe 3.0 x2.
+    sources:
+    - specs
+- vendor: MSI
+  model: PRO X870-P WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO X870-P WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO X870-P WIFI specifications
+    url: https://www.msi.com/Motherboard/PRO-X870-P-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Shares with PCI_E4.
+    sources:
+    - specs
+  rules:
+  - trigger: SSD installed in M2_3
+    affects: PCI_E4
+    result: Secondary slot becomes x2 instead of x4.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: Ryzen 8000 changes M2_1 to PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: MSI
+  model: PRO Z890-P WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO Z890-P WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO Z890-P WIFI specifications
+    url: https://www.msi.com/Motherboard/PRO-Z890-P-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: MSI
+  model: MAG Z890 TOMAHAWK WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact MAG Z890 TOMAHAWK WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official MAG Z890 TOMAHAWK WIFI specifications
+    url: https://www.msi.com/Motherboard/MAG-Z890-TOMAHAWK-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: MSI
+  model: Z890 GAMING PLUS WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact Z890 GAMING PLUS WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official Z890 GAMING PLUS WIFI specifications
+    url: https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: MSI
+  model: MEG Z890 ACE
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact MEG Z890 ACE model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: PCI_E2 use or M2_4 in CPU-fed Gen5 mode reduces PCI_E1 to x8.
+  sources:
+  - id: specs
+    title: MSI official MEG Z890 ACE specifications
+    url: https://www.msi.com/Motherboard/MEG-Z890-ACE/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_4
+    connection: CPU or Chipset
+    speed: PCIe 4.0 x4 default / 5.0 x4 selectable
+    note: Gen5 CPU mode affects GPU slots.
+    sources:
+    - specs
+  - name: M2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: Card installed in PCI_E2
+    affects: PCI_E1
+    result: Main GPU slot changes from x16 to x8.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  - trigger: M2_4 uses CPU-fed PCIe 5.0 mode
+    affects: PCI_E1 and PCI_E2
+    result: Main slot is x8 and second CPU slot is x4. M2_4 uses chipset PCIe 4.0 by default; Gen5 CPU
+      routing is selected in BIOS.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  - trigger: 22110-length drives in M2_4 and M2_5
+    affects: Physical drive fit
+    result: Both slots cannot accept a 22110 device at the same time; this is a space restriction, not
+      a lane-width change.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: MSI
+  model: PRO Z890-S WIFI PZ
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO Z890-S WIFI PZ model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO Z890-S WIFI PZ specifications
+    url: https://www.msi.com/Motherboard/PRO-Z890-S-WIFI-pz/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: MSI
+  model: B760M PROJECT ZERO
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact B760M PROJECT ZERO model in the linked official specifications.
+  baseline: Supported Intel LGA1700 processor; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI B760M PROJECT ZERO user manual
+    url: https://download.msi.com/archive/mnu_exe/mb/B760MPROJECTZERO_EN.pdf
+    section: 'Specifications, page 17: SATA and M.2 sharing'
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: SATA-mode drive disables SATA_8.
+    sources:
+    - specs
+  rules:
+  - trigger: SATA-mode M.2 drive installed in M2_2
+    affects: SATA_8
+    result: SATA_8 is disabled. This condition is specific to a SATA-mode drive, not an NVMe drive.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: MSI
+  model: B650M PROJECT ZERO
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact B650M PROJECT ZERO model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official B650M PROJECT ZERO specifications
+    url: https://www.msi.com/Motherboard/B650M-PROJECT-ZERO/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: M2_2 is unavailable with Ryzen 8500 / 8300 series.
+    sources:
+    - specs
+- vendor: MSI
+  model: PRO B760-P WIFI DDR4
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B760-P WIFI DDR4 model in the linked official specifications.
+  baseline: Supported Intel LGA1700 processor; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B760-P WIFI DDR4 specifications
+    url: https://www.msi.com/Motherboard/PRO-B760-P-WIFI-DDR4/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: SATA-mode M.2 drive disables SATA8.
+    sources:
+    - specs
+  rules:
+  - trigger: SATA-mode M.2 drive installed in M2_2
+    affects: SATA8
+    result: SATA8 is disabled. The vendor specifies a SATA drive as the trigger; NVMe is not listed as
+      this trigger.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: MSI
+  model: PRO B760-VC WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B760-VC WIFI model in the linked official specifications.
+  baseline: Supported Intel LGA1700 processor; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B760-VC WIFI specifications
+    url: https://www.msi.com/Motherboard/PRO-B760-VC-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: SATA-mode M.2 drive disables SATA8.
+    sources:
+    - specs
+  rules:
+  - trigger: SATA-mode M.2 drive installed in M2_2
+    affects: SATA8
+    result: SATA8 is disabled. The vendor specifies a SATA drive as the trigger; NVMe is not listed as
+      this trigger.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: MSI
+  model: PRO B760M-VC WIFI BULK
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B760M-VC WIFI BULK model in the linked official specifications.
+  baseline: Supported Intel LGA1700 processor; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B760M-VC WIFI BULK specifications
+    url: https://us.msi.com/Motherboard/PRO-B760M-VC-WIFI-BULK/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: SATA-mode M.2 drive disables SATA7.
+    sources:
+    - specs
+  rules:
+  - trigger: SATA-mode M.2 drive installed in M2_2
+    affects: SATA7
+    result: SATA7 is disabled. The vendor specifies a SATA drive as the trigger; NVMe is not listed as
+      this trigger.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: MSI
+  model: MPG Z790 EDGE TI MAX WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact MPG Z790 EDGE TI MAX WIFI model in the linked official specifications.
+  baseline: Supported Intel LGA1700 processor; default lane configuration.
+  gpu_summary: M2_1 reduces the GPU connection to x8.
+  sources:
+  - id: specs
+    title: MSI official MPG Z790 EDGE TI MAX WIFI specifications
+    url: https://www.msi.com/Motherboard/MPG-Z790-EDGE-TI-MAX-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: Shares the main GPU lanes.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: SATA mode affects two SATA ports.
+    sources:
+    - specs
+  - name: M2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_5
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: SSD installed in M2_1
+    affects: PCI_E1
+    result: Main GPU link becomes PCIe 5.0 x8.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  - trigger: SATA-mode SSD in M2_3
+    affects: SATA_1 and SATA_2
+    result: Both ports are unavailable. This condition is specific to SATA-mode M.2.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes: []
+- vendor: MSI
+  model: PRO B840-P WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B840-P WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B840-P WIFI specifications
+    url: https://www.msi.com/Motherboard/PRO-B840-P-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: M2_2 is PCIe 3.0 x4 with Ryzen 8700 / 8600 / 8400, or PCIe 3.0 x2 with Ryzen 8500 / 8300.
+    sources:
+    - specs
+- vendor: MSI
+  model: PRO B860-VC WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B860-VC WIFI model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B860-VC WIFI specifications
+    url: https://www.msi.com/Motherboard/PRO-B860-VC-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Fixed x2 maximum, with no population-triggered sharing rule documented.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: MSI
+  model: PRO B860M-VC WIFI6E
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B860M-VC WIFI6E model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B860M-VC WIFI6E specifications
+    url: https://www.msi.com/Motherboard/PRO-B860M-VC-WIFI6E/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Fixed x2 maximum, with no population-triggered sharing rule documented.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: MSI
+  model: PRO B550M-VC WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B550M-VC WIFI model in the linked official specifications.
+  baseline: Supported AM4 CPU; CPU-attached link generation depends on the processor.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B550M-VC WIFI specifications
+    url: https://www.msi.com/Motherboard/PRO-B550M-VC-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 / 3.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 3.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Main PCI_E1 and M2_1 generation depends on the AM4 CPU; both are listed as PCIe 4.0 / 3.0.
+    sources:
+    - specs
+- vendor: MSI
+  model: B550M PRO-VDH WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact B550M PRO-VDH WIFI model in the linked official specifications.
+  baseline: Supported AM4 CPU; CPU-attached link generation depends on the processor.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official B550M PRO-VDH WIFI specifications
+    url: https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 4.0 / 3.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 3.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Main PCI_E1 and M2_1 generation depends on the AM4 CPU; both are listed as PCIe 4.0 / 3.0.
+    sources:
+    - specs
+- vendor: MSI
+  model: X870E GAMING PLUS WIFI
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact X870E GAMING PLUS WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official X870E GAMING PLUS WIFI specifications
+    url: https://www.msi.com/Motherboard/X870E-GAMING-PLUS-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: M2_1 becomes PCIe 4.0 x4 with Ryzen 8000.
+    sources:
+    - specs
+- vendor: MSI
+  model: PRO B850M-A WIFI PZ
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B850M-A WIFI PZ model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B850M-A WIFI PZ specifications
+    url: https://www.msi.com/Motherboard/PRO-B850M-A-WIFI-PZ/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: Ryzen 8000 makes M2_1 PCIe 4.0 x4; Ryzen 8500 / 8300 reduces M2_2 to PCIe 4.0 x2.
+    sources:
+    - specs
+- vendor: MSI
+  model: PRO B850M-VC WIFI6E
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact PRO B850M-VC WIFI6E model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official PRO B850M-VC WIFI6E specifications
+    url: https://www.msi.com/Motherboard/PRO-B850M-VC-WIFI6E/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Fixed x2 maximum.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: Ryzen 8000 makes M2_1 PCIe 4.0 x4; Ryzen 8500 / 8300 reduces M2_2 to PCIe 4.0 x2.
+    sources:
+    - specs
+- vendor: MSI
+  model: MPG X870E EDGE TI WIFI
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: Exact MPG X870E EDGE TI WIFI model in the linked official specifications.
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: MSI official MPG X870E EDGE TI WIFI specifications
+    url: https://www.msi.com/Motherboard/MPG-X870E-EDGE-TI-WIFI/Specification
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2_1
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_2
+    connection: CPU
+    speed: PCIe 5.0 x2 shared / x4 selectable
+    note: Shares with rear USB4.
+    sources:
+    - specs
+  - name: M2_3
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2_4
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules:
+  - trigger: Drive installed in M2_2
+    affects: M2_2 and USB4 controller uplink
+    result: The shared lane allocation becomes x2 for each. This is a PCIe allocation, not the USB ports'
+      transfer-rate specification.
+    condition: Ryzen 7000 / 9000.
+    sources:
+    - specs
+  - trigger: M2_2 selected as x4 in BIOS
+    affects: Rear USB4 Type-C ports
+    result: The USB4 ports are disabled to give the M.2 socket all four lanes.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: Ryzen 8700 / 8600 / 8400 series limit PCI_E1 to PCIe 4.0 x8; Ryzen 8500 / 8300 limit it to PCIe
+      4.0 x4.
+    sources:
+    - specs
+  - text: Ryzen 8700 / 8600 / 8400 uses PCIe 4.0 for M2_1 / M2_2. Ryzen 8500 / 8300 makes M2_2 unavailable.
+    sources:
+    - specs
+- vendor: GIGABYTE
+  model: B850M AORUS ELITE WIFI6E ICE
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: PCB rev. 1.x
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official B850M AORUS ELITE WIFI6E ICE specifications
+    url: https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: With Ryzen 8000 Phoenix 1 the GPU slot is PCIe 4.0 x8; Phoenix 2 provides PCIe 4.0 x4. M2A_CPU
+      changes to PCIe 4.0 x4.
+    sources:
+    - specs
+  - text: Phoenix 2 limits M2B_CPU to PCIe 4.0 x2; Phoenix 1 supports x4.
+    sources:
+    - specs
+- vendor: GIGABYTE
+  model: B850M EAGLE WIFI6E ICE
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: PCB rev. 1.0
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official B850M EAGLE WIFI6E ICE specifications
+    url: https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: With Ryzen 8000 Phoenix 1 the GPU slot is PCIe 4.0 x8; Phoenix 2 provides PCIe 4.0 x4. M2A_CPU
+      changes to PCIe 4.0 x4.
+    sources:
+    - specs
+  - text: Phoenix 2 limits M2B_CPU to PCIe 4.0 x2; Phoenix 1 supports x4.
+    sources:
+    - specs
+- vendor: GIGABYTE
+  model: B850M GAMING X WIFI6E
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: PCB rev. 1.0
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official B850M GAMING X WIFI6E specifications
+    url: https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-10/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes:
+  - text: With Ryzen 8000 Phoenix 1 the GPU slot is PCIe 4.0 x8; Phoenix 2 provides PCIe 4.0 x4. M2A_CPU
+      changes to PCIe 4.0 x4.
+    sources:
+    - specs
+  - text: Phoenix 2 limits M2B_CPU to PCIe 4.0 x2; Phoenix 1 supports x4.
+    sources:
+    - specs
+- vendor: GIGABYTE
+  model: X870 EAGLE WIFI7
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: PCB rev. 1.x
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official X870 EAGLE WIFI7 specifications
+    url: https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Becomes x2 when M2C_SB is populated.
+    sources:
+    - specs
+  - name: M2C_SB
+    connection: Chipset
+    speed: PCIe 4.0 x2
+    note: Shares the M2B_SB connection.
+    sources:
+    - specs
+  rules:
+  - trigger: PCIe SSD installed in M2C_SB
+    affects: M2B_SB
+    result: M2B_SB drops from a maximum x4 to x2; M2C_SB itself supports x2.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: With Ryzen 8000 Phoenix 1 the GPU slot is PCIe 4.0 x8; Phoenix 2 provides PCIe 4.0 x4. M2A_CPU
+      changes to PCIe 4.0 x4.
+    sources:
+    - specs
+- vendor: GIGABYTE
+  model: Z890M AORUS ELITE WIFI7 ICE
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact Z890M AORUS ELITE WIFI7 ICE model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official Z890M AORUS ELITE WIFI7 ICE specifications
+    url: https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2Q_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: GIGABYTE
+  model: B860M AORUS ELITE WIFI6E ICE
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact B860M AORUS ELITE WIFI6E ICE model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official B860M AORUS ELITE WIFI6E ICE specifications
+    url: https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2Q_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2N_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: GIGABYTE
+  model: Z890 EAGLE WIFI7
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact Z890 EAGLE WIFI7 model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official Z890 EAGLE WIFI7 specifications
+    url: https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2Q_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2M_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: GIGABYTE
+  model: Z890 AORUS ELITE WIFI7 ICE
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact Z890 AORUS ELITE WIFI7 ICE model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official Z890 AORUS ELITE WIFI7 ICE specifications
+    url: https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2Q_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2M_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4 / SATA
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []
+- vendor: GIGABYTE
+  model: X870 AORUS STEALTH ICE
+  status: verified
+  reviewed_on: '2026-11-21'
+  revision: PCB rev. 1.0
+  baseline: Ryzen 7000 / 9000 series unless a CPU exception is listed.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official X870 AORUS STEALTH ICE specifications
+    url: https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2B_CPU
+    connection: CPU
+    speed: PCIe 5.0 x2 shared / x4 selectable
+    note: Shares its CPU connection with USB4.
+    sources:
+    - specs
+  - name: M2C_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2D_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Disables PCIEX4.
+    sources:
+    - specs
+  rules:
+  - trigger: Drive installed in M2B_CPU
+    affects: M2B_CPU and rear USB4 controller uplink
+    result: Each is allocated up to x2 on the shared PCIe link.
+    condition: Ryzen 7000 / 9000.
+    sources:
+    - specs
+  - trigger: M2B_CPU forced to PCIe 5.0 x4 in BIOS
+    affects: Rear USB4 Type-C ports
+    result: USB4 ports become unavailable.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  - trigger: Drive installed in M2D_SB
+    affects: PCIEX4
+    result: Secondary expansion slot becomes unavailable; M2D_SB has documented priority.
+    condition: Default configuration unless noted.
+    sources:
+    - specs
+  cpu_notes:
+  - text: With Ryzen 8000 Phoenix 1 the GPU slot is PCIe 4.0 x8; Phoenix 2 provides PCIe 4.0 x4. M2A_CPU
+      changes to PCIe 4.0 x4.
+    sources:
+    - specs
+  - text: M2B_CPU is PCIe 4.0 with Phoenix 1 and is unavailable with Phoenix 2.
+    sources:
+    - specs
+- vendor: GIGABYTE
+  model: B860I AORUS PRO ICE
+  status: no_sharing_documented
+  reviewed_on: '2026-11-21'
+  revision: Exact B860I AORUS PRO ICE model in the linked official specifications.
+  baseline: Intel Core Ultra Series 2; default lane configuration.
+  gpu_summary: No M.2-triggered reduction of the main GPU slot is documented in the reviewed specifications.
+  sources:
+  - id: specs
+    title: GIGABYTE official B860I AORUS PRO ICE specifications
+    url: https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/sp
+    section: Expansion slots, storage and relevant sharing/CPU footnotes
+  slots:
+  - name: M2A_CPU
+    connection: CPU
+    speed: PCIe 5.0 x4
+    note: No slot-sharing conflict documented in the reviewed specifications.
+    sources:
+    - specs
+  - name: M2Q_SB
+    connection: Chipset
+    speed: PCIe 4.0 x4
+    note: Located on the back of the board; no sharing conflict documented.
+    sources:
+    - specs
+  rules: []
+  cpu_notes: []

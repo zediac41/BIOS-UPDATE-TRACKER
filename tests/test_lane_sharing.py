@@ -38,6 +38,11 @@ class LaneSharingTests(unittest.TestCase):
                 self.assertTrue(record["revision"])
         self.assertTrue(all(key[0] in {vendor.upper() for vendor in self.config['vendors']} for key in catalog))
 
+    def test_all_current_boards_have_completed_initial_research(self):
+        catalog = self.load(self.payload)
+        self.assertEqual(lane_sharing.research_needed(self.config, catalog), [])
+        self.assertEqual(set(catalog), set(lane_sharing.configured_boards(self.config)))
+
     def test_bad_source_and_wrong_board_cannot_be_published_as_verified(self):
         for mutate in (
             lambda data: data["boards"][0]["rules"][0].update(sources=["missing"]),

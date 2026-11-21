@@ -2,6 +2,44 @@
 
 Fetch the latest **two** BIOS versions for selected motherboards and publish a static page via GitHub Pages.
 
+Click a board tile to open its M.2 / PCIe lane-sharing details. All 60 currently
+configured boards have completed their initial research. Each finding links to
+official documentation and states the model/revision and CPU assumptions.
+An unresearched future board explicitly shows research pending.
+
+## Lane-sharing research
+
+`lane_sharing.yml` stores reviewed hardware facts independently of daily BIOS
+results. Each record identifies the exact model/revision, CPU assumptions, slots,
+conditional conflicts, and official sources. Only add verified facts for that
+exact model. A missing record means unknown, not that there is no lane sharing.
+Review records when a model/revision or relevant vendor documentation changes.
+The daily workflow reads this file locally and makes no research requests.
+
+For a new board, research the exact model/revision first and add its verified
+`lane_sharing.yml` record together with its `config.yml` entry. Asking the coding
+agent to add a board includes this one-time research step; see `AGENTS.md`.
+The `Check new board research` pull-request workflow flags newly added boards
+without verified records. It only validates saved research and does not publish
+the site. The build summary also lists any outstanding initial research.
+
+Direct changes on main do not go through a pull-request check. Use the board
+addition process above to ensure research is completed before its first scrape.
+
+Rebuild the page from the existing `docs/data.json` without scraping:
+
+```sh
+python bios_tracker.py --render-only
+```
+
+Run the focused checks after installing `requirements.txt`:
+
+```sh
+python -m unittest discover -s tests
+python -m playwright install chromium
+python tests/check_lane_ui.py
+```
+
 - Output in `/docs/index.html`
 - Driven by `config.yml` (models per vendor). Supports **explicit support URLs** per model.
 - Runs on push and nightly via GitHub Actions

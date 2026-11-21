@@ -8,6 +8,7 @@ import sys
 import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
+import lane_sharing
 
 DEFAULT_FORM_EMBED = "https://docs.google.com/forms/d/e/1FAIpQLSeeu3yf7GYgZbPWPLX_iDzg_ulEfe7FdgiW66Co3QHUKaG7Cw/viewform?embedded=true"
 DEFAULT_SHEET_ID   = "1O6A9AI0wMu5vWrtKgvwFAxJFEGu6aznUal2khv_oukI"
@@ -92,7 +93,7 @@ def _row(label: str, version: str | None, date: str | None):
         '</div>'
     )
 
-def build_card(entry, today: datetime.date | None = None):
+def build_card(entry, today: datetime.date | None = None, lane_index=None, lane_record=None):
     vendor = entry.get("vendor", "")
     model = entry.get("model", "")
     url = entry.get("url", "#")
@@ -112,8 +113,13 @@ def build_card(entry, today: datetime.date | None = None):
         classes.append("card--fresh")
 
     parts = []
-    parts.append(f'<div class="{" ".join(classes)}" data-vendor="{html.escape(vendor)}">')
-    parts.append(f'  <h3>{html.escape(model)} <span class="badge">{html.escape(vendor)}</span></h3>')
+    lane_attr = f' data-lane-template="lane-{lane_index}"' if lane_index is not None else ""
+    parts.append(f'<div class="{" ".join(classes)}" data-vendor="{html.escape(vendor)}"{lane_attr}>')
+    title = html.escape(model)
+    if lane_index is not None:
+        title = (f'<button type="button" class="lane-open" aria-haspopup="dialog" '
+                 f'aria-controls="lane-dialog" aria-label="{html.escape(model)}: M.2 and PCIe lane sharing">{title}</button>')
+    parts.append(f'  <h3>{title} <span class="badge">{html.escape(vendor)}</span></h3>')
     if url:
         parts.append(f'  <div class="meta"><a href="{html.escape(url)}" target="_blank" rel="noreferrer">Vendor page</a></div>')
 
@@ -135,6 +141,11 @@ def build_card(entry, today: datetime.date | None = None):
         parts.append(f'  <div class="error">{html.escape(_friendly_error(err))}</div>')
         parts.append(_error_details_html(err))
 
+    if lane_index is not None:
+        verified = lane_record and lane_record.get("status") != "pending"
+        status = "M.2 / PCIe details" if verified else "M.2 / PCIe: research pending"
+        status_class = " lane-status--verified" if verified else ""
+        parts.append(f'<p class="lane-status{status_class}">{status}</p>')
     parts.append('</div>')
     return "\n".join(parts)
     
@@ -452,16 +463,22 @@ def _google_comments_block(cfg: dict) -> str:
 # -------------------------------------------------------------------
 # Main
 # -------------------------------------------------------------------
-def main():
+def main(render_only=False):
     cfg = load_config()
     vendors = (cfg.get("vendors") or {})
-
-    # Optional notes
-    notes_text = (cfg.get("notes") or "").strip()
 
     docs = Path("docs")
     data_path = docs / "data.json"
     previous_results = _load_previous_results(data_path)
+
+    if render_only:
+        results = json.loads(data_path.read_text(encoding="utf-8"))
+        if not isinstance(results, list) or not results:
+            raise ValueError("docs/data.json must contain saved board results for --render-only")
+        now = next((r.get("checked_at") for r in results if r.get("checked_at")), "Unknown")
+        render_site(cfg, results, now, docs)
+        print("Preview rebuilt from saved BIOS results; no vendor requests made.")
+        return
 
     results: list[dict] = []
 
@@ -518,12 +535,31 @@ def main():
     now = datetime.datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d %H:%M %Z")
     _apply_last_good_fallback(results, previous_results, now)
 
+    render_site(cfg, results, now, docs)
+    data_path.write_text(json.dumps(_sort_results_newest_first(results), indent=2), encoding="utf-8")
+    _append_github_summary(results, now)
+    print("Done. Wrote docs/index.html and docs/data.json")
+
+
+def render_site(cfg, results, now, docs):
+    notes_text = (cfg.get("notes") or "").strip()
+    catalog = lane_sharing.load_catalog(Path(__file__).with_name("lane_sharing.yml"), cfg)
+
     # Sort cards by current release date (newest first)
     results = _sort_results_newest_first(results)
 
     # Build cards
     today = datetime.datetime.now(ZoneInfo("America/Chicago")).date()
-    cards_html = "\n".join(build_card(r, today=today) for r in results)
+    cards_html = "\n".join(
+        build_card(r, today=today, lane_index=index,
+                   lane_record=catalog.get(lane_sharing.board_key(r.get("vendor"), r.get("model"))))
+        for index, r in enumerate(results)
+    )
+    lane_dialog = lane_sharing.render_dialog(results, catalog)
+    summary_path = os.getenv("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        with open(summary_path, "a", encoding="utf-8") as summary:
+            summary.write(lane_sharing.coverage_summary(cfg, catalog) + "\n")
 
     # Comments section (Google Form + Sheet)
     comments_html = _google_comments_block(cfg)
@@ -714,6 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/site.css?v=6">
   {inline_css}
+  {lane_sharing.STYLES}
 </head>
 <body>
   <div class="container">
@@ -725,17 +762,19 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     {_google_comments_block(cfg)}
   </div>
+  {lane_dialog}
   {filter_js}
+  {lane_sharing.SCRIPT}
 </body>
 </html>
 """
 
     # Write outputs
-    idx.write_text(page_html, encoding="utf-8")
-    data_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
-    _append_github_summary(results, now)
-    print("Done. Wrote docs/index.html and docs/data.json")
+    idx.write_text("\n".join(line.rstrip() for line in page_html.splitlines()) + "\n", encoding="utf-8")
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description="Build the BIOS tracker")
+    parser.add_argument("--render-only", action="store_true", help="Rebuild HTML from saved results without scraping")
+    main(render_only=parser.parse_args().render_only)
  

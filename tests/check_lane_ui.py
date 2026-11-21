@@ -22,7 +22,8 @@ def run():
         page.goto((ROOT / "docs/index.html").as_uri())
         config = yaml.safe_load((ROOT / 'config.yml').read_text(encoding='utf-8'))
         assert page.locator('.card').count() == sum(len(items) for items in config['vendors'].values())
-        assert page.locator('.lane-status--verified').count() == 3
+        research = yaml.safe_load((ROOT / 'lane_sharing.yml').read_text(encoding='utf-8'))
+        assert page.locator('.lane-status--verified').count() == sum(record['status'] != 'pending' for record in research['boards'])
         for model in PILOTS:
             page.locator('#search-input').fill(model)
             card = page.locator('.card:visible')

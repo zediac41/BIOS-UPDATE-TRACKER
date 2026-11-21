@@ -3,6 +3,8 @@
 import datetime
 import html
 from pathlib import Path
+import re
+import subprocess
 from urllib.parse import urlsplit
 
 import yaml
@@ -12,6 +14,26 @@ def board_key(vendor, model):
     return str(vendor).strip().upper(), " ".join(str(model).split()).casefold()
 
 
+def configured_boards(config):
+    boards = {}
+    for vendor, items in (config.get("vendors") or {}).items():
+        for item in items or []:
+            model = (item.get("name") or item.get("model") or "") if isinstance(item, dict) else str(item)
+            if model.strip():
+                boards[board_key(vendor, model)] = {"vendor": str(vendor).upper(), "model": model.strip()}
+    return boards
+
+
+def research_needed(config, catalog, base_config=None):
+    boards = configured_boards(config)
+    previous = configured_boards(base_config) if base_config is not None else {}
+    return [
+        board for key, board in boards.items()
+        if key not in previous
+        and catalog.get(key, {}).get("status") not in {"verified", "no_sharing_documented"}
+    ]
+
+
 def load_catalog(path, config):
     path = Path(path)
     if not path.exists():
@@ -19,11 +41,7 @@ def load_catalog(path, config):
     payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     if payload.get("schema_version") != 1:
         raise ValueError("lane_sharing.yml: expected schema_version: 1")
-    configured = {
-        board_key(vendor, item.get("name") or item.get("model") if isinstance(item, dict) else item)
-        for vendor, items in (config.get("vendors") or {}).items()
-        for item in (items or [])
-    }
+    configured = configured_boards(config)
     catalog = {}
     for record in payload.get("boards", []):
         key = board_key(record.get("vendor", ""), record.get("model", ""))
@@ -64,6 +82,34 @@ def load_catalog(path, config):
                     slot_names.add(item["name"])
         catalog[key] = record
     return catalog
+
+
+def coverage_summary(config, catalog):
+    total = len(configured_boards(config))
+    pending = research_needed(config, catalog)
+    lines = [
+        "## Lane-sharing research", "",
+        f"- Researched: {total - len(pending)} of {total}",
+        f"- Pending initial research: {len(pending)}", "",
+    ]
+    if pending:
+        lines.extend(["<details><summary>Boards needing initial research</summary>", ""])
+        lines.extend(f"- {html.escape(board['vendor'])}: {html.escape(board['model'])}" for board in pending)
+        lines.extend(["", "</details>", ""])
+    return "\n".join(lines)
+
+
+def check_new_boards(base_sha):
+    if not re.fullmatch(r"[0-9a-fA-F]{40,64}", base_sha):
+        raise ValueError("Expected a full base commit SHA")
+    config = yaml.safe_load(Path("config.yml").read_text(encoding="utf-8")) or {}
+    catalog = load_catalog("lane_sharing.yml", config)
+    base_text = subprocess.check_output(["git", "show", f"{base_sha}:config.yml"], text=True, encoding="utf-8")
+    pending = research_needed(config, catalog, yaml.safe_load(base_text) or {})
+    if pending:
+        names = "; ".join(f"{board['vendor']}: {board['model']}" for board in pending)
+        raise ValueError(f"Research these new boards before adding them: {names}. Save sourced, verified entries in lane_sharing.yml.")
+    print("All newly added boards have verified lane-sharing research.")
 
 
 def render_details(entry, record):
@@ -242,3 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 """
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Check one-time lane-sharing research for new boards")
+    parser.add_argument("--check-new", required=True, metavar="BASE_SHA")
+    args = parser.parse_args()
+    try:
+        check_new_boards(args.check_new)
+    except (ValueError, subprocess.CalledProcessError) as error:
+        parser.exit(1, f"{error}\n")

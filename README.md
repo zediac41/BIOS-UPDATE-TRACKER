@@ -15,6 +15,16 @@ exact model. A missing record means unknown, not that there is no lane sharing.
 Review records when a model/revision or relevant vendor documentation changes.
 The daily workflow reads this file locally and makes no research requests.
 
+For a new board, research the exact model/revision first and add its verified
+`lane_sharing.yml` record together with its `config.yml` entry. Asking the coding
+agent to add a board includes this one-time research step; see `AGENTS.md`.
+The `Check new board research` pull-request workflow flags newly added boards
+without verified records. It only validates saved research and does not publish
+the site. The build summary also lists any outstanding initial research.
+
+Direct changes on main do not go through a pull-request check. Use the board
+addition process above to ensure research is completed before its first scrape.
+
 Rebuild the page from the existing `docs/data.json` without scraping:
 
 ```sh

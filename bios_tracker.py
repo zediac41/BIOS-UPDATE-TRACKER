@@ -556,6 +556,10 @@ def render_site(cfg, results, now, docs):
         for index, r in enumerate(results)
     )
     lane_dialog = lane_sharing.render_dialog(results, catalog)
+    summary_path = os.getenv("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        with open(summary_path, "a", encoding="utf-8") as summary:
+            summary.write(lane_sharing.coverage_summary(cfg, catalog) + "\n")
 
     # Comments section (Google Form + Sheet)
     comments_html = _google_comments_block(cfg)

@@ -18,6 +18,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            /config.yml
+            /lane_sharing.py
+            /lane_sharing.yml
+          sparse-checkout-cone-mode: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -31,5 +37,5 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
-          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          git fetch --filter=blob:none --no-tags --depth=1 origin "$BASE_SHA"
           python lane_sharing.py --check-new "$BASE_SHA"
